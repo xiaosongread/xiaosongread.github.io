@@ -115,7 +115,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2019/05/31/jc-1/">jc-1</a>
+            <a href="/2019/05/31/jc-1/">hexo/github 搭建github博客教程</a>
         </h1>
         
         <div class="article-meta clearfix">
@@ -140,89 +140,14 @@
 4.github 账号
 </code></pre><blockquote>
 <h5 id="如果您是开发人员，这应该都有，不会的可以网上找，依照一大堆的。"><a href="#如果您是开发人员，这应该都有，不会的可以网上找，依照一大堆的。" class="headerlink" title="如果您是开发人员，这应该都有，不会的可以网上找，依照一大堆的。"></a>如果您是开发人员，这应该都有，不会的可以网上找，依照一大堆的。</h5></blockquote>
-<h4 id="二、设置本地博客的配置："><a href="#二、设置本地博客的配置：" class="headerlink" title="二、设置本地博客的配置："></a>二、设置本地博客的配置：</h4><p>1.全局安装hexo<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure></p>
-<p>2.新建一个文件夹，cd到当前文件夹，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo --save</span><br></pre></td></tr></table></figure></p>
-<p>然后<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo v</span><br></pre></td></tr></table></figure></p>
-<p>出现以下，说明安装成功   </p>
-<p><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/1.png" alt="blockchain"></p>
-<blockquote>
-<p>别着急，就快成功了，再坚持一小小下</p>
-</blockquote>
-<h4 id="三、初始化hexo："><a href="#三、初始化hexo：" class="headerlink" title="三、初始化hexo："></a>三、初始化hexo：</h4><p>1.继续输入<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
-<p>实现初始化<br>2.下载好了，再输入<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/2.png" alt="blockchain">   </p>
-<blockquote>
-<p>这时候我们就可以打开浏览器了，在地址栏中输入<a href="http://localhost:400/，我们就可以看到如下图的界面" target="_blank" rel="noopener">http://localhost:400/，我们就可以看到如下图的界面</a>   </p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/3.png" alt="blockchain">   </p>
-<blockquote>
-<h4 id="基本搭建完成，其实你才完成了一半"><a href="#基本搭建完成，其实你才完成了一半" class="headerlink" title="基本搭建完成，其实你才完成了一半"></a><strong>基本搭建完成，其实你才完成了一半</strong></h4></blockquote>
-<h4 id="四、上传项目："><a href="#四、上传项目：" class="headerlink" title="四、上传项目："></a>四、上传项目：</h4><p>1.在github上面先创建一个项目，特别注意，名称的命名</p>
-<blockquote>
-<p>github的用户名要和创建的博客的项目名称一致，如下：   </p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/5.png" alt="blockchain"></p>
-<blockquote>
-<p><strong>名称格式：username.github.io</strong></p>
-</blockquote>
-<p>2.打开项目中_config.yml（配置文件），对它做如下修改，repository后面的内容是 <a href="mailto:git@gitbub.com" target="_blank" rel="noopener">git@gitbub.com</a>:username/库地址 的形式    </p>
-<blockquote>
-<p><strong>type、repository、branch冒号的后面都有一个空格</strong></p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/6.jpg" alt="blockchain"></p>
-<p>3.#### 回到shell，输入：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save   </span><br><span class="line">hexo g   </span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
-<h5 id="部署完之后将代码中的-public下的文件传到你创建的git项目下面，这样别人也可以通过域名访问我们博客了。在地址栏输入http-域名就可以访问。比如：http-xiaosongread-github-io"><a href="#部署完之后将代码中的-public下的文件传到你创建的git项目下面，这样别人也可以通过域名访问我们博客了。在地址栏输入http-域名就可以访问。比如：http-xiaosongread-github-io" class="headerlink" title="部署完之后将代码中的 public下的文件传到你创建的git项目下面，这样别人也可以通过域名访问我们博客了。在地址栏输入http://域名就可以访问。比如：http://xiaosongread.github.io"></a>部署完之后将代码中的 <strong>public</strong>下的文件传到你创建的git项目下面，这样别人也可以通过域名访问我们博客了。在地址栏输入http://域名就可以访问。比如：<a href="http://xiaosongread.github.io" target="_blank" rel="noopener">http://xiaosongread.github.io</a></h5><h4 id="五、文件目录："><a href="#五、文件目录：" class="headerlink" title="五、文件目录："></a>五、文件目录：</h4><p><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/4.png" alt="blockchain">   </p>
-<h4 id="六、更换主题："><a href="#六、更换主题：" class="headerlink" title="六、更换主题："></a>六、更换主题：</h4><p>我更换的主题是：<a href="https://github.com/Sanonz/hexo-theme-concise，将次项目clone下来，其他主题：[hexo主题](https://hexo.io/themes/)" target="_blank" rel="noopener">https://github.com/Sanonz/hexo-theme-concise，将次项目clone下来，其他主题：[hexo主题](https://hexo.io/themes/)</a>   </p>
-<p>将下载下来的主题中的所有文件copy到你的代码中的themes文件夹中(可以新建一个主题文件夹，比如landscape1),修改文件根目录的配置文件的主题名，如下<br><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/7.jpg" alt="blockchain">   </p>
-<blockquote>
-<p><strong>此主题可能最后样式可以不起作用，应为此模板用了less，需要安装 npm install hexo-renderer-less –save</strong></p>
-</blockquote>
-<h5 id="然后重新打包项目"><a href="#然后重新打包项目" class="headerlink" title="然后重新打包项目"></a>然后重新打包项目</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>接着重新将public文件上传到你的github项目中。</p>
-<h4 id="七、使用方法："><a href="#七、使用方法：" class="headerlink" title="七、使用方法："></a>七、使用方法：</h4><table>
-<thead>
-<tr>
-<th>shell</th>
-<th style="text-align:center">表头</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>hexo s</td>
-<td style="text-align:center">本地启动服务</td>
-</tr>
-<tr>
-<td>hexo new ‘filename’</td>
-<td style="text-align:center">创建md文件</td>
-</tr>
-<tr>
-<td>hexo s hexo g</td>
-<td style="text-align:center">修改内容打包文件</td>
-</tr>
-</tbody>
-</table>
-<h4 id="八、常见使用疑问："><a href="#八、常见使用疑问：" class="headerlink" title="八、常见使用疑问："></a>八、常见使用疑问：</h4><p>1.此项目没有后台系统如何录数据？<br>此系统录入数据的步骤是：</p>
-<ul>
-<li>hexo new ‘filename’（新建.md文件）</li>
-<li>用markdown格式排版内容</li>
-<li>hexo s hexo g 重新打包上传就页面可以看见你添加的文章    </li>
-</ul>
-<p>2.如何为文章分类？<br>添加分类列表，设置文章的 categories 字段然后访问 /categories/front-end</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">date: 2017-10-20 20:00:00</span><br><span class="line">categories: front-end</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>如何设置分页，截断文章等不会的问题可以在本项目提交issues,或者访问<a href="https://github.com/sanonz/hexo-theme-concise" target="_blank" rel="noopener">本主题</a>查看</p>
-<blockquote>
-<p><strong>需要了解markdown的基本语法</strong></p>
-</blockquote>
-<p><a href="https://github.com/xiaosongread/markdow" target="_blank" rel="noopener">常用markdown语法</a>   </p>
-<h4 id="九、配置自定义域名："><a href="#九、配置自定义域名：" class="headerlink" title="九、配置自定义域名："></a>九、配置自定义域名：</h4><p>此过程比较麻烦，有需要的可以提issure,有时间可以补充一下… …</p>
-<!-- [点击查看参考博客](https://www.cnblogs.com/trista222/p/8017300.html)
-
-```shell
-hexo new page 'tags'
-hexo new 'filename'   
-hexo g   
-hexo d   
-``` -->
+        
+        <p class="article-more-link">
+            <a href="/2019/05/31/jc-1/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
         
     </section>
 </article>
