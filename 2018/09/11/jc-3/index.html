@@ -7,11 +7,11 @@
 
     
 
-    <title>Archives | 小宋前端技术博客</title>
+    <title>git把功能开发错了分支莫慌/恢复误删的本地分支 | 小宋前端技术博客</title>
     <meta name="author" content="xiaosongread">
     <meta name="version" content="1.0.0">
     <meta name="keywords" content="前端 css html js node markdown npm webpack">
-    <meta name="description" content="前端 css html js node markdown npm webpack">
+    <meta name="description" content="开发风风火火，功能开发完了，git branch一看，靠，在线上分支开发的，顿时瘫坐在椅子上，还得复制代码？不用，几步搞定，顿时觉得git是天下最伟大的发明。第一种场景：你开发的功能还没有提交代码，像我这种喜欢开发完一次性提交的人会经常用到，这种习惯其实是不好的。1234git add .  // 把所有改动放到暂存git stash  // 把暂存的文件提交到git的暂存栈git checkout 本该提交代码的分支  // 切换到正确的分支git stash pop  // 将暂存...">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 
@@ -99,155 +99,63 @@
 
 </header>
 
-        <div id="content" class="content">
-
-
+        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
     
-    
-    
-    
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2019" class="page-hd">
-        2019
-    </a>
-    </div>
-    <ol class="archives">
-    
-
-    <li class="archive-section-item">
+    <header class="article-header">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2019/05/31/jc-1/">hexo/github 搭建github博客教程</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2019/05">
-    
-    <time datetime="2019-05-31T06:27:08.000Z" itemprop="datePublished">5/31</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
+        <h1 itemprop="name">
+            git把功能开发错了分支莫慌/恢复误删的本地分支
+        </h1>
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2019/02/21/jc-2/">小程序实现签名并保存图片</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2019/02">
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://www.songyanbin.com/2018/09/11/jc-3/index.html">
     
-    <time datetime="2019-02-21T01:17:20.000Z" itemprop="datePublished">2/21</time>
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-09-11T07:32:20.000Z" itemprop="datePublished">2018-09-11</time>
 </a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
 
-    
-    
-    
-    </ol></section>
-    
-    
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2018" class="page-hd">
-        2018
-    </a>
-    </div>
-    <ol class="archives">
-    
+            
 
-    <li class="archive-section-item">
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2018/09/11/jc-3/">git把功能开发错了分支莫慌/恢复误删的本地分支</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2018/09">
-    
-    <time datetime="2018-09-11T07:32:20.000Z" itemprop="datePublished">9/11</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
+        <p>开发风风火火，功能开发完了，git branch一看，靠，在线上分支开发的，顿时瘫坐在椅子上，还得复制代码？不用，几步搞定，顿时觉得git是天下最伟大的发明。</p>
+<h3 id="第一种场景："><a href="#第一种场景：" class="headerlink" title="第一种场景："></a>第一种场景：</h3><p>你开发的功能还没有提交代码，像我这种喜欢开发完一次性提交的人会经常用到，这种习惯其实是不好的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add .  // 把所有改动放到暂存</span><br><span class="line">git stash  // 把暂存的文件提交到git的暂存栈</span><br><span class="line">git checkout 本该提交代码的分支  // 切换到正确的分支</span><br><span class="line">git stash pop  // 将暂存栈中的代码放出来</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="第二种场景："><a href="#第二种场景：" class="headerlink" title="第二种场景："></a>第二种场景：</h3><p>其实最常见的是这种问题，特别是喜欢用idea插件的童鞋，一顿操作猛如虎，一看结果心里哭。git  checkout 不该提交代码提交了代码的分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD~1 // 最近一次提交放回暂存区, 并取消此次提交</span><br><span class="line">git stash // 把暂存的文件提交到git的暂存栈</span><br><span class="line">git checkout 该提交代码的分支</span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure>
+<p>下面一顿操作随你猛了，等你把代码提交到了正确的分支后，再次切到刚刚错的分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin 错误的分支 -f  (把不该上去的文件回退掉)</span><br></pre></td></tr></table></figure>
+<h2 id="恢复误删的本地分支"><a href="#恢复误删的本地分支" class="headerlink" title="恢复误删的本地分支"></a>恢复误删的本地分支</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log -g // 找回之前提交的commit,并记下commit_id</span><br><span class="line">git branch newbranch commit_id // 切换到newbranch分支，检查文件是否存在</span><br></pre></td></tr></table></figure>
 
-    
-    
-
-    <li class="archive-section-item">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2018/05/23/jc-4/">JS replace()方法全文替换，遇到变量怎么办？</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2018/05">
-    
-    <time datetime="2018-05-23T08:14:16.000Z" itemprop="datePublished">5/23</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
+    </section>
 </article>
-    </li>
-
-    
-    
-    
-    </ol></section>
-    
-    
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2017" class="page-hd">
-        2017
-    </a>
-    </div>
-    <ol class="archives">
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2017/12/14/jc-5/">文本溢出显示... 和文本的断点换行</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2017/12">
-    
-    <time datetime="2017-12-14T03:32:00.000Z" itemprop="datePublished">12/14</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
 
 
-</ol></section>
 
-
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "d62d8400017ba549434b",
+        clientSecret: "ba27917163a624a4f014605bdafb09f9e6c2a1b9",
+        repo: "xiaosongread.github.io",
+        owner: "xiaosongread",
+        admin: ["xiaosongread"],
+        id: "2018/09/11/jc-3",
+        distractionFreeMode: true,
+        title: "git把功能开发错了分支莫慌/恢复误删的本地分支",
+        body: "https://www.songyanbin.com/2018/09/11/jc-3/",
+        labels: []
+    }).render('comments');
+    </script>
+</div>
 
 </div>
         <footer class="footer">
@@ -308,6 +216,11 @@
         }
     });
     </script>
+    
+        <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+        </script>
     
 
 </body>
