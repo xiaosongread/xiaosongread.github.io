@@ -7,11 +7,11 @@
 
     
 
-    <title>Archives | 小宋前端技术博客</title>
+    <title>npm包模块发布 | 小宋前端技术博客</title>
     <meta name="author" content="xiaosongread">
     <meta name="version" content="1.0.0">
     <meta name="keywords" content="前端 css html js node markdown npm webpack">
-    <meta name="description" content="前端 css html js node markdown npm webpack">
+    <meta name="description" content="前言现在前端开发框架特别流行，vue,react,angular，在开发中，npm包是必不可少的，这就是相当于传统开发中的插件，那么如何发布自己的包？npm i 包名称 ，就能下载一个包插件，那发布的流程是什么呢？必备的环境node(npm)环境是必须的;nrm是用来管理npm镜像的123npm install -g nrm :安装nrmnrm ls :npm镜像列表nrm use 镜像名称 :切换镜像发布包  1.npm init 一直回车，新建package.json文件 ...">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 
@@ -99,197 +99,66 @@
 
 </header>
 
-        <div id="content" class="content">
-
-
+        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
     
-    
-    
-    
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2019" class="page-hd">
-        2019
-    </a>
-    </div>
-    <ol class="archives">
-    
-
-    <li class="archive-section-item">
+    <header class="article-header">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2019/05/31/jc-1/">hexo/github 搭建github博客教程</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2019/05">
-    
-    <time datetime="2019-05-31T06:27:08.000Z" itemprop="datePublished">5/31</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
+        <h1 itemprop="name">
+            npm包模块发布
+        </h1>
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2019/04/27/jc-6/">vue 组件之间通信</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2019/04">
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://www.songyanbin.com/2018/06/26/jc-7/index.html">
     
-    <time datetime="2019-04-27T10:32:52.000Z" itemprop="datePublished">4/27</time>
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-06-26T06:44:11.000Z" itemprop="datePublished">2018-06-26</time>
 </a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
 
-    
-    
+            
 
-    <li class="archive-section-item">
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2019/02/21/jc-2/">小程序实现签名并保存图片</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2019/02">
-    
-    <time datetime="2019-02-21T01:17:20.000Z" itemprop="datePublished">2/21</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>现在前端开发框架特别流行，vue,react,angular，在开发中，npm包是必不可少的，这就是相当于传统开发中的插件，那么如何发布自己的包？</p>
+<p>npm i 包名称 ，就能下载一个包插件，那发布的流程是什么呢？<br><a id="more"></a></p>
+<h5 id="必备的环境"><a href="#必备的环境" class="headerlink" title="必备的环境"></a>必备的环境</h5><blockquote>
+<p>node(npm)环境是必须的;nrm是用来管理npm镜像的</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nrm :安装nrm</span><br><span class="line">nrm ls :npm镜像列表</span><br><span class="line">nrm use 镜像名称 :切换镜像</span><br></pre></td></tr></table></figure>
+<h5 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h5><p>  1.npm init 一直回车，新建package.json文件<br>  2.注册npm账号：<a href="https://www.npmjs.com/" target="_blank" rel="noopener">https://www.npmjs.com/</a><br>  3.npm login; 输入账号密码邮箱<br>  4.npm publish</p>
+<blockquote>
+<p>登陆状态中保证了，特别注意官网注册成功后要在邮箱中先确认，不然之后提交包的时候会报错</p>
+</blockquote>
+<p>提交成功会提示，然后就可以在npm官网个人中心查看，我测试的时候会有点延迟，在使用的时候要新建项目在npm install 你的包名称，想想也是，谁会在自己这个包中在下载，我觉下了好几次，报错，仔细一看原来是包的不能在此目录下面下载此包文件.</p>
+<p><a href="https://github.com/xiaosongread/mgd-localstorage" target="_blank" rel="noopener">github:https://github.com/xiaosongread/mgd-localstorage</a></p>
 
-    
-    
-    
-    </ol></section>
-    
-    
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2018" class="page-hd">
-        2018
-    </a>
-    </div>
-    <ol class="archives">
-    
-
-    <li class="archive-section-item">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2018/09/11/jc-3/">git把功能开发错了分支莫慌/恢复误删的本地分支</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2018/09">
-    
-    <time datetime="2018-09-11T07:32:20.000Z" itemprop="datePublished">9/11</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
+    </section>
 </article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2018/06/26/jc-7/">npm包模块发布</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2018/06">
-    
-    <time datetime="2018-06-26T06:44:11.000Z" itemprop="datePublished">6/26</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2018/05/23/jc-4/">JS replace()方法全文替换，遇到变量怎么办？</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2018/05">
-    
-    <time datetime="2018-05-23T08:14:16.000Z" itemprop="datePublished">5/23</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-    
-    </ol></section>
-    
-    
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2017" class="page-hd">
-        2017
-    </a>
-    </div>
-    <ol class="archives">
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2017/12/14/jc-5/">文本溢出显示... 和文本的断点换行</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2017/12">
-    
-    <time datetime="2017-12-14T03:32:00.000Z" itemprop="datePublished">12/14</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
 
 
-</ol></section>
 
-
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "d62d8400017ba549434b",
+        clientSecret: "ba27917163a624a4f014605bdafb09f9e6c2a1b9",
+        repo: "xiaosongread.github.io",
+        owner: "xiaosongread",
+        admin: ["xiaosongread"],
+        id: "2018/06/26/jc-7",
+        distractionFreeMode: true,
+        title: "npm包模块发布",
+        body: "https://www.songyanbin.com/2018/06/26/jc-7/",
+        labels: []
+    }).render('comments');
+    </script>
+</div>
 
 </div>
         <footer class="footer">
@@ -350,6 +219,11 @@
         }
     });
     </script>
+    
+        <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+        </script>
     
 
 </body>
