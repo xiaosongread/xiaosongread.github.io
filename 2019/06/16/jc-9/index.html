@@ -7,11 +7,11 @@
 
     
 
-    <title>Archives | 小宋前端技术博客</title>
+    <title>移动端（微信等）使用 vConsole调试console | 小宋前端技术博客</title>
     <meta name="author" content="xiaosongread">
     <meta name="version" content="1.0.0">
     <meta name="keywords" content="前端 css html js node markdown npm webpack">
-    <meta name="description" content="前端 css html js node markdown npm webpack">
+    <meta name="description" content="###移动端和h5的混合开发模式，在h5中调用原生的方法来获取数据的交互特别多，但是提示比较困难，因为在应用中不像浏览器，无法打开控制台，改如何调试呢？use1234npm install vconsoleimport VConsole from &#39;vconsole/dist/vconsole.min.js&#39; //import vconsolelet vConsole = new VConsole() // 初始化或者，找到模块下面的dist/vconsole.min.js ，然后复...">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 
@@ -99,239 +99,64 @@
 
 </header>
 
-        <div id="content" class="content">
-
-
+        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
     
-    
-    
-    
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2019" class="page-hd">
-        2019
-    </a>
-    </div>
-    <ol class="archives">
-    
-
-    <li class="archive-section-item">
+    <header class="article-header">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2019/06/16/jc-9/">移动端（微信等）使用 vConsole调试console</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2019/06">
-    
-    <time datetime="2019-06-16T07:10:29.000Z" itemprop="datePublished">6/16</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
+        <h1 itemprop="name">
+            移动端（微信等）使用 vConsole调试console
+        </h1>
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2019/06/11/jc-8/">import和require的区别</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2019/06">
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://www.songyanbin.com/2019/06/16/jc-9/index.html">
     
-    <time datetime="2019-06-11T03:55:32.000Z" itemprop="datePublished">6/11</time>
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2019-06-16T07:10:29.000Z" itemprop="datePublished">2019-06-16</time>
 </a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
 
-    
-    
+            
 
-    <li class="archive-section-item">
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2019/05/31/jc-1/">hexo/github 搭建github博客教程</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2019/05">
-    
-    <time datetime="2019-05-31T06:27:08.000Z" itemprop="datePublished">5/31</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
+        <p>###<br>移动端和h5的混合开发模式，在h5中调用原生的方法来获取数据的交互特别多，但是提示比较困难，因为在应用中不像浏览器，无法打开控制台，改如何调试呢？</p>
+<h4 id="use"><a href="#use" class="headerlink" title="use"></a>use</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install vconsole</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> VConsole <span class="keyword">from</span> <span class="string">'vconsole/dist/vconsole.min.js'</span> <span class="comment">//import vconsole</span></span><br><span class="line"><span class="keyword">let</span> vConsole = <span class="keyword">new</span> VConsole() <span class="comment">// 初始化</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>或者，找到模块下面的dist/vconsole.min.js ，然后复制到自己的项目中<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"dist/vconsole.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--建议在 `&lt;head&gt;` 中引入哦~ --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 初始化</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> vConsole = <span class="keyword">new</span> VConsole();</span></span><br><span class="line"><span class="javascript">  <span class="built_in">console</span>.log(<span class="string">'VConsole is cool'</span>);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/vconsole1.png" alt="blockchain"><br><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/vconsole.png" alt="blockchain"></p>
+<p>出现上面的就是安装成功了！</p>
+<blockquote>
+<p>请注意，VConsole 只是 vConsole 的原型，而非一个已实例化的对象。所以在手动 new 实例化之前，vConsole 不会被插入到网页中。</p>
+</blockquote>
+<p><a href="https://github.com/Tencent/vConsole/blob/dev/doc/tutorial_CN.md" target="_blank" rel="noopener">官方文档</a></p>
 
-    
-    
-
-    <li class="archive-section-item">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2019/04/27/jc-6/">vue 组件之间通信</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2019/04">
-    
-    <time datetime="2019-04-27T10:32:52.000Z" itemprop="datePublished">4/27</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
+    </section>
 </article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2019/02/21/jc-2/">小程序实现签名并保存图片</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2019/02">
-    
-    <time datetime="2019-02-21T01:17:20.000Z" itemprop="datePublished">2/21</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-    
-    </ol></section>
-    
-    
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2018" class="page-hd">
-        2018
-    </a>
-    </div>
-    <ol class="archives">
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2018/09/11/jc-3/">git把功能开发错了分支莫慌/恢复误删的本地分支</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2018/09">
-    
-    <time datetime="2018-09-11T07:32:20.000Z" itemprop="datePublished">9/11</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2018/06/26/jc-7/">npm包模块发布</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2018/06">
-    
-    <time datetime="2018-06-26T06:44:11.000Z" itemprop="datePublished">6/26</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2018/05/23/jc-4/">JS replace()方法全文替换，遇到变量怎么办？</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2018/05">
-    
-    <time datetime="2018-05-23T08:14:16.000Z" itemprop="datePublished">5/23</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-    
-    </ol></section>
-    
-    
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2017" class="page-hd">
-        2017
-    </a>
-    </div>
-    <ol class="archives">
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2017/12/14/jc-5/">文本溢出显示... 和文本的断点换行</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2017/12">
-    
-    <time datetime="2017-12-14T03:32:00.000Z" itemprop="datePublished">12/14</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
 
 
-</ol></section>
 
-
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "d62d8400017ba549434b",
+        clientSecret: "ba27917163a624a4f014605bdafb09f9e6c2a1b9",
+        repo: "xiaosongread.github.io",
+        owner: "xiaosongread",
+        admin: ["xiaosongread"],
+        id: "2019/06/16/jc-9",
+        distractionFreeMode: true,
+        title: "移动端（微信等）使用 vConsole调试console",
+        body: "https://www.songyanbin.com/2019/06/16/jc-9/",
+        labels: []
+    }).render('comments');
+    </script>
+</div>
 
 </div>
         <footer class="footer">
@@ -392,6 +217,11 @@
         }
     });
     </script>
+    
+        <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+        </script>
     
 
 </body>
