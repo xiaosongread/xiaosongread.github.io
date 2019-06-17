@@ -161,4 +161,8 @@ hexo new page 'tags'
 hexo new 'filename'   
 hexo g   
 hexo d   
+<<<<<<< HEAD
 ``` -->
+=======
+``` -->
+>>>>>>> 2383192443baf35d6cf0f1e064b8ad6318a81ed4
