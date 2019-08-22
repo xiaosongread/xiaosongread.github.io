@@ -11,7 +11,7 @@
     <meta name="author" content="xiaosongread">
     <meta name="version" content="1.0.0">
     <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
-    <meta name="description" content="删除远程分支1git push origin --delete 远程分支名称拉去远程分支到本地1git checkout -b 本地分支名 origin/远程分支名远程分支删除 git branch -a 还有的问题1git remote prune origin回退远程分支1234// 本地分支回退git reset --hard 107d5976407c2e544db8f19cfe425502b7670d6b // 强推代码到远程git push -f origin test">
+    <meta name="description" content="删除远程分支1git push origin --delete 远程分支名称拉去远程分支到本地1git checkout -b 本地分支名 origin/远程分支名查看当前详细分支信息（可看到当前分支与对应的远程追踪分支）1git branch -vv远程分支删除 git branch -a 还有的问题1git remote prune origin回退远程分支1234// 本地分支回退git reset --hard 107d5976407c2e544db8f19cfe4255...">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 
@@ -70,7 +70,7 @@
         
 
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#删除远程分支"><span class="toc-number">1.</span> <span class="toc-text">删除远程分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拉去远程分支到本地"><span class="toc-number">2.</span> <span class="toc-text">拉去远程分支到本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程分支删除-git-branch-a-还有的问题"><span class="toc-number">3.</span> <span class="toc-text">远程分支删除 git branch -a 还有的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回退远程分支"><span class="toc-number">4.</span> <span class="toc-text">回退远程分支</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#删除远程分支"><span class="toc-number">1.</span> <span class="toc-text">删除远程分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拉去远程分支到本地"><span class="toc-number">2.</span> <span class="toc-text">拉去远程分支到本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看当前详细分支信息（可看到当前分支与对应的远程追踪分支）"><span class="toc-number">3.</span> <span class="toc-text">查看当前详细分支信息（可看到当前分支与对应的远程追踪分支）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程分支删除-git-branch-a-还有的问题"><span class="toc-number">4.</span> <span class="toc-text">远程分支删除 git branch -a 还有的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回退远程分支"><span class="toc-number">5.</span> <span class="toc-text">回退远程分支</span></a></li></ol>
         
     </div>
 </aside>
@@ -102,6 +102,7 @@
         <p><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/git.jpg" alt="blockchain"><br><a id="more"></a></p>
 <h2 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --<span class="keyword">delete</span> 远程分支名称</span><br></pre></td></tr></table></figure>
 <h2 id="拉去远程分支到本地"><a href="#拉去远程分支到本地" class="headerlink" title="拉去远程分支到本地"></a>拉去远程分支到本地</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b 本地分支名 origin/远程分支名</span><br></pre></td></tr></table></figure>
+<h2 id="查看当前详细分支信息（可看到当前分支与对应的远程追踪分支）"><a href="#查看当前详细分支信息（可看到当前分支与对应的远程追踪分支）" class="headerlink" title="查看当前详细分支信息（可看到当前分支与对应的远程追踪分支）"></a>查看当前详细分支信息（可看到当前分支与对应的远程追踪分支）</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -vv</span><br></pre></td></tr></table></figure>
 <h2 id="远程分支删除-git-branch-a-还有的问题"><a href="#远程分支删除-git-branch-a-还有的问题" class="headerlink" title="远程分支删除 git branch -a 还有的问题"></a>远程分支删除 git branch -a 还有的问题</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote prune origin</span><br></pre></td></tr></table></figure>
 <h2 id="回退远程分支"><a href="#回退远程分支" class="headerlink" title="回退远程分支"></a>回退远程分支</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 本地分支回退</span></span><br><span class="line">git reset --hard <span class="number">107</span>d5976407c2e544db8f19cfe425502b7670d6b </span><br><span class="line"><span class="comment">// 强推代码到远程</span></span><br><span class="line">git push -f origin test</span><br></pre></td></tr></table></figure>
 
