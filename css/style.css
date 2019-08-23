@@ -2622,7 +2622,10 @@ body,
   list-style-type: none;
 }
 .article {
-  padding-bottom: 42px;
+  padding: 21px;
+  margin-bottom: 21px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
 }
 .article .article-date {
   float: left;
