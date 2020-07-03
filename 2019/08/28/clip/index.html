@@ -9,7 +9,6 @@
 
     <title>小tips-clip-蛇形跑位 | 前端技术博客</title>
     <meta name="author" content="xiaosongread">
-    <meta name="version" content="1.0.0">
     <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
     <meta name="description" content="效果如下12clip 属性剪裁绝对定位元素。rect (top, right, bottom, left)四个参数分别设置可显示矩形上 下 左 右 的像素值。123&amp;lt;div class=&#34;bruce flex-ct-x&#34;&amp;gt;  &amp;lt;div class=&#34;snakelike-border&#34;&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;123456789101112131415161718192021222324252627282930313233343536...">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -22,12 +21,26 @@
     <link rel="icon" href="/images/favicon.ico">
     
 
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
     <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
 </head>
 <body>
 
     <main class="app">
-        <header class="header clearfix">
+        <header id="header" class="header clearfix">
     <div id="nav" class="nav">
     <div class="nav-mobile">
         <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
@@ -45,15 +58,15 @@
                 <span class="nav-text">首页</span>
             </a>
         
-            <a class="nav-item" href="/categories/css-end">
+            <a class="nav-item" href="/categories/css-end/">
                 <span class="nav-text">css</span>
             </a>
         
-            <a class="nav-item" href="/categories/js-end">
+            <a class="nav-item" href="/categories/js-end/">
                 <span class="nav-text">js</span>
             </a>
         
-            <a class="nav-item" href="/categories/gc-end">
+            <a class="nav-item" href="/categories/gc-end/">
                 <span class="nav-text">工程</span>
             </a>
         
@@ -74,9 +87,11 @@
         
     </div>
 </aside>
+
 </header>
 
-        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
         
@@ -87,14 +102,14 @@
         <div class="article-meta clearfix">
             <a class="article-date" href="https://www.songyanbin.com/2019/08/28/clip/index.html">
     
-    <i class="icon-calendar"></i>
+    <i class="icon-calendar vm"></i>
     
-    <time datetime="2019-08-28T09:51:11.000Z" itemprop="datePublished">2019-08-28</time>
+    <time class="vm" datetime="2019-08-28T09:51:11.000Z" itemprop="datePublished">2019-08-28</time>
 </a>
 
             
 <div class="article-tag-list">
-    <i class="icon-tag"></i>
+    <i class="icon-tag vm"></i>
     <a class="article-tag-link" href="/tags/css3-clip/">css3 clip</a>
 </div>
 
@@ -113,10 +128,16 @@
 <h2 id="单个测试"><a href="#单个测试" class="headerlink" title="单个测试"></a>单个测试</h2><p><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/clip-1.png" alt="blockchain"><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">clip</span>: <span class="selector-tag">rect</span>(0 200<span class="selector-tag">px</span> 5<span class="selector-tag">px</span> 0);</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/clip-2.png" alt="blockchain"><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">clip</span>: <span class="selector-tag">rect</span>(0 200<span class="selector-tag">px</span> 200<span class="selector-tag">px</span> 195<span class="selector-tag">px</span>);</span><br></pre></td></tr></table></figure></p>
 
-        <div style="color: #666;">如有错误，请在下面登陆github账号评论指正，谢谢！</div>
         
     </section>
 </article>
+
+
+
+<a id="pagenext" href="/2019/08/22/git-常用命令技巧/" class="article-next" title="git-常用命令技巧"><i class="icon-arrow-right"></i></a>
+
+
+<a id="pageprev" href="/2019/08/30/nodetips/" class="article-prev" title="nodetips"><i class="icon-arrow-left"></i></a>
 
 
 
@@ -125,11 +146,11 @@
     <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
     <script>
     new Gitalk({
-        clientID: "d62d8400017ba549434b",
-        clientSecret: "ba27917163a624a4f014605bdafb09f9e6c2a1b9",
-        repo: "xiaosongread.github.io",
-        owner: "xiaosongread",
-        admin: ["xiaosongread"],
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
         id: "2019/08/28/clip",
         distractionFreeMode: true,
         title: "小tips-clip-蛇形跑位",
@@ -139,25 +160,15 @@
     </script>
 </div>
 
-</div>
+
+        </div>
         <footer class="footer">
     Copyright © Aaron All Rights Reserved 京ICP备17007771号-1
-
-    
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?d9735bf7e100c9fa37f8dff684dd3482";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-    
 </footer>
+
     </main>
 
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
     $(function() {
         var nodes = {
@@ -180,7 +191,7 @@
             if (doing) {
                 return;
             }
-            
+
             if (nodes.aside.hasClass('panel-show')) {
                 nodes.aside.addClass('mobile-close');
             } else {
@@ -188,20 +199,53 @@
             }
         });
         $('#open-menus').on('click', function() {
-            nodes.navInner.slideToggle();
+            nodes.navInner.slideToggle('normal', slideDone);
         });
 
         if (window.innerWidth <= 960) {
             setTimeout(function() {
-                nodes.navInner.slideUp();
+                nodes.navInner.slideUp('normal', slideDone);
             }, 3000);
         }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
     });
     </script>
     
-        <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+        <script src="/js/scrollspy.min.js"></script>
         <script type="text/javascript">
         $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                pageprev.css($.extend({left: hw + len}, styles));
+                pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
         </script>
     
 

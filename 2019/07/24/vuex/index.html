@@ -9,7 +9,6 @@
 
     <title>快速掌握vuex常用的所有api用法 | 前端技术博客</title>
     <meta name="author" content="xiaosongread">
-    <meta name="version" content="1.0.0">
     <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
     <meta name="description" content="vuex中，有默认的五种基本的对象1.state：存储状态（变量）2.getters：对数据获取之前的再次编译，可以理解为state的计算属性。我们在组件中使用 $sotre.getters.fun()3.mutations：修改状态，并且是同步的。在组件中使用$store.commit(‘’,params)。这个和我们组件中的自定义事件类似。4.actions：异步操作。在组件中使用是$store.dispath(‘’)5.modules：store的子模块，为了开发大型项目，方便状态管...">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -22,12 +21,26 @@
     <link rel="icon" href="/images/favicon.ico">
     
 
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
     <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
 </head>
 <body>
 
     <main class="app">
-        <header class="header clearfix">
+        <header id="header" class="header clearfix">
     <div id="nav" class="nav">
     <div class="nav-mobile">
         <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
@@ -45,15 +58,15 @@
                 <span class="nav-text">首页</span>
             </a>
         
-            <a class="nav-item" href="/categories/css-end">
+            <a class="nav-item" href="/categories/css-end/">
                 <span class="nav-text">css</span>
             </a>
         
-            <a class="nav-item" href="/categories/js-end">
+            <a class="nav-item" href="/categories/js-end/">
                 <span class="nav-text">js</span>
             </a>
         
-            <a class="nav-item" href="/categories/gc-end">
+            <a class="nav-item" href="/categories/gc-end/">
                 <span class="nav-text">工程</span>
             </a>
         
@@ -74,9 +87,11 @@
         
     </div>
 </aside>
+
 </header>
 
-        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
         
@@ -87,14 +102,14 @@
         <div class="article-meta clearfix">
             <a class="article-date" href="https://www.songyanbin.com/2019/07/24/vuex/index.html">
     
-    <i class="icon-calendar"></i>
+    <i class="icon-calendar vm"></i>
     
-    <time datetime="2019-07-24T03:52:50.000Z" itemprop="datePublished">2019-07-24</time>
+    <time class="vm" datetime="2019-07-24T03:52:50.000Z" itemprop="datePublished">2019-07-24</time>
 </a>
 
             
 <div class="article-tag-list">
-    <i class="icon-tag"></i>
+    <i class="icon-tag vm"></i>
     <a class="article-tag-link" href="/tags/vuex/">vuex</a>
 </div>
 
@@ -140,10 +155,16 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>app中计算属性(appConut+100)watchAppConut：&#123;&#123; $store.getters.watchAppConut&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>watchAppConut(mapGetters简写)：&#123;&#123; watchAppConut&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="modules"><a href="#modules" class="headerlink" title="modules"></a>modules</h3><p>可以让每一个模块拥有自己的state、mutation、action、getters,使得结构非常清晰，方便管理<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> moduleA = &#123;</span><br><span class="line"> state: &#123; ... &#125;,</span><br><span class="line"> mutations: &#123; ... &#125;,</span><br><span class="line"> actions: &#123; ... &#125;,</span><br><span class="line"> getters: &#123; ... &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">const</span> moduleB = &#123;</span><br><span class="line"> state: &#123; ... &#125;,</span><br><span class="line"> mutations: &#123; ... &#125;,</span><br><span class="line"> actions: &#123; ... &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line"> modules: &#123;</span><br><span class="line">  a: moduleA,</span><br><span class="line">  b: moduleB&#125;)</span><br></pre></td></tr></table></figure></p>
 
-        <div style="color: #666;">如有错误，请在下面登陆github账号评论指正，谢谢！</div>
         
     </section>
 </article>
+
+
+
+<a id="pagenext" href="/2019/07/22/jc-13/" class="article-next" title="代码回退"><i class="icon-arrow-right"></i></a>
+
+
+<a id="pageprev" href="/2019/08/04/deepCopy/" class="article-prev" title="一文了解js深拷贝和浅拷贝"><i class="icon-arrow-left"></i></a>
 
 
 
@@ -152,11 +173,11 @@
     <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
     <script>
     new Gitalk({
-        clientID: "d62d8400017ba549434b",
-        clientSecret: "ba27917163a624a4f014605bdafb09f9e6c2a1b9",
-        repo: "xiaosongread.github.io",
-        owner: "xiaosongread",
-        admin: ["xiaosongread"],
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
         id: "2019/07/24/vuex",
         distractionFreeMode: true,
         title: "快速掌握vuex常用的所有api用法",
@@ -166,25 +187,15 @@
     </script>
 </div>
 
-</div>
+
+        </div>
         <footer class="footer">
     Copyright © Aaron All Rights Reserved 京ICP备17007771号-1
-
-    
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?d9735bf7e100c9fa37f8dff684dd3482";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-    
 </footer>
+
     </main>
 
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
     $(function() {
         var nodes = {
@@ -207,7 +218,7 @@
             if (doing) {
                 return;
             }
-            
+
             if (nodes.aside.hasClass('panel-show')) {
                 nodes.aside.addClass('mobile-close');
             } else {
@@ -215,20 +226,53 @@
             }
         });
         $('#open-menus').on('click', function() {
-            nodes.navInner.slideToggle();
+            nodes.navInner.slideToggle('normal', slideDone);
         });
 
         if (window.innerWidth <= 960) {
             setTimeout(function() {
-                nodes.navInner.slideUp();
+                nodes.navInner.slideUp('normal', slideDone);
             }, 3000);
         }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
     });
     </script>
     
-        <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+        <script src="/js/scrollspy.min.js"></script>
         <script type="text/javascript">
         $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                pageprev.css($.extend({left: hw + len}, styles));
+                pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
         </script>
     
 

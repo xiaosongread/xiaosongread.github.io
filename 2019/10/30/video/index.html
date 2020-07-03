@@ -9,7 +9,6 @@
 
     <title>video 常用api和播放器插件-vue | 前端技术博客</title>
     <meta name="author" content="xiaosongread">
-    <meta name="version" content="1.0.0">
     <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
     <meta name="description" content="1.播放/暂停2.播放进度控制3.音量控制4.全屏控制      播放/暂停api：1234567891011121314&amp;lt;!-- 语法 --&amp;gt;audio|video.play()&amp;lt;!-- 定义和用法 --&amp;gt;play() 方法开始播放当前的音频或视频。&amp;lt;!-- 实例 --&amp;gt;var myVideo=document.getElementById(&amp;quot;video1&amp;quot;);function playVid()&amp;#123;  myVideo...">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -22,12 +21,26 @@
     <link rel="icon" href="/images/favicon.ico">
     
 
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
     <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
 </head>
 <body>
 
     <main class="app">
-        <header class="header clearfix">
+        <header id="header" class="header clearfix">
     <div id="nav" class="nav">
     <div class="nav-mobile">
         <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
@@ -45,15 +58,15 @@
                 <span class="nav-text">首页</span>
             </a>
         
-            <a class="nav-item" href="/categories/css-end">
+            <a class="nav-item" href="/categories/css-end/">
                 <span class="nav-text">css</span>
             </a>
         
-            <a class="nav-item" href="/categories/js-end">
+            <a class="nav-item" href="/categories/js-end/">
                 <span class="nav-text">js</span>
             </a>
         
-            <a class="nav-item" href="/categories/gc-end">
+            <a class="nav-item" href="/categories/gc-end/">
                 <span class="nav-text">工程</span>
             </a>
         
@@ -74,9 +87,11 @@
         
     </div>
 </aside>
+
 </header>
 
-        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
         
@@ -87,9 +102,9 @@
         <div class="article-meta clearfix">
             <a class="article-date" href="https://www.songyanbin.com/2019/10/30/video/index.html">
     
-    <i class="icon-calendar"></i>
+    <i class="icon-calendar vm"></i>
     
-    <time datetime="2019-10-30T02:04:21.000Z" itemprop="datePublished">2019-10-30</time>
+    <time class="vm" datetime="2019-10-30T02:04:21.000Z" itemprop="datePublished">2019-10-30</time>
 </a>
 
             
@@ -117,10 +132,16 @@
 <p>效果有点糙，优化空间还很大。</p>
 </blockquote>
 
-        <div style="color: #666;">如有错误，请在下面登陆github账号评论指正，谢谢！</div>
         
     </section>
 </article>
+
+
+
+<a id="pagenext" href="/2019/09/30/ES6-Iterators/" class="article-next" title="简单易懂的 ES6 Iterators 指南和示例"><i class="icon-arrow-right"></i></a>
+
+
+<a id="pageprev" href="/2019/11/05/IntersectionObserver懒加载/" class="article-prev" title="IntersectionObserver懒加载"><i class="icon-arrow-left"></i></a>
 
 
 
@@ -129,11 +150,11 @@
     <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
     <script>
     new Gitalk({
-        clientID: "d62d8400017ba549434b",
-        clientSecret: "ba27917163a624a4f014605bdafb09f9e6c2a1b9",
-        repo: "xiaosongread.github.io",
-        owner: "xiaosongread",
-        admin: ["xiaosongread"],
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
         id: "2019/10/30/video",
         distractionFreeMode: true,
         title: "video 常用api和播放器插件-vue",
@@ -143,25 +164,15 @@
     </script>
 </div>
 
-</div>
+
+        </div>
         <footer class="footer">
     Copyright © Aaron All Rights Reserved 京ICP备17007771号-1
-
-    
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?d9735bf7e100c9fa37f8dff684dd3482";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-    
 </footer>
+
     </main>
 
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
     $(function() {
         var nodes = {
@@ -184,7 +195,7 @@
             if (doing) {
                 return;
             }
-            
+
             if (nodes.aside.hasClass('panel-show')) {
                 nodes.aside.addClass('mobile-close');
             } else {
@@ -192,20 +203,53 @@
             }
         });
         $('#open-menus').on('click', function() {
-            nodes.navInner.slideToggle();
+            nodes.navInner.slideToggle('normal', slideDone);
         });
 
         if (window.innerWidth <= 960) {
             setTimeout(function() {
-                nodes.navInner.slideUp();
+                nodes.navInner.slideUp('normal', slideDone);
             }, 3000);
         }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
     });
     </script>
     
-        <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+        <script src="/js/scrollspy.min.js"></script>
         <script type="text/javascript">
         $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                pageprev.css($.extend({left: hw + len}, styles));
+                pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
         </script>
     
 

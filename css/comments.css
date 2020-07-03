@@ -1,5 +1,9 @@
 .comments {
+  padding-top: 20px;
   padding-bottom: 42px;
+}
+.comments .highlight {
+  color: #f8f8f8;
 }
 @-webkit-keyframes gt-kf-rotate {
   0% {
@@ -64,12 +68,15 @@
 .gt-container .gt-ico-text {
   margin-left: 0.3125em;
 }
+.gt-container .gt-ico-github {
+  color: #333;
+}
 .gt-container .gt-ico-github .gt-svg {
   width: 100%;
   height: 100%;
 }
 .gt-container .gt-ico-github svg {
-  fill: inherit;
+  fill: currentColor;
 }
 .gt-container .gt-spinner {
   position: relative;
@@ -225,10 +232,11 @@
   font-size: 92%;
 }
 .gt-container .gt-user .gt-ico {
+  color: #333;
   margin: 0 0 0 0.3125em;
 }
 .gt-container .gt-user .gt-ico svg {
-  fill: inherit;
+  fill: currentColor;
 }
 .gt-container .gt-user .is--poping .gt-ico svg {
   fill: #6190e8;
@@ -290,6 +298,7 @@
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  width: 100%;
   margin-left: 1.25em;
 }
 .gt-container .gt-header-textarea {
@@ -314,10 +323,12 @@
   background-color: #fbfbfb;
 }
 .gt-container .gt-header-preview {
+  width: 100%;
   padding: 0.75em;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: #f6f6f6;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 .gt-container .gt-header-controls {
   position: relative;
@@ -432,26 +443,13 @@
   cursor: pointer;
 }
 .gt-container .gt-comment-body {
-  color: #333 !important;
+  color: #333;
 }
 .gt-container .gt-comment-admin .gt-comment-content {
   background-color: #f6f9fe;
 }
 .gt-container.gt-input-focused {
   position: relative;
-}
-.gt-container.gt-input-focused:after {
-  content: '';
-  position: fixed;
-  bottom: 0%;
-  left: 0;
-  right: 0;
-  top: 0;
-  background: #000;
-  opacity: 0.6;
-  -webkit-transition: opacity 0.3s, bottom 0s;
-  transition: opacity 0.3s, bottom 0s;
-  z-index: 9999;
 }
 .gt-container.gt-input-focused .gt-header-comment {
   z-index: 10000;
@@ -482,5 +480,54 @@
   .gt-container .gt-comment-content {
     margin-left: 0.875em;
     padding: 0.625em 0.75em;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .gt-container .gt-user .gt-ico {
+    color: #999;
+  }
+  .gt-container .gt-ico-github {
+    color: #999;
+  }
+  .gt-container .gt-meta {
+    border-bottom-color: #424242;
+  }
+  .gt-container .gt-header-textarea {
+    color: #ececec;
+    background-color: #26272b;
+  }
+  .gt-container .gt-header-textarea:hover {
+    background-color: #26272b;
+    border-color: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  .gt-container .gt-btn-preview {
+    background-color: transparent;
+  }
+  .gt-container .gt-comment-content {
+    background-color: #242629;
+  }
+  .gt-container .gt-comment-text {
+    color: #a0a0a0;
+  }
+  .gt-container .gt-comment-body {
+    color: #c7c7c7;
+  }
+  .gt-container .gt-comment-body blockquote {
+    background-color: #2d2f31;
+    border-left-color: #494a4c;
+  }
+  .gt-container .gt-comment-content:hover {
+    -webkit-box-shadow: 0 0.625em 3.75em 0 #272727;
+    box-shadow: 0 0.625em 3.75em 0 #272727;
+  }
+  .gt-container .gt-comment-admin .gt-comment-content {
+    background-color: #252627;
+  }
+  .gt-container .gt-popup {
+    background: #383636;
+    border-color: #5f5f5f;
+  }
+  .gt-container .gt-copyright {
+    border-top-color: #545252;
   }
 }

@@ -9,7 +9,6 @@
 
     <title>前端技术博客</title>
     <meta name="author" content="xiaosongread">
-    <meta name="version" content="1.0.0">
     <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
     <meta name="description" content="小宋 抿圪斗前端 前端博客 框架 工程 css html js node markdown npm webpack">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -22,12 +21,26 @@
     <link rel="icon" href="/images/favicon.ico">
     
 
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
     <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
 </head>
 <body>
 
     <main class="app">
-        <header class="header clearfix">
+        <header id="header" class="header clearfix">
     <div id="nav" class="nav">
     <div class="nav-mobile">
         <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
@@ -45,15 +58,15 @@
                 <span class="nav-text">首页</span>
             </a>
         
-            <a class="nav-item" href="/categories/css-end">
+            <a class="nav-item" href="/categories/css-end/">
                 <span class="nav-text">css</span>
             </a>
         
-            <a class="nav-item" href="/categories/js-end">
+            <a class="nav-item" href="/categories/js-end/">
                 <span class="nav-text">js</span>
             </a>
         
-            <a class="nav-item" href="/categories/gc-end">
+            <a class="nav-item" href="/categories/gc-end/">
                 <span class="nav-text">工程</span>
             </a>
         
@@ -69,13 +82,7 @@
 
         
         <div class="author-meta">
-            
-            <div class="author-avatar">
-                <a href="/">
-                    <img src="/images/header1.jpg" title="mgd">
-                </a>
-            </div>
-            
+           
             <div class="author-name">mgd</div>
             <div class="author-work">Let nature take its course</div>
             <div class="author-location">
@@ -101,43 +108,41 @@
         
     </div>
 </aside>
+
 </header>
 
         <div id="content" class="content">
+            
     <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2020/06/24/slice-splice-用法区别/">slice-splice-用法区别</a>
+            <a href="/2020/07/02/字符窜数组常用易混淆方法总结/">字符窜数组常用易混淆方法总结</a>
         </h1>
         
         <div class="article-meta clearfix">
             <a class="article-date" href="https://www.songyanbin.com/index.html">
     
-    <i class="icon-calendar"></i>
+    <i class="icon-calendar vm"></i>
     
-    <time datetime="2020-06-24T08:54:30.000Z" itemprop="datePublished">2020-06-24</time>
+    <time class="vm" datetime="2020-07-02T07:25:11.000Z" itemprop="datePublished">2020-07-02</time>
 </a>
 
             
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/js/">js</a>
-</div>
-
 
         </div>
     </header>
     
     <section class="article-body markdown-body">
         
-        <h2 id="slice-start-end-：方法可从已有数组中返回选定的元素，返回一个新数组，包含从start到end（不包含该元素）的数组元素"><a href="#slice-start-end-：方法可从已有数组中返回选定的元素，返回一个新数组，包含从start到end（不包含该元素）的数组元素" class="headerlink" title="slice(start,end)：方法可从已有数组中返回选定的元素，返回一个新数组，包含从start到end（不包含该元素）的数组元素"></a>slice(start,end)：方法可从已有数组中返回选定的元素，返回一个新数组，包含从start到end（不包含该元素）的数组元素</h2><blockquote>
-<p>该方法不会改变原有数组<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">var</span> b = a.slice(<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">console</span>.log(a,b)</span><br><span class="line"><span class="comment">// [1, 2, 3, 4, 5] [1]</span></span><br></pre></td></tr></table></figure></p>
+        <h2 id="字符窜"><a href="#字符窜" class="headerlink" title="字符窜"></a>字符窜</h2><h3 id="substring-start开始位置的索引-end结束位置索引-截取的位置不包含结束位置的字符-只写一个参数表示从开始位置截取到最后"><a href="#substring-start开始位置的索引-end结束位置索引-截取的位置不包含结束位置的字符-只写一个参数表示从开始位置截取到最后" class="headerlink" title="substring(start开始位置的索引,end结束位置索引) 截取的位置不包含结束位置的字符,只写一个参数表示从开始位置截取到最后"></a>substring(start开始位置的索引,end结束位置索引) 截取的位置不包含结束位置的字符,只写一个参数表示从开始位置截取到最后</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">'abcdefg'</span>; </span><br><span class="line">str.substring(<span class="number">1</span>) <span class="comment">//得到bcdefg  </span></span><br><span class="line">str.substring(<span class="number">1</span>,<span class="number">3</span>) <span class="comment">//得到bc</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>输入负值时将负值变为0，哪个较小作为开始位置</p>
 </blockquote>
         
         <p class="article-more-link">
-            <a href="/2020/06/24/slice-splice-用法区别/#more">
+            <a href="/2020/07/02/字符窜数组常用易混淆方法总结/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
@@ -159,14 +164,14 @@
         <div class="article-meta clearfix">
             <a class="article-date" href="https://www.songyanbin.com/index.html">
     
-    <i class="icon-calendar"></i>
+    <i class="icon-calendar vm"></i>
     
-    <time datetime="2020-06-23T08:21:44.000Z" itemprop="datePublished">2020-06-23</time>
+    <time class="vm" datetime="2020-06-23T08:21:44.000Z" itemprop="datePublished">2020-06-23</time>
 </a>
 
             
 <div class="article-tag-list">
-    <i class="icon-tag"></i>
+    <i class="icon-tag vm"></i>
     <a class="article-tag-link" href="/tags/vue-router/">vue router</a>
 </div>
 
@@ -179,7 +184,6 @@
         <h2 id="vue-router-如何在新窗口打开页面"><a href="#vue-router-如何在新窗口打开页面" class="headerlink" title="vue-router 如何在新窗口打开页面"></a>vue-router 如何在新窗口打开页面</h2><h3 id="1-标签实现新窗口打开"><a href="#1-标签实现新窗口打开" class="headerlink" title="1. 标签实现新窗口打开"></a>1. <router-link>标签实现新窗口打开</router-link></h3><p>官方文档中说 v-link 指令被 <router-link> 组件指令替代，且 <router-link> 不支持 target=”_blank” 属性，如果需要打开一个新窗口必须要用<a>标签，但事实上vue2版本的 <router-link> 是支持 target=”_blank” 属性的(tag=”a”)，如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">:to</span>=<span class="string">"&#123;path:'/home',query:&#123;id:'1'&#125;&#125;"</span>&gt;</span>新页面打开home页<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure></router-link></a></router-link></router-link></p>
 <h3 id="2-编程式导航"><a href="#2-编程式导航" class="headerlink" title="2.编程式导航"></a>2.编程式导航</h3><p>有些时候需要在单击事件或者在函数中实现页面跳转，那么可以借助router的示例方法，通过编写代码实现。我们常用的是 $router.push 和 $router.go 但是vue2.0以后，这种方式就不支持新窗口打开的属性了，这个时候就需要使用this.$router.resolve,如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">seeShare()&#123;</span><br><span class="line">  let routeUrl = this.$router.resolve(&#123;</span><br><span class="line">      path: "/share",</span><br><span class="line">      query: &#123;id:96&#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  window.open(routeUrl .href, '_blank');</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-        <div style="color: #666;">如有错误，请在下面登陆github账号评论指正，谢谢！</div>
         
     </section>
 </article>
@@ -196,14 +200,14 @@
         <div class="article-meta clearfix">
             <a class="article-date" href="https://www.songyanbin.com/index.html">
     
-    <i class="icon-calendar"></i>
+    <i class="icon-calendar vm"></i>
     
-    <time datetime="2020-06-09T09:24:28.000Z" itemprop="datePublished">2020-06-09</time>
+    <time class="vm" datetime="2020-06-09T09:24:28.000Z" itemprop="datePublished">2020-06-09</time>
 </a>
 
             
 <div class="article-tag-list">
-    <i class="icon-tag"></i>
+    <i class="icon-tag vm"></i>
     <a class="article-tag-link" href="/tags/小程序-css2-git/">小程序 css2 git</a>
 </div>
 
@@ -238,14 +242,14 @@
         <div class="article-meta clearfix">
             <a class="article-date" href="https://www.songyanbin.com/index.html">
     
-    <i class="icon-calendar"></i>
+    <i class="icon-calendar vm"></i>
     
-    <time datetime="2019-12-04T08:18:40.000Z" itemprop="datePublished">2019-12-04</time>
+    <time class="vm" datetime="2019-12-04T08:18:40.000Z" itemprop="datePublished">2019-12-04</time>
 </a>
 
             
 <div class="article-tag-list">
-    <i class="icon-tag"></i>
+    <i class="icon-tag vm"></i>
     <a class="article-tag-link" href="/tags/vue-js/">vue js</a>
 </div>
 
@@ -280,14 +284,14 @@
         <div class="article-meta clearfix">
             <a class="article-date" href="https://www.songyanbin.com/index.html">
     
-    <i class="icon-calendar"></i>
+    <i class="icon-calendar vm"></i>
     
-    <time datetime="2019-11-05T03:43:06.000Z" itemprop="datePublished">2019-11-05</time>
+    <time class="vm" datetime="2019-11-05T03:43:06.000Z" itemprop="datePublished">2019-11-05</time>
 </a>
 
             
 <div class="article-tag-list">
-    <i class="icon-tag"></i>
+    <i class="icon-tag vm"></i>
     <a class="article-tag-link" href="/tags/js/">js</a>
 </div>
 
@@ -322,9 +326,9 @@
         <div class="article-meta clearfix">
             <a class="article-date" href="https://www.songyanbin.com/index.html">
     
-    <i class="icon-calendar"></i>
+    <i class="icon-calendar vm"></i>
     
-    <time datetime="2019-10-30T02:04:21.000Z" itemprop="datePublished">2019-10-30</time>
+    <time class="vm" datetime="2019-10-30T02:04:21.000Z" itemprop="datePublished">2019-10-30</time>
 </a>
 
             
@@ -359,14 +363,14 @@
         <div class="article-meta clearfix">
             <a class="article-date" href="https://www.songyanbin.com/index.html">
     
-    <i class="icon-calendar"></i>
+    <i class="icon-calendar vm"></i>
     
-    <time datetime="2019-09-30T08:49:18.000Z" itemprop="datePublished">2019-09-30</time>
+    <time class="vm" datetime="2019-09-30T08:49:18.000Z" itemprop="datePublished">2019-09-30</time>
 </a>
 
             
 <div class="article-tag-list">
-    <i class="icon-tag"></i>
+    <i class="icon-tag vm"></i>
     <a class="article-tag-link" href="/tags/ES6-Iterators/">ES6 Iterators</a>
 </div>
 
@@ -401,14 +405,14 @@
         <div class="article-meta clearfix">
             <a class="article-date" href="https://www.songyanbin.com/index.html">
     
-    <i class="icon-calendar"></i>
+    <i class="icon-calendar vm"></i>
     
-    <time datetime="2019-09-24T09:35:01.000Z" itemprop="datePublished">2019-09-24</time>
+    <time class="vm" datetime="2019-09-24T09:35:01.000Z" itemprop="datePublished">2019-09-24</time>
 </a>
 
             
 <div class="article-tag-list">
-    <i class="icon-tag"></i>
+    <i class="icon-tag vm"></i>
     <a class="article-tag-link" href="/tags/微信小程序-canvas/">微信小程序 canvas</a>
 </div>
 
@@ -444,14 +448,14 @@
         <div class="article-meta clearfix">
             <a class="article-date" href="https://www.songyanbin.com/index.html">
     
-    <i class="icon-calendar"></i>
+    <i class="icon-calendar vm"></i>
     
-    <time datetime="2019-09-20T03:01:30.000Z" itemprop="datePublished">2019-09-20</time>
+    <time class="vm" datetime="2019-09-20T03:01:30.000Z" itemprop="datePublished">2019-09-20</time>
 </a>
 
             
 <div class="article-tag-list">
-    <i class="icon-tag"></i>
+    <i class="icon-tag vm"></i>
     <a class="article-tag-link" href="/tags/focus-preventScroll-滚动/">focus preventScroll 滚动</a>
 </div>
 
@@ -486,14 +490,14 @@
         <div class="article-meta clearfix">
             <a class="article-date" href="https://www.songyanbin.com/index.html">
     
-    <i class="icon-calendar"></i>
+    <i class="icon-calendar vm"></i>
     
-    <time datetime="2019-09-06T03:17:00.000Z" itemprop="datePublished">2019-09-06</time>
+    <time class="vm" datetime="2019-09-06T03:17:00.000Z" itemprop="datePublished">2019-09-06</time>
 </a>
 
             
 <div class="article-tag-list">
-    <i class="icon-tag"></i>
+    <i class="icon-tag vm"></i>
     <a class="article-tag-link" href="/tags/js-正则/">js 正则</a>
 </div>
 
@@ -529,25 +533,15 @@
 </nav>
 
 
-</div>
+
+        </div>
         <footer class="footer">
     Copyright © Aaron All Rights Reserved 京ICP备17007771号-1
-
-    
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?d9735bf7e100c9fa37f8dff684dd3482";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-    
 </footer>
+
     </main>
 
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
     $(function() {
         var nodes = {
@@ -570,7 +564,7 @@
             if (doing) {
                 return;
             }
-            
+
             if (nodes.aside.hasClass('panel-show')) {
                 nodes.aside.addClass('mobile-close');
             } else {
@@ -578,14 +572,27 @@
             }
         });
         $('#open-menus').on('click', function() {
-            nodes.navInner.slideToggle();
+            nodes.navInner.slideToggle('normal', slideDone);
         });
 
         if (window.innerWidth <= 960) {
             setTimeout(function() {
-                nodes.navInner.slideUp();
+                nodes.navInner.slideUp('normal', slideDone);
             }, 3000);
         }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
     });
     </script>
     

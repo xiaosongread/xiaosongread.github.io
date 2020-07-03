@@ -2,12 +2,15 @@
   padding-left: 1.75em;
 }
 .archives .archive-article-link {
-  color: #4a4a4a;
+  color: #585858;
+  color: var(--color-secondary);
 }
 .archives .archive-article-link:hover {
-  color: #7cc04b;
+  color: #333;
+  color: var(--color-primary);
 }
 .archives .archive-article-date {
   color: #999;
+  color: var(--color-muted);
   margin-left: 8px;
 }
