@@ -896,7 +896,7 @@ body {
 .markdown-body blockquote {
   padding: 0 1em;
   color: #6a737d;
-  border-left: 0.25em solid #dfe2e5;
+  border-left: 0.25em solid #fc314c;
 }
 .markdown-body blockquote > :first-child {
   margin-top: 0;
@@ -3188,7 +3188,10 @@ body {
   }
 }
 .article {
-  padding-bottom: 42px;
+  padding: 21px;
+  margin-bottom: 21px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
 }
 .article .article-date {
   float: left;
@@ -3454,14 +3457,9 @@ body {
   height: 40px;
   line-height: 40px;
   color: #999;
-  color: var(--color-muted);
   text-align: center;
   font-size: 13px;
-}
-.footer a {
-  color: #999;
-  color: var(--color-muted);
-  text-decoration: underline;
+  background: #272822;
 }
 @media screen and (max-width: 960px) {
   .footer {
