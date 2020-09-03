@@ -122,6 +122,86 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2020/08/28/红皮书第七章-函数表达式/">红皮书第七章-函数表达式</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://www.songyanbin.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2020-08-28T06:55:37.000Z" itemprop="datePublished">2020-08-28</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h3 id="创建函数"><a href="#创建函数" class="headerlink" title="创建函数"></a>创建函数</h3><h4 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aa() <span class="comment">// 123</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>函数声明变量提升：执行代码之前会先读取函数声明，这就意味着可以把调用函数放在声明函数之前。</p>
+</blockquote>
+        
+        <p class="article-more-link">
+            <a href="/2020/08/28/红皮书第七章-函数表达式/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2020/08/04/红皮书第六章-面向对象的设计程序/">红皮书第六章-面向对象的设计程序</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://www.songyanbin.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2020-08-04T02:10:43.000Z" itemprop="datePublished">2020-08-04</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h3 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h3><h4 id="数据属性-Object-defineProperty"><a href="#数据属性-Object-defineProperty" class="headerlink" title="数据属性(Object.defineProperty())"></a>数据属性(Object.defineProperty())</h4><p>1) [[Configurable]]: 表示能否通过delete删除属性，从而重新定义属性，，默认值为true<br>2) [[Enumerable]]: 表示能否通过for-in循环返回属性，，默认值为true<br>3) [[Writable]]: 表示能否修改属性的值，，默认值为true<br>4) [[Value]]: 包含这个属性的值，默认值为undefined    </p>
+<blockquote>
+<p>修改对象属性的默认特性，必须使用Object.defineProperty()方法。</p>
+</blockquote>
+        
+        <p class="article-more-link">
+            <a href="/2020/08/04/红皮书第六章-面向对象的设计程序/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2020/08/03/红皮书第五章-引用类型/">红皮书第五章-引用类型</a>
         </h1>
         
@@ -179,7 +259,7 @@
     <section class="article-body markdown-body">
         
         <p>我们在项目中，在采用element框架的时候，框架本身也是有bug的或者不符合我们产品需求需要我们改动的，但是，如果是本地打包完上传到服务器的话，可以修改本地的element源码，如果是服务器打包的话，那我们就得自己发一个npm的包来进行打包了。</p>
-<h3 id="案例：修改element-Cascader-级联选择器，清空数据，下拉框仍然回显最后选择的数据的问题"><a href="#案例：修改element-Cascader-级联选择器，清空数据，下拉框仍然回显最后选择的数据的问题" class="headerlink" title="案例：修改element Cascader 级联选择器，清空数据，下拉框仍然回显最后选择的数据的问题"></a>案例：修改element Cascader 级联选择器，清空数据，下拉框仍然回显最后选择的数据的问题</h3><p>修改前的效果：<br><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/npm-1.png" alt="blockchain"><br>修改后的效果：<br><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/npm-2.png" alt="blockchain"></p>
+<h3 id="案例：修改element-Cascader-级联选择器，清空数据，下拉框仍然回显最后选择的数据的问题"><a href="#案例：修改element-Cascader-级联选择器，清空数据，下拉框仍然回显最后选择的数据的问题" class="headerlink" title="案例：修改element Cascader 级联选择器，清空数据，下拉框仍然回显最后选择的数据的问题"></a>案例：修改element Cascader 级联选择器，清空数据，下拉框仍然回显最后选择的数据的问题</h3>
         
         <p class="article-more-link">
             <a href="/2020/07/30/修改element源码如何部署代码打包/#more">
@@ -422,91 +502,6 @@
         
         <p class="article-more-link">
             <a href="/2019/10/30/video/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2019/09/30/ES6-Iterators/">简单易懂的 ES6 Iterators 指南和示例</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="https://www.songyanbin.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2019-09-30T08:49:18.000Z" itemprop="datePublished">2019-09-30</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/ES6-Iterators/">ES6 Iterators</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>遍历器（Iterator）就是这样一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作（即依次处理该数据结构的所有成员）。</p>
-        
-        <p class="article-more-link">
-            <a href="/2019/09/30/ES6-Iterators/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2019/09/24/微信小程序生成微信头像/">微信小程序-生成微信头像</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="https://www.songyanbin.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2019-09-24T09:35:01.000Z" itemprop="datePublished">2019-09-24</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/微信小程序-canvas/">微信小程序 canvas</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>“请给我一面国旗@微信官方”朋友圈刷屏了，只想说一句：”腾讯的产品真牛逼！！！”</p>
-<p><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/canvas.gif" alt="blockchain"></p>
-        
-        <p class="article-more-link">
-            <a href="/2019/09/24/微信小程序生成微信头像/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
