@@ -122,6 +122,9 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            
+                <span class="yc">原创</span>
+            
             <a href="/2020/09/09/红皮书第十章-DOM/">红皮书第十章-DOM</a>
         </h1>
         
@@ -140,20 +143,15 @@
     
     <section class="article-body markdown-body">
         
-        <h3 id="操作节点"><a href="#操作节点" class="headerlink" title="操作节点"></a>操作节点</h3><h5 id="appendChild-用于向childNodes列表末尾插入节点。"><a href="#appendChild-用于向childNodes列表末尾插入节点。" class="headerlink" title="appendChild(): 用于向childNodes列表末尾插入节点。"></a>appendChild(): 用于向childNodes列表末尾插入节点。</h5><h5 id="insertBefore-把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。"><a href="#insertBefore-把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。" class="headerlink" title="insertBefore(): 把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。"></a>insertBefore(): 把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。</h5><h5 id="replaceChild-要插入的节点和要替换的节点。"><a href="#replaceChild-要插入的节点和要替换的节点。" class="headerlink" title="replaceChild(): 要插入的节点和要替换的节点。"></a>replaceChild(): 要插入的节点和要替换的节点。</h5><h5 id="removeChild-接受要解除的节点一个参数。"><a href="#removeChild-接受要解除的节点一个参数。" class="headerlink" title="removeChild(): 接受要解除的节点一个参数。"></a>removeChild(): 接受要解除的节点一个参数。</h5><h5 id="cloneNode-用于创建调用此方法的节点的完全相同的副本。接受一个布尔值，标示是否执行深度复制"><a href="#cloneNode-用于创建调用此方法的节点的完全相同的副本。接受一个布尔值，标示是否执行深度复制" class="headerlink" title="cloneNode(): 用于创建调用此方法的节点的完全相同的副本。接受一个布尔值，标示是否执行深度复制"></a>cloneNode(): 用于创建调用此方法的节点的完全相同的副本。接受一个布尔值，标示是否执行深度复制</h5><h5 id="normalize-唯一的作用是处理文档树中的文本节点。由于解析器的实现和DOM操作等原因，可能会出现文本节点不包含文本，或者接连出现两个文本节点的情况，当在某个节点调用这个方法时，就会在该机诶单后代节点中查找上述两种情况，如果找到了空节点，则删除它，如果找到了相邻的文本节点，则将他们合并为一个文本节点。"><a href="#normalize-唯一的作用是处理文档树中的文本节点。由于解析器的实现和DOM操作等原因，可能会出现文本节点不包含文本，或者接连出现两个文本节点的情况，当在某个节点调用这个方法时，就会在该机诶单后代节点中查找上述两种情况，如果找到了空节点，则删除它，如果找到了相邻的文本节点，则将他们合并为一个文本节点。" class="headerlink" title="normalize(): 唯一的作用是处理文档树中的文本节点。由于解析器的实现和DOM操作等原因，可能会出现文本节点不包含文本，或者接连出现两个文本节点的情况，当在某个节点调用这个方法时，就会在该机诶单后代节点中查找上述两种情况，如果找到了空节点，则删除它，如果找到了相邻的文本节点，则将他们合并为一个文本节点。"></a>normalize(): 唯一的作用是处理文档树中的文本节点。由于解析器的实现和DOM操作等原因，可能会出现文本节点不包含文本，或者接连出现两个文本节点的情况，当在某个节点调用这个方法时，就会在该机诶单后代节点中查找上述两种情况，如果找到了空节点，则删除它，如果找到了相邻的文本节点，则将他们合并为一个文本节点。</h5><h3 id="Document类型"><a href="#Document类型" class="headerlink" title="Document类型"></a>Document类型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;body&gt;<span class="xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br><span class="line"><span class="regexp">var html = document.documentElement</span></span><br><span class="line"><span class="regexp">console.log(html === document.childNodes[0]) /</span><span class="regexp">/ true</span></span><br><span class="line"><span class="regexp">console.log(html === document.firstChild) /</span><span class="regexp">/ true</span></span><br></pre></td></tr></table></figure>
-<p>以上代码说明：document.documentElement指向的就是文档的根节点html.</p>
-<blockquote>
-<p>所有浏览器都支持document.body和document.documentElement属性。</p>
-</blockquote>
-<h4 id="document-title-修改文档的标题"><a href="#document-title-修改文档的标题" class="headerlink" title="document.title: 修改文档的标题"></a>document.title: 修改文档的标题</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> title = <span class="built_in">document</span>.title</span><br><span class="line">title = <span class="string">"修改后的标题"</span></span><br></pre></td></tr></table></figure>
-<h4 id="URL-domain-referrer"><a href="#URL-domain-referrer" class="headerlink" title="URL/domain/referrer"></a>URL/domain/referrer</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.URL) <span class="comment">// http://10.5.40.130:8000/3.html</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.domain) <span class="comment">// 10.5.40.130</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.referrer) <span class="comment">// 空字符窜</span></span><br></pre></td></tr></table></figure>
-<p>document.referrer：返回跳转到当前页面的来源的页面的url。没有的情况就返回空字符窜。</p>
-<blockquote>
-<p>document.domain设置同源域名，可以解决跨域的问题。</p>
-</blockquote>
-<h3 id="查找元素"><a href="#查找元素" class="headerlink" title="查找元素"></a>查找元素</h3><h4 id="getElementById-getElementsByTagName"><a href="#getElementById-getElementsByTagName" class="headerlink" title="getElementById()/getElementsByTagName()"></a>getElementById()/getElementsByTagName()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;img src=<span class="string">"https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d2278525f1db4bebb3da97aa3c9cbe26~tplv-k3u1fbpfcp-zoom-1.image"</span> name=<span class="string">"myImage"</span> id=<span class="string">"myIdImage"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">var images = document.getElementsByTagName('img')</span></span><br><span class="line"><span class="regexp">console.log(images.length) /</span><span class="regexp">/ 1</span></span><br><span class="line"><span class="regexp">console.log(images[0].src) </span></span><br><span class="line"><span class="regexp">console.log(images.item(0).src) </span></span><br><span class="line"><span class="regexp">console.log(images.namedItem('myImage').src)</span></span><br><span class="line"><span class="regexp">console.log(images['myImage'].src)</span></span><br><span class="line"><span class="regexp">以上方法都可获取到src:https:/</span><span class="regexp">/p1-juejin.byteimg.com/</span>tos-cn-i-k3u1fbpfcp/d2278525f1db4bebb3da97aa3c9cbe26~tplv-k3u1fbpfcp-zoom<span class="number">-1.</span>image</span><br></pre></td></tr></table></figure>
-<h4 id="getElementsByName-返回带有指定name值的集合。"><a href="#getElementsByName-返回带有指定name值的集合。" class="headerlink" title="getElementsByName(): 返回带有指定name值的集合。"></a>getElementsByName(): 返回带有指定name值的集合。</h4><h4 id="特殊的集合"><a href="#特殊的集合" class="headerlink" title="特殊的集合"></a>特殊的集合</h4><p>document.anchors(): 包含文档中所有带name属性的a元素。<br>document.forms(): 包含文档中所有的form元素。<br>document.images(): 包含文档中所有的image元素。<br>document.links(): 包含文档中所有带href属性的a元素。   </p>
-
+        <h3 id="操作节点"><a href="#操作节点" class="headerlink" title="操作节点"></a>操作节点</h3><h5 id="appendChild-用于向childNodes列表末尾插入节点。"><a href="#appendChild-用于向childNodes列表末尾插入节点。" class="headerlink" title="appendChild(): 用于向childNodes列表末尾插入节点。"></a>appendChild(): 用于向childNodes列表末尾插入节点。</h5><h5 id="insertBefore-把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。"><a href="#insertBefore-把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。" class="headerlink" title="insertBefore(): 把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。"></a>insertBefore(): 把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。</h5><h5 id="replaceChild-要插入的节点和要替换的节点。"><a href="#replaceChild-要插入的节点和要替换的节点。" class="headerlink" title="replaceChild(): 要插入的节点和要替换的节点。"></a>replaceChild(): 要插入的节点和要替换的节点。</h5>
+        
+        <p class="article-more-link">
+            <a href="/2020/09/09/红皮书第十章-DOM/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
         
     </section>
 </article>
@@ -164,6 +162,9 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            
+                <span class="yc">原创</span>
+            
             <a href="/2020/09/03/红皮书第八章-BOM/">红皮书第八章-BOM</a>
         </h1>
         
@@ -204,6 +205,9 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            
+                <span class="yc">原创</span>
+            
             <a href="/2020/08/28/红皮书第七章-函数表达式/">红皮书第七章-函数表达式</a>
         </h1>
         
@@ -244,6 +248,9 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            
+                <span class="yc">原创</span>
+            
             <a href="/2020/08/04/红皮书第六章-面向对象的设计程序/">红皮书第六章-面向对象的设计程序</a>
         </h1>
         
@@ -284,6 +291,9 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            
+                <span class="yc">原创</span>
+            
             <a href="/2020/08/03/红皮书第五章-引用类型/">红皮书第五章-引用类型</a>
         </h1>
         
