@@ -126,7 +126,7 @@
     
     <section class="article-body markdown-body">
         
-        <p><img src="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/img-folder/git.jpg" alt="blockchain"><br><a id="more"></a></p>
+        <p><img src="/images/img-folder/git.jpg"><br><a id="more"></a></p>
 <h2 id="单独合并某个分支的某个文件"><a href="#单独合并某个分支的某个文件" class="headerlink" title="单独合并某个分支的某个文件"></a>单独合并某个分支的某个文件</h2><p>branch-a分支有个文件的功能要合并到branch-b的上面<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout branch-b</span><br><span class="line">git checkout --patch branch-b src/views/index/Index.vue</span><br><span class="line">弹出修改确认提示：Apply <span class="keyword">this</span> hunk to index and worktree [y,n,q,a,d,/,K,g,e,?]?</span><br><span class="line">在弹出的都选  y 即可。最后提交代码完成更新合并同步</span><br></pre></td></tr></table></figure></p>
 <h2 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --<span class="keyword">delete</span> 远程分支名称</span><br></pre></td></tr></table></figure>
 <h2 id="拉去远程分支到本地"><a href="#拉去远程分支到本地" class="headerlink" title="拉去远程分支到本地"></a>拉去远程分支到本地</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b 本地分支名 origin/远程分支名</span><br></pre></td></tr></table></figure>
