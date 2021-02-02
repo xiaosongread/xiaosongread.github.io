@@ -125,6 +125,54 @@
             
                 <span class="yc">原创</span>
             
+            <a href="/2021/02/02/v-if和v-for不要同时使用/">v-if和v-for不要同时使用</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://www.songyanbin.com/categories/gc-end/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2021-02-02T07:53:25.000Z" itemprop="datePublished">2021-02-02</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/vue/">vue</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-<span class="keyword">for</span>=<span class="string">"item in list"</span> v-<span class="keyword">if</span>=<span class="string">"item.isActive"</span>&gt;&#123;&#123;item&#125;&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/   [vue/no-use-v-if-with-v-for]</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ The 'undefined' variable inside 'v-for' directive should be replaced with a computed property that returns filtered array instead. You should not mix 'v-for' with 'v-if'.eslint-plugin-vue</span></span><br><span class="line"><span class="regexp">&lt;/u</span>l&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>v-for和v-if不要同时使用，因为v-for的优先级比v-if高，这意味着 v-if 将分别重复运行于每个 v-for 循环中，效率和性能都比较低。</p>
+</blockquote>
+        
+        <p class="article-more-link">
+            <a href="/2021/02/02/v-if和v-for不要同时使用/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            
+                <span class="yc">原创</span>
+            
             <a href="/2020/07/30/修改element源码如何部署代码打包/">修改element源码，发布属于自己的element包，实现自定义并修改element源码的bug，来实现线上使用自己的包来打包文件</a>
         </h1>
         
@@ -538,52 +586,6 @@
         
         <p class="article-more-link">
             <a href="/2019/06/16/jc-9/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            
-                <span class="yc">原创</span>
-            
-            <a href="/2019/05/31/jc-1/">hexo/github 搭建github博客教程</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="https://www.songyanbin.com/categories/gc-end/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2019-05-31T06:27:08.000Z" itemprop="datePublished">2019-05-31</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/github-hexo/">github hexo</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>之前买的阿里的云服务器，太贵了没钱续费，github的博客免费，代码托管上去，只需要买个域名甚至不买也行，挺合适，就是访问速度慢点，百度也不收录，但是这些也有解决的办法，具体的解决办法本文不介绍了，以后有时间可以再具体说一说，暂时也可以自己用，反正主要也是自己记录，不求他能有多高的baidu排名。</p>
-<p>1.<a href="#准备条件">准备条件</a><br>2.<a href="#设置本地博客的配置">设置本地博客的配置</a><br>3.<a href="#初始化hexo">初始化hexo</a><br>4.<a href="#上传项目">上传项目</a><br>
-        
-        </p><p class="article-more-link">
-            <a href="/2019/05/31/jc-1/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
