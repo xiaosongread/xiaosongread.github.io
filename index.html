@@ -125,6 +125,40 @@
             
                 <span class="yc">原创</span>
             
+            <a href="/2021/05/26/微信字体大小调整导致的H5页面错乱问题处理/">微信字体大小调整导致的H5页面错乱问题处理</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://www.songyanbin.com/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2021-05-26T06:20:19.000Z" itemprop="datePublished">2021-05-26</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h3 id="当用户调整微信字体大小时会导致H5页面错乱，解决方案如下："><a href="#当用户调整微信字体大小时会导致H5页面错乱，解决方案如下：" class="headerlink" title="当用户调整微信字体大小时会导致H5页面错乱，解决方案如下："></a>当用户调整微信字体大小时会导致H5页面错乱，解决方案如下：</h3><h4 id="ios"><a href="#ios" class="headerlink" title="ios"></a>ios</h4><p>在css中加入<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-text-size-adjust</span>: 100% !<span class="selector-tag">important</span>;</span><br></pre></td></tr></table></figure></p>
+<h4 id="安卓"><a href="#安卓" class="headerlink" title="安卓"></a>安卓</h4><p>借助WeixinJSBridge对象来阻止字体大小调整，将此段代码放在在程序的入口页面(例如 index.html / index.ejs等)即可<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> UA = navigator.appVersion</span><br><span class="line"><span class="keyword">var</span> iswx = <span class="regexp">/micromessenger/i</span>.test(UA)</span><br><span class="line"><span class="keyword">if</span> (iswx) &#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> WeixinJSBridge == <span class="string">"object"</span> &amp;&amp; <span class="keyword">typeof</span> WeixinJSBridge.invoke == <span class="string">"function"</span>) &#123;</span><br><span class="line">        handleFontSize();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">document</span>.addEventListener(<span class="string">"WeixinJSBridgeReady"</span>, handleFontSize, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">handleFontSize</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 设置网页字体为默认大小</span></span><br><span class="line">        WeixinJSBridge.invoke(<span class="string">'setFontSizeCallback'</span>, &#123; <span class="string">'fontSize'</span> : <span class="number">0</span> &#125;);</span><br><span class="line">        <span class="comment">// 重写设置网页字体大小的事件</span></span><br><span class="line">        WeixinJSBridge.on(<span class="string">'menu:setfont'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            WeixinJSBridge.invoke(<span class="string">'setFontSizeCallback'</span>, &#123; <span class="string">'fontSize'</span> : <span class="number">0</span> &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            
+                <span class="yc">原创</span>
+            
             <a href="/2021/02/02/v-if和v-for不要同时使用/">v-if和v-for不要同时使用</a>
         </h1>
         
@@ -490,47 +524,6 @@
         
         <p class="article-more-link">
             <a href="/2020/08/04/红皮书第六章-面向对象的设计程序/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            
-                <span class="yc">原创</span>
-            
-            <a href="/2020/08/03/红皮书第五章-引用类型/">红皮书第五章-引用类型</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="https://www.songyanbin.com/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2020-08-03T09:31:01.000Z" itemprop="datePublished">2020-08-03</time>
-</a>
-
-            
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p><a href="https://www.songyanbin.com/2020/07/02/%E5%AD%97%E7%AC%A6%E7%AA%9C%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%98%93%E6%B7%B7%E6%B7%86%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">红皮书第五章-引用类型-字符窜数组常用易混淆方法总结</a>  ( 6/24 )  </p>
-<h3 id="global-对象"><a href="#global-对象" class="headerlink" title="global 对象"></a>global 对象</h3><h4 id="1-url编码方法"><a href="#1-url编码方法" class="headerlink" title="1.url编码方法"></a>1.url编码方法</h4><p>encodeURI()和encodeURIComponent()可以对浏览器url进行编码，以便浏览器更好的解读。<br>
-        
-        </p><p class="article-more-link">
-            <a href="/2020/08/03/红皮书第五章-引用类型/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>

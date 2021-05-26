@@ -125,6 +125,53 @@
             
                 <span class="yc">原创</span>
             
+            <a href="/2018/09/11/jc-3/">git把功能开发错了分支莫慌/恢复误删的本地分支</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="https://www.songyanbin.com/page/5/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2018-09-11T07:32:20.000Z" itemprop="datePublished">2018-09-11</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/git/">git</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>开发风风火火，功能开发完了，git branch一看，靠，在线上分支开发的，顿时瘫坐在椅子上，还得复制代码？不用，几步搞定，顿时觉得git是天下最伟大的发明。</p>
+<h2 id="第一种场景"><a href="#第一种场景" class="headerlink" title="第一种场景"></a>第一种场景</h2><p>你开发的功能还没有提交代码，像我这种喜欢开发完一次性提交的人会经常用到，这种习惯其实是不好的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add .  // 把所有改动放到暂存</span><br><span class="line">git stash  // 把暂存的文件提交到git的暂存栈</span><br><span class="line">git checkout 本该提交代码的分支  // 切换到正确的分支</span><br><span class="line">git stash pop  // 将暂存栈中的代码放出来</span><br></pre></td></tr></table></figure>
+        
+        <p class="article-more-link">
+            <a href="/2018/09/11/jc-3/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            
+                <span class="yc">原创</span>
+            
             <a href="/2018/06/26/jc-7/">npm包模块发布</a>
         </h1>
         
