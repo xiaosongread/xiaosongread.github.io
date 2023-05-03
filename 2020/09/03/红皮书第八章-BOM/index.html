@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="UTF-8">
 
     
@@ -70,10 +70,6 @@
                 <span class="nav-text">工程</span>
             </a>
         
-            <a class="nav-item" href="/categories/jc-end/">
-                <span class="nav-text">温故知新</span>
-            </a>
-        
     </nav>
 </div>
 
@@ -100,14 +96,11 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            
-                <span class="yc">原创</span>
-            
             红皮书第八章-BOM
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="https://www.songyanbin.com/2020/09/03/红皮书第八章-BOM/index.html">
+            <a class="article-date" href="http://www.shuy.cc/2020/09/03/红皮书第八章-BOM/index.html">
     
     <i class="icon-calendar vm"></i>
     
@@ -149,8 +142,8 @@
 <h3 id="localtion对象"><a href="#localtion对象" class="headerlink" title="localtion对象"></a>localtion对象</h3><p>localtion对象既是window对象的属性，也是document的属性，所以window.localtion和document.localtion结果是一样的，localtion所有的属性如下：<br><img src="/images/img-folder/hps/8/1.png">    </p>
 <h4 id="查询字符窜参数"><a href="#查询字符窜参数" class="headerlink" title="查询字符窜参数"></a>查询字符窜参数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回参数集合</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getQueryStringArgs</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> qs = (location.search.length &gt; <span class="number">0</span> ? location.search.substring(<span class="number">1</span>) : <span class="string">""</span>),</span><br><span class="line">  args = &#123;&#125;,</span><br><span class="line">  items = qs.length ? qs.split(<span class="string">"&amp;"</span>) : [],</span><br><span class="line">  item = <span class="literal">null</span>,</span><br><span class="line">  name = <span class="literal">null</span>,</span><br><span class="line">  value = <span class="literal">null</span>,</span><br><span class="line">  len = items.length;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt; len; i++) &#123;</span><br><span class="line">    item = items[i].split(<span class="string">"="</span>)</span><br><span class="line">    name = <span class="built_in">decodeURIComponent</span>(item[<span class="number">0</span>])</span><br><span class="line">    value = <span class="built_in">decodeURIComponent</span>(item[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">if</span> (name.length) &#123;</span><br><span class="line">      args[name] = value</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> args</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 返回指定属性的值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getQueryAttrToString</span>(<span class="params">attr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> qs = (location.search.length &gt; <span class="number">0</span> ? location.search.substring(<span class="number">1</span>) : <span class="string">""</span>),</span><br><span class="line">  items = qs.length ? qs.split(<span class="string">"&amp;"</span>) : [],</span><br><span class="line">  item = <span class="literal">null</span>,</span><br><span class="line">  name = <span class="literal">null</span>,</span><br><span class="line">  value = <span class="literal">null</span>,</span><br><span class="line">  len = items.length;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt; len; i++) &#123;</span><br><span class="line">    item = items[i].split(<span class="string">"="</span>)</span><br><span class="line">    name = <span class="built_in">decodeURIComponent</span>(item[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">if</span> (name === attr) &#123;</span><br><span class="line">      value = <span class="built_in">decodeURIComponent</span>(item[<span class="number">1</span>])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> value</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="位置操作"><a href="#位置操作" class="headerlink" title="位置操作"></a>位置操作</h4><p>使用location对象可以通过很多方式来改变浏览器的位置，首先也是最常用的是，就是使用assign()方法并为其传递一个url值，如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location.assign(<span class="string">'https://www.baidu.com'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>这样浏览器会打开新的链接，并且在浏览器中生成一条新的浏览器历史记录。location.href和window.location设置为一个url，也会在后台调用此方法的。另外修改url的属性，也可以当前加载的页面<br>假设初始的url: ‘<a href="https://www.songyanbin.com&#39;">https://www.songyanbin.com&#39;</a></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改后的URL：https://www.songyanbin.com#setion1</span></span><br><span class="line">location.hash = <span class="string">'#setion1'</span></span><br><span class="line"><span class="comment">// 修改后的URL：https://www.songyanbin.com?title=123</span></span><br><span class="line">location.search = <span class="string">'?title=123'</span></span><br><span class="line"><span class="comment">// 其余方法如上表的属性集合</span></span><br></pre></td></tr></table></figure>
+<p>这样浏览器会打开新的链接，并且在浏览器中生成一条新的浏览器历史记录。location.href和window.location设置为一个url，也会在后台调用此方法的。另外修改url的属性，也可以当前加载的页面<br>假设初始的url: ‘<a href="http://www.shuy.cc&#39;">http://www.shuy.cc&#39;</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改后的URL：http://www.shuy.cc#setion1</span></span><br><span class="line">location.hash = <span class="string">'#setion1'</span></span><br><span class="line"><span class="comment">// 修改后的URL：http://www.shuy.cc?title=123</span></span><br><span class="line">location.search = <span class="string">'?title=123'</span></span><br><span class="line"><span class="comment">// 其余方法如上表的属性集合</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>以上的所有方法，都会重新生成一条浏览器历史记录，如果想禁用生成新的历史记录，可以使用<strong>replace()</strong>方法，用户点击回退就不能回到上一个页面，这个方法只接受一个参数，就是新的url链接。</p>
 </blockquote>
@@ -174,12 +167,12 @@
 </article>
 
 
-<!-- 
+
 <a id="pagenext" href="/2020/08/28/红皮书第七章-函数表达式/" class="article-next" title="红皮书第七章-函数表达式"><i class="icon-arrow-right"></i></a>
 
 
 <a id="pageprev" href="/2020/09/09/红皮书第十章-DOM/" class="article-prev" title="红皮书第十章-DOM"><i class="icon-arrow-left"></i></a>
- -->
+
 
 
 <div class="comments">
@@ -195,7 +188,7 @@
         id: "2020/09/03/红皮书第八章-BOM",
         distractionFreeMode: true,
         title: "红皮书第八章-BOM",
-        body: "https://www.songyanbin.com/2020/09/03/红皮书第八章-BOM/",
+        body: "http://www.shuy.cc/2020/09/03/红皮书第八章-BOM/",
         labels: []
     }).render('comments');
     </script>
@@ -204,7 +197,7 @@
 
         </div>
         <footer class="footer">
-    <a href="https://beian.miit.gov.cn" target="_blank" class="beian">Copyright © Aaron All Rights Reserved 京ICP备17007771号-1</a>
+    Copyright © Aaron All Rights Reserved 京ICP备17007771号-1
 </footer>
 
     </main>

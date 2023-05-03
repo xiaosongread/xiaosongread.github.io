@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="UTF-8">
 
     
@@ -70,10 +70,6 @@
                 <span class="nav-text">工程</span>
             </a>
         
-            <a class="nav-item" href="/categories/jc-end/">
-                <span class="nav-text">温故知新</span>
-            </a>
-        
     </nav>
 </div>
 
@@ -100,14 +96,11 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            
-                <span class="yc">原创</span>
-            
             focus-preventScroll
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="https://www.songyanbin.com/2019/09/20/focus-preventScroll/index.html">
+            <a class="article-date" href="http://www.shuy.cc/2019/09/20/focus-preventScroll/index.html">
     
     <i class="icon-calendar vm"></i>
     
@@ -131,7 +124,7 @@
 <h2 id="api"><a href="#api" class="headerlink" title="api"></a>api</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">button.focus(&#123; </span><br><span class="line">    preventScroll: true </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button1"</span>&gt;</span>点击我获取焦点会定位<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"button2"</span>&gt;</span>点击我获取焦点但不会定位<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"remind"</span>&gt;</span>提示：浏览器可视区域的下面有两个输入框。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"margin-top: calc(100vh - 180px);"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"input1"</span> <span class="attr">size</span>=<span class="string">"10"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"input2"</span> <span class="attr">size</span>=<span class="string">"10"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">button1.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    input1.focus();</span><br><span class="line">&#125;;</span><br><span class="line">button2.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    input2.focus(&#123; </span><br><span class="line">        preventScroll: <span class="literal">true</span> </span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><p><a href="https://www.songyanbin.com/demo/focus.html">猛戳查看</a></p>
+<h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><p><a href="http://www.shuy.cc/demo/focus.html">猛戳查看</a></p>
 <h2 id="兼容情况"><a href="#兼容情况" class="headerlink" title="兼容情况"></a>兼容情况</h2><table>
 <thead>
 <tr>
@@ -160,12 +153,12 @@
 </article>
 
 
-<!-- 
+
 <a id="pagenext" href="/2019/09/06/regular/" class="article-next" title="简单总结常用的正则表达式的Api"><i class="icon-arrow-right"></i></a>
 
 
 <a id="pageprev" href="/2019/09/24/微信小程序生成微信头像/" class="article-prev" title="微信小程序-生成微信头像"><i class="icon-arrow-left"></i></a>
- -->
+
 
 
 <div class="comments">
@@ -181,7 +174,7 @@
         id: "2019/09/20/focus-preventScroll",
         distractionFreeMode: true,
         title: "focus-preventScroll",
-        body: "https://www.songyanbin.com/2019/09/20/focus-preventScroll/",
+        body: "http://www.shuy.cc/2019/09/20/focus-preventScroll/",
         labels: ["focus preventScroll 滚动"]
     }).render('comments');
     </script>
@@ -190,7 +183,7 @@
 
         </div>
         <footer class="footer">
-    <a href="https://beian.miit.gov.cn" target="_blank" class="beian">Copyright © Aaron All Rights Reserved 京ICP备17007771号-1</a>
+    Copyright © Aaron All Rights Reserved 京ICP备17007771号-1
 </footer>
 
     </main>

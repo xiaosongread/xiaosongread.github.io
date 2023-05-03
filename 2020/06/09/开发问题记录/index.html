@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="UTF-8">
 
     
@@ -70,10 +70,6 @@
                 <span class="nav-text">工程</span>
             </a>
         
-            <a class="nav-item" href="/categories/jc-end/">
-                <span class="nav-text">温故知新</span>
-            </a>
-        
     </nav>
 </div>
 
@@ -100,14 +96,11 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            
-                <span class="yc">原创</span>
-            
             开发问题记录
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="https://www.songyanbin.com/2020/06/09/开发问题记录/index.html">
+            <a class="article-date" href="http://www.shuy.cc/2020/06/09/开发问题记录/index.html">
     
     <i class="icon-calendar vm"></i>
     
@@ -126,7 +119,7 @@
     
     <section class="article-body markdown-body">
         
-        <h2 id="h5网页判断微信、小程序环境"><a href="#h5网页判断微信、小程序环境" class="headerlink" title="h5网页判断微信、小程序环境"></a>h5网页判断微信、小程序环境</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://res.wx.qq.com/open/js/jweixin-1.3.2.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">isWeChatMiniApp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> ua = <span class="built_in">window</span>.navigator.userAgent.toLowerCase();</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (ua.indexOf(<span class="string">'micromessenger'</span>) == <span class="number">-1</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"不在微信或者小程序中"</span>)</span><br><span class="line">      resolve(<span class="literal">false</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      wx.miniProgram.getEnv(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (res.miniprogram) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">"在小程序中"</span>)</span><br><span class="line">          resolve(<span class="literal">true</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;<span class="comment">//在微信中</span></span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">"在微信中"</span>)</span><br><span class="line">          resolve(<span class="literal">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="h5网页判断微信、小程序环境"><a href="#h5网页判断微信、小程序环境" class="headerlink" title="h5网页判断微信、小程序环境"></a>h5网页判断微信、小程序环境</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://res.wx.qq.com/open/js/jweixin-1.3.2.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">export function isWeChatMiniApp() &#123;</span></span><br><span class="line"><span class="regexp">  const ua = window.navigator.userAgent.toLowerCase();</span></span><br><span class="line"><span class="regexp">  return new Promise((resolve) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    if (ua.indexOf('micromessenger') == -1) &#123;</span></span><br><span class="line"><span class="regexp">      console.log("不在微信或者小程序中")</span></span><br><span class="line"><span class="regexp">      resolve(false);</span></span><br><span class="line"><span class="regexp">    &#125; else &#123;</span></span><br><span class="line"><span class="regexp">      wx.miniProgram.getEnv((res) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">        if (res.miniprogram) &#123;</span></span><br><span class="line"><span class="regexp">          console.log("在小程序中")</span></span><br><span class="line"><span class="regexp">          resolve(true);</span></span><br><span class="line"><span class="regexp">        &#125; else &#123;/</span><span class="regexp">/在微信中</span></span><br><span class="line"><span class="regexp">          console.log("在微信中")</span></span><br><span class="line"><span class="regexp">          resolve(false);</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">      &#125;);</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <blockquote>
 <p>**在网页内可通过window.__wxjs_environment变量判断是否在小程序环境，建议在WeixinJSBridgeReady回调中使用，也可以使用JSSDK 1.3.2提供的getEnv接口。<br><a href="https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html</a></p>
@@ -142,9 +135,9 @@
 <p>** 注意：onshow 不管是新打开的页面还是返回的页面，都会执行这个周期函数</p>
 </blockquote>
 <h2 id="小程序和h5页面的交互"><a href="#小程序和h5页面的交互" class="headerlink" title="小程序和h5页面的交互"></a>小程序和h5页面的交互</h2><h3 id="解决问题：微信小程序中嵌套h5网页的交互，相互传递参数的问题"><a href="#解决问题：微信小程序中嵌套h5网页的交互，相互传递参数的问题" class="headerlink" title="解决问题：微信小程序中嵌套h5网页的交互，相互传递参数的问题"></a>解决问题：微信小程序中嵌套h5网页的交互，相互传递参数的问题</h3><h3 id="使用条件："><a href="#使用条件：" class="headerlink" title="使用条件："></a>使用条件：</h3><p>  客户端 6.7.2 版本开始，navigationStyle: custom 对 <web-view> 组件无效。<br>    web-view 组件是一个可以用来承载网页的容器，会自动铺满整个小程序页面。个人类型与海外类型的小程序暂不支持使用。<br>    基础库 1.6.4 开始支持，低版本需做兼容处理<br>    兼容方法：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html</a></web-view></p>
-<h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><h4 id="1-小程序向网页传值"><a href="#1-小程序向网页传值" class="headerlink" title="1.小程序向网页传值"></a>1.小程序向网页传值</h4><p>  小程序内打开网页的话，有时需要向网页内传递参数。可将需要带向网页的值通过拼接参数方式实现，然后再在网页内截取即可<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 小程序page --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-view</span> <span class="attr">src</span>=<span class="string">"http://×××.html?id=123"</span>&gt;</span><span class="tag">&lt;/<span class="name">web-view</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 网页 a.html--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  		 <span class="keyword">let</span> id = getUrlParam(<span class="string">'id'</span>); </span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><h4 id="1-小程序向网页传值"><a href="#1-小程序向网页传值" class="headerlink" title="1.小程序向网页传值"></a>1.小程序向网页传值</h4><p>  小程序内打开网页的话，有时需要向网页内传递参数。可将需要带向网页的值通过拼接参数方式实现，然后再在网页内截取即可<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 小程序page --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-view</span> <span class="attr">src</span>=<span class="string">"http://×××.html?id=123"</span>&gt;</span><span class="tag">&lt;/<span class="name">web-view</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 网页 a.html--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  		 <span class="keyword">let</span> id = getUrlParam(<span class="string">'id'</span>); </span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <h4 id="2-网页向小程序传值"><a href="#2-网页向小程序传值" class="headerlink" title="2.网页向小程序传值"></a>2.网页向小程序传值</h4><p>  1.通过url和小程序的转发(分享)方法，将需要传给小程序的值当做参数放在当前url上，小程序中通过点击转发即可获取。这种方法缺点是只能在点击转发(分享)时才可传<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onShareAppMessage: function (options) &#123;</span><br><span class="line">      let webViewUrl = options.webViewUrl;//web-view当前的网址</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2.另外一种是通过使用微信sdk的postMessage方法，然后小程序web-viewd中的bindmessage方法会在特定时机（小程序后退、组件销毁、分享）触发并收到消息。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 网页 a.html--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://res.wx.qq.com/open/js/jweixin-1.3.2.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">// 先postMessage 然后再返回，不然不起作用         		</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">// 别的框架找对应的方法</span>             		</span></span><br><span class="line"><span class="javascript">wx.miniProgram.postMessage(&#123; <span class="attr">data</span>: &#123;<span class="attr">foo</span>: <span class="string">'bar'</span>&#125;&#125;)   wx.miniProgram.navigateBack(&#123;<span class="attr">delta</span>: <span class="number">1</span>&#125;)         		</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 小程序page --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-view</span> <span class="attr">bindmessage</span>=<span class="string">"handleGetMessage"</span> <span class="attr">src</span>=<span class="string">“a.html</span>"&gt;</span><span class="tag">&lt;/<span class="name">web-view</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  handleGetMessage: function(e) &#123;</span><br><span class="line">   console.log(e.target.data)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>2.另外一种是通过使用微信sdk的postMessage方法，然后小程序web-viewd中的bindmessage方法会在特定时机（小程序后退、组件销毁、分享）触发并收到消息。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 网页 a.html--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://res.wx.qq.com/open/js/jweixin-1.3.2.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">// 先postMessage 然后再返回，不然不起作用         		</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="comment">// 别的框架找对应的方法</span>             		</span></span><br><span class="line"><span class="javascript">wx.miniProgram.postMessage(&#123; <span class="attr">data</span>: &#123;<span class="attr">foo</span>: <span class="string">'bar'</span>&#125;&#125;)   wx.miniProgram.navigateBack(&#123;<span class="attr">delta</span>: <span class="number">1</span>&#125;)         		</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 小程序page --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-view</span> <span class="attr">bindmessage</span>=<span class="string">"handleGetMessage"</span> <span class="attr">src</span>=<span class="string">“a.html</span>"&gt;</span><span class="tag">&lt;/<span class="name">web-view</span>&gt;</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  handleGetMessage: function(e) &#123;</span><br><span class="line">   console.log(e.target.data)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>tips: 如果网页发送了多次消息，在小程序接收的时候会把 data 合并,接受到的是一个数组</p>
 </blockquote>
@@ -158,12 +151,12 @@
 </article>
 
 
-<!-- 
+
 <a id="pagenext" href="/2019/12/04/goods/" class="article-next" title="vue 简易加入购物车效果"><i class="icon-arrow-right"></i></a>
 
 
 <a id="pageprev" href="/2020/06/23/vue-router-打开新页面/" class="article-prev" title="vue-router-打开新页面"><i class="icon-arrow-left"></i></a>
- -->
+
 
 
 <div class="comments">
@@ -179,7 +172,7 @@
         id: "2020/06/09/开发问题记录",
         distractionFreeMode: true,
         title: "开发问题记录",
-        body: "https://www.songyanbin.com/2020/06/09/开发问题记录/",
+        body: "http://www.shuy.cc/2020/06/09/开发问题记录/",
         labels: ["小程序 css2 git"]
     }).render('comments');
     </script>
@@ -188,7 +181,7 @@
 
         </div>
         <footer class="footer">
-    <a href="https://beian.miit.gov.cn" target="_blank" class="beian">Copyright © Aaron All Rights Reserved 京ICP备17007771号-1</a>
+    Copyright © Aaron All Rights Reserved 京ICP备17007771号-1
 </footer>
 
     </main>
