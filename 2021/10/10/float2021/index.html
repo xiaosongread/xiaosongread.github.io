@@ -148,11 +148,6 @@
 
 
 
-<a id="pagenext" href="/2021/09/20/autocomplate/" class="article-next" title="如何禁用谷歌浏览器的自动填充?"><i class="icon-arrow-right"></i></a>
-
-
-<a id="pageprev" href="/2021/11/22/vscode2021/" class="article-prev" title="VSCode 同步设置及扩展插件 实现设备上设置统一"><i class="icon-arrow-left"></i></a>
-
 
 
 <div class="comments">
@@ -252,12 +247,12 @@
 
             if(space > avg) {
                 var len = space - avg / 2;
-                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
-                pageprev.css($.extend({left: hw + len}, styles));
-                pagenext.css($.extend({right: len}, styles));
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
             } else {
                 pageprev.removeAttr('style');
-                pagenext.removeAttr('style');
+                // pagenext.removeAttr('style');
             }
         }).trigger('resize');
         </script>

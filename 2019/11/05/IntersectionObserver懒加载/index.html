@@ -139,11 +139,6 @@
 
 
 
-<a id="pagenext" href="/2019/10/30/video/" class="article-next" title="video 常用api和播放器插件-vue"><i class="icon-arrow-right"></i></a>
-
-
-<a id="pageprev" href="/2019/12/04/goods/" class="article-prev" title="vue 简易加入购物车效果"><i class="icon-arrow-left"></i></a>
-
 
 
 <div class="comments">
@@ -243,12 +238,12 @@
 
             if(space > avg) {
                 var len = space - avg / 2;
-                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
-                pageprev.css($.extend({left: hw + len}, styles));
-                pagenext.css($.extend({right: len}, styles));
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
             } else {
                 pageprev.removeAttr('style');
-                pagenext.removeAttr('style');
+                // pagenext.removeAttr('style');
             }
         }).trigger('resize');
         </script>

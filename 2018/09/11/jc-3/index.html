@@ -135,11 +135,6 @@
 
 
 
-<a id="pagenext" href="/2018/06/26/jc-7/" class="article-next" title="npm包模块发布"><i class="icon-arrow-right"></i></a>
-
-
-<a id="pageprev" href="/2019/02/21/jc-2/" class="article-prev" title="微信小程序实现签名并保存图片"><i class="icon-arrow-left"></i></a>
-
 
 
 <div class="comments">
@@ -239,12 +234,12 @@
 
             if(space > avg) {
                 var len = space - avg / 2;
-                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
-                pageprev.css($.extend({left: hw + len}, styles));
-                pagenext.css($.extend({right: len}, styles));
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
             } else {
                 pageprev.removeAttr('style');
-                pagenext.removeAttr('style');
+                // pagenext.removeAttr('style');
             }
         }).trigger('resize');
         </script>

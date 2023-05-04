@@ -83,7 +83,7 @@
         
         <div class="author-meta">
            
-            <div class="author-name">mgd</div>
+            <div class="author-name">SYB</div>
             <div class="author-work">Let nature take its course</div>
             <div class="author-location">
                 <i class="icon-location vm"></i>
@@ -118,7 +118,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2020/06/23/vue-router-打开新页面/">vue-router-打开新页面</a>
+            <a href="/2021/05/26/微信字体大小调整导致的H5页面错乱问题处理/">微信字体大小调整导致的H5页面错乱问题处理</a>
         </h1>
         
         <div class="article-meta clearfix">
@@ -126,61 +126,20 @@
     
     <i class="icon-calendar vm"></i>
     
-    <time class="vm" datetime="2020-06-23T08:21:44.000Z" itemprop="datePublished">2020-06-23</time>
+    <time class="vm" datetime="2021-05-26T06:20:19.000Z" itemprop="datePublished">2021-05-26</time>
 </a>
 
             
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/vue-router/">vue router</a>
-</div>
-
 
         </div>
     </header>
     
     <section class="article-body markdown-body">
         
-        <h2 id="vue-router-如何在新窗口打开页面"><a href="#vue-router-如何在新窗口打开页面" class="headerlink" title="vue-router 如何在新窗口打开页面"></a>vue-router 如何在新窗口打开页面</h2><h3 id="1-标签实现新窗口打开"><a href="#1-标签实现新窗口打开" class="headerlink" title="1. 标签实现新窗口打开"></a>1. <router-link>标签实现新窗口打开</router-link></h3><p>官方文档中说 v-link 指令被 <router-link> 组件指令替代，且 <router-link> 不支持 target=”_blank” 属性，如果需要打开一个新窗口必须要用<a>标签，但事实上vue2版本的 <router-link> 是支持 target=”_blank” 属性的(tag=”a”)，如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">:to</span>=<span class="string">"&#123;path:'/home',query:&#123;id:'1'&#125;&#125;"</span>&gt;</span>新页面打开home页<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure></router-link></a></router-link></router-link></p>
-<h3 id="2-编程式导航"><a href="#2-编程式导航" class="headerlink" title="2.编程式导航"></a>2.编程式导航</h3><p>有些时候需要在单击事件或者在函数中实现页面跳转，那么可以借助router的示例方法，通过编写代码实现。我们常用的是 $router.push 和 $router.go 但是vue2.0以后，这种方式就不支持新窗口打开的属性了，这个时候就需要使用this.$router.resolve,如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">seeShare()&#123;</span><br><span class="line">  let routeUrl = this.$router.resolve(&#123;</span><br><span class="line">      path: "/share",</span><br><span class="line">      query: &#123;id:96&#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  window.open(routeUrl .href, '_blank');</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2020/06/09/开发问题记录/">开发问题记录</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/page/3/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2020-06-09T09:24:28.000Z" itemprop="datePublished">2020-06-09</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/小程序-css2-git/">小程序 css2 git</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="h5网页判断微信、小程序环境"><a href="#h5网页判断微信、小程序环境" class="headerlink" title="h5网页判断微信、小程序环境"></a>h5网页判断微信、小程序环境</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://res.wx.qq.com/open/js/jweixin-1.3.2.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">export function isWeChatMiniApp() &#123;</span></span><br><span class="line"><span class="regexp">  const ua = window.navigator.userAgent.toLowerCase();</span></span><br><span class="line"><span class="regexp">  return new Promise((resolve) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    if (ua.indexOf('micromessenger') == -1) &#123;</span></span><br><span class="line"><span class="regexp">      console.log("不在微信或者小程序中")</span></span><br><span class="line"><span class="regexp">      resolve(false);</span></span><br><span class="line"><span class="regexp">    &#125; else &#123;</span></span><br><span class="line"><span class="regexp">      wx.miniProgram.getEnv((res) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">        if (res.miniprogram) &#123;</span></span><br><span class="line"><span class="regexp">          console.log("在小程序中")</span></span><br><span class="line"><span class="regexp">          resolve(true);</span></span><br><span class="line"><span class="regexp">        &#125; else &#123;/</span><span class="regexp">/在微信中</span></span><br><span class="line"><span class="regexp">          console.log("在微信中")</span></span><br><span class="line"><span class="regexp">          resolve(false);</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">      &#125;);</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+        <h3 id="当用户调整微信字体大小时会导致H5页面错乱，解决方案如下："><a href="#当用户调整微信字体大小时会导致H5页面错乱，解决方案如下：" class="headerlink" title="当用户调整微信字体大小时会导致H5页面错乱，解决方案如下："></a>当用户调整微信字体大小时会导致H5页面错乱，解决方案如下：</h3><h4 id="ios"><a href="#ios" class="headerlink" title="ios"></a>ios</h4><p>在css中加入<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-text-size-adjust</span>: 100% !<span class="selector-tag">important</span>;</span><br></pre></td></tr></table></figure></p>
         
         <p class="article-more-link">
-            <a href="/2020/06/09/开发问题记录/#more">
+            <a href="/2021/05/26/微信字体大小调整导致的H5页面错乱问题处理/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
@@ -196,7 +155,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2019/12/04/goods/">vue 简易加入购物车效果</a>
+            <a href="/2021/02/02/v-if和v-for不要同时使用/">v-if和v-for不要同时使用</a>
         </h1>
         
         <div class="article-meta clearfix">
@@ -204,13 +163,13 @@
     
     <i class="icon-calendar vm"></i>
     
-    <time class="vm" datetime="2019-12-04T08:18:40.000Z" itemprop="datePublished">2019-12-04</time>
+    <time class="vm" datetime="2021-02-02T07:53:25.000Z" itemprop="datePublished">2021-02-02</time>
 </a>
 
             
 <div class="article-tag-list">
     <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/vue-js/">vue js</a>
+    <a class="article-tag-link" href="/tags/vue/">vue</a>
 </div>
 
 
@@ -219,10 +178,13 @@
     
     <section class="article-body markdown-body">
         
-        <p><img src="/images/img-folder/goods.gif"></p>
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-<span class="keyword">for</span>=<span class="string">"item in list"</span> v-<span class="keyword">if</span>=<span class="string">"item.isActive"</span>&gt;&#123;&#123;item&#125;&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/   [vue/no-use-v-if-with-v-for]</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ The 'undefined' variable inside 'v-for' directive should be replaced with a computed property that returns filtered array instead. You should not mix 'v-for' with 'v-if'.eslint-plugin-vue</span></span><br><span class="line"><span class="regexp">&lt;/u</span>l&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>v-for和v-if不要同时使用，因为v-for的优先级比v-if高，这意味着 v-if 将分别重复运行于每个 v-for 循环中，效率和性能都比较低。</p>
+</blockquote>
         
         <p class="article-more-link">
-            <a href="/2019/12/04/goods/#more">
+            <a href="/2021/02/02/v-if和v-for不要同时使用/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
@@ -238,7 +200,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2019/11/05/IntersectionObserver懒加载/">IntersectionObserver懒加载</a>
+            <a href="/2021/01/05/charles安装破解抓包手机接口/">记录 mac charles安装破解抓包手机接口</a>
         </h1>
         
         <div class="article-meta clearfix">
@@ -246,25 +208,21 @@
     
     <i class="icon-calendar vm"></i>
     
-    <time class="vm" datetime="2019-11-05T03:43:06.000Z" itemprop="datePublished">2019-11-05</time>
+    <time class="vm" datetime="2021-01-05T03:45:26.000Z" itemprop="datePublished">2021-01-05</time>
 </a>
 
             
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/js/">js</a>
-</div>
-
 
         </div>
     </header>
     
     <section class="article-body markdown-body">
         
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>懒加载，顾名思义，在当前网页，滑动页面到能看到图片的时候再加载图片<br>故问题拆分成两个：<br>1.如何判断图片出现在了当前视口 （即如何判断我们能够看到图片）<br>2.如何控制图片的加载   </p>
+        <h3 id="mac安装包地址"><a href="#mac安装包地址" class="headerlink" title="mac安装包地址"></a>mac安装包地址</h3><p><a href="https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/ruanjian/charles-proxy-4.5.6.dmg" target="_blank" rel="noopener">https://raw.githubusercontent.com/xiaosongread/github-xiaosongread-hexo/master/ruanjian/charles-proxy-4.5.6.dmg</a></p>
+<h3 id="官网地址：http-www-charlesproxy-com"><a href="#官网地址：http-www-charlesproxy-com" class="headerlink" title="官网地址：http://www.charlesproxy.com"></a>官网地址：<a href="http://www.charlesproxy.com" target="_blank" rel="noopener">http://www.charlesproxy.com</a></h3>
         
         <p class="article-more-link">
-            <a href="/2019/11/05/IntersectionObserver懒加载/#more">
+            <a href="/2021/01/05/charles安装破解抓包手机接口/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
@@ -280,7 +238,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2019/10/30/video/">video 常用api和播放器插件-vue</a>
+            <a href="/2020/11/12/mac本地搭建MongoDB/">mac本地搭建MongoDB</a>
         </h1>
         
         <div class="article-meta clearfix">
@@ -288,7 +246,7 @@
     
     <i class="icon-calendar vm"></i>
     
-    <time class="vm" datetime="2019-10-30T02:04:21.000Z" itemprop="datePublished">2019-10-30</time>
+    <time class="vm" datetime="2020-11-12T08:49:13.000Z" itemprop="datePublished">2020-11-12</time>
 </a>
 
             
@@ -298,95 +256,10 @@
     
     <section class="article-body markdown-body">
         
-        <p>1.<a href="#播放/暂停">播放/暂停</a><br>2.<a href="#播放进度控制">播放进度控制</a><br>3.<a href="#音量控制">音量控制</a><br>4.<a href="#全屏控制">全屏控制</a>   </p>
-        
-        <p class="article-more-link">
-            <a href="/2019/10/30/video/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2019/09/30/ES6-Iterators/">简单易懂的 ES6 Iterators 指南和示例</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/page/3/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2019-09-30T08:49:18.000Z" itemprop="datePublished">2019-09-30</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/ES6-Iterators/">ES6 Iterators</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>遍历器（Iterator）就是这样一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作（即依次处理该数据结构的所有成员）。</p>
-        
-        <p class="article-more-link">
-            <a href="/2019/09/30/ES6-Iterators/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2019/09/24/微信小程序生成微信头像/">微信小程序-生成微信头像</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/page/3/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2019-09-24T09:35:01.000Z" itemprop="datePublished">2019-09-24</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/微信小程序-canvas/">微信小程序 canvas</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>“请给我一面国旗@微信官方”朋友圈刷屏了，只想说一句：”腾讯的产品真牛逼！！！”</p>
-<p><img src="/images/img-folder/canvas.gif"><br>
+        <h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><h4 id="访问MongoDB官方下载地址"><a href="#访问MongoDB官方下载地址" class="headerlink" title="访问MongoDB官方下载地址"></a>访问MongoDB官方下载地址</h4><p>官网地址是：<a href="https://www.mongodb.com/try/download/community" target="_blank" rel="noopener">MongoDB Download Center | MongoDB</a><br>
         
         </p><p class="article-more-link">
-            <a href="/2019/09/24/微信小程序生成微信头像/#more">
+            <a href="/2020/11/12/mac本地搭建MongoDB/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
@@ -402,7 +275,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2019/09/20/focus-preventScroll/">focus-preventScroll</a>
+            <a href="/2020/11/05/flex布局教程/">flex布局教程</a>
         </h1>
         
         <div class="article-meta clearfix">
@@ -410,25 +283,24 @@
     
     <i class="icon-calendar vm"></i>
     
-    <time class="vm" datetime="2019-09-20T03:01:30.000Z" itemprop="datePublished">2019-09-20</time>
+    <time class="vm" datetime="2020-11-05T02:12:52.000Z" itemprop="datePublished">2020-11-05</time>
 </a>
 
             
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/focus-preventScroll-滚动/">focus preventScroll 滚动</a>
-</div>
-
 
         </div>
     </header>
     
     <section class="article-body markdown-body">
         
-        <p><img src="/images/img-folder/focus.gif" width="400"></p>
+        <blockquote>
+<p>推荐来自：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a></p>
+</blockquote>
+<h3 id="flex布局是什么"><a href="#flex布局是什么" class="headerlink" title="flex布局是什么"></a>flex布局是什么</h3><p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</p>
+<p>任何一个容器都可以指定为 Flex 布局。<br>
         
-        <p class="article-more-link">
-            <a href="/2019/09/20/focus-preventScroll/#more">
+        </p><p class="article-more-link">
+            <a href="/2020/11/05/flex布局教程/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
@@ -444,7 +316,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2019/09/06/regular/">简单总结常用的正则表达式的Api</a>
+            <a href="/2020/09/09/红皮书第十章-DOM/">红皮书第十章-DOM</a>
         </h1>
         
         <div class="article-meta clearfix">
@@ -452,30 +324,20 @@
     
     <i class="icon-calendar vm"></i>
     
-    <time class="vm" datetime="2019-09-06T03:17:00.000Z" itemprop="datePublished">2019-09-06</time>
+    <time class="vm" datetime="2020-09-09T03:09:56.000Z" itemprop="datePublished">2020-09-09</time>
 </a>
 
             
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/js-正则/">js 正则</a>
-</div>
-
 
         </div>
     </header>
     
     <section class="article-body markdown-body">
         
-        <p>正则表达式可以: </p>
-<ul>
-<li>测试字符串的某个模式。例如，可以对一个输入字符串进行测试，看在该字符串是否存在一个电话号码模式或一个信用卡号码模式。这称为数据有效性验证 </li>
-<li>替换文本。可以在文档中使用一个正则表达式来标识特定文字，然后可以全部将其删除，或者替换为别的文字 </li>
-<li>根据模式匹配从字符串中提取一个子字符串。可以用来在文本或输入字段中查找特定文字 </li>
-</ul>
+        <h3 id="操作节点"><a href="#操作节点" class="headerlink" title="操作节点"></a>操作节点</h3><h5 id="appendChild-用于向childNodes列表末尾插入节点。"><a href="#appendChild-用于向childNodes列表末尾插入节点。" class="headerlink" title="appendChild(): 用于向childNodes列表末尾插入节点。"></a>appendChild(): 用于向childNodes列表末尾插入节点。</h5><h5 id="insertBefore-把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。"><a href="#insertBefore-把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。" class="headerlink" title="insertBefore(): 把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。"></a>insertBefore(): 把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。</h5><h5 id="replaceChild-要插入的节点和要替换的节点。"><a href="#replaceChild-要插入的节点和要替换的节点。" class="headerlink" title="replaceChild(): 要插入的节点和要替换的节点。"></a>replaceChild(): 要插入的节点和要替换的节点。</h5>
         
         <p class="article-more-link">
-            <a href="/2019/09/06/regular/#more">
+            <a href="/2020/09/09/红皮书第十章-DOM/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
@@ -491,7 +353,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2019/08/30/nodetips/">nodetips</a>
+            <a href="/2020/09/03/红皮书第八章-BOM/">红皮书第八章-BOM</a>
         </h1>
         
         <div class="article-meta clearfix">
@@ -499,25 +361,141 @@
     
     <i class="icon-calendar vm"></i>
     
-    <time class="vm" datetime="2019-08-30T08:08:59.000Z" itemprop="datePublished">2019-08-30</time>
+    <time class="vm" datetime="2020-09-03T07:26:41.000Z" itemprop="datePublished">2020-09-03</time>
 </a>
 
             
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/node/">node</a>
-</div>
-
 
         </div>
     </header>
     
     <section class="article-body markdown-body">
         
-        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>设计师给了一堆任务头像，文件名乱七八糟的，我这边其实就一个循环就渲染出来了，所以得统一按下标重新命名一下，五百多张不可能一张一张改吧，那只能通过程序来循环改了，前端页面仔这可怎么搞？</p>
+        <h3 id="window对象"><a href="#window对象" class="headerlink" title="window对象"></a>window对象</h3><p>BOM对象的核心是window,它表示浏览器的实例，window是javascript和浏览器交互的接口。</p>
+<blockquote>
+<p>有一点值得注意:定义全局变量和在window上面定义变量有一个区别就是，在window上面直接定义变量，可以用delete删除，但是直接定义是不可以删除的用delete</p>
+</blockquote>
         
         <p class="article-more-link">
-            <a href="/2019/08/30/nodetips/#more">
+            <a href="/2020/09/03/红皮书第八章-BOM/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2020/08/28/红皮书第七章-函数表达式/">红皮书第七章-函数表达式</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/page/3/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2020-08-28T06:55:37.000Z" itemprop="datePublished">2020-08-28</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h3 id="创建函数"><a href="#创建函数" class="headerlink" title="创建函数"></a>创建函数</h3><h4 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aa() <span class="comment">// 123</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>函数声明变量提升：执行代码之前会先读取函数声明，这就意味着可以把调用函数放在声明函数之前。</p>
+</blockquote>
+        
+        <p class="article-more-link">
+            <a href="/2020/08/28/红皮书第七章-函数表达式/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2020/08/04/红皮书第六章-面向对象的设计程序/">红皮书第六章-面向对象的设计程序</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/page/3/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2020-08-04T02:10:43.000Z" itemprop="datePublished">2020-08-04</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h3 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h3><h4 id="数据属性-Object-defineProperty"><a href="#数据属性-Object-defineProperty" class="headerlink" title="数据属性(Object.defineProperty())"></a>数据属性(Object.defineProperty())</h4><p>1) [[Configurable]]: 表示能否通过delete删除属性，从而重新定义属性，，默认值为true<br>2) [[Enumerable]]: 表示能否通过for-in循环返回属性，，默认值为true<br>3) [[Writable]]: 表示能否修改属性的值，，默认值为true<br>4) [[Value]]: 包含这个属性的值，默认值为undefined    </p>
+<blockquote>
+<p>修改对象属性的默认特性，必须使用Object.defineProperty()方法。</p>
+</blockquote>
+        
+        <p class="article-more-link">
+            <a href="/2020/08/04/红皮书第六章-面向对象的设计程序/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2020/08/03/红皮书第五章-引用类型/">红皮书第五章-引用类型</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/page/3/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2020-08-03T09:31:01.000Z" itemprop="datePublished">2020-08-03</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p><a href="http://www.shuy.cc/2020/07/02/%E5%AD%97%E7%AC%A6%E7%AA%9C%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%98%93%E6%B7%B7%E6%B7%86%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">红皮书第五章-引用类型-字符窜数组常用易混淆方法总结</a>  ( 6/24 )  </p>
+<h3 id="global-对象"><a href="#global-对象" class="headerlink" title="global 对象"></a>global 对象</h3><h4 id="1-url编码方法"><a href="#1-url编码方法" class="headerlink" title="1.url编码方法"></a>1.url编码方法</h4><p>encodeURI()和encodeURIComponent()可以对浏览器url进行编码，以便浏览器更好的解读。<br>
+        
+        </p><p class="article-more-link">
+            <a href="/2020/08/03/红皮书第五章-引用类型/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>

@@ -85,7 +85,7 @@
         
         <div class="author-meta">
            
-            <div class="author-name">mgd</div>
+            <div class="author-name">SYB</div>
             <div class="author-work">Let nature take its course</div>
             <div class="author-location">
                 <i class="icon-location vm"></i>
@@ -154,11 +154,6 @@
 </article>
 
 
-
-<a id="pagenext" href="/2019/09/20/focus-preventScroll/" class="article-next" title="focus-preventScroll"><i class="icon-arrow-right"></i></a>
-
-
-<a id="pageprev" href="/2019/09/30/ES6-Iterators/" class="article-prev" title="简单易懂的 ES6 Iterators 指南和示例"><i class="icon-arrow-left"></i></a>
 
 
 
@@ -259,12 +254,12 @@
 
             if(space > avg) {
                 var len = space - avg / 2;
-                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
-                pageprev.css($.extend({left: hw + len}, styles));
-                pagenext.css($.extend({right: len}, styles));
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
             } else {
                 pageprev.removeAttr('style');
-                pagenext.removeAttr('style');
+                // pagenext.removeAttr('style');
             }
         }).trigger('resize');
         </script>

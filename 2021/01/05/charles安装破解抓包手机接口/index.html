@@ -130,11 +130,6 @@
 
 
 
-<a id="pagenext" href="/2020/11/20/百度地图与高德地图的相互转化/" class="article-next" title="百度地图与高德地图的相互转化"><i class="icon-arrow-right"></i></a>
-
-
-<a id="pageprev" href="/2021/02/02/v-if和v-for不要同时使用/" class="article-prev" title="v-if和v-for不要同时使用"><i class="icon-arrow-left"></i></a>
-
 
 
 <div class="comments">
@@ -234,12 +229,12 @@
 
             if(space > avg) {
                 var len = space - avg / 2;
-                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
-                pageprev.css($.extend({left: hw + len}, styles));
-                pagenext.css($.extend({right: len}, styles));
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
             } else {
                 pageprev.removeAttr('style');
-                pagenext.removeAttr('style');
+                // pagenext.removeAttr('style');
             }
         }).trigger('resize');
         </script>

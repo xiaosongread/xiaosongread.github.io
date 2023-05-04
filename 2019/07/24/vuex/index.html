@@ -162,11 +162,6 @@
 
 
 
-<a id="pagenext" href="/2019/07/22/jc-13/" class="article-next" title="代码回退"><i class="icon-arrow-right"></i></a>
-
-
-<a id="pageprev" href="/2019/08/04/deepCopy/" class="article-prev" title="一文了解js深拷贝和浅拷贝"><i class="icon-arrow-left"></i></a>
-
 
 
 <div class="comments">
@@ -266,12 +261,12 @@
 
             if(space > avg) {
                 var len = space - avg / 2;
-                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
-                pageprev.css($.extend({left: hw + len}, styles));
-                pagenext.css($.extend({right: len}, styles));
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
             } else {
                 pageprev.removeAttr('style');
-                pagenext.removeAttr('style');
+                // pagenext.removeAttr('style');
             }
         }).trigger('resize');
         </script>

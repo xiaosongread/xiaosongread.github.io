@@ -134,11 +134,6 @@
 
 
 
-<a id="pagenext" href="/2019/08/22/git-常用命令技巧/" class="article-next" title="git-常用命令技巧"><i class="icon-arrow-right"></i></a>
-
-
-<a id="pageprev" href="/2019/08/30/nodetips/" class="article-prev" title="nodetips"><i class="icon-arrow-left"></i></a>
-
 
 
 <div class="comments">
@@ -238,12 +233,12 @@
 
             if(space > avg) {
                 var len = space - avg / 2;
-                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
-                pageprev.css($.extend({left: hw + len}, styles));
-                pagenext.css($.extend({right: len}, styles));
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
             } else {
                 pageprev.removeAttr('style');
-                pagenext.removeAttr('style');
+                // pagenext.removeAttr('style');
             }
         }).trigger('resize');
         </script>

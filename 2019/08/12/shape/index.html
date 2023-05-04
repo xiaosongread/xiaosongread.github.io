@@ -151,11 +151,6 @@
 
 
 
-<a id="pagenext" href="/2019/08/07/css3-anmation/" class="article-next" title="css3-anmation 动画"><i class="icon-arrow-right"></i></a>
-
-
-<a id="pageprev" href="/2019/08/13/collect/" class="article-prev" title="常用的前端库汇总"><i class="icon-arrow-left"></i></a>
-
 
 
 <div class="comments">
@@ -255,12 +250,12 @@
 
             if(space > avg) {
                 var len = space - avg / 2;
-                var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
-                pageprev.css($.extend({left: hw + len}, styles));
-                pagenext.css($.extend({right: len}, styles));
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
             } else {
                 pageprev.removeAttr('style');
-                pagenext.removeAttr('style');
+                // pagenext.removeAttr('style');
             }
         }).trigger('resize');
         </script>
