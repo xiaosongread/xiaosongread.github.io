@@ -118,6 +118,142 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2021/12/19/h5-wechat/">H5支付完整demo及问题总结</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2021-12-19T05:30:03.000Z" itemprop="datePublished">2021-12-19</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/支付/">支付</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="参考链接：https-pay-weixin-qq-com-wiki-doc-api-index-html"><a href="#参考链接：https-pay-weixin-qq-com-wiki-doc-api-index-html" class="headerlink" title="参考链接：https://pay.weixin.qq.com/wiki/doc/api/index.html"></a>参考链接：<a href="https://pay.weixin.qq.com/wiki/doc/api/index.html" target="_blank" rel="noopener">https://pay.weixin.qq.com/wiki/doc/api/index.html</a></h4><p>1.开通H5支付，注意：在申请时填写的域名必须和调起H5支付访问的页面一样！<br>2.跟小程序支付类似，拿到公众号的appId, 商户号、商户秘钥.</p>
+<h3 id="H5支付采坑问题记录："><a href="#H5支付采坑问题记录：" class="headerlink" title="H5支付采坑问题记录："></a>H5支付采坑问题记录：</h3><p>当所有参数准备好，并调用接口时，返回MWEB_URL如下：<br>MWEB_URL= <a href="https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx20161110163838f231619da20804912345&amp;package=1037687096" target="_blank" rel="noopener">https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?prepay_id=wx20161110163838f231619da20804912345&amp;package=1037687096</a></p>
+<p>访问该链接，出现以下错误：<br><img src="/images/img-folder/2021/10.png"></p>
+<p>原因：商户侧统一下单传的终端IP(spbill_create_ip)与用户实际调起支付时微信侧检测到的终端IP不一致导致的，</p>
+<p>（在网上找了各种各样的方法，获取本地真实的ip，全都无效，问题依旧如此）</p>
+<h3 id="解决方法：要获取spbill-create-ip。在前端js中引入了搜狐的js库，"><a href="#解决方法：要获取spbill-create-ip。在前端js中引入了搜狐的js库，" class="headerlink" title="解决方法：要获取spbill_create_ip。在前端js中引入了搜狐的js库，"></a>解决方法：要获取spbill_create_ip。在前端js中引入了搜狐的js库，</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;http://pv.sohu.com/cityjson?ie=utf-8&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>document.write(returnCitySN[“cip”]+’,’+returnCitySN[“cname”]);</p>
+<p>这条语句即可拿到手机端的真实ip,returnCitySN[“cip”]将该值作为参数传到后台，作为spbill_create_ip的值调起微信支付接口。</p>
+<p>当前调起微信支付的域名和申请H5授权的域名不一致时会出现如下图所示：<br><img src="/images/img-folder/2021/11.png"></p>
+<p>原因：当前调起微信支付的域名和申请H5授权的域名不一致。</p>
+<h3 id="解决方法：将该项目放到域名服务器上，并使得调起支付的访问链接的域名和H5授权的域名一致！"><a href="#解决方法：将该项目放到域名服务器上，并使得调起支付的访问链接的域名和H5授权的域名一致！" class="headerlink" title="解决方法：将该项目放到域名服务器上，并使得调起支付的访问链接的域名和H5授权的域名一致！"></a>解决方法：将该项目放到域名服务器上，并使得调起支付的访问链接的域名和H5授权的域名一致！</h3><p>1.解决以上两个问题后，不能在浏览其中访问返回的MWEB_URL，而是要通过前端类似于window.location.href=”MWEB_URL”去调用。<br>① 不能直接在手机微信端，必须在手机浏览器上调用。会提示“系统繁忙，请稍后再试”<br><img src="/images/img-folder/2021/12.png"></p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2021/11/22/vscode2021/">VSCode 同步设置及扩展插件 实现设备上设置统一</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2021-11-22T05:30:03.000Z" itemprop="datePublished">2021-11-22</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/vscode-github/">vscode github</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="准备工作：电脑上需安装VSCode，拥有一个github账户。实现同步的功能主要依赖于VSCode插件-“Settings-Sync”"><a href="#准备工作：电脑上需安装VSCode，拥有一个github账户。实现同步的功能主要依赖于VSCode插件-“Settings-Sync”" class="headerlink" title="准备工作：电脑上需安装VSCode，拥有一个github账户。实现同步的功能主要依赖于VSCode插件 “Settings Sync”"></a>准备工作：电脑上需安装VSCode，拥有一个github账户。实现同步的功能主要依赖于VSCode插件 “Settings Sync”</h4><h3 id="Setting-Sync-可同步包含的所有扩展和完整的用户文件夹"><a href="#Setting-Sync-可同步包含的所有扩展和完整的用户文件夹" class="headerlink" title="Setting Sync 可同步包含的所有扩展和完整的用户文件夹"></a>Setting Sync 可同步包含的所有扩展和完整的用户文件夹</h3><p>1) 设置文件</p>
+<p>2) 快捷键设置文件</p>
+<p>3) Launch File</p>
+<p>4) Snippets Folder</p>
+<p>5) VSCode 扩展设置</p>
+<p>6) 工作空间<br>
+        
+        </p><p class="article-more-link">
+            <a href="/2021/11/22/vscode2021/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2021/10/10/float2021/">javascript浮点型的一些坑</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2021-10-10T12:30:10.000Z" itemprop="datePublished">2021-10-10</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/js/">js</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>javascript浮点型运算有很多问题，不管是加减还是乘除，还是四舍五入，都可能出现问题。本文简单介绍一些解决办法，都是工作中总结出来的，有简单，有麻烦。下面就总结一下。</p>
+<h2 id="加发运算"><a href="#加发运算" class="headerlink" title="加发运算"></a>加发运算</h2><h3 id="例如常见的："><a href="#例如常见的：" class="headerlink" title="例如常见的："></a>例如常见的：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.1</span>+<span class="number">0.2</span> <span class="comment">//0.30000000000000004</span></span><br><span class="line"><span class="number">1.4</span>+<span class="number">2.8</span> <span class="comment">//4.199999999999999</span></span><br></pre></td></tr></table></figure>
+<h3 id="解决方案一"><a href="#解决方案一" class="headerlink" title="解决方案一"></a>解决方案一</h3>
+        
+        <p class="article-more-link">
+            <a href="/2021/10/10/float2021/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2021/09/20/autocomplate/">如何禁用谷歌浏览器的自动填充?</a>
         </h1>
         
@@ -392,126 +528,10 @@
 </article>
 
 
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2020/11/20/百度地图与高德地图的相互转化/">百度地图与高德地图的相互转化</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2020-11-20T06:54:43.000Z" itemprop="datePublished">2020-11-20</time>
-</a>
-
-            
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h3 id="问题来源：小程序使用的是高德地图，后台的数据来源于百度地图，导致小程序的定位不是太准确"><a href="#问题来源：小程序使用的是高德地图，后台的数据来源于百度地图，导致小程序的定位不是太准确" class="headerlink" title="问题来源：小程序使用的是高德地图，后台的数据来源于百度地图，导致小程序的定位不是太准确"></a>问题来源：小程序使用的是高德地图，后台的数据来源于百度地图，导致小程序的定位不是太准确</h3><p>在开发中使用了第三方的数据，由于经纬度使用的是第三方的数组，他们使用的是百度的地图坐标。在项目中使用时，能用百度地图去解析自然是最好的，但是呢，该项目是基于微信小程序的，百度地图针对小程序提供的API功能不是很完善，难以实现想要的需求，所以采用腾讯官方的地图。</p>
-<h3 id="将百度地图经纬度转换为腾讯-高德地图经纬度"><a href="#将百度地图经纬度转换为腾讯-高德地图经纬度" class="headerlink" title="将百度地图经纬度转换为腾讯/高德地图经纬度"></a>将百度地图经纬度转换为腾讯/高德地图经纬度</h3>
-        
-        <p class="article-more-link">
-            <a href="/2020/11/20/百度地图与高德地图的相互转化/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2020/11/12/mac本地搭建MongoDB/">mac本地搭建MongoDB</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2020-11-12T08:49:13.000Z" itemprop="datePublished">2020-11-12</time>
-</a>
-
-            
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><h4 id="访问MongoDB官方下载地址"><a href="#访问MongoDB官方下载地址" class="headerlink" title="访问MongoDB官方下载地址"></a>访问MongoDB官方下载地址</h4><p>官网地址是：<a href="https://www.mongodb.com/try/download/community" target="_blank" rel="noopener">MongoDB Download Center | MongoDB</a><br>
-        
-        </p><p class="article-more-link">
-            <a href="/2020/11/12/mac本地搭建MongoDB/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2020/11/05/flex布局教程/">flex布局教程</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2020-11-05T02:12:52.000Z" itemprop="datePublished">2020-11-05</time>
-</a>
-
-            
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <blockquote>
-<p>推荐来自：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a></p>
-</blockquote>
-<h3 id="flex布局是什么"><a href="#flex布局是什么" class="headerlink" title="flex布局是什么"></a>flex布局是什么</h3><p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</p>
-<p>任何一个容器都可以指定为 Flex 布局。<br>
-        
-        </p><p class="article-more-link">
-            <a href="/2020/11/05/flex布局教程/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
 
 
 <nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
 </nav>
 
 
