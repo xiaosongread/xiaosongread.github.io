@@ -122,53 +122,6 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2022/04/10/weijianwei/">卫健委项目完结总结test</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/page/2/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2022-04-10T05:30:03.000Z" itemprop="datePublished">2022-04-10</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/vscode-github/">vscode github</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="准备工作：电脑上需安装VSCode，拥有一个github账户。实现同步的功能主要依赖于VSCode插件-“Settings-Sync”"><a href="#准备工作：电脑上需安装VSCode，拥有一个github账户。实现同步的功能主要依赖于VSCode插件-“Settings-Sync”" class="headerlink" title="准备工作：电脑上需安装VSCode，拥有一个github账户。实现同步的功能主要依赖于VSCode插件 “Settings Sync”"></a>准备工作：电脑上需安装VSCode，拥有一个github账户。实现同步的功能主要依赖于VSCode插件 “Settings Sync”</h4><h3 id="Setting-Sync-可同步包含的所有扩展和完整的用户文件夹"><a href="#Setting-Sync-可同步包含的所有扩展和完整的用户文件夹" class="headerlink" title="Setting Sync 可同步包含的所有扩展和完整的用户文件夹"></a>Setting Sync 可同步包含的所有扩展和完整的用户文件夹</h3><p>1) 设置文件</p>
-<p>2) 快捷键设置文件</p>
-<p>3) Launch File</p>
-<p>4) Snippets Folder</p>
-<p>5) VSCode 扩展设置</p>
-<p>6) 工作空间<br>
-        
-        </p><p class="article-more-link">
-            <a href="/2022/04/10/weijianwei/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
             <a href="/2022/03/19/focus-preventScroll/">focus-preventScroll</a>
         </h1>
         
@@ -531,6 +484,51 @@
         
         <p class="article-more-link">
             <a href="/2021/05/26/微信字体大小调整导致的H5页面错乱问题处理/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2021/02/02/v-if和v-for不要同时使用/">v-if和v-for不要同时使用</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/page/2/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2021-02-02T07:53:25.000Z" itemprop="datePublished">2021-02-02</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/vue/">vue</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-<span class="keyword">for</span>=<span class="string">"item in list"</span> v-<span class="keyword">if</span>=<span class="string">"item.isActive"</span>&gt;&#123;&#123;item&#125;&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/   [vue/no-use-v-if-with-v-for]</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ The 'undefined' variable inside 'v-for' directive should be replaced with a computed property that returns filtered array instead. You should not mix 'v-for' with 'v-if'.eslint-plugin-vue</span></span><br><span class="line"><span class="regexp">&lt;/u</span>l&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>v-for和v-if不要同时使用，因为v-for的优先级比v-if高，这意味着 v-if 将分别重复运行于每个 v-for 循环中，效率和性能都比较低。</p>
+</blockquote>
+        
+        <p class="article-more-link">
+            <a href="/2021/02/02/v-if和v-for不要同时使用/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
