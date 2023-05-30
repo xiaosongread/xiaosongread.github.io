@@ -122,6 +122,51 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2021/02/02/v-if和v-for不要同时使用/">v-if和v-for不要同时使用</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/page/3/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2021-02-02T07:53:25.000Z" itemprop="datePublished">2021-02-02</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/vue/">vue</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-<span class="keyword">for</span>=<span class="string">"item in list"</span> v-<span class="keyword">if</span>=<span class="string">"item.isActive"</span>&gt;&#123;&#123;item&#125;&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/   [vue/no-use-v-if-with-v-for]</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ The 'undefined' variable inside 'v-for' directive should be replaced with a computed property that returns filtered array instead. You should not mix 'v-for' with 'v-if'.eslint-plugin-vue</span></span><br><span class="line"><span class="regexp">&lt;/u</span>l&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>v-for和v-if不要同时使用，因为v-for的优先级比v-if高，这意味着 v-if 将分别重复运行于每个 v-for 循环中，效率和性能都比较低。</p>
+</blockquote>
+        
+        <p class="article-more-link">
+            <a href="/2021/02/02/v-if和v-for不要同时使用/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2021/01/05/charles安装破解抓包手机接口/">记录 mac charles安装破解抓包手机接口</a>
         </h1>
         
@@ -456,46 +501,6 @@
         
         <p class="article-more-link">
             <a href="/2020/07/30/修改element源码如何部署代码打包/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2020/07/02/字符窜数组常用易混淆方法总结/">字符窜数组常用易混淆方法总结</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/page/3/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2020-07-02T07:25:11.000Z" itemprop="datePublished">2020-07-02</time>
-</a>
-
-            
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="字符窜"><a href="#字符窜" class="headerlink" title="字符窜"></a>字符窜</h2><h3 id="substring-start开始位置的索引-end结束位置索引-截取的位置不包含结束位置的字符-只写一个参数表示从开始位置截取到最后"><a href="#substring-start开始位置的索引-end结束位置索引-截取的位置不包含结束位置的字符-只写一个参数表示从开始位置截取到最后" class="headerlink" title="substring(start开始位置的索引,end结束位置索引) 截取的位置不包含结束位置的字符,只写一个参数表示从开始位置截取到最后"></a>substring(start开始位置的索引,end结束位置索引) 截取的位置不包含结束位置的字符,只写一个参数表示从开始位置截取到最后</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">'abcdefg'</span>; </span><br><span class="line">str.substring(<span class="number">1</span>) <span class="comment">//得到bcdefg  </span></span><br><span class="line">str.substring(<span class="number">1</span>,<span class="number">3</span>) <span class="comment">//得到bc</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>输入负值时将负值变为0，哪个较小作为开始位置</p>
-</blockquote>
-        
-        <p class="article-more-link">
-            <a href="/2020/07/02/字符窜数组常用易混淆方法总结/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
