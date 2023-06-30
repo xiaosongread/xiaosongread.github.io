@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>mongodb windows 安装 | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="MongoDB是一个基于分布式文件存储 [1] 的数据库。由C++语言编写。旨在为WEB应用提供可扩展的高性能数据存储解决方案。它支持的数据结构非常松散，是类似json的bson格式，因此可以存储比较复杂的数据类型。Mongo最大的特点是它支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。MongoDB下载(mac本地搭建MongoDB)参考链接： http://shuy.cc/2020/11/12/...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">归档</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoDB下载"><span class="toc-number">1.</span> <span class="toc-text">MongoDB下载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装下载地址"><span class="toc-number">1.1.</span> <span class="toc-text">安装下载地址</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置步骤"><span class="toc-number">2.</span> <span class="toc-text">配置步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置系统变量"><span class="toc-number">2.1.</span> <span class="toc-text">配置系统变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建目录（创建数据库db和日志log文件的目录）"><span class="toc-number">2.2.</span> <span class="toc-text">创建目录（创建数据库db和日志log文件的目录）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建配置文件"><span class="toc-number">2.3.</span> <span class="toc-text">创建配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-MongoDB服务"><span class="toc-number">2.4.</span> <span class="toc-text">安装 MongoDB服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动-关闭服务"><span class="toc-number">2.5.</span> <span class="toc-text">启动/关闭服务</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            mongodb windows 安装
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2023/06/30/mongodbWindow/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-06-30T10:39:03.000Z" itemprop="datePublished">2023-06-30</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/node-mongodb/">node mongodb</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>MongoDB是一个基于分布式文件存储 [1] 的数据库。由C++语言编写。旨在为WEB应用提供可扩展的高性能数据存储解决方案。它支持的数据结构非常松散，是类似json的bson格式，因此可以存储比较复杂的数据类型。Mongo最大的特点是它支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。</p>
+<h3 id="MongoDB下载"><a href="#MongoDB下载" class="headerlink" title="MongoDB下载"></a>MongoDB下载</h3><a id="more"></a>
+<p>(mac本地搭建MongoDB)参考链接： <a href="http://shuy.cc/2020/11/12/mac%E6%9C%AC%E5%9C%B0%E6%90%AD%E5%BB%BAMongoDB/" target="_blank" rel="noopener">http://shuy.cc/2020/11/12/mac%E6%9C%AC%E5%9C%B0%E6%90%AD%E5%BB%BAMongoDB/</a></p>
+<h4 id="安装下载地址"><a href="#安装下载地址" class="headerlink" title="安装下载地址"></a>安装下载地址</h4><p><a href="https://www.mongodb.com/try/download/community" target="_blank" rel="noopener">https://www.mongodb.com/try/download/community</a></p>
+<p><img src="/images/img-folder/2023/mongo1.png"></p>
+<p>然后一顿 next ,最后 install 就安装成功了。</p>
+<h3 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h3><h4 id="配置系统变量"><a href="#配置系统变量" class="headerlink" title="配置系统变量"></a>配置系统变量</h4><p>首先点击电脑桌面-&gt; 此电脑右键属性，然后按照下图设置环境变量。</p>
+<blockquote>
+<p>注意：地址和你安装时候的地址匹配上</p>
+</blockquote>
+<p><img src="/images/img-folder/2023/mongo2.png"></p>
+<h4 id="创建目录（创建数据库db和日志log文件的目录）"><a href="#创建目录（创建数据库db和日志log文件的目录）" class="headerlink" title="创建目录（创建数据库db和日志log文件的目录）"></a>创建目录（创建数据库db和日志log文件的目录）</h4><ol>
+<li>在C盘的根目录去创建一个data文件夹，在里面再建一个db文件夹。</li>
+<li>我们打开cmd，输入mongod，他会跑出来一堆代码，这时候我们再去看刚刚新建的db文件夹，里面已经有东西了。</li>
+<li>在刚刚创建的data文件夹里继续新建log文件夹。</li>
+</ol>
+<h4 id="创建配置文件"><a href="#创建配置文件" class="headerlink" title="创建配置文件"></a>创建配置文件</h4><p>在mongodb的安装目录下,新建mongod.config的文件<br><img src="/images/img-folder/2023/mongo3.png"></p>
+<p>编辑内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemLog:</span><br><span class="line">    destination: file</span><br><span class="line">    path: c:\data\log\mongod.log</span><br><span class="line">storage:</span><br><span class="line">    dbPath: c:\data\db</span><br></pre></td></tr></table></figure>
+<h4 id="安装-MongoDB服务"><a href="#安装-MongoDB服务" class="headerlink" title="安装 MongoDB服务"></a>安装 MongoDB服务</h4><p>打开cmd,在安装目录bin下，通过执行mongod.exe，使用–install选项来安装服务，使用–config选项来指定之前创建的配置文件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod.exe --config <span class="string">"C:\Program Files\MongoDB\Server\6.0\mongod.config"</span> --install</span><br></pre></td></tr></table></figure>
+<h4 id="启动-关闭服务"><a href="#启动-关闭服务" class="headerlink" title="启动/关闭服务"></a>启动/关闭服务</h4><p>以管理员的身份运行cmd,命令如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">启动服务</span><br><span class="line">net start MongoDB</span><br><span class="line">关闭服务</span><br><span class="line">net stop MongoDB</span><br></pre></td></tr></table></figure>
+<p>或者直接点击</p>
+<p><img src="/images/img-folder/2023/mongo4.png"></p>
+<p>启动服务之后， 在浏览器中输入地址和端口号（27017是默认端口号），<a href="http://localhost:27017" target="_blank" rel="noopener">http://localhost:27017</a></p>
+<p><img src="/images/img-folder/2023/mongo5.png"></p>
+<p>显示以上内容就表示成功了！</p>
+
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2023/06/30/mongodbWindow",
+        distractionFreeMode: true,
+        title: "mongodb windows 安装",
+        body: "http://www.shuy.cc/2023/06/30/mongodbWindow/",
+        labels: ["node mongodb"]
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer">
+    Copyright © Aaron All Rights Reserved 京ICP备17007771号-1
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
