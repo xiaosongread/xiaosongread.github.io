@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>项目-博客-插件库（jq22） | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="该博客是本人5年前写的，主要技术栈用的是node+mongodb+vue+boot+微信小程序。主要实现的功能如下：后台管理系统网站用户管理网站菜单管理(包括pc和h5)内容管理(博客的创建、列表、编辑、删除)视频管理(视频的上传、编辑、删除)菜单管理(jq22功能网站)资源管理(jq22功能网站)(资源的上传、pdf文件书籍的上传、zip插件的上传)网站博客列表登陆入口热点文章静态资源链接汇总展示视频列表页前端资料库(类jq22)，资源的列表页、资源的功能演示页...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">归档</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#主要实现的功能如下："><span class="toc-number">1.</span> <span class="toc-text">主要实现的功能如下：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后台管理系统"><span class="toc-number">1.1.</span> <span class="toc-text">后台管理系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#网站"><span class="toc-number">1.2.</span> <span class="toc-text">网站</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#手机端网站-vue"><span class="toc-number">1.3.</span> <span class="toc-text">手机端网站(vue)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#微信小程序"><span class="toc-number">1.4.</span> <span class="toc-text">微信小程序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#功能页面"><span class="toc-number">2.</span> <span class="toc-text">功能页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目要点"><span class="toc-number">3.</span> <span class="toc-text">项目要点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目部署-拿走代码做你的博客网站"><span class="toc-number">4.</span> <span class="toc-text">项目部署-[拿走代码做你的博客网站]</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            项目-博客-插件库（jq22）
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2023/07/01/nodeBk/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-07-01T10:39:03.000Z" itemprop="datePublished">2023-07-01</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/node-mongodb/">node mongodb</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>该博客是本人5年前写的，主要技术栈用的是node+mongodb+vue+boot+微信小程序。</p>
+<h3 id="主要实现的功能如下："><a href="#主要实现的功能如下：" class="headerlink" title="主要实现的功能如下："></a>主要实现的功能如下：</h3><h4 id="后台管理系统"><a href="#后台管理系统" class="headerlink" title="后台管理系统"></a>后台管理系统</h4><ul>
+<li>网站用户管理</li>
+<li>网站菜单管理(包括pc和h5)</li>
+<li>内容管理(博客的创建、列表、编辑、删除)</li>
+<li>视频管理(视频的上传、编辑、删除)</li>
+<li>菜单管理(jq22功能网站)</li>
+<li>资源管理(jq22功能网站)(资源的上传、pdf文件书籍的上传、zip插件的上传)<h4 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h4></li>
+<li>博客列表</li>
+<li>登陆入口</li>
+<li>热点文章</li>
+<li>静态资源链接汇总展示</li>
+<li>视频列表页</li>
+<li>前端资料库(类jq22)，资源的列表页、资源的功能演示页、资源的下载页<h4 id="手机端网站-vue"><a href="#手机端网站-vue" class="headerlink" title="手机端网站(vue)"></a>手机端网站(vue)</h4></li>
+<li>纯博客网站<h4 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h4></li>
+<li>纯博客微信小程序</li>
+</ul>
+<a id="more"></a>
+<h3 id="功能页面"><a href="#功能页面" class="headerlink" title="功能页面"></a>功能页面</h3><div style="display: flex;flex-wrap: wrap;justify-content:flex-start;"><br>  <a href="https://www.wm-motor.com/" style="display:block;width:450px;height:257px;position:relative; margin: 0 30px 50px 0;background:rgba(0,0,0,.5);" target="_blank" rel="noopener"><br>    <img src="/images/img-folder/2023/n1.png" style="height: 100%;position:absolute;top:0;left:0;right:0;bottom:0;"><br>    <div style="width:100%;line-height:25px;background:rgba(0,0,0,.5);color:#fff;position:absolute;bottom:-25px;left:0;font-size: 14px;text-align:center;">博客列表</div><br>  </a><br>  <a href="https://www.wm-imotor.com/" style="display:block;width:450px;height:257px;position:relative; margin: 0 30px 50px 0;background:rgba(0,0,0,.5);" target="_blank" rel="noopener"><br>    <img src="/images/img-folder/2023/n2.png" style="height: 100%;margin:0 auto;display:block;position:absolute;top:0;left:0;right:0;bottom:0;"><br>    <div style="width:100%;line-height:25px;background:rgba(0,0,0,.5);color:#fff;position:absolute;bottom:-25px;left:0;font-size: 14px;text-align:center;">博客详情</div><br>  </a><br>  <a href="https://www.wm-motor.com/" style="display:block;width:450px;height:257px;position:relative; margin: 0 30px 50px 0;background:rgba(0,0,0,.5);" target="_blank" rel="noopener"><br>    <img src="/images/img-folder/2023/n3.png" style="height: 100%;position:absolute;top:0;left:0;right:0;bottom:0;"><br>    <div style="width:100%;line-height:25px;background:rgba(0,0,0,.5);color:#fff;position:absolute;bottom:-25px;left:0;font-size: 14px;text-align:center;">插件库列表</div><br>  </a><br>  <a href="https://www.wm-imotor.com/" style="display:block;width:450px;height:257px;position:relative; margin: 0 30px 50px 0;background:rgba(0,0,0,.5);" target="_blank" rel="noopener"><br>    <img src="/images/img-folder/2023/n4.png" style="height: 100%;margin:0 auto;display:block;position:absolute;top:0;left:0;right:0;bottom:0;"><br>    <div style="width:100%;line-height:25px;background:rgba(0,0,0,.5);color:#fff;position:absolute;bottom:-25px;left:0;font-size: 14px;text-align:center;">插件详情页</div><br>  </a><br>  <a href="https://www.wm-imotor.com/" style="display:block;width:450px;height:257px;position:relative; margin: 0 30px 50px 0;background:rgba(0,0,0,.5);" target="_blank" rel="noopener"><br>    <img src="/images/img-folder/2023/n5.png" style="height: 100%;margin:0 auto;display:block;position:absolute;top:0;left:0;right:0;bottom:0;"><br>    <div style="width:100%;line-height:25px;background:rgba(0,0,0,.5);color:#fff;position:absolute;bottom:-25px;left:0;font-size: 14px;text-align:center;">管理系统-内容编辑</div><br>  </a><br></div>
+
+<h3 id="项目要点"><a href="#项目要点" class="headerlink" title="项目要点"></a>项目要点</h3><h3 id="项目部署-拿走代码做你的博客网站"><a href="#项目部署-拿走代码做你的博客网站" class="headerlink" title="项目部署-[拿走代码做你的博客网站]"></a>项目部署-[拿走代码做你的博客网站]</h3>
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2023/07/01/nodeBk",
+        distractionFreeMode: true,
+        title: "项目-博客-插件库（jq22）",
+        body: "http://www.shuy.cc/2023/07/01/nodeBk/",
+        labels: ["node mongodb"]
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer">
+    Copyright © Aaron All Rights Reserved 京ICP备17007771号-1
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
