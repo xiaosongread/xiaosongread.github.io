@@ -166,6 +166,9 @@ body {
     background: rgba(0, 0, 0, 0.6);
   }
 }
+.ahover:hover {
+  color: #800020 !important;
+}
 [class^="icon-"],
 [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
