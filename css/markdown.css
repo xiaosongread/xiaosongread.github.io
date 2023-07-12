@@ -496,6 +496,8 @@
 .markdown-body h3 {
   font-size: 20px;
   font-weight: 600;
+  background: #e5e5e5;
+  padding: 6px 0 6px 20px;
 }
 .markdown-body h4 {
   font-size: 16px;
@@ -516,6 +518,7 @@
 }
 .markdown-body blockquote {
   margin: 0;
+  background: #fcfcfc;
 }
 .markdown-body ul,
 .markdown-body ol {
