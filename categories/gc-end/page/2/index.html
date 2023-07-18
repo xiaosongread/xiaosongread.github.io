@@ -81,7 +81,15 @@
     </nav>
 </div>
 
-    <aside id="aside" class="aside">
+    <!--
+ * @Author: xiaosongwindow 598349146@qq.com
+ * @Date: 2023-04-25 23:16:16
+ * @LastEditors: xiaosongwindow 598349146@qq.com
+ * @LastEditTime: 2023-07-18 16:47:46
+ * @FilePath: \github-xiaosongread-hexo\themes\landscape\layout\_partial\aside.ejs
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<aside id="aside" class="aside">
     <div id="aside-mask" class="aside-mask"></div>
     <div id="aside-inner" class="aside-inner">
 
@@ -116,6 +124,7 @@
         <div style="position: absolute;bottom: 30px;left: 30px;font-size: 14px;color: #999;">
             <div style="font-size: 18px;color: #000;">栈内热点</div>
             <a href="/2023/07/01/nodeBk/"><div style="color: #999;" class="ahover">· 项目-博客-插件库（jq22）</div></a>
+            <a href="/2020/08/03/object/"><div style="color: #999;" class="ahover">· 第五章-引用类型</div></a>
             <a href="/2019/02/21/jc-2/"><div style="color: #999;" class="ahover">· 微信小程序实现签名并保存图片</div></a>
             <a href="/2019/04/27/jc-6/"><div style="color: #999;" class="ahover">· vue 组件之间通信</div></a>
             <a href="/2019/05/31/jc-1/"><div style="color: #999;" class="ahover">· hexo/github 搭建github博客教程</div></a>
@@ -128,42 +137,6 @@
 
         <div id="content" class="content">
             
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2020/06/23/vue-router-打开新页面/">vue-router-打开新页面</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/gc-end/page/2/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2020-06-23T08:21:44.000Z" itemprop="datePublished">2020-06-23</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/vue-router/">vue router</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="vue-router-如何在新窗口打开页面"><a href="#vue-router-如何在新窗口打开页面" class="headerlink" title="vue-router 如何在新窗口打开页面"></a>vue-router 如何在新窗口打开页面</h2><h3 id="1-标签实现新窗口打开"><a href="#1-标签实现新窗口打开" class="headerlink" title="1. 标签实现新窗口打开"></a>1. <router-link>标签实现新窗口打开</router-link></h3><p>官方文档中说 v-link 指令被 <router-link> 组件指令替代，且 <router-link> 不支持 target=”_blank” 属性，如果需要打开一个新窗口必须要用<a>标签，但事实上vue2版本的 <router-link> 是支持 target=”_blank” 属性的(tag=”a”)，如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">:to</span>=<span class="string">"&#123;path:'/home',query:&#123;id:'1'&#125;&#125;"</span>&gt;</span>新页面打开home页<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure></router-link></a></router-link></router-link></p>
-<h3 id="2-编程式导航"><a href="#2-编程式导航" class="headerlink" title="2.编程式导航"></a>2.编程式导航</h3><p>有些时候需要在单击事件或者在函数中实现页面跳转，那么可以借助router的示例方法，通过编写代码实现。我们常用的是 $router.push 和 $router.go 但是vue2.0以后，这种方式就不支持新窗口打开的属性了，这个时候就需要使用this.$router.resolve,如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">seeShare()&#123;</span><br><span class="line">  let routeUrl = this.$router.resolve(&#123;</span><br><span class="line">      path: "/share",</span><br><span class="line">      query: &#123;id:96&#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  window.open(routeUrl .href, '_blank');</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-        
-    </section>
-</article>
-
-
     <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
@@ -570,6 +543,49 @@
         
         <p class="article-more-link">
             <a href="/2019/04/27/jc-6/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2019/02/21/jc-2/">微信小程序实现签名并保存图片</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/categories/gc-end/page/2/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2019-02-21T01:17:20.000Z" itemprop="datePublished">2019-02-21</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/微信小程序-canvas/">微信小程序 canvas</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>小程序实现签名并保存图片，主要的通过canvas来实现</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--pages/sign/sign.wxml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">'container'</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 签名画布 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">class</span>=<span class="string">"canvas"</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">canvas-id</span>=<span class="string">"canvas"</span> <span class="attr">disable-scroll</span>=<span class="string">"true"</span> <span class="attr">bindtouchstart</span>=<span class="string">"canvasStart"</span> <span class="attr">bindtouchmove</span>=<span class="string">"canvasMove"</span> <span class="attr">bindtouchend</span>=<span class="string">"canvasEnd"</span> <span class="attr">touchcancel</span>=<span class="string">"canvasEnd"</span> <span class="attr">binderror</span>=<span class="string">"canvasIdErrorCallback"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">'buttonBox'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">bindtap</span>=<span class="string">'clickMe'</span> <span class="attr">class</span>=<span class="string">'addbutton'</span> <span class="attr">open-type</span>=<span class="string">"getuserinfo"</span>&gt;</span>点击我生成图片保存相册<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"default"</span> <span class="attr">class</span>=<span class="string">'delbutton'</span> <span class="attr">bindtap</span>=<span class="string">"cleardraw"</span>&gt;</span>清除<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+        <p class="article-more-link">
+            <a href="/2019/02/21/jc-2/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
