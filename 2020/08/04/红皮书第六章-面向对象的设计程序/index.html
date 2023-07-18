@@ -7,7 +7,7 @@
 
     
 
-    <title>红皮书第六章-面向对象的设计程序 | 前端技术博客</title>
+    <title>第六章-面向对象的设计程序 | 前端技术博客</title>
     <meta name="author" content="xiaosongread">
     <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
     <meta name="description" content="属性类型数据属性(Object.defineProperty())1) [[Configurable]]: 表示能否通过delete删除属性，从而重新定义属性，，默认值为true2) [[Enumerable]]: 表示能否通过for-in循环返回属性，，默认值为true3) [[Writable]]: 表示能否修改属性的值，，默认值为true4) [[Value]]: 包含这个属性的值，默认值为undefined    修改对象属性的默认特性，必须使用Object.definePro...">
@@ -104,7 +104,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            红皮书第六章-面向对象的设计程序
+            第六章-面向对象的设计程序
         </h1>
         
         <div class="article-meta clearfix">
@@ -127,7 +127,7 @@
 <p>修改对象属性的默认特性，必须使用Object.defineProperty()方法。</p>
 </blockquote>
 <a id="more"></a>
-<p><a href="http://shuy.cc/2020/07/12/typeOf/" target="_blank" rel="noopener">红皮书第三章-数据类型</a><br><a href="http://shuy.cc/2020/08/13/instance/" target="_blank" rel="noopener">红皮书第四章-变量、作用域和内存问题</a><br><a href="http://shuy.cc/2020/08/03/object" target="_blank" rel="noopener">红皮书第五章-引用类型</a><br><a href="http://shuy.cc/2020/08/04/%E7%BA%A2%E7%9A%AE%E4%B9%A6%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%A8%8B%E5%BA%8F/" target="_blank" rel="noopener">红皮书第六章-面向对象的设计程序</a><br><a href="http://shuy.cc/2020/08/28/%E7%BA%A2%E7%9A%AE%E4%B9%A6%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_blank" rel="noopener">红皮书第七章-函数表达式</a><br><a href="http://shuy.cc/2020/09/03/%E7%BA%A2%E7%9A%AE%E4%B9%A6%E7%AC%AC%E5%85%AB%E7%AB%A0-BOM/" target="_blank" rel="noopener">红皮书第八章-BOM</a><br><a href="http://shuy.cc/2020/09/09/%E7%BA%A2%E7%9A%AE%E4%B9%A6%E7%AC%AC%E5%8D%81%E7%AB%A0-DOM/" target="_blank" rel="noopener">红皮书第十章-DOM</a></p>
+<p><a href="http://shuy.cc/2020/07/12/typeOf/" target="_blank" rel="noopener">第三章-数据类型</a><br><a href="http://shuy.cc/2020/08/13/instance/" target="_blank" rel="noopener">第四章-变量、作用域和内存问题</a><br><a href="http://shuy.cc/2020/08/03/object" target="_blank" rel="noopener">第五章-引用类型</a><br><a href="http://shuy.cc/2020/08/04/%E7%BA%A2%E7%9A%AE%E4%B9%A6%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AE%BE%E8%AE%A1%E7%A8%8B%E5%BA%8F/" target="_blank" rel="noopener">第六章-面向对象的设计程序</a><br><a href="http://shuy.cc/2020/08/28/%E7%BA%A2%E7%9A%AE%E4%B9%A6%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_blank" rel="noopener">第七章-函数表达式</a><br><a href="http://shuy.cc/2020/09/03/%E7%BA%A2%E7%9A%AE%E4%B9%A6%E7%AC%AC%E5%85%AB%E7%AB%A0-BOM/" target="_blank" rel="noopener">第八章-BOM</a><br><a href="http://shuy.cc/2020/09/09/%E7%BA%A2%E7%9A%AE%E4%B9%A6%E7%AC%AC%E5%8D%81%E7%AB%A0-DOM/" target="_blank" rel="noopener">第十章-DOM</a></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;&#125;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">'name'</span>, &#123;</span><br><span class="line">  writable: <span class="literal">false</span>,</span><br><span class="line">  value: <span class="string">'ceshi'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(person.name) <span class="comment">// ceshi</span></span><br><span class="line">person.name = <span class="string">"xiugai"</span></span><br><span class="line"><span class="built_in">console</span>.log(person.name) <span class="comment">// ceshi</span></span><br></pre></td></tr></table></figure>
 <h4 id="访问器属性-getter-和-setter函数"><a href="#访问器属性-getter-和-setter函数" class="headerlink" title="访问器属性(getter 和 setter函数)"></a>访问器属性(getter 和 setter函数)</h4><p>访问器属性不包含数据值，他们包含一对getter 和 setter函数，在读取访问器属性值得时候，会调用getter函数，在写入访问器属性的时候，调用setter函数。    </p>
 <p>1) [[Configurable]]: 表示能否通过delete删除属性，从而重新定义属性，，默认值为true<br>2) [[Enumerable]]: 表示能否通过for-in循环返回属性，，默认值为true<br>3) [[Get]]: 在读取属性的时调用的函数，默认值为undefined<br>4) [[Set]]: 在写入属性的时调用的函数，默认值为undefined   </p>
@@ -225,7 +225,7 @@
         admin: ["sanonz"],
         id: "2020/08/04/红皮书第六章-面向对象的设计程序",
         distractionFreeMode: true,
-        title: "红皮书第六章-面向对象的设计程序",
+        title: "第六章-面向对象的设计程序",
         body: "http://www.shuy.cc/2020/08/04/红皮书第六章-面向对象的设计程序/",
         labels: []
     }).render('comments');
