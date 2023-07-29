@@ -7,10 +7,10 @@
 
     
 
-    <title>Category: js-end | 前端技术博客</title>
+    <title>简单实现模拟 vue 的数据响应 | 前端技术博客</title>
     <meta name="author" content="xiaosongread">
     <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
-    <meta name="description" content="小宋 抿圪斗前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="主要实现的是修改对象里面的属性，从而使得页面中的显示改变。采用的是：Object.defineProperty 这个属性来监听对象属性的改变window 设置一个变量，来记录当有属性改变的时候，将需要调用的函数记录一下set 中，当数据属性修改的时候，for 循环来调用相关改变页面的的函数    12345678910111213141516171819&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&#34;en&#34;&amp;gt;&amp;lt;head&amp;gt;  &amp;lt;...">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 
@@ -62,7 +62,7 @@
                 <span class="nav-text">css</span>
             </a>
         
-            <a class="nav-item active" href="/categories/js-end/">
+            <a class="nav-item" href="/categories/js-end/">
                 <span class="nav-text">js</span>
             </a>
         
@@ -93,6 +93,8 @@
     <div id="aside-mask" class="aside-mask"></div>
     <div id="aside-inner" class="aside-inner">
 
+        
+        
         
         
 
@@ -136,17 +138,16 @@
 </header>
 
         <div id="content" class="content">
-            
-    <article class="article" itemscope itemprop="blogPost">
+            <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2023/07/28/observe/">简单实现模拟 vue 的数据响应</a>
+            简单实现模拟 vue 的数据响应
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
+            <a class="article-date" href="http://www.shuy.cc/2023/07/28/observe/index.html">
     
     <i class="icon-calendar vm"></i>
     
@@ -176,387 +177,27 @@
 </article>
 
 
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/01/08/20230108/">项目中常用的正则表达式</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-01-08T05:30:03.000Z" itemprop="datePublished">2023-01-08</time>
-</a>
 
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/js-正则/">js 正则</a>
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2023/07/28/observe",
+        distractionFreeMode: true,
+        title: "简单实现模拟 vue 的数据响应",
+        body: "http://www.shuy.cc/2023/07/28/observe/",
+        labels: []
+    }).render('comments');
+    </script>
 </div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>总结常用的正则表达式，以备不时之需，直接复制粘贴多简单，直接不过脑子。</p>
-        
-        <p class="article-more-link">
-            <a href="/2023/01/08/20230108/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2022/10/10/md5/">加密算法介绍</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2022-10-10T05:30:03.000Z" itemprop="datePublished">2022-10-10</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/js-加密/">js 加密</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>在信息安全越来越受重视的今天，前端的各种加密也变得更加重要。通常跟服务器的交互中，为保障数据传输的安全性，避免被人抓包篡改数据，除了 https 的应用，还需要对传输数据进行加解密。</p>
-<h3 id="目前常见的加密算法可以分成三类"><a href="#目前常见的加密算法可以分成三类" class="headerlink" title="目前常见的加密算法可以分成三类"></a>目前常见的加密算法可以分成三类</h3><p>1) 对称加密算法：AES、…</p>
-<p>2) 非对称加密算法：RSA、…</p>
-<p>3) Hash 算法：MD5、…<br>
-        
-        </p><p class="article-more-link">
-            <a href="/2022/10/10/md5/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2022/08/20/百度地图与高德地图的相互转化/">百度地图与高德地图的相互转化</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2022-08-20T06:54:43.000Z" itemprop="datePublished">2022-08-20</time>
-</a>
-
-            
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h3 id="问题来源：小程序使用的是高德地图，后台的数据来源于百度地图，导致小程序的定位不是太准确"><a href="#问题来源：小程序使用的是高德地图，后台的数据来源于百度地图，导致小程序的定位不是太准确" class="headerlink" title="问题来源：小程序使用的是高德地图，后台的数据来源于百度地图，导致小程序的定位不是太准确"></a>问题来源：小程序使用的是高德地图，后台的数据来源于百度地图，导致小程序的定位不是太准确</h3><p>在开发中使用了第三方的数据，由于经纬度使用的是第三方的数组，他们使用的是百度的地图坐标。在项目中使用时，能用百度地图去解析自然是最好的，但是呢，该项目是基于微信小程序的，百度地图针对小程序提供的API功能不是很完善，难以实现想要的需求，所以采用腾讯官方的地图。</p>
-<h3 id="将百度地图经纬度转换为腾讯-高德地图经纬度"><a href="#将百度地图经纬度转换为腾讯-高德地图经纬度" class="headerlink" title="将百度地图经纬度转换为腾讯/高德地图经纬度"></a>将百度地图经纬度转换为腾讯/高德地图经纬度</h3>
-        
-        <p class="article-more-link">
-            <a href="/2022/08/20/百度地图与高德地图的相互转化/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2022/07/31/weather/">box-shadow属性-天气预报</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2022-07-31T09:13:10.000Z" itemprop="datePublished">2022-07-31</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/box-shadow/">box-shadow</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="效果如下："><a href="#效果如下：" class="headerlink" title="效果如下："></a>效果如下：</h2><p><img src="/images/img-folder/weather.gif"></p>
-        
-        <p class="article-more-link">
-            <a href="/2022/07/31/weather/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2022/06/17/nodetips/">nodetips</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2022-06-17T08:08:59.000Z" itemprop="datePublished">2022-06-17</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/node/">node</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>设计师给了一堆任务头像，文件名乱七八糟的，我这边其实就一个循环就渲染出来了，所以得统一按下标重新命名一下，五百多张不可能一张一张改吧，那只能通过程序来循环改了，前端页面仔这可怎么搞？</p>
-        
-        <p class="article-more-link">
-            <a href="/2022/06/17/nodetips/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2022/05/05/mianshi/">常用知识总结</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2022-05-05T05:54:03.000Z" itemprop="datePublished">2022-05-05</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/css-js-vue/">css js vue</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="–-html-css"><a href="#–-html-css" class="headerlink" title="– html/css"></a>– html/css</h2><h3 id="—-css的布局方式"><a href="#—-css的布局方式" class="headerlink" title="— css的布局方式"></a>— css的布局方式</h3><p>1.table布局<br>2.flex布局<br>3.float布局<br>4.响应式布局</p>
-<h3 id="—-盒子模型"><a href="#—-盒子模型" class="headerlink" title="— 盒子模型"></a>— 盒子模型</h3><p>IE盒子模型：宽高包括content + padding + bording; box-sizing: border-box<br>标准盒模型：宽高就是元素的实际宽高 content; box-sizing: content-box<br>
-        
-        </p><p class="article-more-link">
-            <a href="/2022/05/05/mianshi/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2022/03/19/focus-preventScroll/">focus-preventScroll</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2022-03-19T03:01:30.000Z" itemprop="datePublished">2022-03-19</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/focus-preventScroll-滚动/">focus preventScroll 滚动</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p><img src="/images/img-folder/focus.gif" width="400"></p>
-        
-        <p class="article-more-link">
-            <a href="/2022/03/19/focus-preventScroll/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2022/01/10/瀑布流布局的实现/">瀑布流布局的实现</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2022-01-10T06:50:03.000Z" itemprop="datePublished">2022-01-10</time>
-</a>
-
-            
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h3 id="视觉效果"><a href="#视觉效果" class="headerlink" title="视觉效果"></a>视觉效果</h3><p><img src="/images/img-folder/pbl.png"><br>
-        
-        </p><p class="article-more-link">
-            <a href="/2022/01/10/瀑布流布局的实现/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2021/10/10/float2021/">javascript浮点型的一些坑</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2021-10-10T12:30:10.000Z" itemprop="datePublished">2021-10-10</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/js/">js</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>javascript浮点型运算有很多问题，不管是加减还是乘除，还是四舍五入，都可能出现问题。本文简单介绍一些解决办法，都是工作中总结出来的，有简单，有麻烦。下面就总结一下。</p>
-<h2 id="加发运算"><a href="#加发运算" class="headerlink" title="加发运算"></a>加发运算</h2><h3 id="例如常见的："><a href="#例如常见的：" class="headerlink" title="例如常见的："></a>例如常见的：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.1</span>+<span class="number">0.2</span> <span class="comment">//0.30000000000000004</span></span><br><span class="line"><span class="number">1.4</span>+<span class="number">2.8</span> <span class="comment">//4.199999999999999</span></span><br></pre></td></tr></table></figure>
-<h3 id="解决方案一"><a href="#解决方案一" class="headerlink" title="解决方案一"></a>解决方案一</h3>
-        
-        <p class="article-more-link">
-            <a href="/2021/10/10/float2021/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-
-
-<nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/categories/js-end/page/2/">2</a><a class="page-number" href="/categories/js-end/page/3/">3</a><a class="extend next" rel="next" href="/categories/js-end/page/2/">Next &raquo;</a>
-</nav>
-
 
 
         </div>
@@ -620,6 +261,31 @@
         });
     });
     </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
     
 
 </body>
