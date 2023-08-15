@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>总结常用的框架API和前端插件 | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="ECMAScript 6 - ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。lodashjs - Lodash 是一个一致性、模块化、高性能的 JavaScript 实用工具库。jquery - 前端众所周知的JS封装库。WebUploader - 上传插件。mongoosejs - 。nodejs - threejs - UI框架fontawesome - 一套绝佳的字体库和css...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">归档</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    <!--
+ * @Author: xiaosongwindow 598349146@qq.com
+ * @Date: 2023-04-25 23:16:16
+ * @LastEditors: xiaosongwindow 598349146@qq.com
+ * @LastEditTime: 2023-07-18 16:47:46
+ * @FilePath: \github-xiaosongread-hexo\themes\landscape\layout\_partial\aside.ejs
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#UI框架"><span class="toc-number">1.</span> <span class="toc-text">UI框架</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            总结常用的框架API和前端插件
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2022/09/13/前端常用链接汇总/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2022-09-13T05:30:03.000Z" itemprop="datePublished">2022-09-13</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/vue-react-小程序/">vue react 小程序</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <ul>
+<li><a href="https://es6.ruanyifeng.com/#docs/intro" target="_blank" rel="noopener">ECMAScript 6</a> - ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。</li>
+<li><p><a href="https://www.lodashjs.com/" target="_blank" rel="noopener">lodashjs</a> - Lodash 是一个一致性、模块化、高性能的 JavaScript 实用工具库。</p>
+<a id="more"></a>
+</li>
+<li><p><a href="https://jquery.cuishifeng.cn/" target="_blank" rel="noopener">jquery</a> - 前端众所周知的JS封装库。</p>
+</li>
+<li><a href="http://fex.baidu.com/webuploader/doc/index.html#WebUploader_Uploader_makeThumb" target="_blank" rel="noopener">WebUploader</a> - 上传插件。</li>
+<li><a href="https://mongoosejs.com/" target="_blank" rel="noopener">mongoosejs</a> - 。</li>
+<li><a href="https://nodejs.cn/api/" target="_blank" rel="noopener">nodejs</a> - </li>
+<li><a href="http://www.webgl3d.cn/" target="_blank" rel="noopener">threejs</a> - <h3 id="UI框架"><a href="#UI框架" class="headerlink" title="UI框架"></a>UI框架</h3></li>
+<li><a href="https://fontawesome.dashgame.com/" target="_blank" rel="noopener">fontawesome</a> - 一套绝佳的字体库和css框架</li>
+<li><a href="https://element.eleme.cn/#/zh-CN/component/installation" target="_blank" rel="noopener">elementUi</a> - 非常优秀的一款web前端UI框架</li>
+<li><a href="http://mint-ui.github.io/#!/zh-cn" target="_blank" rel="noopener">mint-ui</a> - 和Vue绝配的一套H5前端UI框架</li>
+<li><a href="https://v-charts.js.org/#/line" target="_blank" rel="noopener">v-charts.js</a> - 基于 Vue2.0 和 echarts 封装的 v-charts 图表组件，只需要统一提供一种对前后端都友好的数据格式设置简单的配置项，便可轻松生成常见的图表。</li>
+<li><a href="https://ant.design/index-cn" target="_blank" rel="noopener">ant.design</a> - antd 为 Web 应用提供了丰富的基础 UI 组件。</li>
+<li><a href="https://chenz24.github.io/vue-blu/#/" target="_blank" rel="noopener">vue-blu</a> - Vue-Blu是基于Vuejs和Bulma开发的开源UI组件库。旨在为PC端的前端开发(特别是中后台产品)提供一个快速且灵活的解决方案。</li>
+<li><a href="https://echarts.apache.org/handbook/zh/get-started/" target="_blank" rel="noopener">echarts</a> - 一个基于 JavaScript 的开源可视化图表库。</li>
+<li><a href="https://l-ui.com/content/about/design.html" target="_blank" rel="noopener">LULUUI</a> - 一个前端人自己写的UI框架，感觉作者非常的懂设计。</li>
+<li><a href="https://motion.ant.design/exhibition-cn/" target="_blank" rel="noopener">Ant-Motion</a> - 基于react的前端动画插件</li>
+<li><a href="https://nervjs.github.io/taro-docs/docs/" target="_blank" rel="noopener">Taro</a> - Taro 是一个开放式跨端跨框架解决方案，支持使用 React/Vue/Nerv 等框架来开发 微信 / 京东 / 百度 / 支付宝 / 字节跳动 / QQ / 飞书 小程序 / H5 / RN 等应用。</li>
+<li><a href="https://vant-ui.github.io/vant/#/zh-CN" target="_blank" rel="noopener">vant-ui</a> - Vant 是一个轻量、可定制的移动端组件库，于 2017 年开源。目前 Vant 官方提供了 Vue 2 版本、Vue 3 版本和微信小程序版本。</li>
+<li><a href="https://dev.dcloud.net.cn/mui/ui/#picker" target="_blank" rel="noopener">mui</a> - 最接近原生APP体验的高性能前端框架</li>
+<li><a href="https://www.naiveui.com/zh-CN/os-theme/components/element" target="_blank" rel="noopener">Naive UI</a> - 一个 Vue 3 组件库，比较完整，主题可调。</li>
+</ul>
+
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2022/09/13/前端常用链接汇总",
+        distractionFreeMode: true,
+        title: "总结常用的框架API和前端插件",
+        body: "http://www.shuy.cc/2022/09/13/前端常用链接汇总/",
+        labels: ["vue react 小程序"]
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer">
+    Copyright © Aaron All Rights Reserved 京ICP备17007771号-1
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
