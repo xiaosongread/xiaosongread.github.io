@@ -110,6 +110,19 @@
   line-height: 18px;
   list-style-type: none;
 }
+.toc .toc-level-2 .toc-text {
+  font-weight: 700;
+  font-size: 18px;
+  color: #3c3c43 !important;
+}
+.toc .toc-level-3 .toc-text {
+  font-size: 16px;
+  color: rgba(60, 60, 67, 0.9) !important;
+}
+.toc .toc-level-4 .toc-text {
+  font-size: 14px;
+  color: rgba(60, 60, 67, 0.8) !important;
+}
 .toc ol {
   padding-left: 20px;
   list-style-type: none;

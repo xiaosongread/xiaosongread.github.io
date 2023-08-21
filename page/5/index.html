@@ -51,7 +51,7 @@
     <nav id="nav-inner" class="nav-inner">
         
             <a class="nav-item" href="/archives">
-                <span class="nav-text">归档</span>
+                <span class="nav-text">列表</span>
             </a>
         
             <a class="nav-item active" href="/">
@@ -137,6 +137,42 @@
 
         <div id="content" class="content">
             
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2020/06/23/vue-router-打开新页面/">vue-router-打开新页面</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/page/5/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2020-06-23T08:21:44.000Z" itemprop="datePublished">2020-06-23</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/vue-router/">vue router</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h2 id="vue-router-如何在新窗口打开页面"><a href="#vue-router-如何在新窗口打开页面" class="headerlink" title="vue-router 如何在新窗口打开页面"></a>vue-router 如何在新窗口打开页面</h2><h3 id="1-标签实现新窗口打开"><a href="#1-标签实现新窗口打开" class="headerlink" title="1. 标签实现新窗口打开"></a>1. <router-link>标签实现新窗口打开</router-link></h3><p>官方文档中说 v-link 指令被 <router-link> 组件指令替代，且 <router-link> 不支持 target=”_blank” 属性，如果需要打开一个新窗口必须要用<a>标签，但事实上vue2版本的 <router-link> 是支持 target=”_blank” 属性的(tag=”a”)，如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">:to</span>=<span class="string">"&#123;path:'/home',query:&#123;id:'1'&#125;&#125;"</span>&gt;</span>新页面打开home页<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure></router-link></a></router-link></router-link></p>
+<h3 id="2-编程式导航"><a href="#2-编程式导航" class="headerlink" title="2.编程式导航"></a>2.编程式导航</h3><p>有些时候需要在单击事件或者在函数中实现页面跳转，那么可以借助router的示例方法，通过编写代码实现。我们常用的是 $router.push 和 $router.go 但是vue2.0以后，这种方式就不支持新窗口打开的属性了，这个时候就需要使用this.$router.resolve,如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">seeShare()&#123;</span><br><span class="line">  let routeUrl = this.$router.resolve(&#123;</span><br><span class="line">      path: "/share",</span><br><span class="line">      query: &#123;id:96&#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  window.open(routeUrl .href, '_blank');</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        
+    </section>
+</article>
+
+
     <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
@@ -506,73 +542,6 @@
         
         </p><p class="article-more-link">
             <a href="/2019/08/22/git-常用命令技巧/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2019/08/13/collect/">常用的前端库汇总</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/page/5/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2019-08-13T03:53:19.000Z" itemprop="datePublished">2019-08-13</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/vue-react-webpack/">vue react webpack</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h1 id="Commonly-used-to-collect"><a href="#Commonly-used-to-collect" class="headerlink" title="Commonly-used-to-collect"></a>Commonly-used-to-collect</h1><blockquote>
-<p>🎉 整理我平时关注的前端库。</p>
-</blockquote>
-<h2 id="导航："><a href="#导航：" class="headerlink" title="导航："></a>导航：</h2><p>1.<a href="#vue">Vue</a></p>
-<ul>
-<li><a href="#vueApi">API</a> </li>
-<li><a href="#vueUI库">UI库</a> </li>
-<li><a href="#vue实用库">实用库</a> </li>
-<li><a href="#vue应用实例">应用实例</a> </li>
-<li><a href="#vueDemo示例">Demo示例</a> </li>
-</ul>
-<p>2.<a href="#react">React</a></p>
-<ul>
-<li><a href="#reactApi">API</a> </li>
-<li><a href="#reactUI库">UI库</a> </li>
-<li><a href="#react实用库">实用库</a> </li>
-</ul>
-<p>3.<a href="#小程序">小程序</a></p>
-<ul>
-<li><a href="#微信Api">微信</a></li>
-<li><a href="#支付宝Api">支付宝</a></li>
-<li><a href="#今日头条Api">今日头条</a></li>
-<li><a href="#百度Api">百度</a></li>
-</ul>
-<p>4.<a href="#webpack">webpack</a></p>
-<p>5.<a href="#typeScript">typeScript</a><br>
-        
-        </p><p class="article-more-link">
-            <a href="/2019/08/13/collect/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
