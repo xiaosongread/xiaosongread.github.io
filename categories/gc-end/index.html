@@ -81,14 +81,7 @@
     </nav>
 </div>
 
-    <!--
- * @Author: xiaosongwindow 598349146@qq.com
- * @Date: 2023-04-25 23:16:16
- * @LastEditors: xiaosongwindow 598349146@qq.com
- * @LastEditTime: 2023-07-18 16:47:46
- * @FilePath: \github-xiaosongread-hexo\themes\landscape\layout\_partial\aside.ejs
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
+    
 <aside id="aside" class="aside">
     <div id="aside-mask" class="aside-mask"></div>
     <div id="aside-inner" class="aside-inner">
@@ -553,7 +546,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2020/06/23/vue-router-打开新页面/">vue-router-打开新页面</a>
+            <a href="/2020/07/12/修改element源码如何部署代码打包/">修改element源码，发布属于自己的element包，实现自定义并修改element源码的bug，来实现线上使用自己的包来打包文件</a>
         </h1>
         
         <div class="article-meta clearfix">
@@ -561,24 +554,26 @@
     
     <i class="icon-calendar vm"></i>
     
-    <time class="vm" datetime="2020-06-23T08:21:44.000Z" itemprop="datePublished">2020-06-23</time>
+    <time class="vm" datetime="2020-07-12T04:01:26.000Z" itemprop="datePublished">2020-07-12</time>
 </a>
 
             
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/vue-router/">vue router</a>
-</div>
-
 
         </div>
     </header>
     
     <section class="article-body markdown-body">
         
-        <h2 id="vue-router-如何在新窗口打开页面"><a href="#vue-router-如何在新窗口打开页面" class="headerlink" title="vue-router 如何在新窗口打开页面"></a>vue-router 如何在新窗口打开页面</h2><h3 id="1-标签实现新窗口打开"><a href="#1-标签实现新窗口打开" class="headerlink" title="1. 标签实现新窗口打开"></a>1. <router-link>标签实现新窗口打开</router-link></h3><p>官方文档中说 v-link 指令被 <router-link> 组件指令替代，且 <router-link> 不支持 target=”_blank” 属性，如果需要打开一个新窗口必须要用<a>标签，但事实上vue2版本的 <router-link> 是支持 target=”_blank” 属性的(tag=”a”)，如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">:to</span>=<span class="string">"&#123;path:'/home',query:&#123;id:'1'&#125;&#125;"</span>&gt;</span>新页面打开home页<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure></router-link></a></router-link></router-link></p>
-<h3 id="2-编程式导航"><a href="#2-编程式导航" class="headerlink" title="2.编程式导航"></a>2.编程式导航</h3><p>有些时候需要在单击事件或者在函数中实现页面跳转，那么可以借助router的示例方法，通过编写代码实现。我们常用的是 $router.push 和 $router.go 但是vue2.0以后，这种方式就不支持新窗口打开的属性了，这个时候就需要使用this.$router.resolve,如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">seeShare()&#123;</span><br><span class="line">  let routeUrl = this.$router.resolve(&#123;</span><br><span class="line">      path: "/share",</span><br><span class="line">      query: &#123;id:96&#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  window.open(routeUrl .href, '_blank');</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+        <p>我们在项目中，在采用element框架的时候，框架本身也是有bug的或者不符合我们产品需求需要我们改动的，但是，如果是本地打包完上传到服务器的话，可以修改本地的element源码，如果是服务器打包的话，那我们就得自己发一个npm的包来进行打包了。</p>
+<h3 id="案例：修改element-Cascader-级联选择器，清空数据，下拉框仍然回显最后选择的数据的问题"><a href="#案例：修改element-Cascader-级联选择器，清空数据，下拉框仍然回显最后选择的数据的问题" class="headerlink" title="案例：修改element Cascader 级联选择器，清空数据，下拉框仍然回显最后选择的数据的问题"></a>案例：修改element Cascader 级联选择器，清空数据，下拉框仍然回显最后选择的数据的问题</h3>
+        
+        <p class="article-more-link">
+            <a href="/2020/07/12/修改element源码如何部署代码打包/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
         
     </section>
 </article>
