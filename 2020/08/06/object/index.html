@@ -181,16 +181,28 @@
 <h4 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h4><h5 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h5><p>合并数组的方法。<br>基于当前数组中的所有项创建一个数组。接受一个或多个数组，则该方法会将这些数组中的项每一项都添加到结果数组中。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">'red'</span>, <span class="string">'blue'</span>, <span class="string">'green'</span>];</span><br><span class="line"><span class="keyword">var</span> colors2 = colors.concat(<span class="string">'yellow'</span>, [<span class="string">'black'</span>, <span class="string">'brown'</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(colors); <span class="comment">// ['red', 'blue', 'green']</span></span><br><span class="line"><span class="built_in">console</span>.log(colors2); <span class="comment">// ['red', 'blue', 'green', 'yellow', 'black', 'brown']</span></span><br></pre></td></tr></table></figure>
 <h5 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h5><p>slice() 它能够基于当前数组中一或多个项创建一个新数组。<br>接受一个或者两个参数，即要返回项的起始和结束位置。</p>
+<blockquote>
+<p>不会改变原数组，而是返回一个新数组。</p>
+</blockquote>
 <ul>
 <li>在接受一个参数的时候，返回从该指定位置到数组结尾的所有项；</li>
 <li>在接受两个参数的时候，返回第一个参数到第二个参数之间的所有项。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">'red'</span>, <span class="string">'blue'</span>, <span class="string">'green'</span>, <span class="string">'yellow'</span>, <span class="string">'black'</span>, <span class="string">'brown'</span>];</span><br><span class="line"><span class="keyword">var</span> colors1 = colors.slice(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> colors2 = colors.slice(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line"><span class="built_in">console</span>.log(colors1, colors2); <span class="comment">// ['blue', 'green', 'yellow', 'black', 'brown'] ['blue', 'green', 'yellow']</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>如果 slice() 方法的参数中有一个负数，则用数组的长度加上该数来确定相应的位置。</p>
-</blockquote>
+<p><strong><em>如果 slice() 方法的参数中有一个负数，则用数组的长度加上该数来确定相应的位置。</em></strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">'red'</span>, <span class="string">'blue'</span>, <span class="string">'green'</span>, <span class="string">'yellow'</span>, <span class="string">'black'</span>, <span class="string">'brown'</span>];</span><br><span class="line"><span class="keyword">var</span> colors1 = colors.slice(<span class="number">-2</span>, <span class="number">-1</span>); <span class="comment">// slice(-2, -1) =&gt; slice(4, 5)</span></span><br><span class="line"><span class="built_in">console</span>.log(colors1); <span class="comment">// ['black']</span></span><br></pre></td></tr></table></figure>
-<h5 id="splice"><a href="#splice" class="headerlink" title="splice()"></a>splice()</h5><p>这个方法算是数组中最强大的数组方法了，他有很多用法。<br><strong><em>返回值是删除掉的数组。</em></strong><br>splice() 的主要用途是向数组的中部插入项，但使用这种方法的方式则有如下3种。</p>
+<h5 id="splice"><a href="#splice" class="headerlink" title="splice()"></a>splice()</h5><p>这个方法算是数组中最强大的数组方法了，他有很多用法。</p>
+<p><strong><em>用法</em></strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.splice(index,howmany,item1,.....,itemX)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>改变了元素组，删除的时候返回了删除的数组，这时和slice的功能有点类似。</p>
+</blockquote>
+<p><strong><em>参数</em></strong></p>
+<ul>
+<li>index    必需。规定从何处添加/删除元素。<br>该参数是开始插入和（或）删除的数组元素的下标，必须是数字。</li>
+<li>howmany    可选。规定应该删除多少元素。必须是数字，但可以是 “0”。<br>如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。</li>
+<li>item1, …, itemX    可选。要添加到数组的新元素</li>
+</ul>
+<p><strong><em>功能</em></strong><br>splice() 的主要用途是向数组的中部插入项，但使用这种方法的方式则有如下3种。</p>
 <ul>
 <li>删除<br>可以删除任意数量的项，只需指定2个参数：要删除第一项的位置和要删除的项数。splice(0,2): 删除数组从第一项开始之后的两项。</li>
 <li>插入<br>可以向指定位置插入任意数量的项，只需提供3个参数：起始位置、0(要删除的项数)、要插入的项。splice(2,0,”red”,”green”),在数组的下标为2的位置开始，然后在插入两项(“red”,”green”)。</li>
@@ -292,7 +304,12 @@
 <h5 id="字符串操作方法"><a href="#字符串操作方法" class="headerlink" title="字符串操作方法"></a>字符串操作方法</h5><h6 id="concat-1"><a href="#concat-1" class="headerlink" title="concat()"></a>concat()</h6><p>用于将一或多个字符串拼接起来，返回拼接得到的新字符串。接受任意多个参数。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stringVal = <span class="string">"hello"</span>;</span><br><span class="line"><span class="keyword">var</span> result = stringVal.concat(<span class="string">' word'</span>, <span class="string">' my'</span>, <span class="string">' name is'</span>, <span class="string">" song"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">// hello word my name is song</span></span><br></pre></td></tr></table></figure>
 <h6 id="slice-、substring-、substr"><a href="#slice-、substring-、substr" class="headerlink" title="slice()、substring()、substr()"></a>slice()、substring()、substr()</h6><p>ECMAScript 还提供了三个基于子字符串创建新字符串的方法：slice()、substr()、substring()。</p>
-<p>这三个方法都会返回被操作字符串的一个子字符串，而且也都接受一或两个参数。第一个参数指定子字符串的开始位置，第二个参数（在指定的情况下）表示子字符串到哪结束。<br>具体来说，<strong>slice()</strong>和<strong>substring()</strong>的第二个参数指定的是子字符串最后一个字符后面的位置。<br>而<strong>substr</strong>的第二个参数指定的则是返回的字符个数。<br>如果没有传递第二个参数，则将字符串的长度作为结束位置。</p>
+<p>这三个方法都会返回被操作字符串的一个子字符串，而且也都接受一或两个参数。第一个参数指定子字符串的开始位置，第二个参数（在指定的情况下）表示子字符串到哪结束。</p>
+<p>具体来说：</p>
+<ol>
+<li><strong>slice()</strong>和<strong>substring()</strong>的第二个参数指定的是子字符串最后一个字符后面的位置。</li>
+<li><strong>substr</strong>的第二个参数指定的则是返回的字符个数。<br>如果没有传递第二个参数，则将字符串的长度作为结束位置。</li>
+</ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stringVal = <span class="string">"hello world"</span>;</span><br><span class="line"><span class="comment">// 参数：(截取的开始位置（包含）, 结束位置（不包含）)</span></span><br><span class="line"><span class="keyword">var</span> sliceStr = stringVal.slice(<span class="number">3</span>); <span class="comment">// lo world</span></span><br><span class="line"><span class="keyword">var</span> sliceStr1 = stringVal.slice(<span class="number">3</span>, <span class="number">7</span>); <span class="comment">// lo w</span></span><br><span class="line"><span class="keyword">var</span> substringStr = stringVal.substring(<span class="number">3</span>); <span class="comment">// lo world</span></span><br><span class="line"><span class="keyword">var</span> substringStr1 = stringVal.substring(<span class="number">3</span>, <span class="number">7</span>); <span class="comment">// lo w</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 参数：(截取的开始位置（包含）, 截取的个数)</span></span><br><span class="line"><span class="keyword">var</span> substr = stringVal.substr(<span class="number">3</span>); <span class="comment">// lo world</span></span><br><span class="line"><span class="keyword">var</span> substr1 = stringVal.substr(<span class="number">3</span>, <span class="number">7</span>); <span class="comment">// lo worl</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>slice()方法会将传入的负值与字符串的长度相加；<br>substring()方法会把所有负值参数都转化为0；<br>substr()方法将负的第一个参数加上字符串的长度，而将负的第二个参数转化为0.</p>
