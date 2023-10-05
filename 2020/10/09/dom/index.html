@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>第十章-DOM | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="第三章-数据类型第四章-变量、作用域和内存问题第五章-引用类型第六章-面向对象的设计程序第七章-函数表达式第八章-BOM第九章-客户端检测第十章-DOM第十三章-事件操作节点appendChild(): 用于向childNodes列表末尾插入节点。insertBefore(): 把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。replaceChild(): 要插入的节点和要替换的节点。removeChild(): 接受要解除的节点一个参数。clon...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">列表</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    
+<aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作节点"><span class="toc-number">1.</span> <span class="toc-text">操作节点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#appendChild-用于向childNodes列表末尾插入节点。"><span class="toc-number">1.0.1.</span> <span class="toc-text">appendChild(): 用于向childNodes列表末尾插入节点。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#insertBefore-把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。"><span class="toc-number">1.0.2.</span> <span class="toc-text">insertBefore(): 把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#replaceChild-要插入的节点和要替换的节点。"><span class="toc-number">1.0.3.</span> <span class="toc-text">replaceChild(): 要插入的节点和要替换的节点。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#removeChild-接受要解除的节点一个参数。"><span class="toc-number">1.0.4.</span> <span class="toc-text">removeChild(): 接受要解除的节点一个参数。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#cloneNode-用于创建调用此方法的节点的完全相同的副本。接受一个布尔值，标示是否执行深度复制"><span class="toc-number">1.0.5.</span> <span class="toc-text">cloneNode(): 用于创建调用此方法的节点的完全相同的副本。接受一个布尔值，标示是否执行深度复制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#normalize-唯一的作用是处理文档树中的文本节点。由于解析器的实现和DOM操作等原因，可能会出现文本节点不包含文本，或者接连出现两个文本节点的情况，当在某个节点调用这个方法时，就会在该机诶单后代节点中查找上述两种情况，如果找到了空节点，则删除它，如果找到了相邻的文本节点，则将他们合并为一个文本节点。"><span class="toc-number">1.0.6.</span> <span class="toc-text">normalize(): 唯一的作用是处理文档树中的文本节点。由于解析器的实现和DOM操作等原因，可能会出现文本节点不包含文本，或者接连出现两个文本节点的情况，当在某个节点调用这个方法时，就会在该机诶单后代节点中查找上述两种情况，如果找到了空节点，则删除它，如果找到了相邻的文本节点，则将他们合并为一个文本节点。</span></a></li></ol></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#Document类型"><span class="toc-number">2.</span> <span class="toc-text">Document类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#document-title-修改文档的标题"><span class="toc-number">2.1.</span> <span class="toc-text">document.title: 修改文档的标题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#URL-domain-referrer"><span class="toc-number">2.2.</span> <span class="toc-text">URL/domain/referrer</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找元素"><span class="toc-number">3.</span> <span class="toc-text">查找元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#getElementById-getElementsByTagName"><span class="toc-number">3.1.</span> <span class="toc-text">getElementById()/getElementsByTagName()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getElementsByName-返回带有指定name值的集合。"><span class="toc-number">3.2.</span> <span class="toc-text">getElementsByName(): 返回带有指定name值的集合。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#特殊的集合"><span class="toc-number">3.3.</span> <span class="toc-text">特殊的集合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文档写入"><span class="toc-number">3.4.</span> <span class="toc-text">文档写入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Element类型"><span class="toc-number">4.</span> <span class="toc-text">Element类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#取得特性"><span class="toc-number">4.1.</span> <span class="toc-text">取得特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置属性"><span class="toc-number">4.2.</span> <span class="toc-text">设置属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除属性"><span class="toc-number">4.3.</span> <span class="toc-text">删除属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建元素"><span class="toc-number">4.4.</span> <span class="toc-text">创建元素</span></a></li></ol></li>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            第十章-DOM
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2020/10/09/dom/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2020-10-09T03:09:56.000Z" itemprop="datePublished">2020-10-09</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p><a href="http://shuy.cc/2020/07/12/typeOf/" target="_blank" rel="noopener">第三章-数据类型</a><br><a href="http://shuy.cc/2020/08/13/instance/" target="_blank" rel="noopener">第四章-变量、作用域和内存问题</a><br><a href="http://shuy.cc/2020/08/03/object" target="_blank" rel="noopener">第五章-引用类型</a><br><a href="http://shuy.cc/2020/08/13/defineProperty/" target="_blank" rel="noopener">第六章-面向对象的设计程序</a><br><a href="http://shuy.cc/2020/08/28/func" target="_blank" rel="noopener">第七章-函数表达式</a><br><a href="http://shuy.cc/2020/09/03/bom/" target="_blank" rel="noopener">第八章-BOM</a><br><a href="http://shuy.cc/2020/09/03/navigator/" target="_blank" rel="noopener">第九章-客户端检测</a><br><a href="http://shuy.cc/2020/09/09/dom/" target="_blank" rel="noopener">第十章-DOM</a><br><a href="http://shuy.cc/2020/10/29/click/" target="_blank" rel="noopener">第十三章-事件</a><br><a id="more"></a></p>
+<h3 id="操作节点"><a href="#操作节点" class="headerlink" title="操作节点"></a>操作节点</h3><h5 id="appendChild-用于向childNodes列表末尾插入节点。"><a href="#appendChild-用于向childNodes列表末尾插入节点。" class="headerlink" title="appendChild(): 用于向childNodes列表末尾插入节点。"></a>appendChild(): 用于向childNodes列表末尾插入节点。</h5><h5 id="insertBefore-把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。"><a href="#insertBefore-把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。" class="headerlink" title="insertBefore(): 把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。"></a>insertBefore(): 把节点放到childNodes列表指定的位置。接受要插入的节点和作为参照的节点两个参数。</h5><h5 id="replaceChild-要插入的节点和要替换的节点。"><a href="#replaceChild-要插入的节点和要替换的节点。" class="headerlink" title="replaceChild(): 要插入的节点和要替换的节点。"></a>replaceChild(): 要插入的节点和要替换的节点。</h5><h5 id="removeChild-接受要解除的节点一个参数。"><a href="#removeChild-接受要解除的节点一个参数。" class="headerlink" title="removeChild(): 接受要解除的节点一个参数。"></a>removeChild(): 接受要解除的节点一个参数。</h5><h5 id="cloneNode-用于创建调用此方法的节点的完全相同的副本。接受一个布尔值，标示是否执行深度复制"><a href="#cloneNode-用于创建调用此方法的节点的完全相同的副本。接受一个布尔值，标示是否执行深度复制" class="headerlink" title="cloneNode(): 用于创建调用此方法的节点的完全相同的副本。接受一个布尔值，标示是否执行深度复制"></a>cloneNode(): 用于创建调用此方法的节点的完全相同的副本。接受一个布尔值，标示是否执行深度复制</h5><h5 id="normalize-唯一的作用是处理文档树中的文本节点。由于解析器的实现和DOM操作等原因，可能会出现文本节点不包含文本，或者接连出现两个文本节点的情况，当在某个节点调用这个方法时，就会在该机诶单后代节点中查找上述两种情况，如果找到了空节点，则删除它，如果找到了相邻的文本节点，则将他们合并为一个文本节点。"><a href="#normalize-唯一的作用是处理文档树中的文本节点。由于解析器的实现和DOM操作等原因，可能会出现文本节点不包含文本，或者接连出现两个文本节点的情况，当在某个节点调用这个方法时，就会在该机诶单后代节点中查找上述两种情况，如果找到了空节点，则删除它，如果找到了相邻的文本节点，则将他们合并为一个文本节点。" class="headerlink" title="normalize(): 唯一的作用是处理文档树中的文本节点。由于解析器的实现和DOM操作等原因，可能会出现文本节点不包含文本，或者接连出现两个文本节点的情况，当在某个节点调用这个方法时，就会在该机诶单后代节点中查找上述两种情况，如果找到了空节点，则删除它，如果找到了相邻的文本节点，则将他们合并为一个文本节点。"></a>normalize(): 唯一的作用是处理文档树中的文本节点。由于解析器的实现和DOM操作等原因，可能会出现文本节点不包含文本，或者接连出现两个文本节点的情况，当在某个节点调用这个方法时，就会在该机诶单后代节点中查找上述两种情况，如果找到了空节点，则删除它，如果找到了相邻的文本节点，则将他们合并为一个文本节点。</h5><h3 id="Document类型"><a href="#Document类型" class="headerlink" title="Document类型"></a>Document类型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;body&gt;&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br><span class="line"><span class="keyword">var</span> html = <span class="built_in">document</span>.documentElement</span><br><span class="line"><span class="built_in">console</span>.log(html === <span class="built_in">document</span>.childNodes[<span class="number">0</span>]) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(html === <span class="built_in">document</span>.firstChild) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>以上代码说明：document.documentElement指向的就是文档的根节点html.</p>
+<blockquote>
+<p>所有浏览器都支持document.body和document.documentElement属性。</p>
+</blockquote>
+<h4 id="document-title-修改文档的标题"><a href="#document-title-修改文档的标题" class="headerlink" title="document.title: 修改文档的标题"></a>document.title: 修改文档的标题</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> title = <span class="built_in">document</span>.title</span><br><span class="line">title = <span class="string">"修改后的标题"</span></span><br></pre></td></tr></table></figure>
+<h4 id="URL-domain-referrer"><a href="#URL-domain-referrer" class="headerlink" title="URL/domain/referrer"></a>URL/domain/referrer</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.URL) <span class="comment">// http://10.5.40.130:8000/3.html</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.domain) <span class="comment">// 10.5.40.130</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.referrer) <span class="comment">// 空字符窜</span></span><br></pre></td></tr></table></figure>
+<p>document.referrer：返回跳转到当前页面的来源的页面的url。没有的情况就返回空字符窜。</p>
+<blockquote>
+<p>document.domain设置同源域名，可以解决跨域的问题。</p>
+</blockquote>
+<h3 id="查找元素"><a href="#查找元素" class="headerlink" title="查找元素"></a>查找元素</h3><h4 id="getElementById-getElementsByTagName"><a href="#getElementById-getElementsByTagName" class="headerlink" title="getElementById()/getElementsByTagName()"></a>getElementById()/getElementsByTagName()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;img src=<span class="string">"https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d2278525f1db4bebb3da97aa3c9cbe26~tplv-k3u1fbpfcp-zoom-1.image"</span> name=<span class="string">"myImage"</span> id=<span class="string">"myIdImage"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">var images = document.getElementsByTagName('img')</span></span><br><span class="line"><span class="regexp">console.log(images.length) /</span><span class="regexp">/ 1</span></span><br><span class="line"><span class="regexp">console.log(images[0].src) </span></span><br><span class="line"><span class="regexp">console.log(images.item(0).src) </span></span><br><span class="line"><span class="regexp">console.log(images.namedItem('myImage').src)</span></span><br><span class="line"><span class="regexp">console.log(images['myImage'].src)</span></span><br><span class="line"><span class="regexp">以上方法都可获取到src:https:/</span><span class="regexp">/p1-juejin.byteimg.com/</span>tos-cn-i-k3u1fbpfcp/d2278525f1db4bebb3da97aa3c9cbe26~tplv-k3u1fbpfcp-zoom<span class="number">-1.</span>image</span><br></pre></td></tr></table></figure>
+<h4 id="getElementsByName-返回带有指定name值的集合。"><a href="#getElementsByName-返回带有指定name值的集合。" class="headerlink" title="getElementsByName(): 返回带有指定name值的集合。"></a>getElementsByName(): 返回带有指定name值的集合。</h4><h4 id="特殊的集合"><a href="#特殊的集合" class="headerlink" title="特殊的集合"></a>特殊的集合</h4><p>document.anchors(): 包含文档中所有带name属性的a元素。<br>document.forms(): 包含文档中所有的form元素。<br>document.images(): 包含文档中所有的image元素。<br>document.links(): 包含文档中所有带href属性的a元素。   </p>
+<h4 id="文档写入"><a href="#文档写入" class="headerlink" title="文档写入"></a>文档写入</h4><p>write(): 在文档中写入内容，接受一个 字符窜 的参数，原样写入<br>writeIn(): 在文档中写入内容，接受一个 字符窜 的参数，在字符窜的末尾加上换行符（n/）<br>open(): 打开文档<br>close(): 关闭文档<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.write(<span class="string">"&lt;script src='a.js'&gt;&lt;\/script&gt;"</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Element类型"><a href="#Element类型" class="headerlink" title="Element类型"></a>Element类型</h3><ul>
+<li>nodeType的值为1</li>
+<li>nodeName的值为元素的标签名</li>
+<li>nodeValue为null</li>
+<li>parentNode为Document或者是Element<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"id"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">var a = document.getElementById('id')</span></span><br><span class="line"><span class="regexp">console.log(a.tagName) /</span><span class="regexp">/ DIV</span></span><br><span class="line"><span class="regexp">console.log(a.nodeName) /</span><span class="regexp">/ DIV</span></span><br><span class="line"><span class="regexp">console.log(a.nodeType) /</span><span class="regexp">/ 1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="取得特性"><a href="#取得特性" class="headerlink" title="取得特性"></a>取得特性</h4><p>getAttribute()<br>setAttribute()<br>removeAttribute()<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"id"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"myDive"</span> my_special_attribute=<span class="string">"hellow"</span> style=<span class="string">"font-weight: bold"</span>&gt;aaa&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">var a = document.getElementById('id')</span></span><br><span class="line"><span class="regexp">console.log(a.getAttribute('id')) /</span><span class="regexp">/ id</span></span><br><span class="line"><span class="regexp">console.log(a.getAttribute('class')) /</span><span class="regexp">/ myDive</span></span><br><span class="line"><span class="regexp">console.log(a.getAttribute('my_special_attribute')) /</span><span class="regexp">/ hellow</span></span><br><span class="line"><span class="regexp">console.log(a.getAttribute('style')) /</span><span class="regexp">/ font-weight: bold</span></span><br><span class="line"><span class="regexp">console.log(a.style) /</span><span class="regexp">/ 返回的是对象</span></span><br><span class="line"><span class="regexp">console.log(a.style.fontWeight) /</span><span class="regexp">/ bold</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>属性名不区分大小写，a.getAttribute(‘id’)和a.getAttribute(‘ID’)是同一个意思。onclick和style返回的都是字符窜，</p>
+</blockquote>
+<h4 id="设置属性"><a href="#设置属性" class="headerlink" title="设置属性"></a>设置属性</h4><p>setAttribute(设置的属性名，设置的属性的值),如果有设置的属性名，那就覆盖，否则就是新添加。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a.setAttribute(<span class="string">'id'</span>, <span class="string">'myDiv1'</span>)</span><br><span class="line">a.setAttribute(<span class="string">'id'</span>, <span class="string">'myDive1'</span>)</span><br><span class="line">a.setAttribute(<span class="string">'myColor'</span>, <span class="string">'red'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(a.getAttribute(<span class="string">'myColor'</span>)) <span class="comment">// red</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="删除属性"><a href="#删除属性" class="headerlink" title="删除属性"></a>删除属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 删除前</span></span><br><span class="line">&lt;div id=<span class="string">"id"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"myDive"</span> my_special_attribute=<span class="string">"hellow"</span> myColor=<span class="string">"red"</span> style=<span class="string">"font-weight: bold"</span>&gt;aaa&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">a.removeAttribute('myColor')</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 删除后</span></span><br><span class="line"><span class="regexp">console.log(a.getAttribute('myColor')) /</span><span class="regexp">/ red</span></span><br><span class="line"><span class="regexp">&lt;div id="id" class="myDive" my_special_attribute="hellow" style="font-weight: bold"&gt;aaa&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h4><p>使用document.createElement()方法可以创建新元素。这个方法只接受要创建的元素的标签名，不区分大小写。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line">div.id = <span class="string">'divId'</span></span><br><span class="line">div.className = <span class="string">'divClassName'</span></span><br></pre></td></tr></table></figure></p>
+<p>appendChild()<br>insertBefore()<br>replaceChild()<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.appendChild(div)</span><br></pre></td></tr></table></figure></p>
+
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2020/10/09/dom",
+        distractionFreeMode: true,
+        title: "第十章-DOM",
+        body: "http://www.shuy.cc/2020/10/09/dom/",
+        labels: []
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer">
+    Copyright © Aaron All Rights Reserved 京ICP备17007771号-1
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
