@@ -490,6 +490,55 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2018/07/27/h5sp/">h5移动端和大屏适配</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/page/7/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2018-07-27T12:49:41.000Z" itemprop="datePublished">2018-07-27</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p><strong>rem适配原理</strong></p>
+<ul>
+<li>将设备分成 n 等分，n 可以是任意正确的值（比如 <code>flexible.js</code> 中的 n = 10 ）。</li>
+<li><ul>
+<li>设置 <code>html</code> 元素的 <code>font-size</code> 为 <code>设备宽度 / 10</code>，即得到 设备视口 1 rem 到底表示 多少设备视口 px。</li>
+</ul>
+</li>
+<li>将设计稿也分成 n 等分，此时设计稿中的某个元素a 的 px 对应 设备中这个元素的 rem 的计算方式为</li>
+<li><ul>
+<li>?rem = 设计稿 a px / (<code>设计稿的宽度 / n</code>(表示1rem为多少px像素))</li>
+</ul>
+</li>
+</ul>
+        
+        <p class="article-more-link">
+            <a href="/2018/07/27/h5sp/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2018/06/26/jc-7/">npm包模块发布</a>
         </h1>
         
@@ -518,48 +567,6 @@
         
         </p><p class="article-more-link">
             <a href="/2018/06/26/jc-7/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2018/05/23/jc-4/">JS replace()方法全文替换，遇到变量怎么办？</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/page/7/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2018-05-23T08:14:16.000Z" itemprop="datePublished">2018-05-23</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/js-replace/">js replace</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="replace-替换变量文本，改如何处理？"><a href="#replace-替换变量文本，改如何处理？" class="headerlink" title="replace 替换变量文本，改如何处理？"></a>replace 替换变量文本，改如何处理？</h2><h3 id="js-替换字符窜，一般情况下是"><a href="#js-替换字符窜，一般情况下是" class="headerlink" title="js 替换字符窜，一般情况下是"></a>js 替换字符窜，一般情况下是</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">"aaabbbsssf"</span>;</span><br><span class="line"><span class="keyword">let</span> a = string.replace(<span class="string">"a"</span>,<span class="string">"我"</span>);</span><br></pre></td></tr></table></figure>
-        
-        <p class="article-more-link">
-            <a href="/2018/05/23/jc-4/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>

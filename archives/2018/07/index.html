@@ -7,7 +7,7 @@
 
     
 
-    <title>前端技术博客</title>
+    <title>Archives: 2018/7 | 前端技术博客</title>
     <meta name="author" content="xiaosongread">
     <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
     <meta name="description" content="小宋 抿圪斗前端 前端博客 框架 工程 css html js node markdown npm webpack">
@@ -50,11 +50,11 @@
 
     <nav id="nav-inner" class="nav-inner">
         
-            <a class="nav-item" href="/archives">
+            <a class="nav-item active" href="/archives">
                 <span class="nav-text">列表</span>
             </a>
         
-            <a class="nav-item active" href="/">
+            <a class="nav-item" href="/">
                 <span class="nav-text">首页</span>
             </a>
         
@@ -130,96 +130,43 @@
 
         <div id="content" class="content">
             
-    <article class="article" itemscope itemprop="blogPost">
+
+
     
-    <header class="article-header">
+    
+    
+    
+    
+    <section class="archives-wrap">
+    <div class="archive-year-wrap">
+    <a href="/archives/2018/07" class="page-hd">
+        2018/07
+    </a>
+    </div>
+    <ol class="archives">
+    
+
+    <li class="archive-section-item">
         
-        <h1 itemprop="name">
-            <a href="/2018/05/23/jc-4/">JS replace()方法全文替换，遇到变量怎么办？</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/page/8/index.html">
+<article class="archive-article archive-type-post">
+    <div class="archive-article-inner">
+        <header class="archive-article-header">
+            <a class="archive-article-link" href="/2018/07/27/h5sp/">h5移动端和大屏适配</a>
+            <span class="archive-article-date">
+                (<a class="article-date" href="/archives/2018/07">
     
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2018-05-23T08:14:16.000Z" itemprop="datePublished">2018-05-23</time>
+    <time class="vm" datetime="2018-07-27T12:49:41.000Z" itemprop="datePublished">7/27</time>
 </a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/js-replace/">js replace</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="replace-替换变量文本，改如何处理？"><a href="#replace-替换变量文本，改如何处理？" class="headerlink" title="replace 替换变量文本，改如何处理？"></a>replace 替换变量文本，改如何处理？</h2><h3 id="js-替换字符窜，一般情况下是"><a href="#js-替换字符窜，一般情况下是" class="headerlink" title="js 替换字符窜，一般情况下是"></a>js 替换字符窜，一般情况下是</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">"aaabbbsssf"</span>;</span><br><span class="line"><span class="keyword">let</span> a = string.replace(<span class="string">"a"</span>,<span class="string">"我"</span>);</span><br></pre></td></tr></table></figure>
-        
-        <p class="article-more-link">
-            <a href="/2018/05/23/jc-4/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
+)
+            </span>
+        </header>
+    </div>
 </article>
+    </li>
 
 
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2017/12/14/jc-5/">文本溢出显示... 和文本的断点换行</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/page/8/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2017-12-14T03:32:00.000Z" itemprop="datePublished">2017-12-14</time>
-</a>
+</ol></section>
 
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/css/">css</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>文本的显示在前端算是比较X疼的一件事，如何处理断行和在手机端的显示内容呢？</p>
-<h3 id="文本换行-断点"><a href="#文本换行-断点" class="headerlink" title="文本换行 断点"></a>文本换行 断点</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">word-break</span>:  属性规定自动换行的处理方法</span><br><span class="line">         <span class="selector-tag">normal</span>     使用浏览器的默认换行方式</span><br><span class="line">         <span class="selector-tag">break-all</span>  允许在单词内断行</span><br><span class="line">                    在使用英文多的时候能够整齐换行</span><br><span class="line">         <span class="selector-tag">keep-all</span>   只能在半角空格或连字符处换行</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">word-wrap</span>：  允许长单词或 <span class="selector-tag">URL</span> 地址换行到下一行</span><br><span class="line">         <span class="selector-tag">normal</span>      只在允许的断点处处理（按浏览器默认的处理方式）</span><br><span class="line">         <span class="selector-tag">break-word</span>  在长单词或者<span class="selector-tag">url</span>内部进行换行</span><br></pre></td></tr></table></figure>
-        
-        <p class="article-more-link">
-            <a href="/2017/12/14/jc-5/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-
-
-<nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
-</nav>
 
 
 
