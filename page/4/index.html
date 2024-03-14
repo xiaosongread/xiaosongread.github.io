@@ -135,6 +135,51 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2021/02/02/v-if和v-for不要同时使用/">v-if和v-for不要同时使用</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/page/4/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2021-02-02T07:53:25.000Z" itemprop="datePublished">2021-02-02</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/vue/">vue</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-<span class="keyword">for</span>=<span class="string">"item in list"</span> v-<span class="keyword">if</span>=<span class="string">"item.isActive"</span>&gt;&#123;&#123;item&#125;&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/   [vue/no-use-v-if-with-v-for]</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ The 'undefined' variable inside 'v-for' directive should be replaced with a computed property that returns filtered array instead. You should not mix 'v-for' with 'v-if'.eslint-plugin-vue</span></span><br><span class="line"><span class="regexp">&lt;/u</span>l&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>v-for和v-if不要同时使用，因为v-for的优先级比v-if高，这意味着 v-if 将分别重复运行于每个 v-for 循环中，效率和性能都比较低。</p>
+</blockquote>
+        
+        <p class="article-more-link">
+            <a href="/2021/02/02/v-if和v-for不要同时使用/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2021/01/05/charles安装破解抓包手机接口/">记录 mac charles安装破解抓包手机接口</a>
         </h1>
         
@@ -474,43 +519,6 @@
         
         <p class="article-more-link">
             <a href="/2020/08/13/defineProperty/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2020/08/06/object/">第五章-引用类型</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/page/4/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2020-08-06T09:31:01.000Z" itemprop="datePublished">2020-08-06</time>
-</a>
-
-            
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p><strong>本章内容</strong><br>口 使用对象<br>口 创建并操作数组<br>口 理解基本的JavaScript类型<br>口 使用基本类型和基本包装类型</p>
-        
-        <p class="article-more-link">
-            <a href="/2020/08/06/object/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>

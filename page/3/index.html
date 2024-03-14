@@ -135,6 +135,46 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2022/04/21/weijianwei/">卫健委(中国继续医学教育网)项目完结总结</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/page/3/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2022-04-21T05:30:03.000Z" itemprop="datePublished">2022-04-21</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/vue-nuxt-scss-webpack/">vue nuxt scss webpack</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h3 id="中国继续医学教育网-卫健委-2022-01-2022-04-10"><a href="#中国继续医学教育网-卫健委-2022-01-2022-04-10" class="headerlink" title="中国继续医学教育网 - 卫健委 - 2022/01 ~ 2022/04/10"></a>中国继续医学教育网 - 卫健委 - 2022/01 ~ 2022/04/10</h3><h4 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h4><p>中国继续医学教育网是国家卫健委健康委能力建设和继续教育中心的线上为各级医院的医师做专业技能课程的培训和线上考级的线上平台。项目主要承载的直播，录播，音频，线上视频购买，线上考试和线上证书的发放。</p>
+<h4 id="项目架构选择"><a href="#项目架构选择" class="headerlink" title="项目架构选择"></a>项目架构选择</h4><p>项目主要包括3个系统：<br>后台管理系统：<a href="https://www.ncme.org.cn/admin/#/login?redirect=%2F；" target="_blank" rel="noopener">https://www.ncme.org.cn/admin/#/login?redirect=%2F；</a><br>PC端的线上学习网站：<a href="https://www.ncme.org.cn/；" target="_blank" rel="noopener">https://www.ncme.org.cn/；</a><br>手机端的H5学习网站：<a href="https://www.ncme.org.cn/ncme-h5/；" target="_blank" rel="noopener">https://www.ncme.org.cn/ncme-h5/；</a><br>后台管理系统采用的是：vue + element + vuex的全家桶的前端架构模式；<br>PC端的线上学习网站采用的是：nuxt + element-ui<br>手机端的H5学习网站采用的是：nuxt + vant</p>
+<p>ToB的网站，项目要求首屏渲染速度要快，尤其是SEO的要求比较高，所以选择了服务端渲染，有头部标签管理方便，SEO优化比较好的nuxt，并且项目资金压力不大，服务器方面的费用不用考虑。</p>
+<h4 id="项目的坑"><a href="#项目的坑" class="headerlink" title="项目的坑"></a>项目的坑</h4><p>1.首先管理系统包括用户、属性、课程、项目、运营、财务、消息、权限、统计、学院等十大系统，需求太多，前期给的文档需求不全，导致后期工期不变，需求一直再加，工期没有商量余地，导致时间太紧，bug率太高。<br>2.项目的需求文档不全，导致课程、项目系统变成了俄罗斯套娃，代码变得非常的难维护。<br>3.nuxt当时没有接触过这个框架，在时间紧的基础上还是不要采取不熟悉框架，不过好赖都过来了。<br>4.直播相关的业务采用的第三方的CC，导致调用他们的API各种问题，沟通很麻烦。</p>
+<h4 id="项目的交付"><a href="#项目的交付" class="headerlink" title="项目的交付"></a>项目的交付</h4><p>国家级别的项目相对来说还是比较好交付的，就是应为功能太多，导致有些问题没有测试到，结果到了线上数据全部上去，访问量达到30W+的时候暴露了一些没测到问题，但是整体还能说得过去。</p>
+<h4 id="项目总结"><a href="#项目总结" class="headerlink" title="项目总结"></a>项目总结</h4><p>1、大型项目前期的需求一定要确定好，最起码要确定十有八九。<br>2、前期项目的框架要尽量选择自己熟悉的，大项目不适合去选用新的框架。<br>3、工期是最重要，那其实就是需求一定要仔细过，做到时间功能的合理安排。<br>4、UI层面的适当找比较初级的程序员写好，但前提是一定要有自己的代码书写规范文档。</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2022/03/19/focus-preventScroll/">focus-preventScroll</a>
         </h1>
         
@@ -497,51 +537,6 @@
         
         <p class="article-more-link">
             <a href="/2021/05/26/微信字体大小调整导致的H5页面错乱问题处理/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2021/02/02/v-if和v-for不要同时使用/">v-if和v-for不要同时使用</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/page/3/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2021-02-02T07:53:25.000Z" itemprop="datePublished">2021-02-02</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/vue/">vue</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-<span class="keyword">for</span>=<span class="string">"item in list"</span> v-<span class="keyword">if</span>=<span class="string">"item.isActive"</span>&gt;&#123;&#123;item&#125;&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/   [vue/no-use-v-if-with-v-for]</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ The 'undefined' variable inside 'v-for' directive should be replaced with a computed property that returns filtered array instead. You should not mix 'v-for' with 'v-if'.eslint-plugin-vue</span></span><br><span class="line"><span class="regexp">&lt;/u</span>l&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>v-for和v-if不要同时使用，因为v-for的优先级比v-if高，这意味着 v-if 将分别重复运行于每个 v-for 循环中，效率和性能都比较低。</p>
-</blockquote>
-        
-        <p class="article-more-link">
-            <a href="/2021/02/02/v-if和v-for不要同时使用/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
