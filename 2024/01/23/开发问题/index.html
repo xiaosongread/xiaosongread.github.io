@@ -7,10 +7,10 @@
 
     
 
-    <title>Archives: 2024 | 前端技术博客</title>
+    <title>开发问题 | 前端技术博客</title>
     <meta name="author" content="xiaosongread">
     <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
-    <meta name="description" content="小宋 抿圪斗前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 
@@ -50,7 +50,7 @@
 
     <nav id="nav-inner" class="nav-inner">
         
-            <a class="nav-item active" href="/archives">
+            <a class="nav-item" href="/archives">
                 <span class="nav-text">列表</span>
             </a>
         
@@ -86,6 +86,8 @@
     <div id="aside-mask" class="aside-mask"></div>
     <div id="aside-inner" class="aside-inner">
 
+        
+        
         
         
 
@@ -129,87 +131,56 @@
 </header>
 
         <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            开发问题
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2024/01/23/开发问题/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2024-01-23T07:57:51.000Z" itemprop="datePublished">2024-01-23</time>
+</a>
+
             
 
-
+        </div>
+    </header>
     
-    
-    
-    
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2024" class="page-hd">
-        2024
-    </a>
-    </div>
-    <ol class="archives">
-    
-
-    <li class="archive-section-item">
+    <section class="article-body markdown-body">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2024/04/11/gitconfig/">git clone的时候 github链接前面加上了 https://ghproxy.com</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2024/04">
-    
-    <time class="vm" datetime="2024-04-11T11:24:00.000Z" itemprop="datePublished">4/11</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2024/02/19/mathtype/">kiny-mathtype-katex渲染</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2024/02">
-    
-    <time class="vm" datetime="2024-02-19T06:49:15.000Z" itemprop="datePublished">2/19</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2024/01/23/开发问题/">开发问题</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2024/01">
-    
-    <time class="vm" datetime="2024-01-23T07:57:51.000Z" itemprop="datePublished">1/23</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
+    </section>
 </article>
-    </li>
 
 
-</ol></section>
 
 
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2024/01/23/开发问题",
+        distractionFreeMode: true,
+        title: "开发问题",
+        body: "http://www.shuy.cc/2024/01/23/开发问题/",
+        labels: []
+    }).render('comments');
+    </script>
+</div>
 
 
         </div>
@@ -273,6 +244,31 @@
         });
     });
     </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
     
 
 </body>
