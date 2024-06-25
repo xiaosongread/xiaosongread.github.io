@@ -139,6 +139,105 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2024/06/22/uniapp/">uniapp 使用vue.js注意事项</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2024-06-22T02:27:08.000Z" itemprop="datePublished">2024-06-22</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>uni-app 在发布到H5时支持所有vue的语法；发布到App和小程序时，由于平台限制，无法实现全部vue语法。</p>
+<p>相比Web平台， Vue.js 在uni-app中使用差异主要集中在两个方面：</p>
+<ul>
+<li>新增：uni-app 除了支持Vue实例的生命周期，还支持应用生命周期以及页面生命周期。</li>
+<li>受限：相比web平台，在小程序和App端部分功能受限，具体如下：</li>
+</ul>
+<h4 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h4><ul>
+<li>非H5端不支持 Vue.config.devtools</li>
+<li>非H5端不支持 Vue.config.keyCodes</li>
+<li>非H5端不支持 Vue.config.performance</li>
+</ul>
+<h4 id="全局API"><a href="#全局API" class="headerlink" title="全局API"></a>全局API</h4><ul>
+<li>非H5端不支持 Vue.nextTick</li>
+<li>小程序不支持 Vue.directive</li>
+<li>小程序不支持 Vue.filter</li>
+<li>小程序不支持 Vue.compile</li>
+</ul>
+<h4 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h4><ul>
+<li>非H5端不支持 el</li>
+<li>非H5端不支持 template</li>
+<li>非H5端不支持 render</li>
+<li>非H5端不支持 renderError</li>
+<li>小程序不支持 directives</li>
+<li>非H5端不支持 delimiters</li>
+<li>非H5端不支持 functional</li>
+<li>小程序不支持 model</li>
+<li>小程序不支持 inheritAttrs</li>
+<li>非H5端不支持 comments<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4></li>
+<li>小程序端不支持 activated</li>
+<li>小程序端不支持 deactivated</li>
+</ul>
+<h4 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h4><ul>
+<li>非H5端不支持 vm.$el</li>
+<li>小程序不支持 vm.$isServer</li>
+<li>小程序不支持 vm.$attrs</li>
+<li>小程序不支持 vm.$listeners</li>
+</ul>
+<h4 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h4><ul>
+<li>非H5端不支持 vm.$mount()</li>
+</ul>
+<h4 id="模板指令"><a href="#模板指令" class="headerlink" title="模板指令"></a>模板指令</h4><ul>
+<li>小程序不支持 v-html</li>
+<li>小程序不支持 v-pre</li>
+<li>非H5端不支持 v-cloak</li>
+<li>小程序不支持 v-once</li>
+<li>小程序不支持传入一个对象的所有property，即: v-bind=”object”</li>
+</ul>
+<h4 id="特殊属性"><a href="#特殊属性" class="headerlink" title="特殊属性"></a>特殊属性</h4><ul>
+<li>小程序不支持 is</li>
+<li>非H5端不支持 classObject 和 styleObject 语法。</li>
+<li>非H5端（非自定义组件编译模式）暂不支持在自定义组件上使用Class与Style绑定。</li>
+</ul>
+<h4 id="内置组件"><a href="#内置组件" class="headerlink" title="内置组件"></a>内置组件</h4><ul>
+<li>小程序不支持 component</li>
+<li>非H5不支持 transition</li>
+<li>非H5不支持 transition-group</li>
+<li>非H5不支持 keep-alive</li>
+</ul>
+<h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><ul>
+<li>小程序不支持:root，应该使用 page；page 编译到H5会变成 uni-page-body 元素</li>
+</ul>
+<h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><ul>
+<li>vue3中移除了.native 修饰符，编译器无法预知 click 是要触发原生事件，还是组件的自定义事件，故并未转换成小程序的 tap 事件；故小程序端自定义组件无法监听click事件，需要在组件内部把click事件emit出去，或者只监听tap事件。</li>
+</ul>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li>小程序不支持 svg</li>
+<li>小程序不支持 多个根节点</li>
+<li>微信/QQ/百度/抖音小程序，自定义组件在渲染时会比App/H5端多一级节点</li>
+<li>小程序有虚拟节点的概念，有的小程序的自定义组件在渲染时会比App/H5多一级节点，通过 virtualHost 可以 设置是否需要这个虚拟节点；把 virtualHost 设为 false，再把 mergeVirtualHostAttributes 设为 true，就可以有贴近 vue 的开发体检。</li>
+</ul>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2024/05/27/mrjq/">每日技巧</a>
         </h1>
         
@@ -480,56 +579,6 @@
         
         <p class="article-more-link">
             <a href="/2023/08/21/vRouter/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/08/15/vue3-propos/">vue3 通信方式</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-08-15T14:00:01.000Z" itemprop="datePublished">2023-08-15</time>
-</a>
-
-            
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>本文会涉及的知识点：</p>
-<ul>
-<li><a href="#Props">Props</a></li>
-<li><a href="#emits">emits</a></li>
-<li><a href="#expose/ref">expose / ref</a></li>
-<li><a href="#v-model">v-model</a></li>
-<li><a href="#插槽 slot">插槽 slot</a></li>
-<li><a href="#provide / inject">provide / inject</a></li>
-<li><a href="#总线 bus">总线 bus</a></li>
-<li><a href="#getCurrentInstance">getCurrentInstance</a></li>
-<li><a href="#Vuex">Vuex</a></li>
-<li><a href="#Pinia">Pinia</a></li>
-<li><a href="#mitt.js">mitt.js</a></li>
-</ul>
-        
-        <p class="article-more-link">
-            <a href="/2023/08/15/vue3-propos/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
