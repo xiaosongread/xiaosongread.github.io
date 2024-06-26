@@ -7,7 +7,7 @@
 
     
 
-    <title>Archives: 2024 | 前端技术博客</title>
+    <title>前端技术博客</title>
     <meta name="author" content="xiaosongread">
     <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
     <meta name="description" content="小宋 抿圪斗前端 前端博客 框架 工程 css html js node markdown npm webpack">
@@ -50,11 +50,11 @@
 
     <nav id="nav-inner" class="nav-inner">
         
-            <a class="nav-item active" href="/archives">
+            <a class="nav-item" href="/archives">
                 <span class="nav-text">列表</span>
             </a>
         
-            <a class="nav-item" href="/">
+            <a class="nav-item active" href="/">
                 <span class="nav-text">首页</span>
             </a>
         
@@ -134,190 +134,54 @@
 
         <div id="content" class="content">
             
-
-
+    <article class="article" itemscope itemprop="blogPost">
     
-    
-    
-    
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2024" class="page-hd">
-        2024
-    </a>
-    </div>
-    <ol class="archives">
-    
-
-    <li class="archive-section-item">
+    <header class="article-header">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2024/06/26/alibaba/">阿里云服务器安装node环境，pm2控制node进程服务</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2024/06">
-    
-    <time class="vm" datetime="2024-06-26T06:22:17.000Z" itemprop="datePublished">6/26</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
+        <h1 itemprop="name">
+            <a href="/2017/12/14/jc-5/">文本溢出显示... 和文本的断点换行</a>
+        </h1>
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2024/06/22/uniapp/">uniapp 使用vue.js注意事项</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2024/06">
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/page/9/index.html">
     
-    <time class="vm" datetime="2024-06-22T02:27:08.000Z" itemprop="datePublished">6/22</time>
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2017-12-14T03:32:00.000Z" itemprop="datePublished">2017-12-14</time>
 </a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
 
-    
-    
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/css/">css</a>
+</div>
 
-    <li class="archive-section-item">
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2024/05/27/mrjq/">每日技巧</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2024/05">
-    
-    <time class="vm" datetime="2024-05-27T08:10:43.000Z" itemprop="datePublished">5/27</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
+        <p>文本的显示在前端算是比较X疼的一件事，如何处理断行和在手机端的显示内容呢？</p>
+<h3 id="文本换行-断点"><a href="#文本换行-断点" class="headerlink" title="文本换行 断点"></a>文本换行 断点</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">word-break</span>:  属性规定自动换行的处理方法</span><br><span class="line">         <span class="selector-tag">normal</span>     使用浏览器的默认换行方式</span><br><span class="line">         <span class="selector-tag">break-all</span>  允许在单词内断行</span><br><span class="line">                    在使用英文多的时候能够整齐换行</span><br><span class="line">         <span class="selector-tag">keep-all</span>   只能在半角空格或连字符处换行</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">word-wrap</span>：  允许长单词或 <span class="selector-tag">URL</span> 地址换行到下一行</span><br><span class="line">         <span class="selector-tag">normal</span>      只在允许的断点处处理（按浏览器默认的处理方式）</span><br><span class="line">         <span class="selector-tag">break-word</span>  在长单词或者<span class="selector-tag">url</span>内部进行换行</span><br></pre></td></tr></table></figure>
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2024/05/08/vue3ToRem/">vue3 项目实现兼容pc和H5的基本实现</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2024/05">
-    
-    <time class="vm" datetime="2024-05-08T12:30:55.000Z" itemprop="datePublished">5/8</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
+        <p class="article-more-link">
+            <a href="/2017/12/14/jc-5/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2024/04/25/Pannellum/">Pannellum</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2024/04">
-    
-    <time class="vm" datetime="2024-04-25T12:39:26.000Z" itemprop="datePublished">4/25</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
         
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2024/03/11/gitconfig/">git clone的时候 github链接前面加上了 https://ghproxy.com</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2024/03">
-    
-    <time class="vm" datetime="2024-03-11T11:24:00.000Z" itemprop="datePublished">3/11</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
+    </section>
 </article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2024/02/19/mathtype/">kiny-mathtype-katex渲染</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2024/02">
-    
-    <time class="vm" datetime="2024-02-19T06:49:15.000Z" itemprop="datePublished">2/19</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        
-<article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a class="archive-article-link" href="/2024/01/23/开发问题/">开发问题</a>
-            <span class="archive-article-date">
-                (<a class="article-date" href="/archives/2024/01">
-    
-    <time class="vm" datetime="2024-01-23T07:57:51.000Z" itemprop="datePublished">1/23</time>
-</a>
-)
-            </span>
-        </header>
-    </div>
-</article>
-    </li>
 
 
-</ol></section>
 
+
+<nav class="page-nav">
+    <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span>
+</nav>
 
 
 

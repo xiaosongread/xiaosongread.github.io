@@ -139,6 +139,45 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2024/06/26/alibaba/">阿里云服务器安装node环境，pm2控制node进程服务</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2024-06-26T06:22:17.000Z" itemprop="datePublished">2024-06-26</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h3 id="部署node环境"><a href="#部署node环境" class="headerlink" title="部署node环境"></a>部署node环境</h3><h4 id="1-账号密码或者控制台远程链接上服务器"><a href="#1-账号密码或者控制台远程链接上服务器" class="headerlink" title="1.账号密码或者控制台远程链接上服务器"></a>1.账号密码或者控制台远程链接上服务器</h4><h4 id="2-部署Node-js环境"><a href="#2-部署Node-js环境" class="headerlink" title="2.部署Node.js环境"></a>2.部署Node.js环境</h4><blockquote>
+<p>使用NVM安装多个Node.js版本</p>
+</blockquote>
+        
+        <p class="article-more-link">
+            <a href="/2024/06/26/alibaba/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2024/06/22/uniapp/">uniapp 使用vue.js注意事项</a>
         </h1>
         
@@ -168,66 +207,14 @@
 <li>非H5端不支持 Vue.config.keyCodes</li>
 <li>非H5端不支持 Vue.config.performance</li>
 </ul>
-<h4 id="全局API"><a href="#全局API" class="headerlink" title="全局API"></a>全局API</h4><ul>
-<li>非H5端不支持 Vue.nextTick</li>
-<li>小程序不支持 Vue.directive</li>
-<li>小程序不支持 Vue.filter</li>
-<li>小程序不支持 Vue.compile</li>
-</ul>
-<h4 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h4><ul>
-<li>非H5端不支持 el</li>
-<li>非H5端不支持 template</li>
-<li>非H5端不支持 render</li>
-<li>非H5端不支持 renderError</li>
-<li>小程序不支持 directives</li>
-<li>非H5端不支持 delimiters</li>
-<li>非H5端不支持 functional</li>
-<li>小程序不支持 model</li>
-<li>小程序不支持 inheritAttrs</li>
-<li>非H5端不支持 comments<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4></li>
-<li>小程序端不支持 activated</li>
-<li>小程序端不支持 deactivated</li>
-</ul>
-<h4 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h4><ul>
-<li>非H5端不支持 vm.$el</li>
-<li>小程序不支持 vm.$isServer</li>
-<li>小程序不支持 vm.$attrs</li>
-<li>小程序不支持 vm.$listeners</li>
-</ul>
-<h4 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h4><ul>
-<li>非H5端不支持 vm.$mount()</li>
-</ul>
-<h4 id="模板指令"><a href="#模板指令" class="headerlink" title="模板指令"></a>模板指令</h4><ul>
-<li>小程序不支持 v-html</li>
-<li>小程序不支持 v-pre</li>
-<li>非H5端不支持 v-cloak</li>
-<li>小程序不支持 v-once</li>
-<li>小程序不支持传入一个对象的所有property，即: v-bind=”object”</li>
-</ul>
-<h4 id="特殊属性"><a href="#特殊属性" class="headerlink" title="特殊属性"></a>特殊属性</h4><ul>
-<li>小程序不支持 is</li>
-<li>非H5端不支持 classObject 和 styleObject 语法。</li>
-<li>非H5端（非自定义组件编译模式）暂不支持在自定义组件上使用Class与Style绑定。</li>
-</ul>
-<h4 id="内置组件"><a href="#内置组件" class="headerlink" title="内置组件"></a>内置组件</h4><ul>
-<li>小程序不支持 component</li>
-<li>非H5不支持 transition</li>
-<li>非H5不支持 transition-group</li>
-<li>非H5不支持 keep-alive</li>
-</ul>
-<h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><ul>
-<li>小程序不支持:root，应该使用 page；page 编译到H5会变成 uni-page-body 元素</li>
-</ul>
-<h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><ul>
-<li>vue3中移除了.native 修饰符，编译器无法预知 click 是要触发原生事件，还是组件的自定义事件，故并未转换成小程序的 tap 事件；故小程序端自定义组件无法监听click事件，需要在组件内部把click事件emit出去，或者只监听tap事件。</li>
-</ul>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
-<li>小程序不支持 svg</li>
-<li>小程序不支持 多个根节点</li>
-<li>微信/QQ/百度/抖音小程序，自定义组件在渲染时会比App/H5端多一级节点</li>
-<li>小程序有虚拟节点的概念，有的小程序的自定义组件在渲染时会比App/H5多一级节点，通过 virtualHost 可以 设置是否需要这个虚拟节点；把 virtualHost 设为 false，再把 mergeVirtualHostAttributes 设为 true，就可以有贴近 vue 的开发体检。</li>
-</ul>
-
+        
+        <p class="article-more-link">
+            <a href="/2024/06/22/uniapp/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
         
     </section>
 </article>
@@ -536,49 +523,6 @@
         
         <p class="article-more-link">
             <a href="/2023/08/08/nvm/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/07/28/observe/">简单实现模拟 vue 的数据响应</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-07-28T14:45:48.000Z" itemprop="datePublished">2023-07-28</time>
-</a>
-
-            
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>主要实现的是修改对象里面的属性，从而使得页面中的显示改变。</p>
-<p>采用的是：</p>
-<ol>
-<li>Object.defineProperty 这个属性来监听对象属性的改变</li>
-<li>window 设置一个变量，来记录当有属性改变的时候，将需要调用的函数记录一下</li>
-<li>set 中，当数据属性修改的时候，for 循环来调用相关改变页面的的函数</li>
-</ol>
-        
-        <p class="article-more-link">
-            <a href="/2023/07/28/observe/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
