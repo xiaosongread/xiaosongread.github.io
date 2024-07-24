@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>第九章-客户端检测 | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="本章内容口 使用能力检测口 用户代理检测的历史口 选择检测方式第三章-数据类型第四章-变量、作用域和内存问题第五章-引用类型第六章-面向对象的设计程序第七章-函数表达式第八章-BOM第九章-客户端检测第十章-DOM第十三章-事件能力检测最常用也最为人们广泛接受的客户端检测形式是能力检测（又称特性检测）。这种方式不是识别特定的浏览器，而是识别浏览器的能力。123if (object.propertyInQuestion) &amp;#123;  // 使用 object.propertyIn...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">列表</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/jq-end/">
+                <span class="nav-text">每日技巧</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    
+<aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#能力检测"><span class="toc-number">1.</span> <span class="toc-text">能力检测</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#更可靠的能力检测"><span class="toc-number">1.1.</span> <span class="toc-text">更可靠的能力检测</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户代理检测"><span class="toc-number">2.</span> <span class="toc-text">用户代理检测</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#navigator-userAgent"><span class="toc-number">2.1.</span> <span class="toc-text">navigator.userAgent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户代理字符串检测技术"><span class="toc-number">2.2.</span> <span class="toc-text">用户代理字符串检测技术</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            第九章-客户端检测
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2020/09/25/navigator/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2020-09-25T06:50:41.000Z" itemprop="datePublished">2020-09-25</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/js/">js</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p><strong>本章内容</strong><br>口 使用能力检测<br>口 用户代理检测的历史<br>口 选择检测方式</p>
+<a id="more"></a>
+<p><a href="http://shuy.cc/2020/07/12/typeOf/" target="_blank" rel="noopener">第三章-数据类型</a><br><a href="http://shuy.cc/2020/08/13/instance/" target="_blank" rel="noopener">第四章-变量、作用域和内存问题</a><br><a href="http://shuy.cc/2020/08/03/object" target="_blank" rel="noopener">第五章-引用类型</a><br><a href="http://shuy.cc/2020/08/13/defineProperty/" target="_blank" rel="noopener">第六章-面向对象的设计程序</a><br><a href="http://shuy.cc/2020/08/28/func" target="_blank" rel="noopener">第七章-函数表达式</a><br><a href="http://shuy.cc/2020/09/03/bom/" target="_blank" rel="noopener">第八章-BOM</a><br><a href="http://shuy.cc/2020/09/03/navigator/" target="_blank" rel="noopener">第九章-客户端检测</a><br><a href="http://shuy.cc/2020/09/09/dom/" target="_blank" rel="noopener">第十章-DOM</a><br><a href="http://shuy.cc/2020/10/29/click/" target="_blank" rel="noopener">第十三章-事件</a></p>
+<h3 id="能力检测"><a href="#能力检测" class="headerlink" title="能力检测"></a>能力检测</h3><p>最常用也最为人们广泛接受的客户端检测形式是<strong>能力检测</strong>（又称特性检测）。这种方式不是识别特定的浏览器，而是识别浏览器的能力。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (object.propertyInQuestion) &#123;</span><br><span class="line">  <span class="comment">// 使用 object.propertyInQuestion</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElement</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">document</span>.getElementById) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">document</span>.all)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.all(id);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"No way to retrieve element!"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="更可靠的能力检测"><a href="#更可靠的能力检测" class="headerlink" title="更可靠的能力检测"></a>更可靠的能力检测</h4><p>能力检测对于想知道某个特性是否会按照适当方式行事（而不仅仅是某个特性存在）非常有用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不要这样做！这不是能力检测 —— 只检测了是否存在相应的方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isSortable</span>(<span class="params">object</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> !!object.sort</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码是不靠谱的，应该这样，所有对象只要有sort属性就会返回true,比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = isSortable(&#123;<span class="attr">sort</span>: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure>
+<p>这样检查应该更靠谱：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isSortable</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> obj === <span class="string">"function"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里使用 typeof 操作符用于确定 sort 的确是一个函数，因此可以调用它对数据进行排序。</p>
+<blockquote>
+<p>在可能的情况下，要尽量使用 typeof 进行能力检测。</p>
+</blockquote>
+<!-- #### 能力检测，不是浏览器检测
+
+### 怪癖检测 -->
+<h3 id="用户代理检测"><a href="#用户代理检测" class="headerlink" title="用户代理检测"></a>用户代理检测</h3><h4 id="navigator-userAgent"><a href="#navigator-userAgent" class="headerlink" title="navigator.userAgent"></a>navigator.userAgent</h4><p>用户代理检测通过检测用户代理字符串确定实际使用的浏览器。在每一次HTTP请求过程中，用户代理字符串是作为响应首部发送的，而且该字符串可以通过Javascript的 <strong>navigator.userAgent</strong> 属性访问。在服务端，通过检测用户代理字符串确定用户使用的浏览器是一种常用而且广为接受的做法。<br><!-- #### 用户代理字符串的历史 --></p>
+<h4 id="用户代理字符串检测技术"><a href="#用户代理字符串检测技术" class="headerlink" title="用户代理字符串检测技术"></a>用户代理字符串检测技术</h4><ul>
+<li>识别是手机还是PC</li>
+<li>识别是Android还是iphone</li>
+<li>识别不同的浏览器平台</li>
+<li>识别是浏览器环境还是微信小程序环境<!-- #### 完整的代码
+#### 使用方法 -->
+</li>
+</ul>
+<!-- ### 小结 -->
+
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2020/09/25/navigator",
+        distractionFreeMode: true,
+        title: "第九章-客户端检测",
+        body: "http://www.shuy.cc/2020/09/25/navigator/",
+        labels: ["js"]
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer">
+    Copyright © Aaron All Rights Reserved 京ICP备17007771号-1
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
