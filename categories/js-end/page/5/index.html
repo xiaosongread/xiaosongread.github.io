@@ -139,6 +139,55 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2018/07/27/h5sp/">h5移动端和大屏适配</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/categories/js-end/page/5/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2018-07-27T12:49:41.000Z" itemprop="datePublished">2018-07-27</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p><strong>rem适配原理</strong></p>
+<ul>
+<li>将设备分成 n 等分，n 可以是任意正确的值（比如 <code>flexible.js</code> 中的 n = 10 ）。</li>
+<li><ul>
+<li>设置 <code>html</code> 元素的 <code>font-size</code> 为 <code>设备宽度 / 10</code>，即得到 设备视口 1 rem 到底表示 多少设备视口 px。</li>
+</ul>
+</li>
+<li>将设计稿也分成 n 等分，此时设计稿中的某个元素a 的 px 对应 设备中这个元素的 rem 的计算方式为</li>
+<li><ul>
+<li>?rem = 设计稿 a px / (<code>设计稿的宽度 / n</code>(表示1rem为多少px像素))</li>
+</ul>
+</li>
+</ul>
+        
+        <p class="article-more-link">
+            <a href="/2018/07/27/h5sp/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2018/05/23/jc-4/">JS replace()方法全文替换，遇到变量怎么办？</a>
         </h1>
         
