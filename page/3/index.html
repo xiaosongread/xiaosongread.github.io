@@ -139,6 +139,49 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2023/07/28/observe/">简单实现模拟 vue 的数据响应</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/page/3/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-07-28T14:45:48.000Z" itemprop="datePublished">2023-07-28</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>主要实现的是修改对象里面的属性，从而使得页面中的显示改变。</p>
+<p>采用的是：</p>
+<ol>
+<li>Object.defineProperty 这个属性来监听对象属性的改变</li>
+<li>window 设置一个变量，来记录当有属性改变的时候，将需要调用的函数记录一下</li>
+<li>set 中，当数据属性修改的时候，for 循环来调用相关改变页面的的函数</li>
+</ol>
+        
+        <p class="article-more-link">
+            <a href="/2023/07/28/observe/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2023/07/01/nodeBk/">项目-博客-插件库 (代码已开源)</a>
         </h1>
         
@@ -548,50 +591,6 @@
         
         
     </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2022/09/13/前端常用链接汇总/">总结常用的框架API和前端插件</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/page/3/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2022-09-13T05:30:03.000Z" itemprop="datePublished">2022-09-13</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/vue-react-小程序/">vue react 小程序</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <ul>
-<li><a href="https://es6.ruanyifeng.com/#docs/intro" target="_blank" rel="noopener">ECMAScript 6</a> - ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。</li>
-<li><p><a href="https://www.lodashjs.com/" target="_blank" rel="noopener">lodashjs</a> - Lodash 是一个一致性、模块化、高性能的 JavaScript 实用工具库。</p>
-        
-        <p class="article-more-link">
-            <a href="/2022/09/13/前端常用链接汇总/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </li></ul></section>
 </article>
 
 
