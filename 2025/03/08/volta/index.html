@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>volta -&gt; node 版本管理工具 | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="做为 NVM/N 的忠实用户，无意中在网上看到了更方便的管理 node 版本的工具 volta。本来觉得没啥东西，无非就是 nvm 的仿品或者替代品而已，既然我已经可以随意切换我的 node 了，为什么还要换个工具去管理我的开发环境，没甚意思。但是当我细细探究之时才发现，这个东西将来必然会取代 nvm 的地位，成为包管理的主流，设想一个场景， 在维护一个旧的项目，比如用node@12.3.0可以跑的项目，使用node@16.0.0就跑不起来，会报错。但这时手上还有其他的新项目，例如使用的是...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">列表</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/jq-end/">
+                <span class="nav-text">每日技巧</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    
+<aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、mac-安装-nvm-和-volta-都很简单，这里直接使用官方的安装方法。"><span class="toc-number">1.1.</span> <span class="toc-text">1、mac 安装 nvm 和 volta 都很简单，这里直接使用官方的安装方法。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、windows-安装旧更加简单，去官网下载即可-https-github-com-volta-cli-volta-releases-download-v1-1-1-volta-1-1-1-windows-x86-64-msi-，一路next安装"><span class="toc-number">1.2.</span> <span class="toc-text">2、windows 安装旧更加简单，去官网下载即可(https://github.com/volta-cli/volta/releases/download/v1.1.1/volta-1.1.1-windows-x86_64.msi)，一路next安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#如何使用-volta-安装-node"><span class="toc-number">2.1.</span> <span class="toc-text">如何使用 volta 安装 node?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重点："><span class="toc-number">3.</span> <span class="toc-text">重点：</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            volta -&gt; node 版本管理工具
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2025/03/08/volta/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2025-03-08T06:56:15.000Z" itemprop="datePublished">2025-03-08</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>做为 NVM/N 的忠实用户，无意中在网上看到了更方便的管理 node 版本的工具 volta。本来觉得没啥东西，无非就是 nvm 的仿品或者替代品而已，既然我已经可以随意切换我的 node 了，为什么还要换个工具去管理我的开发环境，没甚意思。但是当我细细探究之时才发现，这个东西将来必然会取代 nvm 的地位，成为包管理的主流，设想一个场景， 在维护一个旧的项目，比如用<a href="mailto:node@12.3.0" target="_blank" rel="noopener">node@12.3.0</a>可以跑的项目，使用<a href="mailto:node@16.0.0" target="_blank" rel="noopener">node@16.0.0</a>就跑不起来，会报错。但这时手上还有其他的新项目，例如使用的是 node@18，突然需要把公司这个旧项目跑起来(<a href="mailto:node@12.3.0" target="_blank" rel="noopener">node@12.3.0</a>)，当前电脑所在环境为 node@18，这时启动旧项目，突然显示报错，唉，原来忘了切换 node 环境，手动切换 nvm use xxxxxx 后，才把项目起起来，这时又需要启动新项目的环境，噢噢，尴尬，起不起来了，这时我们就可以使用 volta<br>volta 和 nvm 都是跨平台支持的，这里我介绍下 volta 在 mac 和 win 上的安装方法。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="1、mac-安装-nvm-和-volta-都很简单，这里直接使用官方的安装方法。"><a href="#1、mac-安装-nvm-和-volta-都很简单，这里直接使用官方的安装方法。" class="headerlink" title="1、mac 安装 nvm 和 volta 都很简单，这里直接使用官方的安装方法。"></a>1、mac 安装 nvm 和 volta 都很简单，这里直接使用官方的安装方法。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://get.volta.sh | bash</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>使用以上命令就可以安装好 volta 了，使用命令验证 volta 安装是否成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volta -v  // 可以输出当前版本</span><br></pre></td></tr></table></figure>
+<h4 id="2、windows-安装旧更加简单，去官网下载即可-https-github-com-volta-cli-volta-releases-download-v1-1-1-volta-1-1-1-windows-x86-64-msi-，一路next安装"><a href="#2、windows-安装旧更加简单，去官网下载即可-https-github-com-volta-cli-volta-releases-download-v1-1-1-volta-1-1-1-windows-x86-64-msi-，一路next安装" class="headerlink" title="2、windows 安装旧更加简单，去官网下载即可(https://github.com/volta-cli/volta/releases/download/v1.1.1/volta-1.1.1-windows-x86_64.msi)，一路next安装"></a>2、windows 安装旧更加简单，去官网下载即可(<a href="https://github.com/volta-cli/volta/releases/download/v1.1.1/volta-1.1.1-windows-x86_64.msi)，一路next安装" target="_blank" rel="noopener">https://github.com/volta-cli/volta/releases/download/v1.1.1/volta-1.1.1-windows-x86_64.msi)，一路next安装</a></h4><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="如何使用-volta-安装-node"><a href="#如何使用-volta-安装-node" class="headerlink" title="如何使用 volta 安装 node?"></a>如何使用 volta 安装 node?</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">volta install node   // 安装最新的node</span><br><span class="line">volta install node@14.5.0   // 安装指定版本</span><br><span class="line">volta list // 查看当前环境依赖</span><br><span class="line">volta list all // 查看所有环境依赖</span><br></pre></td></tr></table></figure>
+<p>当我们有了多个版本的 node，就可以到项目中进行对应的设置了</p>
+<p>1、比如我们有个 vue2 的老项目，就可以在当前项目下执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volta pin node@14.5.0</span><br></pre></td></tr></table></figure>
+<p>2、在 package.json 中添加配置<br>此时我们的项目 package.json 中会多一个配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;volta&quot;: &#123;</span><br><span class="line">  &quot;node&quot;: &quot;14.5.0&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>tips：如果在 package.json 将这一块手动删除，那么 volta 将找不到他想使用的版本.</p>
+</blockquote>
+<p>当然，volta 不止可以设置 node 环境，还可以设置项目所使用的是 npm、yarn</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volta pin npm@8.0.0</span><br></pre></td></tr></table></figure>
+<p>执行完成之后，package.json 中会多一个配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;volta&quot;: &#123;</span><br><span class="line">  &quot;node&quot;: &quot;14.5.0&quot;,</span><br><span class="line">  &quot;npm&quot;: &quot;8.0.0&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果我们电脑安装了 volta，但是没有安装该项目相应的 node 或者 npm，不用着急，直接启动项目，然后 volta 会帮我们下载所需要的环境再启动项目(这里不需要我们停下来去安装当前项目环境，再启动项目)</p>
+</blockquote>
+<p>以下是 volta 常用的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">volta list //查看当前环境的版本</span><br><span class="line">volta list all //查看存在的所有版本</span><br><span class="line">volta install node //安装最新版的nodejs</span><br><span class="line">volta install node@12.2.0 //安装指定版本</span><br><span class="line">volta install node@12 //volta将选择合适的版本安装</span><br><span class="line">volta uninstall node@12.2.0 //安装指定版本</span><br><span class="line">volta pin node@10.15 //将更新项目的package.json文件以使用工具的选定版本</span><br><span class="line">volta pin yarn@1.14 //将更新项目的package.json文件以使用工具的选定版本</span><br></pre></td></tr></table></figure>
+<p>总结：在开发中，我们经常拿到一个老项目时，在安装依赖时会各种报错，这时，即使像我之前使用 nvm 来管理 node，常常也不能确定这个项目到底是在哪个 node 环境下才能运行，如果我们引入了 volta，这是我们就可以在<br>package.json 文件中看到我们具体使用了哪个 node 环境，即使拿到这个项目开发的人不使用 volta，也可以自己手动通过 nvm 确定切换到具体的 node 环境，不需要再去和之前的开发人员或者测试人员去询问到底使用哪个<br>环境才能跑起来项目.</p>
+<h3 id="重点："><a href="#重点：" class="headerlink" title="重点："></a>重点：</h3><blockquote>
+<p>如果你安装了 volta,并且在项目中执行了 volta pin <a href="mailto:node@12.2.0" target="_blank" rel="noopener">node@12.2.0</a>,那么 volta 会自动下载 12.2.0 版本的 node，并且自动切换到 12.2.0 版本的 node 环境，当你再次启动项目时，volta 会自动切换到 12.2.0 版本的 node 环境，如果没有切换到 12.2.0 版本的 node 环境，那么大概率是你也安装了 nvm 或者 N，互相影响了，你需要删除 nvm 或者 N，重新安装 volta 或者修改环境 volta 的环境变量到最高优先级.</p>
+</blockquote>
+
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2025/03/08/volta",
+        distractionFreeMode: true,
+        title: "volta -> node 版本管理工具",
+        body: "http://www.shuy.cc/2025/03/08/volta/",
+        labels: []
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer">
+    Copyright © Aaron All Rights Reserved 京ICP备17007771号-1
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>

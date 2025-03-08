@@ -139,6 +139,44 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2025/03/08/volta/">volta -&gt; node 版本管理工具</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2025-03-08T06:56:15.000Z" itemprop="datePublished">2025-03-08</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>做为 NVM/N 的忠实用户，无意中在网上看到了更方便的管理 node 版本的工具 volta。本来觉得没啥东西，无非就是 nvm 的仿品或者替代品而已，既然我已经可以随意切换我的 node 了，为什么还要换个工具去管理我的开发环境，没甚意思。但是当我细细探究之时才发现，这个东西将来必然会取代 nvm 的地位，成为包管理的主流，设想一个场景， 在维护一个旧的项目，比如用<a href="mailto:node@12.3.0" target="_blank" rel="noopener">node@12.3.0</a>可以跑的项目，使用<a href="mailto:node@16.0.0" target="_blank" rel="noopener">node@16.0.0</a>就跑不起来，会报错。但这时手上还有其他的新项目，例如使用的是 node@18，突然需要把公司这个旧项目跑起来(<a href="mailto:node@12.3.0" target="_blank" rel="noopener">node@12.3.0</a>)，当前电脑所在环境为 node@18，这时启动旧项目，突然显示报错，唉，原来忘了切换 node 环境，手动切换 nvm use xxxxxx 后，才把项目起起来，这时又需要启动新项目的环境，噢噢，尴尬，起不起来了，这时我们就可以使用 volta<br>volta 和 nvm 都是跨平台支持的，这里我介绍下 volta 在 mac 和 win 上的安装方法。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="1、mac-安装-nvm-和-volta-都很简单，这里直接使用官方的安装方法。"><a href="#1、mac-安装-nvm-和-volta-都很简单，这里直接使用官方的安装方法。" class="headerlink" title="1、mac 安装 nvm 和 volta 都很简单，这里直接使用官方的安装方法。"></a>1、mac 安装 nvm 和 volta 都很简单，这里直接使用官方的安装方法。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://get.volta.sh | bash</span><br></pre></td></tr></table></figure>
+        
+        <p class="article-more-link">
+            <a href="/2025/03/08/volta/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2024/11/09/ueeditor/">vue 兼容ueditor，图片上传，不依靠后端配合</a>
         </h1>
         
@@ -481,54 +519,6 @@
         
         <p class="article-more-link">
             <a href="/2024/06/22/uniapp/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2024/05/08/vue3ToRem/">vue3 项目实现兼容pc和H5的基本实现</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2024-05-08T12:30:55.000Z" itemprop="datePublished">2024-05-08</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/rem/">rem</a>, <a class="article-tag-link" href="/tags/vue3/">vue3</a>, <a class="article-tag-link" href="/tags/兼容pc和H5/">兼容pc和H5</a>, <a class="article-tag-link" href="/tags/移动端/">移动端</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>先来抛出一个简单的问题：</p>
-<p>如果我们的750的设计稿上面，有一个375px，那么这个元素在750的屏幕上面就是宽度的一半，那么，如果我们设置为375px，在375px的设备上面，就沾满了屏幕，而不是屏幕的一半了，那我们应该如何实现呢？</p>
-<p>大家不要说用百分比，我们也不讨论视口宽度单位，我们今天聊一聊rem这个单位。</p>
-<blockquote>
-<p>rem 是 CSS 中的一个长度单位，全称是 “root em”。它是相对于根元素（即HTML元素）的字体大小来计算的。例如，如果 HTML 元素的字体大小是 16px，那么 1rem 就等于 16px。如果 HTML 元素的字体大小改变，那么使用 rem 作为单位的元素的大小也会相应地改变。</p>
-</blockquote>
-<p>那么，我们在750的设备上面，更元素的字体大小设置为100，就是1rem=100px,在375的设备上面，设置为50，就是1rem=50px，这样，我们就可以实现不同设备上面的元素宽度自适应了。</p>
-        
-        <p class="article-more-link">
-            <a href="/2024/05/08/vue3ToRem/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>

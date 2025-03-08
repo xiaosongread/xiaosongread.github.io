@@ -139,6 +139,54 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2024/05/08/vue3ToRem/">vue3 项目实现兼容pc和H5的基本实现</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/categories/js-end/page/2/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2024-05-08T12:30:55.000Z" itemprop="datePublished">2024-05-08</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/rem/">rem</a>, <a class="article-tag-link" href="/tags/vue3/">vue3</a>, <a class="article-tag-link" href="/tags/兼容pc和H5/">兼容pc和H5</a>, <a class="article-tag-link" href="/tags/移动端/">移动端</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>先来抛出一个简单的问题：</p>
+<p>如果我们的750的设计稿上面，有一个375px，那么这个元素在750的屏幕上面就是宽度的一半，那么，如果我们设置为375px，在375px的设备上面，就沾满了屏幕，而不是屏幕的一半了，那我们应该如何实现呢？</p>
+<p>大家不要说用百分比，我们也不讨论视口宽度单位，我们今天聊一聊rem这个单位。</p>
+<blockquote>
+<p>rem 是 CSS 中的一个长度单位，全称是 “root em”。它是相对于根元素（即HTML元素）的字体大小来计算的。例如，如果 HTML 元素的字体大小是 16px，那么 1rem 就等于 16px。如果 HTML 元素的字体大小改变，那么使用 rem 作为单位的元素的大小也会相应地改变。</p>
+</blockquote>
+<p>那么，我们在750的设备上面，更元素的字体大小设置为100，就是1rem=100px,在375的设备上面，设置为50，就是1rem=50px，这样，我们就可以实现不同设备上面的元素宽度自适应了。</p>
+        
+        <p class="article-more-link">
+            <a href="/2024/05/08/vue3ToRem/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2024/04/25/Pannellum/">Pannellum</a>
         </h1>
         
@@ -476,48 +524,6 @@
         
         <p class="article-more-link">
             <a href="/2023/05/15/v3/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/01/08/20230108/">项目中常用的正则表达式</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/page/2/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-01-08T05:30:03.000Z" itemprop="datePublished">2023-01-08</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/js-正则/">js 正则</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>总结常用的正则表达式，以备不时之需，直接复制粘贴多简单，直接不过脑子。</p>
-        
-        <p class="article-more-link">
-            <a href="/2023/01/08/20230108/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
