@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>box-shadow属性-天气预报 | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="效果如下：12345678box-shadow: h-shadow v-shadow blur spread color inset; 参数详解： h-shadow: 阴影的水平偏移量。 v-shadow: 阴影的垂直偏移量。 blur: 模糊距离(就是渐变的距离，设为0就没有渐变)。 spread: 投影的尺寸，通过这个控制“影分身”的大小。 color: 投影颜色，通过这个实现后方的乌云。 inset: 改为内阴影。这里用不到。晴天1&amp;lt;div class=&#34;weather ...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">列表</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    
+<aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#效果如下："><span class="toc-number">1.</span> <span class="toc-text">效果如下：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#晴天"><span class="toc-number">1.1.</span> <span class="toc-text">晴天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多云"><span class="toc-number">1.2.</span> <span class="toc-text">多云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#雨天"><span class="toc-number">1.3.</span> <span class="toc-text">雨天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#雪天"><span class="toc-number">1.4.</span> <span class="toc-text">雪天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github"><span class="toc-number">1.5.</span> <span class="toc-text">github</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            box-shadow属性-天气预报
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2022/07/31/weather/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2022-07-31T09:13:10.000Z" itemprop="datePublished">2022-07-31</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/box-shadow/">box-shadow</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h2 id="效果如下："><a href="#效果如下：" class="headerlink" title="效果如下："></a>效果如下：</h2><p><img src="/images/img-folder/weather.gif"></p>
+<a id="more"></a>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">box-shadow: h-shadow v-shadow blur spread color inset;</span><br><span class="line"> 参数详解：</span><br><span class="line"> h-shadow: 阴影的水平偏移量。</span><br><span class="line"> v-shadow: 阴影的垂直偏移量。</span><br><span class="line"> blur: 模糊距离(就是渐变的距离，设为0就没有渐变)。</span><br><span class="line"> spread: 投影的尺寸，通过这个控制“影分身”的大小。</span><br><span class="line"> color: 投影颜色，通过这个实现后方的乌云。</span><br><span class="line"> inset: 改为内阴影。这里用不到。</span><br></pre></td></tr></table></figure>
+<h3 id="晴天"><a href="#晴天" class="headerlink" title="晴天"></a>晴天</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"weather sunny"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> sunScale &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">      <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  50% &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1.1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">      <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.sunny</span> &#123;</span><br><span class="line">  &amp;:before &#123;</span><br><span class="line">    <span class="selector-tag">content</span>: "";</span><br><span class="line">    <span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line">    <span class="selector-tag">top</span>: 50%;</span><br><span class="line">    <span class="selector-tag">left</span>: 50%;</span><br><span class="line">    <span class="selector-tag">transform</span>: <span class="selector-tag">translate</span>(<span class="selector-tag">-50</span>%, <span class="selector-tag">-50</span>%);</span><br><span class="line">    <span class="selector-tag">width</span>: 60<span class="selector-tag">px</span>;</span><br><span class="line">    <span class="selector-tag">height</span>: 60<span class="selector-tag">px</span>;</span><br><span class="line">    <span class="selector-tag">background</span>: <span class="selector-id">#F6D963</span>;</span><br><span class="line">    <span class="selector-tag">border-radius</span>: 50%;</span><br><span class="line">    <span class="selector-tag">box-shadow</span>: 0 0 20<span class="selector-tag">px</span> <span class="selector-id">#ff0</span>;</span><br><span class="line">    <span class="selector-tag">z-index</span>: 2;</span><br><span class="line">  &#125;</span><br><span class="line">  &amp;<span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin</span>: -<span class="number">45px</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">45px</span>; </span><br><span class="line">    <span class="attribute">width</span>: <span class="number">90px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">90px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#FFEB3B</span>;</span><br><span class="line">    <span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(</span><br><span class="line">      <span class="number">50%</span> <span class="number">0%</span>,</span><br><span class="line">        <span class="number">64.43%</span> <span class="number">25%</span>,</span><br><span class="line">        <span class="number">93.3%</span> <span class="number">25%</span>,</span><br><span class="line">        <span class="number">78.87%</span> <span class="number">50%</span>,</span><br><span class="line">        <span class="number">93.3%</span> <span class="number">75%</span>,</span><br><span class="line">        <span class="number">64.43%</span> <span class="number">75%</span>,</span><br><span class="line">        <span class="number">50%</span> <span class="number">100%</span>,</span><br><span class="line">        <span class="number">35.57%</span> <span class="number">75%</span>,</span><br><span class="line">        <span class="number">6.7%</span> <span class="number">75%</span>,</span><br><span class="line">        <span class="number">21.13%</span> <span class="number">50%</span>,</span><br><span class="line">        <span class="number">6.7%</span> <span class="number">25%</span>,</span><br><span class="line">        <span class="number">35.57%</span> <span class="number">25%</span>);</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">animation</span>: sunScale <span class="number">2s</span> linear infinite;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="多云"><a href="#多云" class="headerlink" title="多云"></a>多云</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"weather cloudy"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.cloudy</span><span class="selector-pseudo">:before</span>,</span><br><span class="line"><span class="selector-class">.rainy</span><span class="selector-pseudo">:before</span>,</span><br><span class="line"><span class="selector-class">.snowy</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">25%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">36px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">36px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">#fff</span> <span class="number">22px</span> -<span class="number">15px</span> <span class="number">0</span> <span class="number">6px</span>,</span><br><span class="line">              <span class="number">#fff</span> <span class="number">22px</span> -<span class="number">15px</span> <span class="number">0</span> <span class="number">6px</span>,</span><br><span class="line">              <span class="number">#fff</span> <span class="number">57px</span> -<span class="number">6px</span> <span class="number">0</span> <span class="number">2px</span>, </span><br><span class="line">              <span class="number">#fff</span> <span class="number">87px</span> <span class="number">4px</span> <span class="number">0</span> -<span class="number">4px</span>,</span><br><span class="line">              <span class="number">#fff</span> <span class="number">33px</span> <span class="number">6px</span> <span class="number">0</span> <span class="number">6px</span>,</span><br><span class="line">              <span class="number">#fff</span> <span class="number">61px</span> <span class="number">6px</span> <span class="number">0</span> <span class="number">2px</span>,</span><br><span class="line">              <span class="number">#ccc</span> <span class="number">29px</span> -<span class="number">23px</span> <span class="number">0</span> <span class="number">6px</span>,</span><br><span class="line">              <span class="number">#ccc</span> <span class="number">64px</span> -<span class="number">14px</span> <span class="number">0</span> <span class="number">2px</span>,</span><br><span class="line">              <span class="number">#ccc</span> <span class="number">94px</span> -<span class="number">4px</span> <span class="number">0</span> -<span class="number">4px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="雨天"><a href="#雨天" class="headerlink" title="雨天"></a>雨天</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"weather rainy"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> rainy&#123;</span><br><span class="line">  <span class="selector-tag">from</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, <span class="number">0</span>) <span class="built_in">rotate</span>(<span class="number">10deg</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">to</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">4px</span>, <span class="number">24px</span>) <span class="built_in">rotate</span>(<span class="number">10deg</span>);</span><br><span class="line">    <span class="attribute">box-shadow</span>:</span><br><span class="line">           <span class="number">#fff</span> <span class="number">25px</span> -<span class="number">10px</span> <span class="number">0</span>,</span><br><span class="line">           <span class="number">#fff</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">0</span>,</span><br><span class="line">           <span class="number">#fff</span> <span class="number">75px</span> -<span class="number">10px</span> <span class="number">0</span>,</span><br><span class="line">           <span class="number">#fff</span> <span class="number">0</span> <span class="number">25px</span> <span class="number">0</span>,</span><br><span class="line">           <span class="number">#fff</span> <span class="number">25px</span> <span class="number">15px</span> <span class="number">0</span>,</span><br><span class="line">           <span class="number">#fff</span> <span class="number">50px</span> <span class="number">25px</span> <span class="number">0</span>,</span><br><span class="line">           <span class="number">#fff</span> <span class="number">75px</span> <span class="number">15px</span> <span class="number">0</span>,</span><br><span class="line">           <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>) <span class="number">0</span> <span class="number">50px</span> <span class="number">0</span>,</span><br><span class="line">           <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>) <span class="number">25px</span> <span class="number">40px</span> <span class="number">0</span>,</span><br><span class="line">           <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>) <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span>,</span><br><span class="line">           <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>) <span class="number">75px</span> <span class="number">40px</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.rainy</span>&#123;</span><br><span class="line">  &amp;:after</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">25%</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">4px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">14px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">2px</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>:    	    <span class="number">#fff</span> <span class="number">25px</span> -<span class="number">10px</span> <span class="number">0</span>,    	    <span class="number">#fff</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">0</span>,    	    <span class="number">#fff</span> <span class="number">75px</span> -<span class="number">10px</span> <span class="number">0</span>,    	    <span class="number">#fff</span> <span class="number">0</span> <span class="number">25px</span> <span class="number">0</span>,    	    <span class="number">#fff</span> <span class="number">25px</span> <span class="number">15px</span> <span class="number">0</span>,    	    <span class="number">#fff</span> <span class="number">50px</span> <span class="number">25px</span> <span class="number">0</span>,    	    <span class="number">#fff</span> <span class="number">75px</span> <span class="number">15px</span> <span class="number">0</span>,    	    <span class="number">#fff</span> <span class="number">0</span> <span class="number">50px</span> <span class="number">0</span>,    	    <span class="number">#fff</span> <span class="number">25px</span> <span class="number">40px</span> <span class="number">0</span>,    	    <span class="number">#fff</span> <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span>,    	    <span class="number">#fff</span> <span class="number">75px</span> <span class="number">40px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">-webkit-animation</span>: rainy <span class="number">2s</span> linear infinite;</span><br><span class="line">    <span class="attribute">animation</span>: rainy <span class="number">2s</span> linear infinite;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="雪天"><a href="#雪天" class="headerlink" title="雪天"></a>雪天</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"weather snowy"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> snowDrop &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">      <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">      <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">25px</span>);</span><br><span class="line">      <span class="attribute">box-shadow</span>:</span><br><span class="line">      <span class="number">#fff</span> <span class="number">25px</span> -<span class="number">10px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">75px</span> -<span class="number">10px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">0</span> <span class="number">25px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">25px</span> <span class="number">15px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">50px</span> <span class="number">25px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">75px</span> <span class="number">15px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>) <span class="number">0</span> <span class="number">50px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>) <span class="number">25px</span> <span class="number">40px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>) <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>) <span class="number">75px</span> <span class="number">40px</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.snowy</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>:<span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">25%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">8px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">8px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">box-shadow</span>:</span><br><span class="line">      <span class="number">#fff</span> <span class="number">25px</span> -<span class="number">10px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">50px</span> <span class="number">0</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">75px</span> -<span class="number">10px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">0</span> <span class="number">25px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">25px</span> <span class="number">15px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">50px</span> <span class="number">25px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">75px</span> <span class="number">15px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">0</span> <span class="number">50px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">25px</span> <span class="number">40px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">50px</span> <span class="number">50px</span> <span class="number">0</span>,</span><br><span class="line">      <span class="number">#fff</span> <span class="number">75px</span> <span class="number">40px</span> <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">animation</span>: snowDrop <span class="number">2s</span> linear infinite; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="github"><a href="#github" class="headerlink" title="github"></a>github</h3><p><a href="https://github.com/xiaosongread/gulp-cli" target="_blank" rel="noopener">https://github.com/xiaosongread/gulp-cli</a></p>
+
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2022/07/31/weather",
+        distractionFreeMode: true,
+        title: "box-shadow属性-天气预报",
+        body: "http://www.shuy.cc/2022/07/31/weather/",
+        labels: ["box-shadow"]
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer" style="color: #fff">
+    <a href="https://beian.miit.gov.cn/" style="color: #fff" target="_blank">晋ICP备2024043727号-3</a>
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
