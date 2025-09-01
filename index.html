@@ -135,7 +135,7 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2025/03/08/volta/">volta -&gt; node 版本管理工具</a>
+            <a href="/2025/03/08/volta/">volta -&gt; n -&gt; nvm -&gt; node 版本管理工具</a>
         </h1>
         
         <div class="article-meta clearfix">
@@ -154,7 +154,7 @@
     <section class="article-body markdown-body">
         
         <p>做为 NVM/N 的忠实用户，无意中在网上看到了更方便的管理 node 版本的工具 volta。本来觉得没啥东西，无非就是 nvm 的仿品或者替代品而已，既然我已经可以随意切换我的 node 了，为什么还要换个工具去管理我的开发环境，没甚意思。但是当我细细探究之时才发现，这个东西将来必然会取代 nvm 的地位，成为包管理的主流，设想一个场景， 在维护一个旧的项目，比如用<a href="mailto:node@12.3.0" target="_blank" rel="noopener">node@12.3.0</a>可以跑的项目，使用<a href="mailto:node@16.0.0" target="_blank" rel="noopener">node@16.0.0</a>就跑不起来，会报错。但这时手上还有其他的新项目，例如使用的是 node@18，突然需要把公司这个旧项目跑起来(<a href="mailto:node@12.3.0" target="_blank" rel="noopener">node@12.3.0</a>)，当前电脑所在环境为 node@18，这时启动旧项目，突然显示报错，唉，原来忘了切换 node 环境，手动切换 nvm use xxxxxx 后，才把项目起起来，这时又需要启动新项目的环境，噢噢，尴尬，起不起来了，这时我们就可以使用 volta<br>volta 和 nvm 都是跨平台支持的，这里我介绍下 volta 在 mac 和 win 上的安装方法。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="1、mac-安装-nvm-和-volta-都很简单，这里直接使用官方的安装方法。"><a href="#1、mac-安装-nvm-和-volta-都很简单，这里直接使用官方的安装方法。" class="headerlink" title="1、mac 安装 nvm 和 volta 都很简单，这里直接使用官方的安装方法。"></a>1、mac 安装 nvm 和 volta 都很简单，这里直接使用官方的安装方法。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://get.volta.sh | bash</span><br></pre></td></tr></table></figure>
+<h2 id="volta"><a href="#volta" class="headerlink" title="volta"></a>volta</h2><h3 id="volta-安装"><a href="#volta-安装" class="headerlink" title="volta 安装"></a>volta 安装</h3><h4 id="1、mac-安装-nvm-和-volta-都很简单，这里直接使用官方的安装方法。"><a href="#1、mac-安装-nvm-和-volta-都很简单，这里直接使用官方的安装方法。" class="headerlink" title="1、mac 安装 nvm 和 volta 都很简单，这里直接使用官方的安装方法。"></a>1、mac 安装 nvm 和 volta 都很简单，这里直接使用官方的安装方法。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://get.volta.sh | bash</span><br></pre></td></tr></table></figure>
         
         <p class="article-more-link">
             <a href="/2025/03/08/volta/#more">
