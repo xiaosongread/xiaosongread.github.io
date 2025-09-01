@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>第七章-函数表达式 | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="本章内容口 函数表达式的特征口 使用函数实现递归口 使用闭包定义私有变量第三章-数据类型第四章-变量、作用域和内存问题第五章-引用类型第六章-面向对象的设计程序第七章-函数表达式第八章-BOM第九章-客户端检测第十章-DOM第十三章-事件创建函数函数声明1234aa() // 123function aa()&amp;#123;  console.log(123)&amp;#125;函数声明变量提升：执行代码之前会先读取函数声明，这就意味着可以把调用函数放在声明函数之前。函数表达式1234a...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">列表</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    
+<aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建函数"><span class="toc-number">1.</span> <span class="toc-text">创建函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函数声明"><span class="toc-number">1.1.</span> <span class="toc-text">函数声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数表达式"><span class="toc-number">1.2.</span> <span class="toc-text">函数表达式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#递归"><span class="toc-number">2.</span> <span class="toc-text">递归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闭包"><span class="toc-number">3.</span> <span class="toc-text">闭包</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#闭包与变量"><span class="toc-number">3.1.</span> <span class="toc-text">闭包与变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关于this对象"><span class="toc-number">3.2.</span> <span class="toc-text">关于this对象</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模仿块级作用域"><span class="toc-number">4.</span> <span class="toc-text">模仿块级作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#私有变量"><span class="toc-number">5.</span> <span class="toc-text">私有变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#静态私有变量"><span class="toc-number">5.1.</span> <span class="toc-text">静态私有变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            第七章-函数表达式
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2020/08/28/func/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2020-08-28T06:55:37.000Z" itemprop="datePublished">2020-08-28</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p><strong>本章内容</strong><br>口 函数表达式的特征<br>口 使用函数实现递归<br>口 使用闭包定义私有变量</p>
+<a id="more"></a>
+<p><a href="http://shuy.cc/2020/07/12/typeOf/" target="_blank" rel="noopener">第三章-数据类型</a><br><a href="http://shuy.cc/2020/08/13/instance/" target="_blank" rel="noopener">第四章-变量、作用域和内存问题</a><br><a href="http://shuy.cc/2020/08/03/object" target="_blank" rel="noopener">第五章-引用类型</a><br><a href="http://shuy.cc/2020/08/13/defineProperty/" target="_blank" rel="noopener">第六章-面向对象的设计程序</a><br><a href="http://shuy.cc/2020/08/28/func" target="_blank" rel="noopener">第七章-函数表达式</a><br><a href="http://shuy.cc/2020/09/03/bom/" target="_blank" rel="noopener">第八章-BOM</a><br><a href="http://shuy.cc/2020/09/03/navigator/" target="_blank" rel="noopener">第九章-客户端检测</a><br><a href="http://shuy.cc/2020/09/09/dom/" target="_blank" rel="noopener">第十章-DOM</a><br><a href="http://shuy.cc/2020/10/29/click/" target="_blank" rel="noopener">第十三章-事件</a></p>
+<h3 id="创建函数"><a href="#创建函数" class="headerlink" title="创建函数"></a>创建函数</h3><h4 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aa() <span class="comment">// 123</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aa</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>函数声明变量提升：执行代码之前会先读取函数声明，这就意味着可以把调用函数放在声明函数之前。</p>
+</blockquote>
+<h4 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aa() <span class="comment">// 报错，变量不存在</span></span><br><span class="line"><span class="keyword">var</span> aa = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (flag) &#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">aa</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">aa</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">456</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>以上代码坚决不能使用，在不同的浏览器解析的效果不一样，但是可以使用一下方式来实现。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> aa</span><br><span class="line"><span class="keyword">if</span> (flag) &#123;</span><br><span class="line">  aa = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  aa = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">456</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>一个函数通过名字调用自身的情况下构成的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (num &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> num * factorial(num - <span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> total = factorial(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">console</span>.log(total) <span class="comment">// 24</span></span><br></pre></td></tr></table></figure>
+<p>以上函数如果改一下操作就会报错：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (num &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> num * factorial(num - <span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> myFactorial = factorial</span><br><span class="line">factorial = <span class="literal">null</span></span><br><span class="line">myFactorial(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<p>修改以上问题的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (num &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> num * <span class="built_in">arguments</span>.callee(num - <span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> myFactorial = factorial</span><br><span class="line">factorial = <span class="literal">null</span></span><br><span class="line">myFactorial(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用arguments.callee 来代替函数名称，可以确保不管函数名如何变化，都可以调用到本身。   </p>
+</blockquote>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>闭包就是一个函数可以访问另外一个函数内部的变量。</p>
+<blockquote>
+<p>由于闭包会携带包含他的外部函数的作用域，因此比其他函数更加的占用内存，因此，不到万不得已，尽量少使用闭包。</p>
+</blockquote>
+<h4 id="闭包与变量"><a href="#闭包与变量" class="headerlink" title="闭包与变量"></a>闭包与变量</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunctions</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> result = <span class="keyword">new</span> <span class="built_in">Array</span>()</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 位置1</span></span><br><span class="line">    result[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 位置2</span></span><br><span class="line">      <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = createFunctions()</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">  <span class="comment">// 位置3</span></span><br><span class="line">  <span class="built_in">console</span>.log(a[i]()); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>理所当然的结果: [0,1,2,3,4], 其实的结果是[10,10,10,10,10]    </p>
+</blockquote>
+<p>其实，在a里面保存的是[function(){return i}…],然后位置3执行的时候，是执行每一个function(){return i}匿名函数，也就是执行位置2里面的内容，但是位置里面的作用域并没有i，所以就在位置1的位置作用域找，但是这时候循环已经执行完毕，那就是10，所以每一次打印的都是10。</p>
+<p>问题的关键就在于,我们没有立即使用i这个变量,而是把它保存在起来,需要的时候再调用,而i这个变量一直在变化,所以我们需要在循环的每一步中,实时地获取i的值,解决方案如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunctions</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> result = <span class="keyword">new</span> <span class="built_in">Array</span>()</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="comment">// 位置1</span></span><br><span class="line">    result[i] = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 位置2</span></span><br><span class="line">      <span class="keyword">return</span> num</span><br><span class="line">    &#125;(i)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = createFunctions()</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ ) &#123;</span><br><span class="line">  <span class="comment">// 位置3</span></span><br><span class="line">  <span class="built_in">console</span>.log(a[i]); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>得到了理想结果[0,1,2,3,4]</p>
+<h4 id="关于this对象"><a href="#关于this对象" class="headerlink" title="关于this对象"></a>关于this对象</h4><p>this 对象是在函数运行时候基于函数执行环境绑定的，在全局函数中this指向window,而当函数被作为某个对象的方法调用时，this等于那个对象，不过匿名函数的执行环境具有全局性，因此this通常指向window,但是有时候由于闭包的编写方式不同，这一点可能没有那么明显。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"the window"</span></span><br><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">  name: <span class="string">"the object"</span>,</span><br><span class="line">  getNameFunc: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(object.getNameFunc()()) <span class="comment">// the window</span></span><br></pre></td></tr></table></figure>
+<p>每个函数在被调用的时候，都会自动生成this和arguments，内部函数在搜索这两个对象的时候，只会搜索到其活动对象为止，因此永远不可能访问外部函数中的这两个对象，但是，如果把外部函数的this对象保存到一个闭包能够访问到的变量里面，就可以让闭包访问该对象了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"the window"</span></span><br><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">  name: <span class="string">"the object"</span>,</span><br><span class="line">  getNameFunc: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> that.name</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(object.getNameFunc()()) <span class="comment">// the object</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>通过call或者apply也是可以改变执行环境的this指向的。</p>
+</blockquote>
+<p>在几种特殊的情况下，this可能会发生变化<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"the window"</span></span><br><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">  name: <span class="string">"the object"</span>,</span><br><span class="line">  getNameFunc: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(object.getNameFunc()) <span class="comment">// the object</span></span><br><span class="line"><span class="built_in">console</span>.log((object.getNameFunc)()) <span class="comment">// the object</span></span><br><span class="line"><span class="built_in">console</span>.log((object.getNameFunc = object.getNameFunc)()) <span class="comment">// the window</span></span><br></pre></td></tr></table></figure></p>
+<p>第一种调用方法是常规的，就不多说了，第二种先加了个括号，就好像是引用了一个函数，但是this得到了维持，因此和第一种方式没有打什么区别，第三种先进行了赋值在进行调用，因为这个赋值表达式的值是函数本身，所以this的值没有得到维持，结果就返回了 the window ，其实在你的代码中，大概率是不会出现第二种和第三中这种方式的。</p>
+<h3 id="模仿块级作用域"><a href="#模仿块级作用域" class="headerlink" title="模仿块级作用域"></a>模仿块级作用域</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outputnumber</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'a'</span>,i) <span class="comment">// 0 1 2</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> i</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'b'</span>, i) <span class="comment">// 3</span></span><br><span class="line">&#125;</span><br><span class="line">outputnumber()</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>以上代码在for循环后面又申明了相同的变量i，但是也是可以访问到变量的，而不是undefind。</p>
+<blockquote>
+<p>JavaScript从来不会告诉你是否多次声明了同一个变量，遇到这种情况，它只会对后续的声明视而不见，不过，它会执行后续声明中的变量初始化。</p>
+</blockquote>
+<p>块级作用域（通常称为私有作用域）的匿名函数的语法如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 这里是块级作用域</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outputnumber</span>(<span class="params">count</span>) </span>&#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt; count; i++) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(i) <span class="comment">// 0 1 2</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)()</span><br><span class="line">  <span class="built_in">console</span>.log(i) <span class="comment">// 报错： Uncaught ReferenceError: i is not defined</span></span><br><span class="line">&#125;</span><br><span class="line">outputnumber(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>以上代码：在循环外部添加了一个匿名函数，匿名函数在执行之后，里面所有的变量都会被销毁，因此，变量只能在匿名函数循环中使用，然后就会被销毁，而循环是在匿名函数的闭包中，是可以访问外部函数所有的变量的。</p>
+<blockquote>
+<p>这种技术经常在全局作用域中被用在函数的外部，从而限制向全局作用域中添加过多的变量和函数。在多人开发的项目中，避免了变量名冲突而导致的各种问题。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">  <span class="keyword">if</span> (now.getMonth()==<span class="number">0</span> &amp;&amp; now.getDate()==<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'新年快乐'</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'不是过年你不好好工作'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="keyword">var</span> now</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'now'</span>, now) <span class="comment">// undefind</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="keyword">if</span> (now.getMonth()==<span class="number">0</span> &amp;&amp; now.getDate()==<span class="number">1</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'新年快乐'</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'不是过年你不好好工作'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> now</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'now'</span>, now) <span class="comment">// now Tue Sep 01 2020 17:11:05 GMT+0800 (中国标准时间)</span></span><br></pre></td></tr></table></figure>
+<p>以上代码充分说明了 匿名函数闭包执行完之后，销毁掉了 now 变量，避免了全局变量污染的问题。</p>
+<h3 id="私有变量"><a href="#私有变量" class="headerlink" title="私有变量"></a>私有变量</h3><p>严格意义上来讲，js是没有私有成员这一说的，但是有私有变量的概念，任何在函数中定义的变量，都可以认为是私有变量。<br>函数中声明的所有变量，包括入参，函数内部定义的变量，函数，都只能在函数内部使用，外部访问不到的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num1, num2</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> sum = num1 + num2;</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个函数中，有3个私有变量：num1，num2，sum。在函数内部可以反问这几个变量，但在函数外部则不能访问它们。如果在函数内部定义一个闭包，那么闭包可以通过自己的作用域链也可以访问到这些变量。而利用这一点，就可以创建用于访问私有变量的公有方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyObject</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 私有变量和私有函数</span></span><br><span class="line">  <span class="keyword">var</span> privateVariable = <span class="number">10</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 特权方法</span></span><br><span class="line">  <span class="keyword">this</span>.publicMethod = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    privateVariable++;</span><br><span class="line">    <span class="keyword">return</span> privateFunction();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个模式在构造函数内部定义了所有私有变量和函数。然后继续创建了能够访问这些私有成员的特权方法，定义特权方法，是因为作为闭包有权访问在构造函数中定义的所有变量和函数。<br>利用私有和特权方法，可以隐藏那些不应该被直接修改的数据，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    name = value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">'bob'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(person.getName()) <span class="comment">// bob</span></span><br><span class="line">person.setName(<span class="string">'dog'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(person.getName()) <span class="comment">// dog</span></span><br></pre></td></tr></table></figure>
+<p>以上代码 person 可以访问Person函数内部的 name 变量，是因为getName和setName是在函数中定义的两个特权方法，而作为闭包能够通过作用于链访问name属性，在构造函数中定义方法，有一个确定就是 构造函数创建的每一个实例，都会重新创建相同的变量和方法，在上一篇有说过，这个问题只能通过使用静态私有变量来实现特权方法。</p>
+<h4 id="静态私有变量"><a href="#静态私有变量" class="headerlink" title="静态私有变量"></a>静态私有变量</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  bb = <span class="number">123</span></span><br><span class="line">&#125;</span><br><span class="line">aa()</span><br><span class="line"><span class="built_in">console</span>.log(bb) <span class="comment">// 123</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>以上代码，bb打印出来的结果是123，因为初始化未经声明的变量，总是会创建一个全局的变量，但是在严格模式下，这种做法是会报错的。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">""</span></span><br><span class="line">  Person = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    name = value</span><br><span class="line">  &#125;</span><br><span class="line">  Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name</span><br><span class="line">  &#125;</span><br><span class="line">  Person.prototype.setName = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    name = value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'aa'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(person1.getName()) <span class="comment">// aa</span></span><br><span class="line">person1.setName(<span class="string">"bb"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(person1.getName()) <span class="comment">// bb</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">'cc'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(person1.getName()) <span class="comment">// cc</span></span><br><span class="line"><span class="built_in">console</span>.log(person2.getName()) <span class="comment">// cc</span></span><br></pre></td></tr></table></figure>
+<p>以上代码，因为Person getName setName 是闭包，所以都可以访问到name属性，但是getName setName是原型上面的方法，所以Person下面的所有实例都共用相同的方法，虽然这样可以复用代码，但是其中一个实例改变name值，所有的实例的name都会跟着改变，<strong>到底是使用实例变量还是使用静态私有变量，最终还是要看你自己的需求来决定。</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  Person = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = value</span><br><span class="line">  &#125;</span><br><span class="line">  Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">  &#125;</span><br><span class="line">  Person.prototype.setName = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = value</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'aa'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(person1.getName()) <span class="comment">// aa</span></span><br><span class="line">person1.setName(<span class="string">"bb"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(person1.getName()) <span class="comment">// bb</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">'cc'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(person1.getName()) <span class="comment">// bb</span></span><br><span class="line"><span class="built_in">console</span>.log(person2.getName()) <span class="comment">// cc</span></span><br></pre></td></tr></table></figure></p>
+<!-- #### 模块模式
+
+#### 增强的模块模式 -->
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>在JavasScipt编程中,函数表达式是一种非常有用的技术。使用函数表达式可以无须对函数命名,从而实现动态编程。匿名函数,也称为拉姆达函数,是一种使用 JavaScript函数的强大方式。以下总结了函数表达式的特点。</strong><br>1.函数表达式不同于函教声明。函教声明要求有名字,但函数表达式不需要。没有名字的函数表达式也叫做匿名函数。<br>2.在无法确定如何引用函数的情况下,递归函数就会变得比较复杂。<br>3.递归函数应该始终使用 argurents.callee 来递归地调用自身,不要使用函数名(函数名可能发生变化)。<br><strong>当在函数内部定义了其他函数时,就创建了闭包。闭包有权访问包含函数内部的所有变量,原理如下。</strong><br>1.在后台执行环境中,闭包的作用域链包含着它自己的作用域、包含函数的作用域和全局作用域。<br>2.通常,函数的作用城及其所有变量都会在函数执行结束后被销毁。<br>3.但是,当函数返回了一个闭包时,这个函数的作用域将会一直在内存中保存到闭包不存在为止。<br><strong>使用闭包可以在JavaScrip中模仿块级作用域( JavaScript本身没有块级作用域的概念),要点如下。</strong><br>1.创建并立即调用一个函数,这样既可以执行其中的代码,又不会在内存中留下对该函数的引用。<br>2.结果就是函数内部的所有变最都会被立即销段-除非将某些变量赋值给了包含作用域（即外部作用城)中的变量。<br><strong>闭包还可以用于在对象中创建私有变量,相关概念和要点如下。</strong><br>1.即使 JavaScrip 中没有正式的私有对象属性的概念,但可以使用闭包来实现公有方法,而通过公有方法可以访问在包含作用域中定义的变量。<br>2.有权访问私有变量的公有方法叫做特权方法。<br>3.可以使用构造函数模式、原型模式来实现自定义类型的特权方法,也可以使用模块模式、增强的模块模式来实现单例的特权方法。<br><strong>JavaScrip中的函数表达式和闭包都是极其有用的特性,利用它们可以实现很多功能。不过,因为闭包必须维护额外的作用域,所以过度使用它们可能会占用大量内存。</strong></p>
+
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2020/08/28/func",
+        distractionFreeMode: true,
+        title: "第七章-函数表达式",
+        body: "http://www.shuy.cc/2020/08/28/func/",
+        labels: []
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer" style="color: #fff">
+    <a href="https://beian.miit.gov.cn/" style="color: #fff" target="_blank">晋ICP备2024043727号-3</a>
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
