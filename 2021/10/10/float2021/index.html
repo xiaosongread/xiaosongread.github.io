@@ -1,0 +1,274 @@
+<<<<<<< HEAD
+=======
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>javascript浮点型的一些坑 | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="javascript浮点型运算有很多问题，不管是加减还是乘除，还是四舍五入，都可能出现问题。本文简单介绍一些解决办法，都是工作中总结出来的，有简单，有麻烦。下面就总结一下。加发运算例如常见的：120.1+0.2 //0.300000000000000041.4+2.8 //4.199999999999999解决方案一简单方法：这个方法要你知道保留小数点位数，好多情况不是很适用，特殊四舍五入的情况也不准确！ 假如保留1位小数1(((0.1+0.2)*10).toFixed(1))/1...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">列表</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    
+<aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#加发运算"><span class="toc-number">1.</span> <span class="toc-text">加发运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例如常见的："><span class="toc-number">1.1.</span> <span class="toc-text">例如常见的：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案一"><span class="toc-number">1.2.</span> <span class="toc-text">解决方案一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案二"><span class="toc-number">1.3.</span> <span class="toc-text">解决方案二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#减法运算"><span class="toc-number">2.</span> <span class="toc-text">减法运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例如常见的：-1"><span class="toc-number">2.1.</span> <span class="toc-text">例如常见的：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-number">2.2.</span> <span class="toc-text">解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#乘法运算"><span class="toc-number">3.</span> <span class="toc-text">乘法运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案一-1"><span class="toc-number">3.1.</span> <span class="toc-text">解决方案一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案二-1"><span class="toc-number">3.2.</span> <span class="toc-text">解决方案二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#除法运算"><span class="toc-number">4.</span> <span class="toc-text">除法运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#函数"><span class="toc-number">4.1.</span> <span class="toc-text">函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四舍五入方法"><span class="toc-number">5.</span> <span class="toc-text">四舍五入方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案一："><span class="toc-number">5.1.</span> <span class="toc-text">解决方案一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方案二"><span class="toc-number">5.2.</span> <span class="toc-text">方案二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">5.3.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            javascript浮点型的一些坑
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2021/10/10/float2021/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2021-10-10T12:30:10.000Z" itemprop="datePublished">2021-10-10</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/js/">js</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>javascript浮点型运算有很多问题，不管是加减还是乘除，还是四舍五入，都可能出现问题。本文简单介绍一些解决办法，都是工作中总结出来的，有简单，有麻烦。下面就总结一下。</p>
+<h2 id="加发运算"><a href="#加发运算" class="headerlink" title="加发运算"></a>加发运算</h2><h3 id="例如常见的："><a href="#例如常见的：" class="headerlink" title="例如常见的："></a>例如常见的：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.1</span>+<span class="number">0.2</span> <span class="comment">//0.30000000000000004</span></span><br><span class="line"><span class="number">1.4</span>+<span class="number">2.8</span> <span class="comment">//4.199999999999999</span></span><br></pre></td></tr></table></figure>
+<h3 id="解决方案一"><a href="#解决方案一" class="headerlink" title="解决方案一"></a>解决方案一</h3><a id="more"></a>
+<p>简单方法：<br>这个方法要你知道保留小数点位数，好多情况不是很适用，特殊四舍五入的情况也不准确！ 假如保留1位小数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(((<span class="number">0.1</span>+<span class="number">0.2</span>)*<span class="number">10</span>).toFixed(<span class="number">1</span>))/<span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p>保留2位小数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(((<span class="number">0.1</span>+<span class="number">0.2</span>)*<span class="number">100</span>).toFixed(<span class="number">2</span>))/<span class="number">100</span></span><br></pre></td></tr></table></figure>
+<h3 id="解决方案二"><a href="#解决方案二" class="headerlink" title="解决方案二"></a>解决方案二</h3><p>精确方法： 定义函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">accAdd</span>(<span class="params">arg1,arg2</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> r1,r2,m;</span><br><span class="line">  <span class="keyword">try</span>&#123;r1=arg1.toString().split(<span class="string">"."</span>)[<span class="number">1</span>].length&#125;<span class="keyword">catch</span>(e)&#123;r1=<span class="number">0</span>&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;r2=arg2.toString().split(<span class="string">"."</span>)[<span class="number">1</span>].length&#125;<span class="keyword">catch</span>(e)&#123;r2=<span class="number">0</span>&#125;</span><br><span class="line">  m=<span class="built_in">Math</span>.pow(<span class="number">10</span>,<span class="built_in">Math</span>.max(r1,r2))</span><br><span class="line">  <span class="keyword">return</span> (arg1*m+arg2*m)/m</span><br><span class="line">&#125;</span><br><span class="line">accAdd(<span class="number">0.1</span>,<span class="number">0.2</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="减法运算"><a href="#减法运算" class="headerlink" title="减法运算"></a>减法运算</h2><h3 id="例如常见的：-1"><a href="#例如常见的：-1" class="headerlink" title="例如常见的："></a>例如常见的：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.3</span><span class="number">-0.1</span> <span class="comment">//0.19999999999999998</span></span><br></pre></td></tr></table></figure>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">accSub</span>(<span class="params">arg1,arg2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> r1,r2,m,n;</span><br><span class="line">    <span class="keyword">try</span>&#123;r1=arg1.toString().split(<span class="string">"."</span>)[<span class="number">1</span>].length&#125;<span class="keyword">catch</span>(e)&#123;r1=<span class="number">0</span>&#125;</span><br><span class="line">    <span class="keyword">try</span>&#123;r2=arg2.toString().split(<span class="string">"."</span>)[<span class="number">1</span>].length&#125;<span class="keyword">catch</span>(e)&#123;r2=<span class="number">0</span>&#125;</span><br><span class="line">    m=<span class="built_in">Math</span>.pow(<span class="number">10</span>,<span class="built_in">Math</span>.max(r1,r2));</span><br><span class="line">    <span class="comment">//last modify by deeka</span></span><br><span class="line">    <span class="comment">//动态控制精度长度</span></span><br><span class="line">    n=(r1&gt;=r2)?r1:r2;</span><br><span class="line">    <span class="keyword">return</span> ((arg1*m-arg2*m)/m).toFixed(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="乘法运算"><a href="#乘法运算" class="headerlink" title="乘法运算"></a>乘法运算</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.69</span>*<span class="number">10</span> <span class="comment">//6.8999999999999995</span></span><br><span class="line"><span class="number">11</span>*<span class="number">22.9</span> <span class="comment">//251.89999999999998</span></span><br></pre></td></tr></table></figure>
+<h3 id="解决方案一-1"><a href="#解决方案一-1" class="headerlink" title="解决方案一"></a>解决方案一</h3><p>如果在知道小数位个数的前提下，可以考虑通过将浮点数放大倍数到整型(最后再除以相应倍数)，再进行运算操作，这样就能得到正确的结果了。 例如<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.69</span>*<span class="number">10</span>*<span class="number">10</span>/<span class="number">10</span></span><br><span class="line"><span class="number">11</span>*(<span class="number">22.9</span>*<span class="number">10</span>)/<span class="number">10</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="解决方案二-1"><a href="#解决方案二-1" class="headerlink" title="解决方案二"></a>解决方案二</h3><p>封装函数方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">accMul</span>(<span class="params">arg1,arg2</span>)</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> m=<span class="number">0</span>,s1=arg1.toString(),s2=arg2.toString();</span><br><span class="line">    <span class="keyword">try</span>&#123;m+=s1.split(<span class="string">"."</span>)[<span class="number">1</span>].length&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">    <span class="keyword">try</span>&#123;m+=s2.split(<span class="string">"."</span>)[<span class="number">1</span>].length&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Number</span>(s1.replace(<span class="string">"."</span>,<span class="string">""</span>))*<span class="built_in">Number</span>(s2.replace(<span class="string">"."</span>,<span class="string">""</span>))/<span class="built_in">Math</span>.pow(<span class="number">10</span>,m)</span><br><span class="line">  &#125;</span><br><span class="line">accMul(<span class="number">0.69</span>,<span class="number">10</span>) <span class="comment">//6.9</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="除法运算"><a href="#除法运算" class="headerlink" title="除法运算"></a>除法运算</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6.9</span>/<span class="number">10</span> <span class="comment">//0.6900000000000001</span></span><br></pre></td></tr></table></figure>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">acc</span>(<span class="params">arg1,arg2</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> t1=<span class="number">0</span>,t2=<span class="number">0</span>,r1,r2;</span><br><span class="line">  <span class="keyword">try</span>&#123;t1=arg1.toString().split(<span class="string">"."</span>)[<span class="number">1</span>].length&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="keyword">try</span>&#123;t2=arg2.toString().split(<span class="string">"."</span>)[<span class="number">1</span>].length&#125;<span class="keyword">catch</span>(e)&#123;&#125;</span><br><span class="line">  <span class="keyword">with</span>(<span class="built_in">Math</span>)&#123;</span><br><span class="line">    r1=<span class="built_in">Number</span>(arg1.toString().replace(<span class="string">"."</span>,<span class="string">""</span>))</span><br><span class="line">    r2=<span class="built_in">Number</span>(arg2.toString().replace(<span class="string">"."</span>,<span class="string">""</span>))</span><br><span class="line">    <span class="keyword">return</span> (r1/r2)*pow(<span class="number">10</span>,t2-t1);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="四舍五入方法"><a href="#四舍五入方法" class="headerlink" title="四舍五入方法"></a>四舍五入方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10.145</span>.toFixed(<span class="number">2</span>) ---&gt; <span class="string">"10.14"</span></span><br></pre></td></tr></table></figure>
+<p>四舍五入之后应该是10.15，最后却变成了10.14</p>
+<p>原因是因为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10.145</span>.toPrecision(<span class="number">21</span>) ---&gt; <span class="string">"10.1449999999999995737"</span></span><br></pre></td></tr></table></figure>
+<h3 id="解决方案一："><a href="#解决方案一：" class="headerlink" title="解决方案一："></a>解决方案一：</h3><p>简单解决方案还是先乘以100，然后，四舍五入。最后再除以100<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.round(<span class="number">10.145</span>*<span class="number">100</span>)/<span class="number">100</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>.prototype.toFixed = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &gt; <span class="number">20</span> || n &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">RangeError</span>(<span class="string">'toFixed() digits argument must be between 0 and 20'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> number = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(number) || number &gt;= <span class="built_in">Math</span>.pow(<span class="number">10</span>, <span class="number">21</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> number.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> (n) == <span class="string">'undefined'</span> || n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="built_in">Math</span>.round(number)).toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> result = number.toString();</span><br><span class="line">    <span class="keyword">const</span> arr = result.split(<span class="string">'.'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 整数的情况</span></span><br><span class="line">    <span class="keyword">if</span> (arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">        result += <span class="string">'.'</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i += <span class="number">1</span>) &#123;</span><br><span class="line">            result += <span class="string">'0'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> integer = arr[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">const</span> decimal = arr[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span> (decimal.length == n) &#123;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (decimal.length &lt; n) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n - decimal.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">            result += <span class="string">'0'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    result = integer + <span class="string">'.'</span> + decimal.substr(<span class="number">0</span>, n);</span><br><span class="line">    <span class="keyword">const</span> last = decimal.substr(n, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 四舍五入，转换为整数再处理，避免浮点数精度的损失</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">parseInt</span>(last, <span class="number">10</span>) &gt;= <span class="number">5</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> x = <span class="built_in">Math</span>.pow(<span class="number">10</span>, n);</span><br><span class="line">        result = (<span class="built_in">Math</span>.round((<span class="built_in">parseFloat</span>(result) * x)) + <span class="number">1</span>) / x;</span><br><span class="line">        result = result.toFixed(n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>处理此类问题，其实都有简单办法，不过，有时候在某种场景下面，简单办法不一定适用罢了。 简单办法一般是： 将浮点数乘以（扩大）10的n次方倍，把浮点数变为整数后再进行相应的运算，最后将得到的结果除以（缩小）10的n次方倍。 但是有时候我们并不知道浮点数的位数，及要精确的小数位数，因此，面对这种场景，我们就要用函数了！</p>
+
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2021/10/10/float2021",
+        distractionFreeMode: true,
+        title: "javascript浮点型的一些坑",
+        body: "http://www.shuy.cc/2021/10/10/float2021/",
+        labels: ["js"]
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer" style="color: #fff">
+    <a href="https://beian.miit.gov.cn/" style="color: #fff" target="_blank">晋ICP备2024043727号-3</a>
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
+>>>>>>> 11eb629b29bdbea4958f586f91c340bb252674ab

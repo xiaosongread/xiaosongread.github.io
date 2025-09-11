@@ -1,0 +1,266 @@
+<<<<<<< HEAD
+=======
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>vue3 项目实现兼容pc和H5的基本实现 | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="先来抛出一个简单的问题：如果我们的750的设计稿上面，有一个375px，那么这个元素在750的屏幕上面就是宽度的一半，那么，如果我们设置为375px，在375px的设备上面，就沾满了屏幕，而不是屏幕的一半了，那我们应该如何实现呢？大家不要说用百分比，我们也不讨论视口宽度单位，我们今天聊一聊rem这个单位。rem 是 CSS 中的一个长度单位，全称是 “root em”。它是相对于根元素（即HTML元素）的字体大小来计算的。例如，如果 HTML 元素的字体大小是 16px，那么 1r...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">列表</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    
+<aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-安装postcss-pxtorem"><span class="toc-number">1.</span> <span class="toc-text">1. 安装postcss-pxtorem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-配置postcss-config-js"><span class="toc-number">2.</span> <span class="toc-text">2. 配置postcss.config.js</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            vue3 项目实现兼容pc和H5的基本实现
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2024/05/08/vue3ToRem/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2024-05-08T12:30:55.000Z" itemprop="datePublished">2024-05-08</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/rem/">rem</a>, <a class="article-tag-link" href="/tags/vue3/">vue3</a>, <a class="article-tag-link" href="/tags/兼容pc和H5/">兼容pc和H5</a>, <a class="article-tag-link" href="/tags/移动端/">移动端</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>先来抛出一个简单的问题：</p>
+<p>如果我们的750的设计稿上面，有一个375px，那么这个元素在750的屏幕上面就是宽度的一半，那么，如果我们设置为375px，在375px的设备上面，就沾满了屏幕，而不是屏幕的一半了，那我们应该如何实现呢？</p>
+<p>大家不要说用百分比，我们也不讨论视口宽度单位，我们今天聊一聊rem这个单位。</p>
+<blockquote>
+<p>rem 是 CSS 中的一个长度单位，全称是 “root em”。它是相对于根元素（即HTML元素）的字体大小来计算的。例如，如果 HTML 元素的字体大小是 16px，那么 1rem 就等于 16px。如果 HTML 元素的字体大小改变，那么使用 rem 作为单位的元素的大小也会相应地改变。</p>
+</blockquote>
+<p>那么，我们在750的设备上面，更元素的字体大小设置为100，就是1rem=100px,在375的设备上面，设置为50，就是1rem=50px，这样，我们就可以实现不同设备上面的元素宽度自适应了。</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setRem</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 默认设计稿尺寸是750px 实现动态设置fontsize</span></span><br><span class="line">  <span class="keyword">const</span> width = <span class="built_in">document</span>.documentElement.clientWidth</span><br><span class="line">  <span class="keyword">let</span> size = (width / <span class="number">750</span>) * <span class="number">100</span>;</span><br><span class="line">  <span class="comment">//低于1200就认为是移动端</span></span><br><span class="line">  <span class="built_in">document</span>.documentElement.style.fontSize = (width &gt; <span class="number">1200</span> ? <span class="number">100</span> : size) + <span class="string">'px'</span></span><br><span class="line">&#125;</span><br><span class="line">setRem();</span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>, setRem)</span><br></pre></td></tr></table></figure>
+<p>这时候我们就实现了动态设置根元素的字体大小，但是，我们总不能去写代码的时候，一直去计算rem的值，这样太麻烦了，那么，我们就可以使用postcss-pxtorem这个插件来帮助我们实现这个功能。</p>
+<h2 id="1-安装postcss-pxtorem"><a href="#1-安装postcss-pxtorem" class="headerlink" title="1. 安装postcss-pxtorem"></a>1. 安装postcss-pxtorem</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install postcss-pxtorem --save</span><br></pre></td></tr></table></figure>
+<h2 id="2-配置postcss-config-js"><a href="#2-配置postcss-config-js" class="headerlink" title="2. 配置postcss.config.js"></a>2. 配置postcss.config.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params">&#123; command &#125;: ConfigEnv</span>): <span class="title">UserConfigExport</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> isProduction = command === <span class="string">'build'</span>;</span><br><span class="line">  <span class="keyword">const</span> root = process.cwd();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    root,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">      alias: [</span><br><span class="line">        &#123;</span><br><span class="line">          find: <span class="string">'vue-i18n'</span>,</span><br><span class="line">          replacement: <span class="string">'vue-i18n/dist/vue-i18n.cjs.js'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          find: <span class="regexp">/\/@\//</span>,</span><br><span class="line">          replacement: pathResolve(<span class="string">'src'</span>) + <span class="string">'/'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">    server: &#123;</span><br><span class="line">      host: <span class="literal">true</span>,</span><br><span class="line">      hmr: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: createVitePlugins(isProduction),</span><br><span class="line">    css: &#123;</span><br><span class="line">      postcss: &#123;</span><br><span class="line">        plugins: [</span><br><span class="line">          <span class="comment">// autoprefixer(&#123;</span></span><br><span class="line">          <span class="comment">//   overrideBrowserslist: [</span></span><br><span class="line">          <span class="comment">//     "Android 4.1",</span></span><br><span class="line">          <span class="comment">//     "iOS 7.1",</span></span><br><span class="line">          <span class="comment">//     "Chrome &gt; 31",</span></span><br><span class="line">          <span class="comment">//     "ff &gt; 31",</span></span><br><span class="line">          <span class="comment">//     "ie &gt;= 8",</span></span><br><span class="line">          <span class="comment">//   ],</span></span><br><span class="line">          <span class="comment">// &#125;),</span></span><br><span class="line">          postCssPxToRem(&#123;</span><br><span class="line">            <span class="comment">// 自适应，px&gt;rem转换</span></span><br><span class="line">            rootValue: <span class="number">100</span>, <span class="comment">// 根元素字体大小，用于将像素转换为rem的基准值</span></span><br><span class="line">            unitPrecision: <span class="number">10</span>, <span class="comment">// rem的小数位数</span></span><br><span class="line">            propList: [<span class="string">"*"</span>], <span class="comment">// 需要转换的属性列表，['*']表示所有属性都会被转换</span></span><br><span class="line">            minPixelValue: <span class="number">2</span>, <span class="comment">// 小于或等于该值的像素单位不被转换</span></span><br><span class="line">            mediaQuery: <span class="literal">false</span>, <span class="comment">// 是否在媒体查询的css代码中也进行转换，默认false</span></span><br><span class="line">            replace: <span class="literal">true</span>, <span class="comment">// 是否转换后直接更换属性值</span></span><br><span class="line">            exclude: <span class="regexp">/node_modules/i</span>,</span><br><span class="line">            selectorBlackList: [<span class="regexp">/^\.PC/</span>] <span class="comment">// 过滤掉.norem-开头的class，不进行rem转换</span></span><br><span class="line">          &#125;),</span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">.box &#123;</span><br><span class="line">  width: 375px;</span><br><span class="line">  height: 200px;</span><br><span class="line">  background: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时就实现是，在小于1200px的，永远都是保持的屏幕的一半。</p>
+<video src="/images/img-folder/2024/rem.mp4" controls="controls" width="500" height="300"></video>
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2024/05/08/vue3ToRem",
+        distractionFreeMode: true,
+        title: "vue3 项目实现兼容pc和H5的基本实现",
+        body: "http://www.shuy.cc/2024/05/08/vue3ToRem/",
+        labels: ["vue3","rem","移动端","兼容pc和H5"]
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer" style="color: #fff">
+    <a href="https://beian.miit.gov.cn/" style="color: #fff" target="_blank">晋ICP备2024043727号-3</a>
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
+>>>>>>> 11eb629b29bdbea4958f586f91c340bb252674ab
