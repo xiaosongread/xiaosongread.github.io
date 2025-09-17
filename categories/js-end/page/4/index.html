@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.9.0">
@@ -121,8 +119,9 @@
             <a href="/2023/07/01/nodeBk/"><div style="color: #999;" class="ahover">· 项目-博客-插件库（jq22）</div></a>
             <a href="/2020/08/03/object/"><div style="color: #999;" class="ahover">· 第五章-引用类型</div></a>
             <a href="/2019/02/21/jc-2/"><div style="color: #999;" class="ahover">· 微信小程序实现签名并保存图片</div></a>
-            <a href="/2019/04/27/jc-6/"><div style="color: #999;" class="ahover">· vue 组件之间通信</div></a>
+            <a href="/2022/05/05/mianshi/"><div style="color: #999;" class="ahover">· 常用知识总结</div></a>
             <a href="/2019/05/31/jc-1/"><div style="color: #999;" class="ahover">· hexo/github 搭建github博客教程</div></a>
+            <a href="/2025/09/04/存档/"><div style="color: #999;" class="ahover">· vue3 相关存档</div></a>
         </div>
         
     </div>
@@ -132,6 +131,50 @@
 
         <div id="content" class="content">
             
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2021/10/10/float2021/">javascript浮点型的一些坑</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/categories/js-end/page/4/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2021-10-10T12:30:10.000Z" itemprop="datePublished">2021-10-10</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/js/">js</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>javascript浮点型运算有很多问题，不管是加减还是乘除，还是四舍五入，都可能出现问题。本文简单介绍一些解决办法，都是工作中总结出来的，有简单，有麻烦。下面就总结一下。</p>
+<h2 id="加发运算"><a href="#加发运算" class="headerlink" title="加发运算"></a>加发运算</h2><h3 id="例如常见的："><a href="#例如常见的：" class="headerlink" title="例如常见的："></a>例如常见的：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.1</span>+<span class="number">0.2</span> <span class="comment">//0.30000000000000004</span></span><br><span class="line"><span class="number">1.4</span>+<span class="number">2.8</span> <span class="comment">//4.199999999999999</span></span><br></pre></td></tr></table></figure>
+<h3 id="解决方案一"><a href="#解决方案一" class="headerlink" title="解决方案一"></a>解决方案一</h3>
+        
+        <p class="article-more-link">
+            <a href="/2021/10/10/float2021/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
     <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
@@ -489,48 +532,6 @@
 </article>
 
 
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2020/06/09/开发问题记录/">开发问题记录</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/page/4/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2020-06-09T09:24:28.000Z" itemprop="datePublished">2020-06-09</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/小程序-css2-git/">小程序 css2 git</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="h5网页判断微信、小程序环境"><a href="#h5网页判断微信、小程序环境" class="headerlink" title="h5网页判断微信、小程序环境"></a>h5网页判断微信、小程序环境</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://res.wx.qq.com/open/js/jweixin-1.3.2.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">export function isWeChatMiniApp() &#123;</span></span><br><span class="line"><span class="regexp">  const ua = window.navigator.userAgent.toLowerCase();</span></span><br><span class="line"><span class="regexp">  return new Promise((resolve) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    if (ua.indexOf('micromessenger') == -1) &#123;</span></span><br><span class="line"><span class="regexp">      console.log("不在微信或者小程序中")</span></span><br><span class="line"><span class="regexp">      resolve(false);</span></span><br><span class="line"><span class="regexp">    &#125; else &#123;</span></span><br><span class="line"><span class="regexp">      wx.miniProgram.getEnv((res) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">        if (res.miniprogram) &#123;</span></span><br><span class="line"><span class="regexp">          console.log("在小程序中")</span></span><br><span class="line"><span class="regexp">          resolve(true);</span></span><br><span class="line"><span class="regexp">        &#125; else &#123;/</span><span class="regexp">/在微信中</span></span><br><span class="line"><span class="regexp">          console.log("在微信中")</span></span><br><span class="line"><span class="regexp">          resolve(false);</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">      &#125;);</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-        
-        <p class="article-more-link">
-            <a href="/2020/06/09/开发问题记录/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
 
 
 <nav class="page-nav">
@@ -604,4 +605,3 @@
 
 </body>
 </html>
->>>>>>> 11eb629b29bdbea4958f586f91c340bb252674ab
