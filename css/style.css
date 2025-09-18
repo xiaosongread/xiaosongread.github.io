@@ -2779,6 +2779,16 @@ body {
     overflow: initial;
   }
 }
+.markdown-body strong {
+  color: #ffd859 !important;
+  background-color: #111827 !important;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.markdown-body a {
+  background-color: rgba(27, 31, 35, 0.05);
+  padding: 0.2em 0.4em;
+}
 .nav {
   position: relative;
   z-index: 80;
@@ -3555,6 +3565,18 @@ body {
   line-height: 14px;
   padding: 0 2px;
   vertical-align: middle;
+}
+sup {
+  display: inline-block;
+  border-radius: 6px;
+  line-height: 1;
+  font-weight: 600;
+  padding: 0.35em 0.4em 0.3em;
+  position: relative;
+  margin-left: 0.5em;
+  color: #fff;
+  transition: color 0.5s;
+  background-color: #33a06f;
 }
 .comments {
   padding-top: 20px;

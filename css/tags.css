@@ -39,3 +39,15 @@
   padding: 0 2px;
   vertical-align: middle;
 }
+sup {
+  display: inline-block;
+  border-radius: 6px;
+  line-height: 1;
+  font-weight: 600;
+  padding: 0.35em 0.4em 0.3em;
+  position: relative;
+  margin-left: 0.5em;
+  color: #fff;
+  transition: color 0.5s;
+  background-color: #33a06f;
+}

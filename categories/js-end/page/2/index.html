@@ -119,8 +119,9 @@
             <a href="/2023/07/01/nodeBk/"><div style="color: #999;" class="ahover">· 项目-博客-插件库（jq22）</div></a>
             <a href="/2020/08/03/object/"><div style="color: #999;" class="ahover">· 第五章-引用类型</div></a>
             <a href="/2019/02/21/jc-2/"><div style="color: #999;" class="ahover">· 微信小程序实现签名并保存图片</div></a>
-            <a href="/2019/04/27/jc-6/"><div style="color: #999;" class="ahover">· vue 组件之间通信</div></a>
+            <a href="/2022/05/05/mianshi/"><div style="color: #999;" class="ahover">· 常用知识总结</div></a>
             <a href="/2019/05/31/jc-1/"><div style="color: #999;" class="ahover">· hexo/github 搭建github博客教程</div></a>
+            <a href="/2025/09/04/存档/"><div style="color: #999;" class="ahover">· vue3 相关存档</div></a>
         </div>
         
     </div>
@@ -130,6 +131,53 @@
 
         <div id="content" class="content">
             
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2024/06/22/uniapp/">uniapp 使用vue.js注意事项</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/categories/js-end/page/2/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2024-06-22T02:27:08.000Z" itemprop="datePublished">2024-06-22</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>uni-app 在发布到H5时支持所有vue的语法；发布到App和小程序时，由于平台限制，无法实现全部vue语法。</p>
+<p>相比Web平台， Vue.js 在uni-app中使用差异主要集中在两个方面：</p>
+<ul>
+<li>新增：uni-app 除了支持Vue实例的生命周期，还支持应用生命周期以及页面生命周期。</li>
+<li>受限：相比web平台，在小程序和App端部分功能受限，具体如下：</li>
+</ul>
+<h4 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h4><ul>
+<li>非H5端不支持 Vue.config.devtools</li>
+<li>非H5端不支持 Vue.config.keyCodes</li>
+<li>非H5端不支持 Vue.config.performance</li>
+</ul>
+        
+        <p class="article-more-link">
+            <a href="/2024/06/22/uniapp/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
     <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
@@ -476,50 +524,6 @@
         
         <p class="article-more-link">
             <a href="/2023/07/28/observe/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2023/05/15/v3/">vue3和vue2的区别整理</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/page/2/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2023-05-15T06:48:08.000Z" itemprop="datePublished">2023-05-15</time>
-</a>
-
-            
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="api及语法"><a href="#api及语法" class="headerlink" title="api及语法"></a>api及语法</h2><h3 id="双向绑定原理"><a href="#双向绑定原理" class="headerlink" title="双向绑定原理"></a>双向绑定原理</h3><ul>
-<li>Vue2使用Object.defineProperty 为每个属性创建getter和setter，通过getter和setter来捕获操作以实现响应式更新； 很多情况下，属性的新增和删除拦截不到（比如数组的长度变化）</li>
-<li>Vue3使用Proxy，Proxy可以拦截对象和数组的变化，包括新增和删除属性，数组的长度变化等，从而实现更精确的响应式更新</li>
-</ul>
-<blockquote>
-<p>v2 使用object.defineProperty来劫持数据的setter和getter方法，对象改变需要借助api去深度监听;<br>v3 使用proxy来劫持整个对象，不需要深度监听，性能更好,删除了一些api($on,$once,$off) fiter等，优化了Block tree,solt,diff 算法等</p>
-</blockquote>
-<p>Vue2在data中定义的数据就会自动遍历绑定Object.defineProperty以实现响应式；Vue3中要用ref包装，通过返回值的 .value属性获取响应式的值 ，修改也需要对 .value进行修改.</p>
-        
-        <p class="article-more-link">
-            <a href="/2023/05/15/v3/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
