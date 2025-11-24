@@ -136,6 +136,50 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2023/05/15/v3/">vue3和vue2的区别整理</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/page/4/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2023-05-15T06:48:08.000Z" itemprop="datePublished">2023-05-15</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h2 id="api及语法"><a href="#api及语法" class="headerlink" title="api及语法"></a>api及语法</h2><h3 id="双向绑定原理"><a href="#双向绑定原理" class="headerlink" title="双向绑定原理"></a>双向绑定原理</h3><ul>
+<li>Vue2使用Object.defineProperty 为每个属性创建getter和setter，通过getter和setter来捕获操作以实现响应式更新； 很多情况下，属性的新增和删除拦截不到（比如数组的长度变化）</li>
+<li>Vue3使用Proxy，Proxy可以拦截对象和数组的变化，包括新增和删除属性，数组的长度变化等，从而实现更精确的响应式更新</li>
+</ul>
+<blockquote>
+<p>v2 使用object.defineProperty来劫持数据的setter和getter方法，对象改变需要借助api去深度监听;<br>v3 使用proxy来劫持整个对象，不需要深度监听，性能更好,删除了一些api($on,$once,$off) fiter等，优化了Block tree,solt,diff 算法等</p>
+</blockquote>
+<p>Vue2在data中定义的数据就会自动遍历绑定Object.defineProperty以实现响应式；Vue3中要用ref包装，通过返回值的 .value属性获取响应式的值 ，修改也需要对 .value进行修改.</p>
+        
+        <p class="article-more-link">
+            <a href="/2023/05/15/v3/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2023/04/01/my/">关于我</a>
         </h1>
         
@@ -517,48 +561,6 @@
         
         <p class="article-more-link">
             <a href="/2022/07/31/weather/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2022/06/17/nodetips/">nodetips</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/page/4/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2022-06-17T08:08:59.000Z" itemprop="datePublished">2022-06-17</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag vm"></i>
-    <a class="article-tag-link" href="/tags/node/">node</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>设计师给了一堆任务头像，文件名乱七八糟的，我这边其实就一个循环就渲染出来了，所以得统一按下标重新命名一下，五百多张不可能一张一张改吧，那只能通过程序来循环改了，前端页面仔这可怎么搞？</p>
-        
-        <p class="article-more-link">
-            <a href="/2022/06/17/nodetips/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
