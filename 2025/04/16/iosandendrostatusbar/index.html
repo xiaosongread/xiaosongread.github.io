@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>微信小程序 - rpx 顶部高度的获取可能安卓和ios的误差问题解决 | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="微信小程序中，rpx 本身是自适应屏幕宽度的单位（750rpx = 屏幕宽度），但顶部高度（尤其是包含状态栏、导航栏的 “安全区域 + 导航栏高度”）在安卓和 iOS 上出现误差，核心原因是：两端的系统原生组件高度（状态栏、胶囊按钮）存在差异，且 rpx 无法自动适配 “高度维度” 的系统差异——rpx 只关联屏幕宽度，不关联高度，而安卓 /iOS 的状态栏高度、导航栏默认高度本身就不同，直接硬写 rpx 值必然出现偏差。解决思路：放弃硬写固定 rpx，通过小程序原生 API 获取系统原生...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">列表</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    
+<aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、先明确：顶部高度的构成（需适配的核心部分）"><span class="toc-number">1.</span> <span class="toc-text">一、先明确：顶部高度的构成（需适配的核心部分）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、解决步骤：动态获取顶部高度（兼容-iOS-安卓）"><span class="toc-number">2.</span> <span class="toc-text">二、解决步骤：动态获取顶部高度（兼容 iOS / 安卓）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、关键注意点（避免误差的核心）"><span class="toc-number">3.</span> <span class="toc-text">三、关键注意点（避免误差的核心）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#五、总结"><span class="toc-number">4.</span> <span class="toc-text">五、总结</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            微信小程序 - rpx 顶部高度的获取可能安卓和ios的误差问题解决
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2025/04/16/iosandendrostatusbar/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2025-04-16T14:37:28.000Z" itemprop="datePublished">2025-04-16</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>微信小程序中，rpx 本身是自适应屏幕宽度的单位（750rpx = 屏幕宽度），但顶部高度（尤其是包含状态栏、导航栏的 “安全区域 + 导航栏高度”）在安卓和 iOS 上出现误差，核心原因是：两端的系统原生组件高度（状态栏、胶囊按钮）存在差异，且 rpx 无法自动适配 “高度维度” 的系统差异——rpx 只关联屏幕宽度，不关联高度，而安卓 /iOS 的状态栏高度、导航栏默认高度本身就不同，直接硬写 rpx 值必然出现偏差。<br>解决思路：放弃硬写固定 rpx，通过小程序原生 API 获取系统原生组件的真实像素高度，再转化为 rpx 或直接用像素单位适配，确保两端高度完全匹配系统原生布局。</p>
+<a id="more"></a>
+<h4 id="一、先明确：顶部高度的构成（需适配的核心部分）"><a href="#一、先明确：顶部高度的构成（需适配的核心部分）" class="headerlink" title="一、先明确：顶部高度的构成（需适配的核心部分）"></a>一、先明确：顶部高度的构成（需适配的核心部分）</h4><p>顶部高度通常分两种场景，误差主要来自这两部分：</p>
+<ul>
+<li>1.仅状态栏高度：iOS 刘海屏 / 安卓全面屏的状态栏高度不同（iOS 通常 44px/20px，安卓通常 24px/25px 等）；</li>
+<li>2.状态栏 + 导航栏高度：导航栏高度受 “胶囊按钮位置” 影响（微信小程序的胶囊按钮位置在 iOS / 安卓上略有差异，且导航栏高度需与胶囊按钮对齐）。<br>核心原则：所有与系统原生组件（状态栏、胶囊）相关的高度，都通过 API 动态获取，不硬编码。</li>
+</ul>
+<h4 id="二、解决步骤：动态获取顶部高度（兼容-iOS-安卓）"><a href="#二、解决步骤：动态获取顶部高度（兼容-iOS-安卓）" class="headerlink" title="二、解决步骤：动态获取顶部高度（兼容 iOS / 安卓）"></a>二、解决步骤：动态获取顶部高度（兼容 iOS / 安卓）</h4><ul>
+<li><ol>
+<li>核心 API 介绍<br>微信小程序提供 2 个关键 API，用于获取系统原生高度，无兼容性问题：<br>wx.getSystemInfoSync()：获取系统信息（状态栏高度、屏幕宽高、设备型号等）；<br>wx.getMenuButtonBoundingClientRect()：获取胶囊按钮的布局信息（位置、宽高），用于计算导航栏高度（最精准）。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>封装工具函数（推荐，一次封装全局复用）<br>在 utils/index.js 中封装获取顶部高度的函数，直接返回 rpx 或 px 格式（按需选择）：</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// utils/index.js</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取顶部高度（状态栏 + 导航栏）- 适配 iOS/安卓</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;Object&#125;</span> <span class="type">&#123; statusBarHeight: 状态栏高度(px), navBarHeight: 导航栏高度(px), totalTopHeight: 总高度(px) &#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getTopBarHeight</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 1. 获取系统信息（状态栏高度、屏幕宽度）</span></span><br><span class="line">  <span class="keyword">const</span> systemInfo = wx.getSystemInfoSync();</span><br><span class="line">  <span class="keyword">const</span> statusBarHeight = systemInfo.statusBarHeight; <span class="comment">// 状态栏高度（px，原生值，无误差）</span></span><br><span class="line">  <span class="keyword">const</span> screenWidth = systemInfo.screenWidth; <span class="comment">// 屏幕宽度（px），用于 px 转 rpx</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2. 获取胶囊按钮信息（关键：导航栏高度通过胶囊按钮计算，最精准）</span></span><br><span class="line">  <span class="keyword">const</span> menuButtonInfo = wx.getMenuButtonBoundingClientRect();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 3. 计算导航栏高度（公式：胶囊底部距离顶部的距离 - 状态栏高度）* 2 - 胶囊高度</span></span><br><span class="line">  <span class="comment">// 原理：胶囊在导航栏垂直居中，因此导航栏高度 = 胶囊上下留白 * 2 + 胶囊高度</span></span><br><span class="line">  <span class="keyword">const</span> navBarHeight =</span><br><span class="line">    (menuButtonInfo.top - statusBarHeight) * <span class="number">2</span> + menuButtonInfo.height;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 4. 总顶部高度（状态栏 + 导航栏）</span></span><br><span class="line">  <span class="keyword">const</span> totalTopHeight = statusBarHeight + navBarHeight;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 5. 可选：转化为 rpx（如需用 rpx 布局，可返回 rpx 值）</span></span><br><span class="line">  <span class="keyword">const</span> pxToRpx = <span class="function">(<span class="params">px</span>) =&gt;</span> (px / screenWidth) * <span class="number">750</span>; <span class="comment">// px 转 rpx 公式（750rpx = 屏幕宽度px）</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    statusBarHeight, <span class="comment">// 状态栏高度（px）</span></span><br><span class="line">    navBarHeight, <span class="comment">// 导航栏高度（px）</span></span><br><span class="line">    totalTopHeight, <span class="comment">// 总高度（px）</span></span><br><span class="line">    <span class="comment">// 以下为 rpx 格式（按需使用）</span></span><br><span class="line">    statusBarHeightRpx: pxToRpx(statusBarHeight),</span><br><span class="line">    navBarHeightRpx: pxToRpx(navBarHeight),</span><br><span class="line">    totalTopHeightRpx: pxToRpx(totalTopHeight),</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ol start="3">
+<li>在页面中使用（2 种场景）<br><strong>场景 1：需要固定顶部的容器（如自定义导航栏、顶部筛选栏）</strong><br>直接用获取到的 px 高度（推荐用 px，因为系统原生高度是像素级的，避免 rpx 转换误差），通过 style 动态绑定：</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 页面.vue（uni-app 示例，原生小程序类似，用 wx:style） --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- 自定义导航栏（固定顶部） --&gt;</span><br><span class="line">  &lt;view</span><br><span class="line">    class=&quot;custom-nav&quot;</span><br><span class="line">    :style=&quot;&#123;</span><br><span class="line">      height: topBar.navBarHeight + &apos;px&apos;,</span><br><span class="line">      paddingTop: topBar.statusBarHeight + &apos;px&apos;,</span><br><span class="line">    &#125;&quot;</span><br><span class="line">  &gt;</span><br><span class="line">    自定义导航栏</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- 页面内容（需避开顶部导航栏，用 margin-top 或 padding-top） --&gt;</span><br><span class="line">  &lt;view :style=&quot;&#123; marginTop: topBar.totalTopHeight + &apos;px&apos; &#125;&quot;&gt;</span><br><span class="line">    页面主体内容...</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123; getTopBarHeight &#125; from &quot;@/utils/index.js&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      topBar: &#123;&#125;, // 存储顶部高度信息</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  onLoad() &#123;</span><br><span class="line">    // 页面加载时获取（只需要获取一次，缓存复用）</span><br><span class="line">    this.topBar = getTopBarHeight();</span><br><span class="line">    console.log(&quot;顶部高度信息&quot;, this.topBar);</span><br><span class="line">    // 输出示例（iOS）：&#123; statusBarHeight: 44, navBarHeight: 48, totalTopHeight: 92 &#125;</span><br><span class="line">    // 输出示例（安卓）：&#123; statusBarHeight: 24, navBarHeight: 48, totalTopHeight: 72 &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.custom-nav &#123;</span><br><span class="line">  position: fixed;</span><br><span class="line">  top: 0;</span><br><span class="line">  left: 0;</span><br><span class="line">  right: 0;</span><br><span class="line">  display: flex;</span><br><span class="line">  align-items: center;</span><br><span class="line">  background: #fff;</span><br><span class="line">  z-index: 999;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>场景 2：仅需要状态栏高度（如页面顶部 padding 避开状态栏）</strong><br>直接使用 statusBarHeight，无需计算导航栏：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 页面中直接获取状态栏高度（px）</span></span><br><span class="line"><span class="keyword">const</span> &#123; statusBarHeight &#125; = getTopBarHeight();</span><br><span class="line"><span class="comment">// 动态绑定 padding-top</span></span><br><span class="line">&lt;view :style=<span class="string">"&#123; paddingTop: statusBarHeight + 'px' &#125;"</span>&gt;</span><br><span class="line">内容区（避开状态栏）</span><br><span class="line">&lt;<span class="regexp">/view&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="三、关键注意点（避免误差的核心）"><a href="#三、关键注意点（避免误差的核心）" class="headerlink" title="三、关键注意点（避免误差的核心）"></a>三、关键注意点（避免误差的核心）</h4><p>优先用 px 而非 rpx：系统原生组件（状态栏、胶囊）的高度是固定像素值，用 px 直接设置不会有转换误差；rpx 仅适合 “宽度适配”，高度维度用 px 更精准。<br>导航栏高度必须通过胶囊按钮计算：不要硬写 44rpx/48px 这类固定值！不同设备（如 iOS 刘海屏、安卓全面屏）的导航栏高度可能不同，通过胶囊按钮计算是微信官方推荐的精准方式。<br>避免重复获取 API：wx.getSystemInfoSync() 和 wx.getMenuButtonBoundingClientRect() 是同步 API，性能开销低，但仍建议在 onLoad 中获取一次，缓存到全局或页面数据中，避免频繁调用。<br>兼容低版本基础库：这两个 API 支持微信基础库 1.9.0 及以上，覆盖 99%+ 设备（若需兼容极低版本，可加降级处理）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 降级处理（可选）</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getTopBarHeight</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> systemInfo = wx.getSystemInfoSync();</span><br><span class="line">    <span class="keyword">const</span> menuButtonInfo = wx.getMenuButtonBoundingClientRect();</span><br><span class="line">    <span class="comment">// 正常计算逻辑...</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="comment">// 降级：使用默认值（仅作兜底，不推荐依赖）</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      statusBarHeight: <span class="number">20</span>, <span class="comment">// 默认状态栏高度（px）</span></span><br><span class="line">      navBarHeight: <span class="number">44</span>, <span class="comment">// 默认导航栏高度（px）</span></span><br><span class="line">      totalTopHeight: <span class="number">64</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>####四、常见误差场景排查<br>如果按上述方法仍有误差，大概率是以下问题：<br>页面配置了 navigationStyle: custom：若在 app.json 或页面 json 中设置了自定义导航栏（”navigationStyle”: “custom”），则微信默认导航栏消失，需完全通过上述函数计算顶部高度；若未设置 custom，则页面已自带导航栏，无需重复计算（此时只需计算状态栏高度用于 padding）。<br>胶囊按钮信息获取失败：极少数情况下（如设备系统异常），wx.getMenuButtonBoundingClientRect() 可能返回 null，需在函数中加容错处理（如上述降级逻辑）。<br>混用 px 和 rpx：比如导航栏高度用 px，但子元素用 rpx 导致对齐问题，建议同一组件内统一单位（顶部布局优先用 px）。</p>
+<h4 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h4><p>解决安卓 /iOS 顶部高度误差的核心是：放弃硬编码，通过微信原生 API 动态获取状态栏、胶囊按钮的真实像素高度，再直接用 px 布局或转化为 rpx。<br>按上述封装的 getTopBarHeight 函数，可实现 100% 兼容 iOS / 安卓，且无需关心设备型号、屏幕尺寸，完全贴合系统原生布局，从根源上消除误差。</p>
+
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2025/04/16/iosandendrostatusbar",
+        distractionFreeMode: true,
+        title: "微信小程序 - rpx 顶部高度的获取可能安卓和ios的误差问题解决",
+        body: "http://www.shuy.cc/2025/04/16/iosandendrostatusbar/",
+        labels: []
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer" style="color: #fff">
+    <a href="https://beian.miit.gov.cn/" style="color: #fff" target="_blank">晋ICP备2024043727号-3</a>
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>

@@ -288,6 +288,43 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2025/04/16/iosandendrostatusbar/">微信小程序 - rpx 顶部高度的获取可能安卓和ios的误差问题解决</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2025-04-16T14:37:28.000Z" itemprop="datePublished">2025-04-16</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>微信小程序中，rpx 本身是自适应屏幕宽度的单位（750rpx = 屏幕宽度），但顶部高度（尤其是包含状态栏、导航栏的 “安全区域 + 导航栏高度”）在安卓和 iOS 上出现误差，核心原因是：两端的系统原生组件高度（状态栏、胶囊按钮）存在差异，且 rpx 无法自动适配 “高度维度” 的系统差异——rpx 只关联屏幕宽度，不关联高度，而安卓 /iOS 的状态栏高度、导航栏默认高度本身就不同，直接硬写 rpx 值必然出现偏差。<br>解决思路：放弃硬写固定 rpx，通过小程序原生 API 获取系统原生组件的真实像素高度，再转化为 rpx 或直接用像素单位适配，确保两端高度完全匹配系统原生布局。</p>
+        
+        <p class="article-more-link">
+            <a href="/2025/04/16/iosandendrostatusbar/#more">
+                <span class="vm">阅读更多</span>
+                <i class="icon-arrow-double-right vm"></i>    
+            </a>
+        </p>
+        
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2025/03/08/volta/">volta -&gt; n -&gt; nvm -&gt; node 版本管理工具</a>
         </h1>
         
@@ -464,50 +501,6 @@
         
         <p class="article-more-link">
             <a href="/2024/08/06/yuanbaobao/#more">
-                <span class="vm">阅读更多</span>
-                <i class="icon-arrow-double-right vm"></i>    
-            </a>
-        </p>
-        
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2024/08/05/webfx/">大厂使用框架的分析</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="http://www.shuy.cc/categories/js-end/index.html">
-    
-    <i class="icon-calendar vm"></i>
-    
-    <time class="vm" datetime="2024-08-05T03:20:05.000Z" itemprop="datePublished">2024-08-05</time>
-</a>
-
-            
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="大厂使用框架的分析"><a href="#大厂使用框架的分析" class="headerlink" title="大厂使用框架的分析"></a>大厂使用框架的分析</h2><h3 id="1-框架的对比"><a href="#1-框架的对比" class="headerlink" title="1. 框架的对比"></a>1. 框架的对比</h3><h4 id="1-1-Vue"><a href="#1-1-Vue" class="headerlink" title="1.1. Vue"></a>1.1. Vue</h4><ul>
-<li>Vue.js 是一个渐进式 JavaScript 框架，用于构建用户界面。它允许开发者使用简单的语法和声明式模板来构建复杂的单页应用程序（SPA）。</li>
-<li>Vue.js 的核心特性包括响应式数据绑定、组件化开发、虚拟 DOM 等。它还提供了丰富的生态系统，包括 Vue Router（路由管理）、Vuex（状态管理）等工具。</li>
-</ul>
-<h4 id="1-2-React"><a href="#1-2-React" class="headerlink" title="1.2. React"></a>1.2. React</h4><ul>
-<li>React 是一个用于构建用户界面的 JavaScript 库，由 Facebook 开发和维护。它使用组件化的方式来构建用户界面，并提供了丰富的生态系统，包括 React Router（路由管理）、Redux（状态管理）等工具。</li>
-<li>React 的核心特性包括虚拟 DOM、JSX 语法、组件化开发等。它还提供了丰富的生态系统，包括 React Router（路由管理）、Redux（状态管理）等工具。</li>
-</ul>
-        
-        <p class="article-more-link">
-            <a href="/2024/08/05/webfx/#more">
                 <span class="vm">阅读更多</span>
                 <i class="icon-arrow-double-right vm"></i>    
             </a>
