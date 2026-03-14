@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>SnapDOM 弃用 html2canvas！快 93 倍的截图神器！ | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="在前端开发中，网页截图是个常用功能。从前，html2canvas 是大家的常客，但随着网页越来越复杂，它的性能问题也逐渐暴露，速度慢、占资源，用户体验不尽如人意。好在，现在有了 SnapDOM，一款性能超棒、还原度超高的截图新秀，能完美替代 html2canvas，让截图不再是麻烦事。什么是 SnapDOMSnapDOM 就是一个专门用来给网页元素截图的工具。它能把 HTML 元素快速又准确地存成各种图片格式，像 SVG、PNG、JPG、WebP 等等，还支持导出为 Canva...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">列表</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    
+<aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是-SnapDOM"><span class="toc-number">1.</span> <span class="toc-text">什么是 SnapDOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SnapDOM-的优势"><span class="toc-number">2.</span> <span class="toc-text">SnapDOM 的优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎么用-SnapDOM？"><span class="toc-number">3.</span> <span class="toc-text">怎么用 SnapDOM？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">3.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用"><span class="toc-number">3.2.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点"><span class="toc-number">3.3.</span> <span class="toc-text">注意点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#功能示例"><span class="toc-number">3.4.</span> <span class="toc-text">功能示例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#社交分享"><span class="toc-number">3.4.1.</span> <span class="toc-text">社交分享</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#报表导出"><span class="toc-number">3.4.2.</span> <span class="toc-text">报表导出</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#海报导出"><span class="toc-number">3.4.3.</span> <span class="toc-text">海报导出</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            SnapDOM 弃用 html2canvas！快 93 倍的截图神器！
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2025/09/20/倍的截图神器！/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2025-09-20T03:24:09.000Z" itemprop="datePublished">2025-09-20</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>在前端开发中，网页截图是个常用功能。从前，<code>html2canvas</code> 是大家的常客，但随着网页越来越复杂，它的性能问题也逐渐暴露，速度慢、占资源，用户体验不尽如人意。</p>
+<p>好在，现在有了 <code>SnapDOM</code>，一款性能超棒、还原度超高的截图新秀，能完美替代 <code>html2canvas</code>，让截图不再是麻烦事。</p>
+<a id="more"></a>
+<p><img src="/images/img-folder/11.png" alt="SnapDOM" style="width: 460px;"></p>
+<h3 id="什么是-SnapDOM"><a href="#什么是-SnapDOM" class="headerlink" title="什么是 SnapDOM"></a>什么是 SnapDOM</h3><p>SnapDOM 就是一个专门用来给网页元素截图的工具。</p>
+<blockquote>
+<p>它能把 <code>HTML</code> 元素快速又准确地存成各种图片格式，像 <code>SVG、PNG、JPG、WebP</code> 等等，还支持导出为 <code>Canvas</code> 元素。<br>它最厉害的地方在于，能把网页上的各种复杂元素，比如 <code>CSS 样式</code>、<code>伪元素</code>、<code>Shadow DOM</code>、<code>内嵌字体</code>、<code>背景图片</code>，甚至是<code>动态效果的当前状态</code>，都原原本本地截下来，跟直接看网页没啥两样。</p>
+</blockquote>
+<h3 id="SnapDOM-的优势"><a href="#SnapDOM-的优势" class="headerlink" title="SnapDOM 的优势"></a>SnapDOM 的优势</h3><p>快得飞起</p>
+<p>测试数据显示，在不同场景下，<code>SnapDOM</code> 都把 <code>html2canvas</code> 和 <code>dom-to-image</code> 这俩老前辈远远甩在身后。</p>
+<p><img src="/images/img-folder/22.png" alt="SnapDOM" style="width: 460px;"></p>
+<p>尤其在超大元素（4000×2000）截图时，速度是 html2canvas 的 <code>93.31</code> 倍，比 dom-to-image 快了 <code>133.12</code> 倍。这速度，简直就像坐火箭。</p>
+<p>还原度超高</p>
+<p>SnapDOM 截图出来的效果，跟在网页上看到的一模一样。</p>
+<p>各种复杂的 <code>CSS</code> <code>样式</code>、<code>伪元素</code>、<code>Shadow DOM</code>、<code>内嵌字体</code>、<code>背景图片</code>，还有<code>动态效果的当前状态</code>，都能精准还原。</p>
+<p>无论是简单的元素，还是复杂的网页布局，它都能轻松拿捏。</p>
+<p>格式任你选</p>
+<p>不管你是想要矢量图 SVG，还是常用的 PNG、JPG，或者现代化的 WebP，又或者是需要进一步处理的 Canvas 元素，SnapDOM 都能满足你。</p>
+<p>多种格式，任你挑选，适配各种需求。</p>
+<h3 id="怎么用-SnapDOM？"><a href="#怎么用-SnapDOM？" class="headerlink" title="怎么用 SnapDOM？"></a>怎么用 SnapDOM？</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>SnapDOM 的安装超简单，有好几种方式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用 NPM 或 Yarn：在命令行里输</span></span><br><span class="line"></span><br><span class="line"># npm</span><br><span class="line">npm i @zumer/snapdom</span><br><span class="line"></span><br><span class="line"># yarn</span><br><span class="line">yarn add @zumer/snapdom</span><br></pre></td></tr></table></figure>
+<p>用 CDN 在 HTML 文件里加一行:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/@zumer/snapdom@latest/dist/snapdom.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>SnapDOM 的使用也很简单，只需要传入一个 <code>HTML</code> 元素，就能生成对应的图片。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用 NPM 或 Yarn 安装的用户</span></span><br><span class="line"><span class="keyword">import</span> &#123; snap &#125; <span class="keyword">from</span> <span class="string">'@zumer/snapdom'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用 CDN 的用户</span></span><br><span class="line"><span class="comment">// const &#123; snap &#125; = window.SnapDOM;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> card = <span class="built_in">document</span>.querySelector(<span class="string">'.user-card'</span>);</span><br><span class="line"><span class="keyword">const</span> image = <span class="keyword">await</span> snapdom.toPng(card);</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(image);</span><br></pre></td></tr></table></figure>
+<p>高级配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="built_in">document</span>.querySelector(<span class="string">'.chart-container'</span>);</span><br><span class="line"><span class="keyword">const</span> capture = <span class="keyword">await</span> snapdom(element, &#123;</span><br><span class="line">    scale: <span class="number">2</span>,</span><br><span class="line">    backgroundColor: <span class="string">'#fff'</span>,</span><br><span class="line">    embedFonts: <span class="literal">true</span>,</span><br><span class="line">    compress: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> png = <span class="keyword">await</span> capture.toPng();</span><br><span class="line"><span class="keyword">const</span> jpg = <span class="keyword">await</span> capture.toJpg(&#123; <span class="attr">quality</span>: <span class="number">0.9</span> &#125;);</span><br><span class="line"><span class="keyword">await</span> capture.download(&#123;</span><br><span class="line">    format: <span class="string">'png'</span>,</span><br><span class="line">    filename: <span class="string">'chart-report-2024'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这儿可以对截图进行各种配置,比如:</p>
+<ul>
+<li>scale 能调整清晰度</li>
+<li>backgroundColor 能设置背景色</li>
+<li>embedFonts 可以内嵌字体</li>
+<li>compress 能压缩优化<br>配置好后，还能把截图存成不同格式，或者直接下载到本地。</li>
+</ul>
+<p>和 <code>html2canvas</code>、<code>dom-to-image</code> <code>比起来，SnapDOM</code> 的优势很明显：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>SnapDOM</th>
+<th>html2canvas</th>
+<th>dom-to-image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>性能</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐</td>
+<td>⭐</td>
+</tr>
+<tr>
+<td>准确度</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>文件大小</td>
+<td>极小</td>
+<td>较大</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>SVG 支持</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Shadow DOM 支持</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>维护状态</td>
+<td>活跃</td>
+<td>活跃</td>
+<td>停滞</td>
+</tr>
+</tbody>
+</table>
+<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><ul>
+<li>跨域资源：要是截图里有外部图片等跨域资源，得确保这些资源支持 CORS，不然截不出来。</li>
+<li>iframe 限制：SnapDOM 不能截 iframe 内容，这是浏览器的安全限制，没办法。</li>
+<li>Safari 浏览器兼容性：在 Safari 里用 WebP 格式时，会自动变成 PNG。</li>
+<li>大型页面截图：截超大页面时，建议分块截，不然可能会内存溢出。</li>
+</ul>
+<h4 id="功能示例"><a href="#功能示例" class="headerlink" title="功能示例"></a>功能示例</h4><h5 id="社交分享"><a href="#社交分享" class="headerlink" title="社交分享"></a>社交分享</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">shareAchievement</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> card = <span class="built_in">document</span>.querySelector(<span class="string">'.achievement-card'</span>);</span><br><span class="line">    <span class="keyword">const</span> image = <span class="keyword">await</span> snapdom.toPng(card, &#123; <span class="attr">scale</span>: <span class="number">2</span> &#125;);</span><br><span class="line">    navigator.share(&#123;</span><br><span class="line">        files: [<span class="keyword">new</span> File([<span class="keyword">await</span> snapdom.toBlob(card)], <span class="string">'achievement.png'</span>)],</span><br><span class="line">        title: <span class="string">'我获得了新成就！'</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="报表导出"><a href="#报表导出" class="headerlink" title="报表导出"></a>报表导出</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">exportReport</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> reportSection = <span class="built_in">document</span>.querySelector(<span class="string">'.report-section'</span>);</span><br><span class="line">    <span class="keyword">await</span> preCache(reportSection);</span><br><span class="line">    <span class="keyword">await</span> snapdom.download(reportSection, &#123;</span><br><span class="line">        format: <span class="string">'png'</span>,</span><br><span class="line">        scale: <span class="number">2</span>,</span><br><span class="line">        filename: <span class="string">`report-<span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>().toISOString().split(<span class="string">'T'</span>)[<span class="number">0</span>]&#125;</span>`</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="海报导出"><a href="#海报导出" class="headerlink" title="海报导出"></a>海报导出</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">generatePoster</span>(<span class="params">productData</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">'.poster-title'</span>).textContent = productData.name;</span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">'.poster-price'</span>).textContent = <span class="string">`¥<span class="subst">$&#123;productData.price&#125;</span>`</span>;</span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">'.poster-image'</span>).src = productData.image;</span><br><span class="line">    <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> setTimeout(resolve, <span class="number">100</span>));</span><br><span class="line">    <span class="keyword">const</span> poster = <span class="built_in">document</span>.querySelector(<span class="string">'.poster-container'</span>);</span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">await</span> snapdom.toBlob(poster, &#123; <span class="attr">scale</span>: <span class="number">3</span> &#125;);</span><br><span class="line">    <span class="keyword">return</span> blob;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2025/09/20/倍的截图神器！",
+        distractionFreeMode: true,
+        title: "SnapDOM 弃用 html2canvas！快 93 倍的截图神器！",
+        body: "http://www.shuy.cc/2025/09/20/倍的截图神器！/",
+        labels: []
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer" style="color: #fff">
+    <a href="https://beian.miit.gov.cn/" style="color: #fff" target="_blank">晋ICP备2024043727号-3</a>
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>

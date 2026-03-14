@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>简单总结常用的正则表达式的Api | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="正则表达式可以: 测试字符串的某个模式。例如，可以对一个输入字符串进行测试，看在该字符串是否存在一个电话号码模式或一个信用卡号码模式。这称为数据有效性验证 替换文本。可以在文档中使用一个正则表达式来标识特定文字，然后可以全部将其删除，或者替换为别的文字 根据模式匹配从字符串中提取一个子字符串。可以用来在文本或输入字段中查找特定文字 正则表达式对象的方法test,返回一个 Boolean 值，它指出在被查找的字符串中是否存在模式。如果存在则返回 true，否则就返回 fals...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">列表</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    
+<aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式对象的方法"><span class="toc-number">1.</span> <span class="toc-text">正则表达式对象的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#test方法-测试字符串-符合模式时返回true-否则返回false"><span class="toc-number">1.1.</span> <span class="toc-text">test方法,测试字符串,符合模式时返回true,否则返回false</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exec-返回一个数组-数组的第一个元素为完整的匹配内容"><span class="toc-number">1.2.</span> <span class="toc-text">exec,返回一个数组,数组的第一个元素为完整的匹配内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String对象的一些和正则表达式有关的方法"><span class="toc-number">2.</span> <span class="toc-text">String对象的一些和正则表达式有关的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#replace方法-用于替换字符串"><span class="toc-number">2.1.</span> <span class="toc-text">replace方法,用于替换字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#split"><span class="toc-number">2.2.</span> <span class="toc-text">split</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#search-在字符串中查找时我们常用indexOf-与之对应用于正则查找的方法是search"><span class="toc-number">2.3.</span> <span class="toc-text">search  在字符串中查找时我们常用indexOf,与之对应用于正则查找的方法是search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match-方法也用于将字符串与正则表达式进行匹配并返回结果数组"><span class="toc-number">2.4.</span> <span class="toc-text">match 方法也用于将字符串与正则表达式进行匹配并返回结果数组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊字符"><span class="toc-number">3.</span> <span class="toc-text">特殊字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符类"><span class="toc-number">4.</span> <span class="toc-text">字符类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预定义类"><span class="toc-number">5.</span> <span class="toc-text">预定义类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#量词"><span class="toc-number">6.</span> <span class="toc-text">量词</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            简单总结常用的正则表达式的Api
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2019/09/06/regular/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2019-09-06T03:17:00.000Z" itemprop="datePublished">2019-09-06</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/js-正则/">js 正则</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>正则表达式可以: </p>
+<ul>
+<li>测试字符串的某个模式。例如，可以对一个输入字符串进行测试，看在该字符串是否存在一个电话号码模式或一个信用卡号码模式。这称为数据有效性验证 </li>
+<li>替换文本。可以在文档中使用一个正则表达式来标识特定文字，然后可以全部将其删除，或者替换为别的文字 </li>
+<li>根据模式匹配从字符串中提取一个子字符串。可以用来在文本或输入字段中查找特定文字 </li>
+</ul>
+<a id="more"></a>
+<h2 id="正则表达式对象的方法"><a href="#正则表达式对象的方法" class="headerlink" title="正则表达式对象的方法"></a>正则表达式对象的方法</h2><ul>
+<li>test,返回一个 Boolean 值，它指出在被查找的字符串中是否存在模式。如果存在则返回 true，否则就返回 false。</li>
+<li>exec,用正则表达式模式在字符串中运行查找，并返回含该查找结果的一个数组。</li>
+<li>compile,把正则表达式编译为内部格式，从而执行得更快。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">g （全文查找）</span><br><span class="line">i （忽略大小写）</span><br><span class="line">m （多行查找）</span><br><span class="line">^ 代表字符开始位置</span><br><span class="line">$ 代表字符结束位置</span><br></pre></td></tr></table></figure>
+<h3 id="test方法-测试字符串-符合模式时返回true-否则返回false"><a href="#test方法-测试字符串-符合模式时返回true-否则返回false" class="headerlink" title="test方法,测试字符串,符合模式时返回true,否则返回false"></a>test方法,测试字符串,符合模式时返回true,否则返回false</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/he/</span></span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="regexp">/he/i</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'heaa'</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.test(str)) <span class="comment">// true</span></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">'ahae'</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.test(str1)) <span class="comment">// false</span></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">'HEHE'</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.test(str2)) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(reg1.test(str2)) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">reg = <span class="regexp">/\s/</span>;<span class="comment">// \s匹配任何空白字符，包括空格、制表符、换页符等等</span></span><br><span class="line">str= <span class="string">"user Name"</span>;<span class="comment">//用户名包含空格</span></span><br><span class="line">alert(reg.test(str));<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">reg=<span class="regexp">/^[a-z]/i</span>;<span class="comment">//[]匹配指定范围内的任意字符,这里将匹配英文字母,不区分大小写</span></span><br><span class="line">str=<span class="string">"variableName"</span>;<span class="comment">//变量名必须以字母开头</span></span><br><span class="line">alert(reg.test(str));<span class="comment">//true</span></span><br><span class="line">str=<span class="string">"123abc"</span>;</span><br><span class="line">alert(reg.test(str));<span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> osVersion = <span class="string">"Ubuntu 8"</span>;<span class="comment">//其中的8表示系统主版本号</span></span><br><span class="line"><span class="keyword">var</span> re = <span class="regexp">/^[a-z]+\s+\d+$/i</span>; <span class="comment">//+号表示字符至少要出现1次,\s表示空白字符,\d表示一个数字</span></span><br><span class="line">alert(re.test(osVersion));<span class="comment">//true,但我们想知道主版本号</span></span><br></pre></td></tr></table></figure>
+<h3 id="exec-返回一个数组-数组的第一个元素为完整的匹配内容"><a href="#exec-返回一个数组-数组的第一个元素为完整的匹配内容" class="headerlink" title="exec,返回一个数组,数组的第一个元素为完整的匹配内容"></a>exec,返回一个数组,数组的第一个元素为完整的匹配内容</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> osVersion = <span class="string">"Ubuntu 8"</span></span><br><span class="line">re=<span class="regexp">/^[a-z]+\s+\d+$/i</span>;</span><br><span class="line">arr = re.exec(osVersion);</span><br><span class="line"><span class="built_in">console</span>.log(arr[<span class="number">0</span>]) <span class="comment">// Ubuntu 8</span></span><br><span class="line"></span><br><span class="line">re=<span class="regexp">/\d+/</span>;</span><br><span class="line"><span class="keyword">var</span> arr = re.exec(osVersion);</span><br><span class="line"><span class="built_in">console</span>.log(arr, arr[<span class="number">0</span>]);<span class="comment">//8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> osVersion = <span class="string">"Ubuntu 822 11"</span></span><br><span class="line"><span class="keyword">var</span> arr = re.exec(osVersion);</span><br><span class="line"><span class="built_in">console</span>.log(arr, arr[<span class="number">0</span>]);<span class="comment">//822</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> osVersion = <span class="string">"Ubuntu 8"</span></span><br><span class="line">re=<span class="regexp">/^[a-z]+\s+(\d+)$/i</span>;<span class="comment">//用()来创建子匹配</span></span><br><span class="line">arr = re.exec(osVersion)</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">// ["Ubuntu 8", "8"]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr[<span class="number">0</span>]);<span class="comment">//整个osVersion,也就是正则表达式的完整匹配</span></span><br><span class="line"><span class="built_in">console</span>.log(arr[<span class="number">1</span>]);<span class="comment">//8,第一个子匹配,事实也可以这样取出主版本号</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.length); <span class="comment">// 2</span></span><br><span class="line">osVersion = <span class="string">"Ubuntu 8.10"</span>;<span class="comment">//取出主版本号和次版本号</span></span><br><span class="line">re = <span class="regexp">/^[a-z]+\s+\d+\.\d+$/i</span><span class="comment">//.是正则表达式元字符之一,若要用它的字面意义须转义</span></span><br><span class="line">arr = re.exec(osVersion)</span><br><span class="line"><span class="built_in">console</span>.log(arr, arr[<span class="number">0</span>], arr[<span class="number">1</span>], arr[<span class="number">2</span>])<span class="comment">// [Ubuntu 8.10]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.length)<span class="comment">// 1</span></span><br><span class="line">re = <span class="regexp">/^[a-z]+\s+(\d+)\.(\d+)$/i</span><span class="comment">//.是正则表达式元字符之一,若要用它的字面意义须转义</span></span><br><span class="line">arr = re.exec(osVersion)</span><br><span class="line"><span class="built_in">console</span>.log(arr, arr[<span class="number">0</span>], arr[<span class="number">1</span>], arr[<span class="number">2</span>])<span class="comment">// [Ubuntu 8.10, 8, 10]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.length)<span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当字符串不匹配re时,exec方法将返回null</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> osVersion = <span class="string">"Ubuntu 8"</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/aa/</span></span><br><span class="line"><span class="keyword">var</span> arr = reg.exec(osVersion)</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+<h2 id="String对象的一些和正则表达式有关的方法"><a href="#String对象的一些和正则表达式有关的方法" class="headerlink" title="String对象的一些和正则表达式有关的方法"></a>String对象的一些和正则表达式有关的方法</h2><h3 id="replace方法-用于替换字符串"><a href="#replace方法-用于替换字符串" class="headerlink" title="replace方法,用于替换字符串"></a>replace方法,用于替换字符串</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'some money'</span></span><br><span class="line"><span class="keyword">var</span> str1 = str.replace(<span class="string">'some'</span>, <span class="string">'much'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(str1) <span class="comment">// much money</span></span><br></pre></td></tr></table></figure>
+<p>replace的第一个参数可以为正则表达式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="regexp">/\s/</span>;<span class="comment">//空白字符</span></span><br><span class="line">alert(str.replace(re,<span class="string">"%"</span>));<span class="comment">//some%money</span></span><br><span class="line"></span><br><span class="line">str =<span class="string">"some some             \tsome\t\f"</span>;</span><br><span class="line">re = <span class="regexp">/\s+/</span>;</span><br><span class="line">alert(str.replace(re,<span class="string">"#"</span>));<span class="comment">//但这样只会将第一次出现的一堆空白字符替换掉</span></span><br></pre></td></tr></table></figure></p>
+<p>因为一个正则表达式只能进行一次匹配,\s+匹配了第一个空格后就退出了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">re = <span class="regexp">/\s+/g</span>;<span class="comment">//g,全局标志,将使正则表达式匹配整个字符串</span></span><br><span class="line">alert(str.replace(re,<span class="string">"@"</span>));<span class="comment">//some@some@some@</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="split"><a href="#split" class="headerlink" title="split"></a>split</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"a-bd-c"</span>;</span><br><span class="line"><span class="keyword">var</span> arr = str.split(<span class="string">"-"</span>);<span class="comment">//返回["a","bd","c"]</span></span><br><span class="line">如果str是用户输入的,他可能输入a-bd-c也可能输入a bd c或a_bd_c,但不会是abdc(这样就说他输错了)</span><br><span class="line">str = <span class="string">"a_db-c"</span>;<span class="comment">//用户以他喜欢的方式加分隔符s</span></span><br><span class="line">re=<span class="regexp">/[^a-z]/ig</span>;<span class="comment">//前面我们说^表示字符开始,但在[]里它表示一个负字符集</span></span><br><span class="line"><span class="comment">//匹配任何不在指定范围内的任意字符,这里将匹配除字母处的所有字符</span></span><br><span class="line">arr = str.split(re);<span class="comment">//仍返回["a","bd","c"];</span></span><br><span class="line">str1 = str.replace(re, <span class="string">'@'</span>) <span class="comment">// a@db@c</span></span><br></pre></td></tr></table></figure>
+<h3 id="search-在字符串中查找时我们常用indexOf-与之对应用于正则查找的方法是search"><a href="#search-在字符串中查找时我们常用indexOf-与之对应用于正则查找的方法是search" class="headerlink" title="search  在字符串中查找时我们常用indexOf,与之对应用于正则查找的方法是search"></a>search  在字符串中查找时我们常用indexOf,与之对应用于正则查找的方法是search</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">"My age is 18.Golden age!"</span>;<span class="comment">//年龄不是一定的,我们用indexOf不能查找它的位置</span></span><br><span class="line">re = <span class="regexp">/\d+/</span>;</span><br><span class="line">alert(str.search(re));<span class="comment">//返回查找到的字符串开始下标10</span></span><br><span class="line"><span class="comment">//注意,因为查找本身就是出现第一次就立即返回,所以无需在search时使用g标志</span></span><br><span class="line"><span class="comment">//下面的代码虽然不出错,但g标志是多余的</span></span><br><span class="line">re=<span class="regexp">/\d+/g</span>;</span><br><span class="line">alert(str.search(re));<span class="comment">//仍然是10</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意,当search方法没有找到匹配时,将返回-1</p>
+</blockquote>
+<h3 id="match-方法也用于将字符串与正则表达式进行匹配并返回结果数组"><a href="#match-方法也用于将字符串与正则表达式进行匹配并返回结果数组" class="headerlink" title="match 方法也用于将字符串与正则表达式进行匹配并返回结果数组"></a>match 方法也用于将字符串与正则表达式进行匹配并返回结果数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"My name is CJ.Hello everyone!"</span>;</span><br><span class="line">re = <span class="regexp">/[A-Z]/g</span>;</span><br><span class="line">arr = str.match(re);</span><br><span class="line">alert(arr);<span class="comment">//M,C,J,H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 从字符串中抽取单词</span></span><br><span class="line">re = <span class="regexp">/\b[a-z]*\b/gi</span>;<span class="comment">//\b表示单词边界</span></span><br><span class="line">str = <span class="string">"one two three four"</span>;</span><br><span class="line">alert(str.match(re));<span class="comment">//one,two,three,four</span></span><br></pre></td></tr></table></figure>
+<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><table>
+<thead>
+<tr>
+<th>字符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\n</td>
+<td style="text-align:center">换行符 </td>
+</tr>
+<tr>
+<td>\r</td>
+<td style="text-align:center">回车符 </td>
+</tr>
+<tr>
+<td>\t</td>
+<td style="text-align:center">制表符 </td>
+</tr>
+<tr>
+<td>\f</td>
+<td style="text-align:center">换页符（Tab） </td>
+</tr>
+<tr>
+<td>\cX</td>
+<td style="text-align:center">与X对应的控制字符 </td>
+</tr>
+<tr>
+<td>\b</td>
+<td style="text-align:center">退格符(BackSpace) </td>
+</tr>
+<tr>
+<td>\v</td>
+<td style="text-align:center">垂直制表符 </td>
+</tr>
+<tr>
+<td>\0</td>
+<td style="text-align:center">空字符(“”) </td>
+</tr>
+</tbody>
+</table>
+<h2 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h2><p>简单类，反向类，范围类，组合类，预定义类</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//简单类  </span></span><br><span class="line"><span class="keyword">var</span> re = <span class="regexp">/[abc123]/</span>;<span class="comment">//将匹配abc123这6个字符中一个  </span></span><br><span class="line"><span class="comment">//负向类  </span></span><br><span class="line">re = <span class="regexp">/[^abc]/</span>;<span class="comment">//将匹配除abc之外的一个字符  </span></span><br><span class="line"><span class="comment">//范围类  </span></span><br><span class="line">re = <span class="regexp">/[a-b]/</span>;<span class="comment">//将匹配小写a-b 26个字母  </span></span><br><span class="line">re = <span class="regexp">/[^0-9]/</span>;<span class="comment">//将匹配除0-9 10个字符之处的一个字符  </span></span><br><span class="line"><span class="comment">//组合类  </span></span><br><span class="line">re = <span class="regexp">/[a-b0-9A-Z_]/</span>;<span class="comment">//将匹配字母，数字和下划线</span></span><br></pre></td></tr></table></figure>
+<h2 id="预定义类"><a href="#预定义类" class="headerlink" title="预定义类"></a>预定义类</h2><table>
+<thead>
+<tr>
+<th>代码</th>
+<th style="text-align:center">等同于</th>
+<th style="text-align:center">匹配</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td style="text-align:center">IE下[^\n]，其它[^\n\r]</td>
+<td style="text-align:center">匹配除换行符之外的任何一个字符 </td>
+</tr>
+<tr>
+<td>\d</td>
+<td style="text-align:center">[0-9]</td>
+<td style="text-align:center">匹配数字 </td>
+</tr>
+<tr>
+<td>\D</td>
+<td style="text-align:center">[^0-9]</td>
+<td style="text-align:center">匹配非数字字符 </td>
+</tr>
+<tr>
+<td>\s</td>
+<td style="text-align:center">[ \n\r\t\f\x0B]</td>
+<td style="text-align:center">匹配一个空白字符 </td>
+</tr>
+<tr>
+<td>\S</td>
+<td style="text-align:center">[^ \n\r\t\f\x0B]</td>
+<td style="text-align:center">匹配一个非空白字符 </td>
+</tr>
+<tr>
+<td>\w</td>
+<td style="text-align:center">[a-zA-Z0-9_]</td>
+<td style="text-align:center">匹配字母数字和下划线 </td>
+</tr>
+<tr>
+<td>\W</td>
+<td style="text-align:center">[^a-zA-Z0-9_]</td>
+<td style="text-align:center">匹配除字母数字下划线之外的字符 </td>
+</tr>
+</tbody>
+</table>
+<h2 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h2><table>
+<thead>
+<tr>
+<th>代码</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td style="text-align:center">匹配前面的子表达式零次或多次。例如，zo<em> 能匹配 “z” 以及 “zoo”。 </em> 等价于{0,}。 </td>
+</tr>
+<tr>
+<td>+</td>
+<td style="text-align:center">匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。 </td>
+</tr>
+<tr>
+<td>?</td>
+<td style="text-align:center">匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 或 “does” 中的”do” 。? 等价于 {0,1}。 </td>
+</tr>
+<tr>
+<td>{n}</td>
+<td style="text-align:center">n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td style="text-align:center">n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*’。 </td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td style="text-align:center">m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。刘， “o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。 </td>
+</tr>
+</tbody>
+</table>
+
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2019/09/06/regular",
+        distractionFreeMode: true,
+        title: "简单总结常用的正则表达式的Api",
+        body: "http://www.shuy.cc/2019/09/06/regular/",
+        labels: ["js 正则"]
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer" style="color: #fff">
+    <a href="https://beian.miit.gov.cn/" style="color: #fff" target="_blank">晋ICP备2024043727号-3</a>
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>

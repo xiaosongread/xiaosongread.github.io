@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>大厂使用框架的分析 | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="大厂使用框架的分析1. 框架的对比1.1. VueVue.js 是一个渐进式 JavaScript 框架，用于构建用户界面。它允许开发者使用简单的语法和声明式模板来构建复杂的单页应用程序（SPA）。Vue.js 的核心特性包括响应式数据绑定、组件化开发、虚拟 DOM 等。它还提供了丰富的生态系统，包括 Vue Router（路由管理）、Vuex（状态管理）等工具。1.2. ReactReact 是一个用于构建用户界面的 JavaScript 库，由 Facebook 开发和维护。...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">列表</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    
+<aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#大厂使用框架的分析"><span class="toc-number">1.</span> <span class="toc-text">大厂使用框架的分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-框架的对比"><span class="toc-number">1.1.</span> <span class="toc-text">1. 框架的对比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-Vue"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1. Vue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-React"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2. React</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-框架的优缺点"><span class="toc-number">1.2.</span> <span class="toc-text">2. 框架的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Vue"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1. Vue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-React"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2. React</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-大厂的选择"><span class="toc-number">1.3.</span> <span class="toc-text">3.大厂的选择</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vue的选择"><span class="toc-number">1.3.1.</span> <span class="toc-text">vue的选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#react的选择"><span class="toc-number">1.3.2.</span> <span class="toc-text">react的选择</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-总结"><span class="toc-number">1.4.</span> <span class="toc-text">4. 总结</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            大厂使用框架的分析
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.shuy.cc/2024/08/05/webfx/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2024-08-05T03:20:05.000Z" itemprop="datePublished">2024-08-05</time>
+</a>
+
+            
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h2 id="大厂使用框架的分析"><a href="#大厂使用框架的分析" class="headerlink" title="大厂使用框架的分析"></a>大厂使用框架的分析</h2><h3 id="1-框架的对比"><a href="#1-框架的对比" class="headerlink" title="1. 框架的对比"></a>1. 框架的对比</h3><h4 id="1-1-Vue"><a href="#1-1-Vue" class="headerlink" title="1.1. Vue"></a>1.1. Vue</h4><ul>
+<li>Vue.js 是一个渐进式 JavaScript 框架，用于构建用户界面。它允许开发者使用简单的语法和声明式模板来构建复杂的单页应用程序（SPA）。</li>
+<li>Vue.js 的核心特性包括响应式数据绑定、组件化开发、虚拟 DOM 等。它还提供了丰富的生态系统，包括 Vue Router（路由管理）、Vuex（状态管理）等工具。</li>
+</ul>
+<h4 id="1-2-React"><a href="#1-2-React" class="headerlink" title="1.2. React"></a>1.2. React</h4><ul>
+<li>React 是一个用于构建用户界面的 JavaScript 库，由 Facebook 开发和维护。它使用组件化的方式来构建用户界面，并提供了丰富的生态系统，包括 React Router（路由管理）、Redux（状态管理）等工具。</li>
+<li>React 的核心特性包括虚拟 DOM、JSX 语法、组件化开发等。它还提供了丰富的生态系统，包括 React Router（路由管理）、Redux（状态管理）等工具。</li>
+</ul>
+<a id="more"></a>
+<h3 id="2-框架的优缺点"><a href="#2-框架的优缺点" class="headerlink" title="2. 框架的优缺点"></a>2. 框架的优缺点</h3><h4 id="2-1-Vue"><a href="#2-1-Vue" class="headerlink" title="2.1. Vue"></a>2.1. Vue</h4><ul>
+<li>优点：简单易学、轻量级、灵活、社区活跃、生态系统丰富。</li>
+<li>缺点：性能相对较低、不适合大型项目、学习曲线较陡。</li>
+</ul>
+<h4 id="2-2-React"><a href="#2-2-React" class="headerlink" title="2.2. React"></a>2.2. React</h4><ul>
+<li>优点：高性能、灵活、社区活跃、生态系统丰富。</li>
+<li>缺点：学习曲线较陡、代码可维护性较差、不适合小型项目。</li>
+</ul>
+<h3 id="3-大厂的选择"><a href="#3-大厂的选择" class="headerlink" title="3.大厂的选择"></a>3.大厂的选择</h3><h4 id="vue的选择"><a href="#vue的选择" class="headerlink" title="vue的选择"></a>vue的选择</h4><p><a href="https://www.mi.com/" target="_blank" rel="noopener">小米官网/小米商城</a>  小米官网/小米商城使用的是 Vue.js、nuxt.js 框架。</p>
+<p><a href="https://www.baidu.com/" target="_blank" rel="noopener">百度官网</a> 百度官网使用的是 Vue 框架。</p>
+<p><a href="https://www.bilibili.com/" target="_blank" rel="noopener">哔哩哔哩官网</a> 哔哩哔哩官网使用的是 vue 框架。</p>
+<p><a href="https://www.sohu.com/" target="_blank" rel="noopener">搜狐官网</a> 搜狐官网使用的是 vue 框架。</p>
+<p><a href="https://saas.360.cn/introduce/swxwgl?src=guanwang_tj_sjyp" target="_blank" rel="noopener">360官网</a> 360官网使用的是 vue + nuxt 框架。</p>
+<p><a href="https://mp.weixin.qq.com/cgi-bin/loginpage?url=%2Fwxamp%2Findex%2Findex%3Flang%3Dzh_CN%26token%3D1883064951" target="_blank" rel="noopener">微信公众平台</a> 微信公众平台使用的是 vue + AntV G2。</p>
+<p><a href="https://start.qq.com/?ADTAG=0" target="_blank" rel="noopener">腾讯游戏官网</a> 腾讯游戏官网使用的是 vue。</p>
+<p><a href="https://www.xiaohongshu.com/explore" target="_blank" rel="noopener">小红书</a> 小红书使用的是 vue 框架。</p>
+<h4 id="react的选择"><a href="#react的选择" class="headerlink" title="react的选择"></a>react的选择</h4><p><a href="https://list.jd.com/list.html?cat=1316,1387,16851" target="_blank" rel="noopener">京东官网</a> 京东官网使用的是 react。</p>
+<p><a href="https://s.taobao.com/search?commend=all&amp;ie=utf8&amp;initiative_id=tbindexz_20170306&amp;localImgKey=&amp;page=1&amp;q=%E5%84%BF%E7%AB%A5%E5%BA%8A&amp;search_type=item&amp;sourceId=tb.index&amp;spm=a21bo.jianhua%2Fa.201867-main.d4_3_1.3a912a89uRq6h1&amp;ssid=s5-e&amp;tab=all" target="_blank" rel="noopener">淘宝官网搜索结果页</a> 淘宝官网使用的是 React + preact。</p>
+<p><a href="https://www.alibaba.com/" target="_blank" rel="noopener">阿里巴巴官网</a> 阿里巴巴官网使用的是 react 框架。</p>
+<p><a href="https://bytedance.com/" target="_blank" rel="noopener">字节跳动官网</a> 字节跳动官网使用的是 React + next.js 框架。</p>
+<p><a href="https://www.meituan.com/" target="_blank" rel="noopener">美团官网</a> 美团官网使用的是 react + next 框架。</p>
+<p><a href="https://www.pinduoduo.com/" target="_blank" rel="noopener">拼多多官网</a> 拼多多官网使用的是 React + next.js 框架。</p>
+<p><a href="https://www.youku.com/channel/webmovie" target="_blank" rel="noopener">优酷官网</a> 优酷官网使用的是 React + ant Desgin 框架。</p>
+<p><a href="https://www.lixiang.com/?chjchannelcode=103932#li" target="_blank" rel="noopener">理想汽车官网</a> 理想汽车官网使用的是 React 框架。</p>
+<p><a href="https://www.xiaopeng.com/?reserve_source=168801" target="_blank" rel="noopener">小鹏汽车官网</a> 小鹏汽车官网使用的是 React + next.js 框架。<br><!-- [网易官网](https://www.163.com/) 网易官网使用的是 jQuery + core.js。 --><br><!-- [新浪官网](https://www.sina.com.cn/) 新浪官网使用的是 backbone.js + require.js 框架。 --></p>
+<h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h3><p>有人说vue适合小型项目，react适合大型项目，我觉得并不正确，从技术的角度，我觉得，react的确比vue的门槛高，Vue因为是渐进式框架，所以入门门槛比较低，但是同样也是特别优秀的前端框架，他的社区其实相对来说也是很庞大和完善的。项目的选型，其实还是主要取决于团队的技术栈和业务需求，而不是框架本身的好坏。更没有low不low这么一说，只要能解决业务需求，就是好的框架。</p>
+
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2024/08/05/webfx",
+        distractionFreeMode: true,
+        title: "大厂使用框架的分析",
+        body: "http://www.shuy.cc/2024/08/05/webfx/",
+        labels: []
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer" style="color: #fff">
+    <a href="https://beian.miit.gov.cn/" style="color: #fff" target="_blank">晋ICP备2024043727号-3</a>
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
