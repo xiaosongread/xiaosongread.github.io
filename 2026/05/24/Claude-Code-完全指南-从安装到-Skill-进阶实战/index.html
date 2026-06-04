@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+
+    
+
+    
+
+    <title>Claude Code 完全指南：从安装到 Skill 进阶实战 | 前端技术博客</title>
+    <meta name="author" content="xiaosongread">
+    <meta name="keywords" content="小宋 抿圪斗前端 前端 前端博客 框架 工程 css html js node markdown npm webpack">
+    <meta name="description" content="作为一名前端开发者，日常工作中除了写代码，还需要处理大量的命令行操作、代码审查、项目配置等任务。最近深度使用了 Anthropic 推出的 Claude Code，发现它不仅仅是一个简单的 AI 聊天工具，而是一个真正能融入开发工作流的命令行智能助手。本文将从零开始，带你全面了解 Claude Code 的安装、配置以及最强大的 Skill 功能。一、Claude Code 是什么？Claude Code 是 Anthropic 官方推出的命令行界面（CLI）工具，它将 Claud...">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
+    
+    <link rel="alternate" href="/atom.xml" title="前端技术博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'icomoon';
+        src: url("/fonts/icomoon.eot?q628ml");
+        src: url("/fonts/icomoon.eot?q628ml#iefix") format('embedded-opentype'),
+             url("/fonts/icomoon.ttf?q628ml") format('truetype'),
+             url("/fonts/icomoon.woff?q628ml") format('woff'),
+             url("/fonts/icomoon.svg?q628ml#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    </style>
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--[if lt IE 9]><style type="text/css">.nav-inner {top:0;}.author-meta {position:static;top:0;}.search-form {height:36px;}</style><script type="text/javascript" src="https://unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+
+    <main class="app">
+        <header id="header" class="header clearfix">
+    <div id="nav" class="nav">
+    <div class="nav-mobile">
+        <button id="open-panel" class="open-panel nav-mobile-item"><i class="icon-documents"></i></button>
+        <h1 class="nav-mobile-title nav-mobile-item">前端技术博客</h1>
+        <button id="open-menus" class="open-panel nav-mobile-item"><i class="icon-library"></i></button>
+    </div>
+
+    <nav id="nav-inner" class="nav-inner">
+        
+            <a class="nav-item" href="/archives">
+                <span class="nav-text">列表</span>
+            </a>
+        
+            <a class="nav-item" href="/">
+                <span class="nav-text">首页</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/css-end/">
+                <span class="nav-text">css</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/js-end/">
+                <span class="nav-text">js</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/gc-end/">
+                <span class="nav-text">工程</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/sh-end/">
+                <span class="nav-text">日常</span>
+            </a>
+        
+            <a class="nav-item" href="/categories/my-end/">
+                <span class="nav-text">关于我</span>
+            </a>
+        
+    </nav>
+</div>
+
+    
+<aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Claude-Code-是什么？"><span class="toc-number">1.</span> <span class="toc-text">一、Claude Code 是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#核心特性"><span class="toc-number">1.1.</span> <span class="toc-text">核心特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用场景"><span class="toc-number">1.2.</span> <span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、如何安装-Claude-Code"><span class="toc-number">2.</span> <span class="toc-text">二、如何安装 Claude Code</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前置要求"><span class="toc-number">2.1.</span> <span class="toc-text">前置要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装步骤"><span class="toc-number">2.2.</span> <span class="toc-text">安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-全局安装-CLI"><span class="toc-number">2.2.1.</span> <span class="toc-text">1. 全局安装 CLI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-配置-API-Key"><span class="toc-number">2.2.2.</span> <span class="toc-text">2. 配置 API Key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-验证安装"><span class="toc-number">2.2.3.</span> <span class="toc-text">3. 验证安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速启动"><span class="toc-number">2.3.</span> <span class="toc-text">快速启动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、基础使用技巧"><span class="toc-number">3.</span> <span class="toc-text">三、基础使用技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-常用命令速查"><span class="toc-number">3.1.</span> <span class="toc-text">1. 常用命令速查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-交互模式快捷键"><span class="toc-number">3.2.</span> <span class="toc-text">2. 交互模式快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-常用-Slash-命令"><span class="toc-number">3.3.</span> <span class="toc-text">3. 常用 Slash 命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、Skill-系统：Claude-Code-的进阶武器"><span class="toc-number">4.</span> <span class="toc-text">四、Skill 系统：Claude Code 的进阶武器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是-Skill？"><span class="toc-number">4.1.</span> <span class="toc-text">什么是 Skill？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Skill-的存储位置"><span class="toc-number">4.2.</span> <span class="toc-text">Skill 的存储位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何安装-Skill"><span class="toc-number">4.3.</span> <span class="toc-text">如何安装 Skill</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方式一：使用内置-Skill"><span class="toc-number">4.3.1.</span> <span class="toc-text">方式一：使用内置 Skill</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方式二：安装第三方-Skill"><span class="toc-number">4.3.2.</span> <span class="toc-text">方式二：安装第三方 Skill</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方式三：创建自定义-Skill"><span class="toc-number">4.3.3.</span> <span class="toc-text">方式三：创建自定义 Skill</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Skill-配置示例：前端项目代码审查"><span class="toc-number">4.4.</span> <span class="toc-text">Skill 配置示例：前端项目代码审查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用自定义-Skill"><span class="toc-number">4.5.</span> <span class="toc-text">使用自定义 Skill</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、实战案例"><span class="toc-number">5.</span> <span class="toc-text">五、实战案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#案例-1：快速初始化一个-Vue-3-项目"><span class="toc-number">5.1.</span> <span class="toc-text">案例 1：快速初始化一个 Vue 3 项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#案例-2：代码重构"><span class="toc-number">5.2.</span> <span class="toc-text">案例 2：代码重构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#案例-3：使用-Skill-做自动化部署检查"><span class="toc-number">5.3.</span> <span class="toc-text">案例 3：使用 Skill 做自动化部署检查</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、最佳实践与注意事项"><span class="toc-number">6.</span> <span class="toc-text">六、最佳实践与注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-成本控制"><span class="toc-number">6.1.</span> <span class="toc-text">1. 成本控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-安全建议"><span class="toc-number">6.2.</span> <span class="toc-text">2. 安全建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-与现有工具链集成"><span class="toc-number">6.3.</span> <span class="toc-text">3. 与现有工具链集成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、总结"><span class="toc-number">7.</span> <span class="toc-text">七、总结</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+            <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            Claude Code 完全指南：从安装到 Skill 进阶实战
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="http://www.yqyang.com/2026/05/24/Claude-Code-完全指南-从安装到-Skill-进阶实战/index.html">
+    
+    <i class="icon-calendar vm"></i>
+    
+    <time class="vm" datetime="2026-05-24T03:00:00.000Z" itemprop="datePublished">2026-05-24</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag vm"></i>
+    <a class="article-tag-link" href="/tags/AI-编程/">AI 编程</a>, <a class="article-tag-link" href="/tags/Anthropic/">Anthropic</a>, <a class="article-tag-link" href="/tags/CLI-工具/">CLI 工具</a>, <a class="article-tag-link" href="/tags/Claude-Code/">Claude Code</a>, <a class="article-tag-link" href="/tags/效率工具/">效率工具</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <blockquote>
+<p>作为一名前端开发者，日常工作中除了写代码，还需要处理大量的命令行操作、代码审查、项目配置等任务。最近深度使用了 Anthropic 推出的 <strong>Claude Code</strong>，发现它不仅仅是一个简单的 AI 聊天工具，而是一个真正能融入开发工作流的<strong>命令行智能助手</strong>。本文将从零开始，带你全面了解 Claude Code 的安装、配置以及最强大的 Skill 功能。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="一、Claude-Code-是什么？"><a href="#一、Claude-Code-是什么？" class="headerlink" title="一、Claude Code 是什么？"></a>一、Claude Code 是什么？</h2><p><strong>Claude Code</strong> 是 Anthropic 官方推出的命令行界面（CLI）工具，它将 Claude 大模型的能力直接集成到终端中。与传统的 AI 聊天工具不同，Claude Code 的核心设计理念是<strong>“Agentic AI”</strong>——它不仅能回答你的问题，还能<strong>主动执行操作</strong>。</p>
+<h3 id="核心特性"><a href="#核心特性" class="headerlink" title="核心特性"></a>核心特性</h3><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>终端原生集成</strong></td>
+<td>直接在命令行中使用，无需切换窗口</td>
+</tr>
+<tr>
+<td><strong>文件系统感知</strong></td>
+<td>可以读取、编辑、创建项目中的文件</td>
+</tr>
+<tr>
+<td><strong>命令执行能力</strong></td>
+<td>能运行 Shell 命令、Git 操作、测试脚本</td>
+</tr>
+<tr>
+<td><strong>上下文理解</strong></td>
+<td>自动读取项目结构、配置文件、代码上下文</td>
+</tr>
+<tr>
+<td><strong>Skill 扩展系统</strong></td>
+<td>支持自定义技能，扩展其能力边界</td>
+</tr>
+</tbody>
+</table>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li><strong>代码审查与重构</strong>：分析代码逻辑，提出优化建议并直接修改</li>
+<li><strong>自动化脚本编写</strong>：根据需求生成 Shell/Python 脚本</li>
+<li><strong>项目初始化</strong>：快速搭建项目结构、配置 CI/CD</li>
+<li><strong>Bug 排查</strong>：分析错误日志，定位问题根源</li>
+<li><strong>学习与探索</strong>：快速理解陌生代码库或技术文档</li>
+</ul>
+<hr>
+<h2 id="二、如何安装-Claude-Code"><a href="#二、如何安装-Claude-Code" class="headerlink" title="二、如何安装 Claude Code"></a>二、如何安装 Claude Code</h2><h3 id="前置要求"><a href="#前置要求" class="headerlink" title="前置要求"></a>前置要求</h3><ul>
+<li><strong>Node.js 18+</strong>（推荐 LTS 版本）</li>
+<li><strong>Git</strong>（用于版本控制集成）</li>
+<li><strong>Anthropic API Key</strong>（需要有 Claude API 的访问权限）</li>
+</ul>
+<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><h4 id="1-全局安装-CLI"><a href="#1-全局安装-CLI" class="headerlink" title="1. 全局安装 CLI"></a>1. 全局安装 CLI</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 npm 安装</span></span><br><span class="line">npm install -g @anthropic-ai/claude-code</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或使用 yarn</span></span><br><span class="line">yarn global add @anthropic-ai/claude-code</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或使用 pnpm</span></span><br><span class="line">pnpm add -g @anthropic-ai/claude-code</span><br></pre></td></tr></table></figure>
+<h4 id="2-配置-API-Key"><a href="#2-配置-API-Key" class="headerlink" title="2. 配置 API Key"></a>2. 配置 API Key</h4><p>安装完成后，首次运行需要配置 API Key：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">claude config <span class="built_in">set</span> apiKey sk-ant-xxxxx</span><br></pre></td></tr></table></figure>
+<p>或者设置环境变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ANTHROPIC_API_KEY=sk-ant-xxxxx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>建议</strong>：将 API Key 添加到 <code>~/.bashrc</code> 或 <code>~/.zshrc</code> 中，避免每次重启终端都需要重新设置。</p>
+</blockquote>
+<h4 id="3-验证安装"><a href="#3-验证安装" class="headerlink" title="3. 验证安装"></a>3. 验证安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">claude --version</span><br><span class="line"><span class="comment"># 输出示例：claude-code 1.x.x</span></span><br></pre></td></tr></table></figure>
+<h3 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h3><p>在项目目录下执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">claude</span><br></pre></td></tr></table></figure>
+<p>你会进入交互式会话界面，此时 Claude 已经加载了当前项目的上下文。</p>
+<hr>
+<h2 id="三、基础使用技巧"><a href="#三、基础使用技巧" class="headerlink" title="三、基础使用技巧"></a>三、基础使用技巧</h2><h3 id="1-常用命令速查"><a href="#1-常用命令速查" class="headerlink" title="1. 常用命令速查"></a>1. 常用命令速查</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入交互模式</span></span><br><span class="line">claude</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行单条指令（非交互式）</span></span><br><span class="line">claude -p <span class="string">"解释这个项目的架构"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定模型版本</span></span><br><span class="line">claude --model claude-opus-4-7</span><br><span class="line"></span><br><span class="line"><span class="comment"># 快速模式（使用更快的模型）</span></span><br><span class="line">claude --fast</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看配置</span></span><br><span class="line">claude config list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看帮助</span></span><br><span class="line">claude --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-交互模式快捷键"><a href="#2-交互模式快捷键" class="headerlink" title="2. 交互模式快捷键"></a>2. 交互模式快捷键</h3><p>进入 <code>claude</code> 交互界面后，可以使用以下快捷键：</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ctrl + C</code></td>
+<td>取消当前生成</td>
+</tr>
+<tr>
+<td><code>Ctrl + D</code></td>
+<td>退出会话</td>
+</tr>
+<tr>
+<td><code>Tab</code></td>
+<td>补全命令或文件路径</td>
+</tr>
+<tr>
+<td><code>↑ / ↓</code></td>
+<td>浏览历史消息</td>
+</tr>
+<tr>
+<td><code>/clear</code></td>
+<td>清除当前会话上下文</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-常用-Slash-命令"><a href="#3-常用-Slash-命令" class="headerlink" title="3. 常用 Slash 命令"></a>3. 常用 Slash 命令</h3><p>Claude Code 支持类似 Slack 的 Slash 命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/help          # 查看帮助</span><br><span class="line">/clear         # 清空当前对话</span><br><span class="line">/config        # 查看或修改配置</span><br><span class="line">/exit          # 退出会话</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="四、Skill-系统：Claude-Code-的进阶武器"><a href="#四、Skill-系统：Claude-Code-的进阶武器" class="headerlink" title="四、Skill 系统：Claude Code 的进阶武器"></a>四、Skill 系统：Claude Code 的进阶武器</h2><p><strong>Skill</strong> 是 Claude Code 最强大的扩展机制。通过 Skill，你可以让 Claude 掌握特定领域的能力，比如代码审查规范、项目特定的脚本、或者与外部系统的集成。</p>
+<h3 id="什么是-Skill？"><a href="#什么是-Skill？" class="headerlink" title="什么是 Skill？"></a>什么是 Skill？</h3><p>Skill 本质上是一组<strong>预定义的提示词（Prompt）+ 可选的脚本工具</strong>，它告诉 Claude：</p>
+<ul>
+<li>在什么场景下触发</li>
+<li>如何理解用户的意图</li>
+<li>使用什么工具来完成任务</li>
+<li>输出应该遵循什么格式</li>
+</ul>
+<h3 id="Skill-的存储位置"><a href="#Skill-的存储位置" class="headerlink" title="Skill 的存储位置"></a>Skill 的存储位置</h3><p>Claude Code 会从以下位置加载 Skill：</p>
+<ol>
+<li><strong>内置 Skill</strong>：Claude Code 自带的核心技能</li>
+<li><strong>项目级 Skill</strong>：当前项目 <code>.claude/skills/</code> 目录下的自定义技能</li>
+<li><strong>用户级 Skill</strong>：<code>~/.claude/skills/</code> 目录下的全局技能</li>
+</ol>
+<h3 id="如何安装-Skill"><a href="#如何安装-Skill" class="headerlink" title="如何安装 Skill"></a>如何安装 Skill</h3><h4 id="方式一：使用内置-Skill"><a href="#方式一：使用内置-Skill" class="headerlink" title="方式一：使用内置 Skill"></a>方式一：使用内置 Skill</h4><p>Claude Code 已经内置了许多常用 Skill，直接通过斜杠命令调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/code-review      # 代码审查</span><br><span class="line">/verify           # 验证代码变更</span><br><span class="line">/run              # 启动项目并验证</span><br></pre></td></tr></table></figure>
+<h4 id="方式二：安装第三方-Skill"><a href="#方式二：安装第三方-Skill" class="headerlink" title="方式二：安装第三方 Skill"></a>方式二：安装第三方 Skill</h4><p>社区有许多开源的 Skill 可供使用。以安装 <code>code-review</code> Skill 为例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 克隆 Skill 仓库到项目目录</span></span><br><span class="line"><span class="built_in">cd</span> your-project</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/example/claude-code-review-skill .claude/skills/code-review</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者克隆到用户级目录（全局可用）</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/example/claude-code-review-skill ~/.claude/skills/code-review</span><br></pre></td></tr></table></figure>
+<h4 id="方式三：创建自定义-Skill"><a href="#方式三：创建自定义-Skill" class="headerlink" title="方式三：创建自定义 Skill"></a>方式三：创建自定义 Skill</h4><p>在你的项目根目录创建 Skill：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p .claude/skills/my-skill</span><br></pre></td></tr></table></figure>
+<p>然后创建 <code>skill.md</code> 文件：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># My Custom Skill</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 描述</span></span><br><span class="line">这是一个自定义 Skill 的示例。</span><br><span class="line"></span><br><span class="line"><span class="section">## 触发条件</span></span><br><span class="line">当用户提到"优化性能"或"性能分析"时触发。</span><br><span class="line"></span><br><span class="line"><span class="section">## 工具</span></span><br><span class="line"><span class="bullet">- </span>read_file: 读取项目中的文件</span><br><span class="line"><span class="bullet">- </span>bash: 执行 shell 命令</span><br><span class="line"><span class="bullet">- </span>edit_file: 编辑文件</span><br><span class="line"></span><br><span class="line"><span class="section">## 工作流程</span></span><br><span class="line"><span class="bullet">1. </span>首先分析 package.json 中的依赖</span><br><span class="line"><span class="bullet">2. </span>检查是否有明显的性能瓶颈</span><br><span class="line"><span class="bullet">3. </span>提出具体的优化建议</span><br><span class="line"></span><br><span class="line"><span class="section">## 输出格式</span></span><br><span class="line"><span class="bullet">- </span>使用中文回复</span><br><span class="line"><span class="bullet">- </span>列出 3-5 个可执行的优化点</span><br><span class="line"><span class="bullet">- </span>每个优化点包含：问题描述、解决方案、预期收益</span><br></pre></td></tr></table></figure>
+<h3 id="Skill-配置示例：前端项目代码审查"><a href="#Skill-配置示例：前端项目代码审查" class="headerlink" title="Skill 配置示例：前端项目代码审查"></a>Skill 配置示例：前端项目代码审查</h3><p>以下是一个实用的前端代码审查 Skill 配置：</p>
+<p><strong>文件路径</strong>：<code>.claude/skills/fe-review/skill.md</code></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">name: fe-review</span><br><span class="line">description: 前端代码审查规范，自动检查 Vue/React 项目中的常见问题</span><br><span class="line">triggers:</span><br><span class="line">  - /fe-review</span><br><span class="line">  - 代码审查</span><br><span class="line">  - 前端审查</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section"># 前端代码审查 Skill</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 检查清单</span></span><br><span class="line"></span><br><span class="line"><span class="section">### Vue 项目</span></span><br><span class="line"><span class="bullet">- </span>[ ] 组件名是否使用大驼峰（PascalCase）</span><br><span class="line"><span class="bullet">- </span>[ ] v-for 是否绑定了 key</span><br><span class="line"><span class="bullet">- </span>[ ] 是否避免了 v-if 和 v-for 同时使用</span><br><span class="line"><span class="bullet">- </span>[ ] 计算属性是否有副作用</span><br><span class="line"><span class="bullet">- </span>[ ] 生命周期钩子是否正确清理副作用</span><br><span class="line"></span><br><span class="line"><span class="section">### React 项目</span></span><br><span class="line"><span class="bullet">- </span>[ ] 组件是否是纯函数（尽量使用函数组件）</span><br><span class="line"><span class="bullet">- </span>[ ] useEffect 依赖项是否完整</span><br><span class="line"><span class="bullet">- </span>[ ] 是否有不必要的 re-render</span><br><span class="line"><span class="bullet">- </span>[ ] key 属性是否正确使用</span><br><span class="line"></span><br><span class="line"><span class="section">### 通用</span></span><br><span class="line"><span class="bullet">- </span>[ ] 是否有未使用的变量/导入</span><br><span class="line"><span class="bullet">- </span>[ ] 是否有 console.log 未清理</span><br><span class="line"><span class="bullet">- </span>[ ] 异步操作是否有错误处理</span><br><span class="line"><span class="bullet">- </span>[ ] 敏感信息是否硬编码</span><br><span class="line"></span><br><span class="line"><span class="section">## 工具调用</span></span><br><span class="line"><span class="bullet">1. </span>使用 <span class="code">`read_file`</span> 读取用户指定的文件或当前 diff</span><br><span class="line"><span class="bullet">2. </span>使用 <span class="code">`bash`</span> 运行 eslint/prettier 检查</span><br><span class="line"><span class="bullet">3. </span>使用 <span class="code">`edit_file`</span> 提供修复建议（需用户确认）</span><br><span class="line"></span><br><span class="line"><span class="section">## 输出规范</span></span><br><span class="line"><span class="bullet">- </span>按严重程度分级：Critical / Warning / Suggestion</span><br><span class="line"><span class="bullet">- </span>提供修改前后的代码对比</span><br><span class="line"><span class="bullet">- </span>解释 "Why"，而不仅仅是 "What"</span><br></pre></td></tr></table></figure>
+<h3 id="使用自定义-Skill"><a href="#使用自定义-Skill" class="headerlink" title="使用自定义 Skill"></a>使用自定义 Skill</h3><p>配置完成后，在 Claude Code 交互模式中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/fe-review</span><br></pre></td></tr></table></figure>
+<p>或描述你的需求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">帮我审查一下刚才提交的代码，重点看 Vue 组件的规范问题</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="五、实战案例"><a href="#五、实战案例" class="headerlink" title="五、实战案例"></a>五、实战案例</h2><h3 id="案例-1：快速初始化一个-Vue-3-项目"><a href="#案例-1：快速初始化一个-Vue-3-项目" class="headerlink" title="案例 1：快速初始化一个 Vue 3 项目"></a>案例 1：快速初始化一个 Vue 3 项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">claude -p <span class="string">"帮我初始化一个 Vue 3 + TypeScript + Vite 的项目，包含：</span></span><br><span class="line"><span class="string">1. ESLint + Prettier 配置</span></span><br><span class="line"><span class="string">2.  Vue Router 和 Pinia</span></span><br><span class="line"><span class="string">3.  一个基础的登录页面组件</span></span><br><span class="line"><span class="string">4.  配置好 git 忽略规则"</span></span><br></pre></td></tr></table></figure>
+<p>Claude Code 会：</p>
+<ol>
+<li>执行 <code>npm create vue@latest</code></li>
+<li>安装额外依赖</li>
+<li>生成配置文件</li>
+<li>创建基础组件</li>
+</ol>
+<h3 id="案例-2：代码重构"><a href="#案例-2：代码重构" class="headerlink" title="案例 2：代码重构"></a>案例 2：代码重构</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">claude</span><br></pre></td></tr></table></figure>
+<p>进入交互模式后：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; 这个文件里的函数太长了，帮我拆分成多个小函数，并添加类型定义</span><br><span class="line">&gt; /read src/utils/helpers.js</span><br><span class="line">&gt; /edit src/utils/helpers.js</span><br></pre></td></tr></table></figure>
+<h3 id="案例-3：使用-Skill-做自动化部署检查"><a href="#案例-3：使用-Skill-做自动化部署检查" class="headerlink" title="案例 3：使用 Skill 做自动化部署检查"></a>案例 3：使用 Skill 做自动化部署检查</h3><p>配置一个部署前检查的 Skill：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># deploy-check Skill</span></span><br><span class="line">---</span><br><span class="line">name: deploy-check</span><br><span class="line">triggers:</span><br><span class="line">  - /deploy-check</span><br><span class="line">  - 部署检查</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## 检查项</span></span><br><span class="line"><span class="bullet">1. </span>确认当前分支是 main/master</span><br><span class="line"><span class="bullet">2. </span>确认没有未提交的变更</span><br><span class="line"><span class="bullet">3. </span>运行测试套件</span><br><span class="line"><span class="bullet">4. </span>检查环境变量配置</span><br><span class="line"><span class="bullet">5. </span>构建项目确认无错误</span><br><span class="line"></span><br><span class="line"><span class="section">## 执行流程</span></span><br></pre></td></tr></table></figure>
+<p>使用时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/deploy-check</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="六、最佳实践与注意事项"><a href="#六、最佳实践与注意事项" class="headerlink" title="六、最佳实践与注意事项"></a>六、最佳实践与注意事项</h2><h3 id="1-成本控制"><a href="#1-成本控制" class="headerlink" title="1. 成本控制"></a>1. 成本控制</h3><p>Claude Code 的 API 调用是按 Token 计费的，注意：</p>
+<ul>
+<li><strong>上下文长度</strong>：项目文件越多，每次请求的 Token 消耗越大</li>
+<li><strong>工具调用循环</strong>：复杂的任务可能触发多次工具调用，消耗较多 Token</li>
+<li><strong>模型选择</strong>：日常任务用 <code>fast</code> 模式（Sonnet），复杂任务再用 Opus</li>
+</ul>
+<h3 id="2-安全建议"><a href="#2-安全建议" class="headerlink" title="2. 安全建议"></a>2. 安全建议</h3><ul>
+<li><strong>审查变更</strong>：Claude Code 可以修改文件，重要操作前务必 review diff</li>
+<li><strong>敏感信息</strong>：不要将 API Key、密码等提交到 Git，使用 <code>.env</code> 文件</li>
+<li><strong>权限控制</strong>：CI/CD 场景中，限制 Claude Code 的执行权限</li>
+</ul>
+<h3 id="3-与现有工具链集成"><a href="#3-与现有工具链集成" class="headerlink" title="3. 与现有工具链集成"></a>3. 与现有工具链集成</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配合 Git Hooks，提交前自动检查</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'#!/bin/bash\nclaude -p "检查本次提交的代码是否有明显问题"'</span> &gt; .git/hooks/pre-commit</span><br><span class="line">chmod +x .git/hooks/pre-commit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配合 Makefile，定义常用命令</span></span><br><span class="line">cat &gt;&gt; Makefile &lt;&lt; <span class="string">'EOF'</span></span><br><span class="line">claude-review:</span><br><span class="line">	claude -p <span class="string">"审查最近的代码变更"</span></span><br><span class="line"></span><br><span class="line">claude-test:</span><br><span class="line">	claude -p <span class="string">"运行测试并分析失败原因"</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>Claude Code 代表了 AI 辅助编程的下一个阶段——从<strong>“问答式助手”</strong>进化为<strong>“代理式协作者”</strong>。通过 Skill 系统，你可以将它训练成符合团队规范的专业助手，无论是代码审查、项目初始化还是自动化脚本，都能显著提升开发效率。</p>
+<p>如果你还没有尝试过，强烈建议在下一个项目中引入 Claude Code，从简单的代码解释开始，逐步探索 Skill 的自定义能力。</p>
+<hr>
+<p><strong>参考链接：</strong></p>
+<ul>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" rel="noopener">Claude Code 官方文档</a></li>
+<li><a href="https://docs.anthropic.com/en/api/getting-started" target="_blank" rel="noopener">Anthropic API 文档</a></li>
+<li><a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener">Claude Code GitHub 社区</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>本文系作者基于实际使用经验整理，如有错误或补充，欢迎在评论区留言交流！</p>
+</blockquote>
+
+        
+    </section>
+</article>
+
+
+
+
+
+<div class="comments">
+    <div id="comments"></div>
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+    new Gitalk({
+        clientID: "7fbe80427f54741e289f",
+        clientSecret: "f34ed5fd92e54c9000bd37ba951948cb939deff5",
+        repo: "sanonz.github.io",
+        owner: "sanonz",
+        admin: ["sanonz"],
+        id: "2026/05/24/Claude-Code-完全指南-从安装到-Skill-进阶实战",
+        distractionFreeMode: true,
+        title: "Claude Code 完全指南：从安装到 Skill 进阶实战",
+        body: "http://www.yqyang.com/2026/05/24/Claude-Code-完全指南-从安装到-Skill-进阶实战/",
+        labels: ["Claude Code","AI 编程","CLI 工具","效率工具","Anthropic"]
+    }).render('comments');
+    </script>
+</div>
+
+
+        </div>
+        <footer class="footer" style="color: #fff">
+    <a href="https://beian.miit.gov.cn/" style="color: #fff" target="_blank">晋ICP备2024043727号-4</a>
+</footer>
+
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/jquery@1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var nodes = {
+            nav: $('#nav'),
+            aside: $('#aside'),
+            asideInner: $('#aside-inner'),
+            navInner: $('#nav-inner')
+        };
+
+        var doing = false;
+        nodes.asideInner.on('webkitAnimationEnd mozAnimationEnd oAnimationEnd oanimationend animationend', function() {
+            if (nodes.aside.hasClass('mobile-open')) {
+                nodes.aside.removeClass('mobile-open');
+            } else {
+                nodes.aside.removeClass('mobile-close panel-show');
+            }
+            doing = false;
+        });
+        $('#open-panel, #aside-mask').on('click', function() {
+            if (doing) {
+                return;
+            }
+
+            if (nodes.aside.hasClass('panel-show')) {
+                nodes.aside.addClass('mobile-close');
+            } else {
+                nodes.aside.addClass('mobile-open panel-show');
+            }
+        });
+        $('#open-menus').on('click', function() {
+            nodes.navInner.slideToggle('normal', slideDone);
+        });
+
+        if (window.innerWidth <= 960) {
+            setTimeout(function() {
+                nodes.navInner.slideUp('normal', slideDone);
+            }, 3000);
+        }
+
+        function slideDone() {
+            if (nodes.navInner.css('display') !== 'none') {
+                nodes.navInner.css('display', '');
+            }
+        }
+
+        $(window).on('resize', function() {
+            console.log($(this).width())
+            if ($(this).width() > 960) {
+                nodes.navInner.css('display', '');
+            }
+        });
+    });
+    </script>
+    
+        <script src="/js/scrollspy.min.js"></script>
+        <script type="text/javascript">
+        $(document.body).scrollspy({target: '#aside-inner'});
+
+        $(window).on('resize', function() {
+            var hw = $('#header').width();
+            var ww = $('#wrapper').width();
+            var space = ($(this).width() - hw - ww) / 2 / 2;
+
+            var pageprev = $('#pageprev');
+            var pagenext = $('#pagenext');
+            var avg = (pageprev.width() + pagenext.width()) / 2
+
+            if(space > avg) {
+                var len = space - avg / 2;
+                // var styles = {position: 'fixed', top: '50%', marginTop: - (pageprev.width() + pagenext.width()) / 4}
+                // pageprev.css($.extend({left: hw + len}, styles));
+                // pagenext.css($.extend({right: len}, styles));
+            } else {
+                pageprev.removeAttr('style');
+                // pagenext.removeAttr('style');
+            }
+        }).trigger('resize');
+        </script>
+    
+
+</body>
+</html>
